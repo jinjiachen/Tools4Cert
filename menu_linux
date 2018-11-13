@@ -1,0 +1,34 @@
+#!/bin/python
+#coding=utf8
+
+import wx
+
+class myframe(wx.Frame):
+
+    def __init__(self):
+        wx.Frame.__init__(self,None,-1,'Tool4Cert by Michael')
+        panel=wx.Panel(self)
+        mymenubar=wx.MenuBar()
+        mymenu1=wx.Menu()
+        mymenu2=wx.Menu()
+        mymenu3=wx.Menu()
+        Exit=mymenu1.Append(wx.NewId(),'&Exit')    
+        test1=mymenu1.Append(-1,'Save')
+        test2=mymenu2.Append(-1,'60335-2-40')
+        test3=mymenu3.Append(-1,'UL 484')
+        self.SetMenuBar(mymenubar)
+        mymenubar.Append(mymenu1,'File')
+        mymenubar.Append(mymenu2,'CB')
+        mymenubar.Append(mymenu3,'ETL')
+        self.Bind(wx.EVT_MENU,self.exit,Exit)
+        
+
+    def exit(self,event):
+        self.Close(True)
+        
+
+if __name__=="__main__":
+    myapp=wx.PySimpleApp()
+    frame=myframe()
+    frame.Show()
+    myapp.MainLoop()
