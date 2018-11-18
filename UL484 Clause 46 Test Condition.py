@@ -50,25 +50,21 @@ elif choice1=="2":
         print "Outdoor air(DB/WB):",Tc_Temp_Pressure[7]
 elif choice1=="3":
     print "Input Test:"
-    print "Indoor air(DB/WB):",Tc_Input[8]
-    print "Outdoor air(DB/WB):",Tc_Input[9]
+    print "Room Air Temperature:",Tc_Input[8]
     print "Temperature and pressure test:"
-    print "Indoor air(DB/WB):",Tc_Temp_Pressure[8]
-    print "Outdoor air(DB/WB):",Tc_Temp_Pressure[9]
+    print "Room Air Temperature:",Tc_Temp_Pressure[8]
 elif choice1=="4":
     print "Input Test:"
-    print "Indoor air(DB/WB):",Tc_Input[10]
-    print "Outdoor air(DB/WB):",Tc_Input[11]
+    print "Indoor air(DB/WB):",Tc_Input[9]
+    print "Outdoor air(DB/WB):",Tc_Input[10]
     print "Temperature and pressure test:"
-    print "Indoor air(DB/WB):",Tc_Temp_Pressure[10]
-    print "Outdoor air(DB/WB):",Tc_Temp_Pressure[11]
+    print "Indoor air(DB/WB):",Tc_Temp_Pressure[9]
+    print "Outdoor air(DB/WB):",Tc_Temp_Pressure[10]
 elif choice1=="5":
     print "Input Test:"
-    print "Indoor air(DB/WB):",Tc_Input[12]
-    print "Outdoor air(DB/WB):",Tc_Input[13]
+    print "Room Air Temperature:",Tc_Input[11]
     print "Temperature and pressure test:"
-    print "Indoor air(DB/WB):",Tc_Temp_Pressure[12]
-    print "Outdoor air(DB/WB):",Tc_Temp_Pressure[13]
+    print "Room Air Temperature:",Tc_Temp_Pressure[11]
 print "==============The end=============="
 
 
