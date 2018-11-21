@@ -6,9 +6,9 @@ import math
 
 class LeakageCurrentFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self,None,-1,'IEC60335-1 Clause13 Leakage Current')
+        wx.Frame.__init__(self,None,-1,'IEC60335-1 Clause16 Leakage Current')
         self.panel=wx.Panel(self,-1)
-        self.catagory=('Class II appliances','Class 0 and III appliances','Class 0I appliances','Portable class I appliances','Stationary class I motor-operated appliances','Stationary class I heating appliances')
+        self.catagory=('Class II appliances','Class 0, 0I and III appliances','Portable class I appliances','Stationary class I motor-operated appliances','Stationary class I heating appliances')
         wx.StaticText(self.panel,-1,"Please input the measured leakage current:",pos=(50,150))
         self.text1=wx.TextCtrl(self.panel,-1,pos=(50,180))
         wx.StaticText(self.panel,-1,"Please choose the appliance catagory:",pos=(50,50))
@@ -18,7 +18,7 @@ class LeakageCurrentFrame(wx.Frame):
         self.Bind(wx.EVT_BUTTON,self.compare,self.Button)
 
     def add(self,event):
-        if self.choice.GetStringSelection()==self.catagory[5]:
+        if self.choice.GetStringSelection()==self.catagory[4]:
             self.stext1=wx.StaticText(self.panel,-1,"Please input the power input(kW):",pos=(50,220))
             self.text2=wx.TextCtrl(self.panel,-1,pos=(50,250))
             
@@ -29,8 +29,8 @@ class LeakageCurrentFrame(wx.Frame):
 
     def compare(self,event):
         value_LC=float(self.text1.GetValue())
-        value_Limited=[0.35,0.7,0.5,0.75,3.5]
-        if self.choice.GetStringSelection()==self.catagory[5]:
+        value_Limited=[0.25,0.5,0.75,3.5]   #limited value for leakage current
+        if self.choice.GetStringSelection()==self.catagory[4]:
             power=float(self.text2.GetValue())
             temp=min(power*0.75,5)
             max_LC=max(temp,0.75)
@@ -39,7 +39,7 @@ class LeakageCurrentFrame(wx.Frame):
 #        print value_Limited[0]
 #        print self.choice.GetSelection()
 #        print self.catagory[0]
-        for i in range(0,6):
+        for i in range(0,5):
             if self.choice.GetStringSelection()==self.catagory[i]:
                 if value_LC<=value_Limited[i]:
                     wx.MessageBox("Pass! Leakage current complies.","Verdict",style=wx.OK)
