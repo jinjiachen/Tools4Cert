@@ -16,6 +16,10 @@ class TestVoltageFrame(wx.Frame):
         RateVolt=float(self.text1.GetValue())
         Volt_Input=['115','208','230','Rated','Rated','Rated']
         Volt_Others=['120','208','240','277','480','600']
+#        self.stext2=wx.StaticText(self.panel,-1,pos=(50,120))
+#        self.stext3=wx.StaticText(self.panel,-1,pos=(50,150))
+#        self.stext2.Show(False)
+#        self.stext3.Show(False)
         if RateVolt>=110 and RateVolt<=120:
             res_Input=Volt_Input[0]
             res_Other=Volt_Others[0]
