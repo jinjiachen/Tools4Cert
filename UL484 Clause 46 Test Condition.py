@@ -66,5 +66,5 @@ elif choice1=="5":
     print "Temperature and pressure test:"
     print "Room Air Temperature:",Tc_Temp_Pressure[11]
 print "==============The end=============="
-
+input("Press ENTER to continue!")
 

@@ -23,3 +23,4 @@ elif RateVolt>=440 and RateVolt<=480:
 elif RateVolt>=550 and RateVolt<=600:
     print("Input test:",Volt_Input[5])
     print("All other tests:",Volt_Others[5])
+input("Press ENTER to continue!")
