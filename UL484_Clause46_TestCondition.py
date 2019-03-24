@@ -48,34 +48,34 @@ class TestConditionFrame(wx.Frame):
         if self.cho1.GetStringSelection()=="Cooling":
             if self.cho2.GetStringSelection()=="Air cooled unit":
                 if self.cho3.GetStringSelection()=="Input test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[0]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[1]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[0]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[1]+"\t\t",pos=(10,220))
                 elif self.cho3.GetStringSelection()=="Temperature and pressure test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[0]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[1]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[0]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[1]+"\t\t",pos=(10,220))
             if self.cho2.GetStringSelection()=="Water cooled unit":
                 if self.cho3.GetStringSelection()=="Input test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[2]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[3]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[2]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[3]+"\t\t",pos=(10,220))
                 elif self.cho3.GetStringSelection()=="Temperature and pressure test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[2]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[3]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[2]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[3]+"\t\t",pos=(10,220))
         #Reverse cycle heating
         elif self.cho1.GetStringSelection()=="Reverse cycle heating":
             if self.cho2.GetStringSelection()=="Air cooled unit":
                 if self.cho3.GetStringSelection()=="Input test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[4]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[5]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[4]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[5]+"\t\t",pos=(10,220))
                 elif self.cho3.GetStringSelection()=="Temperature and pressure test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[4]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[5]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[4]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[5]+"\t\t",pos=(10,220))
             if self.cho2.GetStringSelection()=="Water cooled unit":
                 if self.cho3.GetStringSelection()=="Input test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[6]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[7]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Input[6]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Input[7]+"\t\t",pos=(10,220))
                 elif self.cho3.GetStringSelection()=="Temperature and pressure test":
-                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[6]+"\t",pos=(10,200))
-                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[7]+"\t",pos=(10,220))
+                    wx.StaticText(self.panel,-1,'Indoor air,DB/WB:'+Tc_Temp_Pressure[6]+"\t\t",pos=(10,200))
+                    wx.StaticText(self.panel,-1,'Outdoor air,DB/WB:'+Tc_Temp_Pressure[7]+"\t\t",pos=(10,220))
         #Resistance heat (only)
         elif self.cho1.GetStringSelection()=="Resistance heat (only)":
             if self.cho3.GetStringSelection()=="Input test":

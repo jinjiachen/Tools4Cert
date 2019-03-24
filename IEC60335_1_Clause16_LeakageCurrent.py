@@ -6,7 +6,7 @@ import math
 
 class LeakageCurrentFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self,None,-1,'IEC60335-1 Clause16 Leakage Current')
+        wx.Frame.__init__(self,None,-1,'IEC60335-1 Clause16 Leakage Current',size=(1400,600))
         self.panel=wx.Panel(self,-1)
         self.catagory=('Class II appliances','Class 0, 0I and III appliances','Portable class I appliances','Stationary class I motor-operated appliances','Stationary class I heating appliances')
         wx.StaticText(self.panel,-1,"Please input the measured leakage current:",pos=(50,150))
@@ -16,6 +16,8 @@ class LeakageCurrentFrame(wx.Frame):
         self.Button=wx.Button(self.panel,-1,"Verdict",pos=(50,300))
         self.Bind(wx.EVT_CHOICE,self.add,self.choice)
         self.Bind(wx.EVT_BUTTON,self.compare,self.Button)
+        image=wx.Image('D:\Documents\GitHub\Tools4Cert\Pics\IEC60335-1_Clause16_LeakageCurrent.png',wx.BITMAP_TYPE_ANY)
+        imagev=wx.StaticBitmap(self.panel,-1,wx.BitmapFromImage(image),pos=(380,50))
 
     def add(self,event):
         if self.choice.GetStringSelection()==self.catagory[4]:
