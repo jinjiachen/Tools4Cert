@@ -16,7 +16,7 @@ class LeakageCurrentFrame(wx.Frame):
         self.Button=wx.Button(self.panel,-1,"Verdict",pos=(50,300))
         self.Bind(wx.EVT_CHOICE,self.add,self.choice)
         self.Bind(wx.EVT_BUTTON,self.compare,self.Button)
-        image=wx.Image('D:\Documents\GitHub\Tools4Cert\Pics\IEC60335-1_Clause16_LeakageCurrent.png',wx.BITMAP_TYPE_ANY)
+        image=wx.Image('.\Pics\IEC60335-1_Clause16_LeakageCurrent.png',wx.BITMAP_TYPE_ANY)
         imagev=wx.StaticBitmap(self.panel,-1,wx.BitmapFromImage(image),pos=(380,50))
 
     def add(self,event):
