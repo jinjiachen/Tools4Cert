@@ -1,8 +1,8 @@
 ﻿#!/bin/python
 import os
 
-Version="Name: G-search V0.1"
-Description="Description: This software is used to searh the GSO standards.The database will be updated as soon as new standards publish."
+Version="Name: Approved ANS V0.1"
+Description="Description: This software is used to searh the standards already approved by ANSI.The database will be updated as soon as new standards publish."
 line="-------------------------------------"
 while True:
     print(line+"INFO"+line)
@@ -11,7 +11,7 @@ while True:
     print(line+"----"+line)
     try:
         para=input("Please input the standard:")
-        cmd='find "'+para+'" .\Database\GSO.db'
+        cmd='find "'+para+'" .\Database\Approved_ANS.db'
         test=os.system(cmd)
         flag=input("Press Enter to continue! Others to EXIT!")
         if flag!="":

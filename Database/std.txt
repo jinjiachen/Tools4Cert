@@ -1,0 +1,2215 @@
+1	Standard for Flexible Metal Conduit
+4	Standard for Armored Cable
+5	Standard for Surface Metal Raceways and Fittings
+5A	Nonmetallic Surface Raceways and Fittings
+5B	Standard for Strut-Type Channel Raceways and Fittings
+5C	Standard for Surface Raceways and Fittings for Use with Data, Signal, and Control Circuits
+6	Electrical Rigid Metal Conduit - Steel
+6A	Standard for Electrical Rigid Metal Conduit - Aluminum and Stainless Steel
+7	Outline of Investigation for Pump Tank Extinguishers
+8	Water Based Agent Fire Extinguishers
+9	Standard for Fire Tests of Window Assemblies
+10	Subject 10 - Fire Doors
+10	Guide for Evaluating Doors and Frames for Listing and Labelling
+10A	Standard for Tin-Clad Fire Doors
+10B	Standard for Fire Tests of Door Assemblies
+10C	Standard for Positive Pressure Fire Tests of Door Assemblies
+10D	Standard for Fire Tests of Fire-Protective Curtain Assemblies
+13	Standard for Power-Limited Circuit Cables
+14	Guide for Hardware for Fire Doors and Emergency Exits
+14B	Standard for Sliding Hardware for Standard, Horizontally Mounted Tin-Clad Fire Doors
+14C	Standard for Swinging Hardware for Standard Tin-Clad Fire Doors Mounted Singly and in Pairs
+19	Standard for Lined Fire Hose and Hose Assemblies
+19G	Guidance for Lined Fire Hose and Hose Assemblies
+20	General-Use Snap Switches
+21	Standard for LP-Gas Hose
+22	Standard for Amusement and Gaming Machines
+25	Standard for Meters for Flammable and Combustible Liquids and LP-Gas
+25	Meters for Flammable and Combustible Liquids and Propane
+25A	Meters for Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations up to 85 Percent (E0 - E85)
+25B	Meters for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends with Nominal Biodiesel Concentrations up to 20 Percent (B20), Kerosene, and Fuel Oil
+30	Standard for Metal Safety Cans
+30	Safety Containers
+32	Standard for Metal Waste Cans
+33	Standard for Heat Responsive Links for Fire-Protection Service
+38	Standard for Manual Signaling Boxes for Fire Alarm Systems
+44	Thermoset-Insulated Wires and Cables
+47	Standard for Semiautomatic Fire Hose Storage Devices
+47	Preliminary Standard for Fire Hose Rack Assemblies
+48	Standard for Electric Signs
+50	Enclosures for Electrical Equipment, Non-Environmental Considerations
+50E	Enclosures for Electrical Equipment, Environmental Considerations
+50E	Enclosures for Electrical Equipment, Environmental Considerations
+50V	Outline of Investigation for Infrared Viewports
+51	Standard for Power-Operated Pumps for Anhydrous Ammonia and LP-Gas
+55A	Standard for Materials for Built-Up Roof Coverings
+55A	Standard for Materials for Built-Up Roof Coverings
+58	Standard for Steel Underground Tanks for Flammable and Combustible Liquids
+58.1	Jacketed Steel Underground Tanks for Flammable and Combustible Liquids
+58.2	Special Corrosion Protection Underground Tanks for Flammable and Combustible Liquids 
+58.9	Secondary Containment Liners for Underground and Aboveground Flammable and Combustible Liquid Tanks
+58.15	Overfill Protection Devices for Flammable Liquid Storage Tanks
+62	Flexible Cords and Cables
+63	Outline of Investigation for Fire Door Frames
+66	Fixture Wire
+67	Standard for Panelboards
+69	Standard for Electric-Fence Controllers
+70	Standard for Septic Tanks, Bituminous Coated Metal
+72	Standard for Tests for Fire Resistance of Record Protection Equipment
+72	Tests for Fire Resistance of Record Protection Equipment
+73	Standard for Motor-Operated Appliances
+75	Outline of Investigation for Portable Containers and Tanks for Flammable and/or Combustible Liquids
+79	Standard for Power-Operated Pumps for Petroleum Dispensing Products
+79.1	Manual Pumps For Use With Liquid Petroleum Fuels
+79A	Power-Operated Pumps for Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations up to 85 Percent (E0 - E85)
+79B	Power-Operated Pumps for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends with Nominal Biodiesel Concentrations up to 20 Percent (B20), Kerosene, and Fuel Oil
+80	Standard for Steel Tanks for Oil-Burner Fuels and Other Combustible Liquids
+82	Standard for Electric Gardening Appliances
+83	Thermoplastic-Insulated Wires and Cables
+83A	Fluoropolymer Insulated Wire
+83B	Switchboard and Switchgear Wires and Cables
+87	Standard for Power-Operated Dispensing Devices for Petroleum Products
+87A	Standard for Power-Operated Dispensing Devices for Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations up to 85 Percent (E0 - E85)
+87B	Power-Operated Dispensing Devices for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends with Nominal Biodiesel Concentrations up to 20 Percent (B20), Kerosene, and Fuel Oil
+87C	Outline of Investigation for Power-Operated Dispensing Devices for Diesel Exhaust Fluid
+92	Standard for Fire Extinguisher, Booster, and Noncollapsible Standpipe Hose and Hose Assemblies
+94	Standard for Tests for Flammability of Plastic Materials for Parts in Devices and Appliances
+96	ANSI/CAN/UL Standard for Lightning Protection Components / Standard for Composants de protection contre la foudre
+96A	Standard for Installation Requirements for Lightning Protection Systems
+98	Enclosed and Dead-Front Switches
+98A	Outline of Investigation for Open Type Switches
+98B	Outline of Investigation for Enclosed and Dead-front Switches for use in Photovoltaic Systems
+98C	Outline of Investigation for Enclosed and Dead-Front Switches, 650 - 1000 Volts
+100	Sustainability for Gypsum Boards and Panels
+101	Standard for Leakage Current for Utilization Equipment
+101	STANDARD METHODS OF FIRE ENDURANCE TESTS OF BUILDING CONSTRUCTION AND MATERIALS / Méthodes d'essai normalisées de résistance au feu pour les bâtiments et les matériaux de construction
+101	STANDARD METHODS OF FIRE ENDURANCE TESTS OF BUILDING CONSTRUCTION AND MATERIALS / MÉTHODE NORMALISÉE DES ESSAIS DE COMPORTEMENT AU FEU DES MURS EXTÉRIEURS
+102	Method of Test for Surface Burning Characteristics of Building Materials and Assemblies
+102	Method of Test for Surface Burning Characteristics of Building Materials and Assemblies
+102	STANDARD METHOD OF TEST FOR SURFACE BURNING CHARACTERISTICS OF BUILDING MATERIALS AND ASSEMBLIES / MÉTHODE D'ESSAI NORMALISÉE CARACTÉRISTIQUES DE COMBUSTION SUPERFICIELLE DES MATÉRIAUX DE CONSTRUCTION ET ASSEMBLAGES
+102	Sustainability for Door Leafs
+102.2	Method of Test for Surface Burning Characteristics of Flooring, Floor Coverings, and Miscellaneous Materials and Assemblies
+Méthode d'essai normalisée caractéristiques de combustion superficielle des revêtements de sol et des divers matériaux et assemblages
+102.2	STANDARD METHOD OF TEST FOR SURFACE BURNING CHARACTERISTICS OF FLOORING, FLOOR COVERINGS, AND MISCELLANEOUS MATERIALS AND ASSEMBLIES
+102.2	STANDARD METHOD OF TEST FOR SURFACE BURNING CHARACTERISTICS OF FLOORING, FLOOR COVERINGS, AND MISCELLANEOUS MATERIALS AND ASSEMBLIES / MÉTHODE D'ESSAI NORMALISÉE CARACTÉRISTIQUES DE COMBUSTION SUPERFICIELLE DES REVÊTEMENTS DE SOL ET DES DIVERS MATÉRIAUX ET ASSEMBLAGES
+102.3	Standard Method of Fire Test of Light Diffusers and Lenses
+102.3	STANDARD METHOD OF FIRE TEST OF LIGHT DIFFUSERS AND LENSES / MÉTHODE D'ESSAI NORMALISÉE DE RÉSISTANCE AU FEU POUR LES DIFFUSEURS ET VERRES D'APPAREILS D'ÉCLAIRAGE
+102.4	STANDARD METHOD OF TEST FOR FIRE AND SMOKE CHARACTERISTICS OF ELECTRICAL WIRING, CABLES AND  NON-METALLIC RACEWAYS / MÉTHODE D'ESSAI NORMALISÉE CARACTÉRISTIQUES DE RÉSISTANCE AU FEU ET À LA FUMÉE DES FILS ET CÂBLES ÉLECTRIQUES ET DES CANALISATIONS NON MÉTALLIQUES
+102.4	STANDARD METHOD OF TEST FOR FIRE AND SMOKE CHARACTERISTICS OF ELECTRICAL WIRING, CABLES AND  NON-METALLIC RACEWAYS / MÉTHODE D'ESSAI NORMALISÉE CARACTÉRISTIQUES DE RÉSISTANCE AU FEU ET À LA FUMÉE DES FILS ET CÂBLES ÉLECTRIQUES ET DES CANALISATIONS NON MÉTALLIQUES
+103	Standard for Factory-Built Chimneys for Residential Type and Building Heating Appliances
+103	STANDARD SPECIFICATION FOR  / SPÉCIFICATION NORMALISÉE POUR PORTES COUPE-FEU À REVÊTEMENT MÉTALLIQUE SATISFAISANT AUX EXIGENCES DE LA NORME CAN/ULC-S104
+103A	Masonry Fireplace Adapters for Residential Type and Building Heating Appliance Chimneys
+104	Standard for Elevator Door Locking Devices and Contacts
+104	STANDARD METHOD FOR FIRE TESTS OF DOOR ASSEMBLIES / MÉTHODE NORMALISÉE DES ESSAIS DE RÉSISTANCE AU FEU DES PORTES
+105	STANDARD SPECIFICATION FOR FIRE DOOR FRAMES MEETING THE PERFORMANCE REQUIRED BY CAN/ULC-S104 / NORME SUR LES CADRES DE PORTE COUPE-FEU SATISFAISANT AUX EXIGENCES DE RENDEMENT DE LA NORME CAN/ULC-S104
+106	Sustainability for Lighting
+106	STANDARD METHOD FOR FIRE TESTS OF WINDOW AND GLASS BLOCK ASSEMBLIES / MÉTHODE NORMALISÉE DES ESSAIS DE COMPORTEMENT AU FEU DES FENÊTRES ET DES BRIQUES DE VERRE
+107	Guide for the Investigation of Asbestos-Cement Pipe and Couplings / Méthodes normalisées d'essai de résistance au feu des matériaux de couverture
+107	Methods of Fire Tests of Roof Coverings
+107	STANDARD METHODS OF FIRE TESTS OF ROOF COVERINGS / MÉTHODES NORMALISÉES D'ESSAI DE RÉSISTANCE AU FEU DES MATÉRIAUX DE COUVERTURE
+108	Environmental Claim Validation Procedure (ECVP) for Estimating Energy Savings for Energy Saving Power Strips
+109	Standard for Tube Fittings for Flammable and Combustible Fluids, Refrigeration Service, and Marine Use
+109	Flame Tests of Flame Resistant Fabrics and Films / Norme relative aux essais de comportement au feu des tissus et pellicules ininflammables
+109	STANDARD METHOD FOR FLAME TESTS OF FLAME-RESISTANT FABRICS AND FILMS / MÉTHODE NORMALISÉE DES ESSAIS DE COMPORTEMENT AU FEU DES TISSUS ET PELLICULES ININFLAMMABLES
+110	STANDARD METHODS OF TEST FOR AIR DUCTS / MÉTHODES NORMALISÉES D'ESSAI DES CONDUITS D'AIR
+110	Standard for Sustainability for Mobile Phones
+111	Outline of Investigation for Multioutlet Assemblies
+111	STANDARD METHOD OF FIRE TESTS FOR AIR FILTER UNITS
+111	STANDARD METHOD OF FIRE TESTS FOR AIR FILTER UNITS / MÉTHODE D'ESSAI NORMALISÉE DE RÉSISTANCE AU FEU DES FILTRES
+112	Standard Methods of  Fire Test of Fire-Damper Assemblies
+Méthode normalisée d'essai de comportement au feu des registres coupe-feu
+112.1	Standard for Leakage Rated Dampers for Use in Smoke Control Systems
+112.2	Standard Method of Fire Test of Ceiling Firestop Flap Assemblies
+113	Procedure for the Preparation of a Toxicological Assessment
+113	Standard Specification for Wood Core Doors Meeting the Performance Required by CAN4-S104-77 for Twenty Minute Fire Rated Closure Assemblies
+
+113	STANDARD SPECIFICATION FOR WOOD CORE DOORS MEETING THE PERFORMANCE REQUIRED BY CAN/ULC-S104 FOR TWENTY MINUTE FIRE RATED CLOSURE ASSEMBLIES / SPÉCIFICATION DE NORME : PORTES À ÂME DE BOIS SATISFAISANT AUX EXIGENCES DE RENDEMENT DE CAN / ULC-S104 POUR LES DISPOSITIFS DE FERMETURE AYANT UN DEGRÉ DE RÉSISTANCE AU FEU DE VINGT MINUTES
+114	Standard Method of Test for Determination of Non-Combustibility in Building Materials / Méthode d’essai normalisée pour la détermination de l’incombustibilité des matériaux de construction
+114	STANDARD METHOD OF TEST  FOR DETERMINATION OF  NON-COMBUSTIBILITY IN BUILDING MATERIALS / MÉTHODE D'ESSAI NORMALISÉE POUR LA DÉTERMINATION DE L'INCOMBUSTIBILITÉ DES MATÉRIAUX DE CONSTRUCTION
+115	STANDARD METHOD OF FIRE TESTS OF FIRESTOP SYSTEMS
+115	STANDARD METHOD OF FIRE TESTS OF FIRESTOP SYSTEMS / MÉTHODE NORMALISÉE D’ESSAIS DE RÉSISTANCE AU FEU DES DISPOSITIFS COUPE-FEU
+115	Sustainability for Thermal Insulation
+118	Indoor Air Quality
+119	Outline of Investigation for Adapters, Fittings and Couplings for Anhydrous Ammonia and Fuel Gases
+122	Standard for Photographic Equipment
+123	Standard for Oxy-Fuel Gas Torches
+124	Outline of Investigation for Hand-Operated Pumps for Flammable and Combustible Liquids 
+124	Standard Method of Test for the Evaluation of Protective Coverings for Foamed Plastic / Méthode d’essai normalisée évaluation des revêtements protecteurs des mousses plastiques
+124	STANDARD METHOD OF TEST FOR THE EVALUATION OF THERMAL BARRIERS FOR FOAMED PLASTIC / MÉTHODE D'ESSAI NORMALISÉE  POUR L'ÉVALUATION DES BARRIÈRES THERMIQUES DE LA MOUSSE PLASTIQUE
+125	Standard for Flow Control Valves for Anhydrous Ammonia and LP-Gas
+125	ANSI/CAN/UL/ULC Standard for Flow Control Valves for Anhydrous Ammonia and LP-Gas / Soupapes de régulation de débit pour l'ammoniac anhydre et le gaz de pétrole liquéfié
+125	Valves for Anhydrous Ammonia and Propane (Other than Safety Relief)
+125	Flow Control Valves for Anhydrous Ammonia and LP-Gas / Soupapes de régulation de débit pour l'ammoniac anhydre et le gaz de pétrole liquéfié
+126	STANDARD METHOD OF TEST FOR FIRE SPREAD  UNDER ROOF-DECK ASSEMBLIES / MÉTHODE NORMALISÉE D'ESSAI DE PROPAGATION DES FLAMMES SOUS LES PLATELAGES DE TOITS
+126	Standard for Sustainability for Plastic Film Products
+127	Standard for Factory-Built Fireplaces
+127	Standard Corner Wall Method of Test for Flammability Characteristics of Non-Melting Building Materials
+127	STANDARD CORNER WALL METHOD OF TEST FOR FLAMMABILITY  CHARACTERISTICS OF NON-MELTING FOAM PLASTIC BUILDING MATERIALS / MÉTHODE D'ESSAI NORMALISÉE D'ALLUMAGE EN COIN VISANT À DÉTERMINER LES CARACTÉRISTIQUES D'INFLAMMABILITÉ DES MATÉRIAUX DE CONSTRUCTION EN MOUSSE PLASTIQUE À L'ÉPREUVE DE LA FUSION
+127.1	Composite Fire-Log Starters
+129	STANDARD METHOD OF TEST FOR SMOULDER RESISTANCE OF INSULATION (BASKET METHOD) / MÉTHODE NORMALISÉE D'ESSAI DE RÉSISTANCE À LA COMBUSTION LENTE DES ISOLANTS (MÉTHODE DU PANIER)
+130	Standard for Electric Heating Pads
+130	Standard Method of Test for Ignition Resistance of Loose Fill Insulation (Cigarette Method)
+Méthode normalisée d’essai de résistance à l’allumage de l’isolant thermique cellulosique à bourrage lâche (méthode de la cigarette)
+130	STANDARD METHOD OF TEST FOR IGNITION RESISTANCE OF LOOSE FILL INSULATION (CIGARETTE METHOD) / MÉTHODE NORMALISÉE D'ESSAI DE RÉSISTANCE À L'ALLUMAGE DE L'ISOLANT THERMIQUE CELLULOSIQUE À BOURRAGE LÂCHE (MÉTHODE DE LA CIGARETTE)
+132	Standard for Safety Relief Valves for Anhydrous Ammonia and LP-Gas
+132	Standard For Emergency Exit And Emergency Fire Exit Hardware
+132	STANDARD METHOD OF TESTS FOR EMERGENCY EXIT AND EMERGENCY FIRE EXIT HARDWARE / MÉTHODE D'ESSAI NORMALISÉE DES SERRURES ANTIPANIQUES DES ISSUES DE SECOURS ET DES PORTES COUPE-FEU
+133	STANDARD METHOD OF TESTS FOR DOOR CLOSERS  INTENDED FOR USE WITH SWINGING DOORS / MÉTHODE D'ESSAI NORMALISÉE SUR LES FERME-PORTES CONÇUS POUR ÊTRE UTILISÉS AVEC DES PORTES BATTANTES
+134	STANDARD METHOD OF FIRE TEST OF EXTERIOR WALL ASSEMBLIES
+134	STANDARD METHOD OF FIRE TEST OF EXTERIOR WALL ASSEMBLIES / MÉTHODE NORMALISÉE DES ESSAIS DE COMPORTEMENT AU FEU DES MURS EXTÉRIEURS
+135	Standard Test Method for the Determination of Combustibility Parameters of Building Materials Using an Oxygen Consumption Calorimeter (Cone Calorimeter)
+
+135	Standard Test Method for the Determination of Combustibility Parameters of Building Materials Using an Oxygen Consumption Calorimeter (Cone Calorimeter)
+136	Standard for Pressure Cookers
+136	Standard Method of Fire Test of Sprinkler Protected Window Systems
+137	STANDARD METHOD OF TEST FOR FIRE GROWTH OF MATTRESSES (OPEN FLAME TEST) / MÉTHODE D’ESSAI NORMALISÉE POUR LA PROPAGATION DU FEU SUR LES MATELAS (ESSAI À LA FLAMME NUE)
+138	Standard Method of Test for Fire Growth of Insulated Building Panels in a Full-Scale Room Configuration / Méthode d'essai normalisée de la propagation du feu dans les panneaux de construction isolés d'une configuration de pièces à l'échelle réelle
+138	Standard Method of Test for Fire Growth of Insulated Building Panels in a Full-Scale Room Configuration
+139	Outline of Investigation for Medium- and High-Expansion Foam-Extinguishing System Equipment and Concentrates
+139	STANDARD FOR FIRE TEST FOR CIRCUIT INTEGRITY OF FIRE-RESISTIVE POWER, INSTRUMENTATION, CONTROL, AND DATA CABLES / NORMES SUR D'ESSAI DE RÉSISTANCE AU FEU POUR L'ÉVALUATION DE L'INTÉGRITÉ DES CIRCUITS DES CÂBLES D'ALIMENTATION, DE L'INSTRUMENTATION, DES CONTRÔLES ET DE DONNÉES
+139	Standard for Fire Test for Circuit Integrity of Fire-Resistive Power, Instrumentation, Control, and Data Cables / Normes sur d’essai de résistance au feu pour l’évaluation de l’intégrité des circuits des câbles d’alimentation, de l’instrumentation, des contrôles et données
+140	Standard for Relocking Devices for Safes and Vaults
+140	Guide for Investigation of Relocking Devices
+141	Standard for Garment Finishing Appliances
+142	Standard for Steel Aboveground Tanks for Flammable and Combustible Liquids
+142	STANDARD METHOD OF FIRE TEST FOR HEAT AND VISIBLE SMOKE RELEASE FOR DISCRETE PRODUCTS / MÉTHODE D'ESSAI NORMALISÉE DE COMPORTEMENT AU FEU POUR LA PRODUCTION DE CHALEUR ET DE FUMÉE VISIBLE DES PRODUITS DISCRETS
+142.20	Secondary Containments for Aboveground Flammable and  Combustible Liquid Storage Tanks
+142.5	Concrete Encased Steel Aboveground Tank Assemblies for Flammable and Combustible Liquids
+142.6	Storage Vaults
+142.14	Nonmetallic Bulk Containers For New Lubricating Oil
+142.17	Special Purpose Relocatable Aboveground Vertical Tanks for Flammable and Combustible Liquids
+142.19	  Spill Containment Devices for Aboveground Flammable and  Combustible Liquid Storage Tanks
+142.21	Aboveground Used-Oil Systems
+142.22	Contained Vertical Steel Aboveground Tank Assemblies for Flammable and Combustible Liquids
+142A	Special Purpose Aboveground Tanks for Specific Flammable or Combustible Liquids
+143	Standard Method of Fire Tests for Non-Metallic Electrical and Optical Fibre Cable Raceway Systems
+143	STANDARD METHOD OF FIRE TESTS FOR NON-METALLIC ELECTRICAL AND OPTICAL FIBRE CABLE RACEWAY SYSTEMS / MÉTHODE D'ESSAI NORMALISÉE DE COMPORTEMENT AU FEU DES SYSTÈMES DE CANALISATION NON MÉTALLIQUES POUR CÂBLES ÉLECTRIQUES ET À FIBRES OPTIQUES
+144	Standard for LP-Gas Regulators
+144	Standard Method of Fire Resistance Test – Grease Duct Assemblies
+144	STANDARD METHOD OF FIRE RESISTANCE TEST - GREASE DUCT ASSEMBLIES / MÉTHODE D'ESSAI NORMALISÉE DE RÉSISTANCE AU FEU - CONDUITS DE GRAISSE
+145	STANDARD METHOD OF TEST FOR THE EVALUATION OF PROTECTIVE COVERINGS FOR FOAMED PLASTIC INSULATION - FULL-SCALE ROOM TEST / MÉTHODE D’ESSAI NORMALISÉE POUR L’ÉVALUATION DES REVÊTEMENTS PROTECTEURS DES ISOLATIONS À LA MOUSSE PLASTIQUE - ESSAI DANS UNE PIÈCE EN VRAIE GRANDEUR
+146	Standard Method of Test for the Evaluation of Encapsulation Materials and Assemblies of Materials for the Protection of Structural Timber Element / Méthode d'essai normalisée pour l'évaluation des matériaux d'encapsulation et les assemblages de matériaux aux fins de la protection des éléments de bois de charpente
+147	Standard for Hand-Held Torches for Fuel Gases
+147A	Standard for Nonrefillable (Disposable) Type Fuel Gas Cylinder Assemblies
+147B	Standard for Nonrefillable (Disposable) Type Metal Container Assemblies for Butane
+150	Standard for Antenna Rotators
+153	Standard for Portable Electric Luminaires
+154	Carbon-Dioxide Fire Extinguishers
+155	Standard for Tests for Fire Resistance of Vault and File Room Doors
+155	Preliminary Standards for Tests for Fire Resistance of Vault and File Room Doors
+157	Standard for Gaskets and Seals
+162	Standard for Foam Equipment and Liquid Concentrates
+162A	Outline of Investigation for Fixed Water-Motor Coupled Pumps for Foam Concentrate Proportioning
+172	Standard for Sustainability for Toys
+174	Standard for Household Electric Storage Tank Water Heaters
+175	Standard for Sustainability for Sanitary Paper Products
+180	ANSI/CAN/UL/ULC Standard for Combustible Liquid Tank Accessories / ANSI/CAN/UL/ULC Norme sur les accessoires de réservoirs pour liquides combustibles
+180	Liquid Level Gauges and Indicators for Fuel Oil and Lubricating Oil Tanks
+180	ANSI/CAN/UL/ULC Standard for Combustible Liquid Tank Accessories / ANSI/CAN/UL/ULC Norme sur les accessoires de réservoirs pour liquides combustibles
+181	Standard for Factory-Made Air Ducts and Air Connectors
+181A	Standard for Closure Systems for Use With Rigid Air Ducts
+181B	Standard for Closure Systems for Use With Flexible Air Ducts and Air Connectors
+181C	Outline of Investigation for Non-Metal Joining Accessories for Flexible Air Ducts and Air Connectors
+183	Standard for Manufactured Wiring Systems
+193	Standard for Alarm Valves for Fire-Protection Service
+193	Guide for the Investigation of Alarm Valves for Fire-Protection Service
+194	Standard for Gasketed Joints for Ductile-Iron Pipe and Fittings for Fire Protection Service
+194	Guide for the Investigation of Gasketed Joints for Cast-Iron Pressure Pipes and Fittings
+197	Standard for Commercial Electric Cooking Appliances
+198M	Standard for Mine-Duty Fuses
+199	Standard for Automatic Sprinklers for Fire-Protection Service
+199	Light Wall Steel Pipes for Sprinkler Systems for Fire Protection Services
+199B	Outline for Control Cabinets for Automatic Sprinkler Systems Used for Protection of Commercial Cooking Equipment
+199C	Outline of Investigation for Plastic Escutcheons for Sprinklers
+199E	Outline of Investigation for Fire Testing of Sprinklers and Water Spray Nozzles for Protection of Deep Fat Fryers
+199G	Outline of Investigation for Fire Testing of Specific Application Sprinklers for Use in Attic Spaces
+201	Standard for Garage Equipment
+203	Standard for Pipe Hanger Equipment for Fire Protection Service / Norme sur les équipements de fixation de conduites pour le service de protection contre les incendies
+203	Pipe Hanger Equipment for Fire Protection Service
+203A	Sway Brace Devices for Sprinkler System Piping
+203A	Sway Brace Devices for Sprinkler System Piping
+205	Subject 205 - Burglary Protection Systems and Services
+205A	Subject for Burglary Protection Equipment
+207	Standard for Refrigerant-Containing Components and Accessories, Nonelectrical
+209	Standard for Cellular Metal Floor Raceways and Fittings
+210	Guide for Listing and Labelling of Factory-Built Chimney Connectors
+212	Outline of Investigation for Hand-Operated Chemical Pumps
+212	Outline of Investigation for Hand-Operated Chemical Pumps
+213	Rubber Gasketed Fittings for Fire-Protection Service / Raccords munis de joints en caoutchouc utilisés par le service de protection incendie
+213	Welded Outlet Fittings
+213B	Outline of Investigation for Welded Outlet Fittings for Fire Protection Systems
+213C	Grooved and Plain End Fittings
+217	Standard for Smoke Alarms
+218	Fire Pump Controllers
+218A	Standard for Battery Contactors for Use in Diesel Engines Driving Centrifugal Fire Pumps
+219	Standard for Lined Fire Hose for Interior Standpipes
+224	Extruded Insulating Tubing
+224	Extruded Insulating Tubing
+228	Standard for Door Closers-Holders, With or Without Integral Smoke Detectors
+228	Door Closers and  Holders
+231	Standard for Power Outlets
+234	Standard for Low Voltage Lighting Fixtures for Use in Recreational Vehicles
+242	Standard for Nonmetallic Containers for Waste Paper
+244A	Standard for Solid-State Controls for Appliances
+244B	Outline of Investigation for Cord-Connected Controls with Standard NEMA Plugs and Receptacles, Direct Plug-In Controls, and Controls Intended to be Mounted in Wiring Boxes
+246	Standard for Hydrants for Fire-Protection Service
+246A	Outline of Investigation for Non-Threaded Connections for Fire Hydrants and Fire Department Connections
+246b	Outline of Investigation for Tamper Resistant Features of Hydrants for Fire-Protection Service
+246C	Outline of Investigation for Wet Barrel Fire Hydrants for Oil Platforms
+248-1	Low-Voltage Fuses - Part 1: General Requirements
+248-2	Low-Voltage Fuses - Part 2: Class C Fuses
+248-3	Low-Voltage Fuses - Part 3: Class CA and CB Fuses
+248-4	Low-Voltage Fuses - Part 4: Class CC Fuses
+248-5	Low-Voltage Fuses - Part 5: Class G Fuses
+248-6	Low-Voltage Fuses - Part 6: Class H Non-Renewable Fuses
+248-7	Low-Voltage Fuses - Part 7: Class H Renewable Fuses
+248-8	Low-Voltage Fuses - Part 8: Class J Fuses
+248-9	Low-Voltage Fuses - Part 9: Class K Fuses
+248-10	Low-Voltage Fuses - Part 10: Class L Fuses
+248-11	Low-Voltage Fuses - Part 11: Plug Fuses
+248-12	Low-Voltage Fuses - Part 12: Class R Fuses
+248-13	 Low-Voltage Fuses - Part 13: Semiconductor Fuses
+248-14	Low-Voltage Fuses - Part 14: Supplemental Fuses
+248-15	Low-Voltage Fuses - Part 15: Class T Fuses
+248-16	Low-Voltage Fuses - Part 16: Test Limiters
+248-17	Outline of Investigation for Low-Voltage Fuses - Part 17: Class CF Fuses
+248-18	Outline of Investigation for Low Voltage Fuses - Class CD Fuses
+248-19	Low-Voltage Fuses - Part 19: Photovoltaic Fuses
+248-20	Outline of Investigation for Low-Voltage Fuses - Part 20: Electric Vehicle (EV) Fuses
+252	Standard for Compressed Gas Regulators
+252	Guide for the Investigation of Gas Pressure Regulators
+252A	Standard for Compressed Gas Regulator Accessories
+258	Outline of Investigation for Shutoff Valves for Trim and Drain Purposes
+258	Shutoff Valves for Trim and Drain Purposes for Fire Protection Service
+260	Standard for Dry Pipe and Deluge Valves for Fire-Protection Service
+260	Guide for the Investigation of  Dry Pipe, Deluge and Pre-Action Valves for Fire Protection
+260A	Outline of Investigation for Air Pressure Maintenance Devices
+262	Standard for Gate Valves for Fire-Protection Service
+262	Gate Valves for Fire Protection Service
+263	Standard for Fire Tests of Building Construction and Materials
+263	Criteria for Use in Extension of Data from Fire Endurance Tests
+263.1	Sprinkler-Protected Windows Systems
+263.5	Exterior Insulation and Finish Systems (EIFS)
+264.7	Room Fire Test Method for Garage Doors Using Foamed Plastic Insulation
+267	Outline of Investigation for Wire-Pulling Compounds
+268	Standard for Smoke Detectors for Fire Alarm Signaling Systems
+268	Smoke Detectors for Fire Alarm Systems
+268.13	Smoke-Alarms for Mobile Homes and Recreational Vehicles
+268A	Standard for Smoke Detectors for Duct Application
+268B	Video Image Smoke Detectors
+268C	Outline of Investigation for Multi-Detector Test Apparatus
+2734	Outline for Connectors and Service Plugs for Use with On-Board Electrical Vehicle (EV) Charging Systems
+2734	Connectors and Service Plugs for Use with On-Board Electrical Vehicle (EV) Charging Systems
+275	Standard for Automotive Glass-Tube Fuses
+275A	Outline of Investigation for Automotive Blade Type Fuses
+283	Standard for Air Fresheners and Deodorizers
+291	Standard for Automated Teller Systems
+293	Outline of Investigation for Performance of Access Control System Units Intended for Use in the UK
+294	Standard for Access Control System Units
+294A	Subject 294A
+294C	Subject 294C
+295	Standard for Commercial-Industrial Gas Burners
+296	Standard for Oil Burners
+296A	Standard for Waste Oil-Burning Air-Heating Appliances
+299	Dry Chemical Fire Extinguishers
+299	Dry Chemical Fire Extinguishers
+299A	Outline of Investigation for Portable Dry Chemical Extinguishing System Units
+299B	Outline of Investigation for Dry Chemical Fire Extinguishers for U.S. Navy Applications
+299C	Outline of Investigation for Fire Extinguishing Dry Chemical for Special Applications
+299D	Outline of Investigation for Dry Chemical Fire Extinguishers for Residential Cooking Equipment
+300	ANSI/CAN/UL/ULC Standard for Fire Testing of Fire Extinguishing Systems for Protection of Commercial Cooking Equipment / ANSI/CAN/UL/ULC Norme sur la mise à l'essai de systèmes d'extinction d'incendie conçus pour la protection d'équipement de cuisson commercial
+300	Standard for Fire Testing of Fire Extinguishing Systems for Protection of Commercial Cooking Equipment / Norme sur la mise à l'essai de systèmes d'extinction d'incendie conçus pour la protection d'équipement de cuisson commercial
+300A	Extinguishing System Units for Residential Range Top Cooking Surfaces
+301	STANDARD FOR SIGNAL RECEIVING CENTRES CONFIGURATIONS AND OPERATIONS / NORME SUR LA CONFIGURATION ET L
+302	STANDARD FOR THE INSTALLATION, INSPECTION AND TESTING OF INTRUSION ALARM SYSTEMS / NORME SUR L'INSTALLATION, L'INSPECTION ET LA MISE À L'ESSAI DES SYSTÈMES D'ALARME ANTI-INTRUSION
+304	STANDARD FOR CONTROL UNITS, ACCESSORIES AND RECEIVING EQUIPMENT FOR INTRUSION ALARM SYSTEMS / NORME SUR LES POSTES DE CONTRÔLE, LES ACCESSOIRES ET L'ÉQUIPEMENT DE RÉCEPTION POUR LES SYSTÈMES D'ALARME ANTI-INTRUSION
+305	Standard for Panic Hardware
+305	Panic Hardware  
+306	STANDARD FOR INTRUSION DETECTION UNITS / NORME SUR LES DÉTECTEURS D'INTRUSION
+307A	Standard for Liquid Fuel-Burning Heating Appliances for Manufactured Homes and Recreational Vehicles
+307B	Standard for Gas-Burning Heating Appliances For Manufactured Homes and Recreational Vehicles
+308	Subject for Power Distribution Units
+310	Electrical Quick-Connect Terminals
+312	Standard for Check Valves for Fire-Protection Service
+312	Check Valves for Fire Protection Service
+316	STANDARD FOR PERFORMANCE OF VIDEO SURVEILLANCE SYSTEMS / NORMES SUR LA PERFORMANCE DES SYSTÈMES DE SURVEILLANCE VIDÉO
+317	Standard for Installation and Classification of Closed Circuit Video Equipment (CCVE) Systems for Institutional and Commercial Security Applications
+318	Standard for Power Supplies for Burglar Alarm Systems
+319	Electronic Access Control Systems / Systèmes électroniques de contrôle d’accès
+321	Outline of Investigation for Pipeline Strainers
+321	Standard for Burglary Resistant Vault Doors and Modular Panels
+322	Vault Ventilators and Vault Ventilatating
+324	Burglary Resistant Safes
+325	ANSI/CAN/UL Standard for Door, Drapery, Gate, Louver, and Window Operators and Systems / Norme De Sécurité Relative aux Dispositifs d'ouverture et systèmes de porte, de tenture, de barrière, de persienne et de fenêtre
+327	Outline of Investigation for Turbine Type Flow Meters for Fire Protection Systems
+327	Burglar Resistant Combination Locks
+327A	Outline of Investigation for Inferential Type Residential Water Flow Meters
+327B	Outline of Investigation for Ultrasonic and Magnetic Type Water Flow Meters
+328	Outline of Investigation for Gasoline Torches
+328	Burglary Resistant Key Locks
+330	Standard for Hose and Hose Assemblies for Dispensing Flammable Liquids
+330	Burglary-Resistant Night Depositories
+330A	Hose and Hose Assemblies for Use with Dispensing Devices Dispensing Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations Up To 85 Percent (E0 - E85)
+330B	Hose and Hose Assemblies for Use With Dispensing Devices Dispensing Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends With Nominal Biodiesel Concentrations Up To 20 Percent (B20), Kerosene, and Fuel Oil
+331	Standard for Strainers for Flammable Fluids and Anhydrous Ammonia
+331	Guide for the Investigation of Strainers for Flammable Fluids and Anhydrous Ammonia
+331A	Standard for Strainers for Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations up to 85 Percent (E0 - E85)
+331B	Strainers for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends with Nominal Biodiesel Concentrations Up to 20 Percent (B20), Kerosene, and Fuel Oil
+331C	Outline of Investigation for Fuel Filtration Units
+332	Standard For Burglary Resistant Glazing Material
+334	Theater Lighting Distribution and Control Equipment
+334	Burglary Resistant Electronic Combination Locks
+335K	Household and Similar Electrical Appliances - Safety - Part 2-72: Particular Requirements for Floor Treatment Machines With or Without Traction Drive, for Commercial Use
+337	Delayed-Action Timelocks
+338	STANDARD FOR AUTOMOBILE THEFT DETERRENT EQUIPMENT AND SYSTEMS: ELECTRONIC IMMOBILIZATION / NORME SUR LES SYSTÈMES ET LES APPAREILLAGES DE PRÉVENTION DU VOL DE VÉHICULES AUTOMOBILES : IMMOBILISATION ÉLECTRONIQUE
+340	Standard for Tests for Comparative Flammability of Liquids
+343	Standard for Pumps for Oil-Burning Appliances
+343	Guide for the Investigation of Pumps for Oil-Burning Appliances
+346	Standard for Waterflow Indicators for Fire Protective Signaling Systems
+347	Medium-Voltage AC Contactors, Controllers, and Control Centers
+347	Medium-Voltage AC Contactors, Controllers, and Control Centers
+347A	Medium Voltage Power Conversion Equipment
+347B	Outline for Medium Voltage Motor Controllers, Up To 15KV
+347C	Outline of Investigation for Medium Voltage Solid State Resistive Load Controllers, Up to 15KV
+347D	Outline for Medium Voltage Stator Switching Assemblies for Wind Applications, Up to 15KV
+352	Guide for the Investigation of Constant-Level Oil Valves
+353	Standard for Limit Controls
+355	Standard for Cord Reels
+360	Standard for Liquid-Tight Flexible Metal Conduit
+363	Knife Switches
+365	Standard for Police Station Connected Burglar Alarm Units and Systems
+372	Standard for Automatic Electrical Controls for Household and Similar Use – Part 2: Particular Requirements for Burner Ignition Systems and Components
+378	Standard for Draft Equipment
+378	Guide for the Investigation of Draft Equipment
+379	Power Units for Fountain, Swimming Pool, and Spa Luminaires
+385	Standard for Play Pipes for Water Supply Testing in Fire Protection Service
+386	Subject for Rolling Fire Door Replacement Part Program
+386	Flame Detectors
+386	 FLAME DETECTORS
+391	Standard for Solid-Fuel and Combination-Fuel Central and Supplementary Furnaces
+393	Standard for Indicating Pressure Gauges for Fire-Protection Service
+393	Indicating Pressure Gauges for Fire Protection Service
+395	Guide for the Investigation of Automotive Fuel Tanks
+399	Standard for Drinking-Water Coolers
+401	Standard for Portable Spray Hose Nozzles for Fire-Protection Service
+402E	Subject 402E
+402I	Subject 402I
+404	Standard for Gauges, Indicating Pressure, for Compressed Gas Service
+404	Guide for the Investigation of Gauges, Indicating Pressure for Compressed Gas Service
+405	Standard for Fire Department Connection Devices
+407	Standard for Manifolds for Compressed Gases
+407	Guide for the Investigation of High Pressure Gas Manifolds 
+410	Standard for Slip Resistance of Floor Surface Materials
+412	Standard for Refrigeration Unit Coolers
+414	Standard for Meter Sockets
+416	Standard for Refrigerated Medical Equipment
+420	LIGHT EMITTING DIODE (LED) EQUIPMENT FOR USE IN LIGHTING
+PRODUCTS
+427	Standard for Refrigerating Units
+428A	Standard for Electrically Operated Valves for Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations Up to 85 Percent (E0 - E85)
+428B	Standard for Electrically Operated Valves for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends with Nominal Biodiesel Concentrations Up To 20 Percent (B20), Kerosene, and Fuel Oil
+429	Standard for Electrically Operated Valves
+429A	Outline of Investigation for Electrically Operated Valves for Fire Protection Service
+430	Standard for Waste Disposers
+437	Standard for Key Locks
+441	Standard for Gas Vents
+441	Pellet Vents
+441.3	Gas Vent Connectors
+443	Standard for Steel Auxiliary Tanks for Oil-Burner Fuel
+444	Communications Cables
+448	ANSI/CAN/UL Standard for Centrifugal Stationary Pumps for Fire-Protection Service / Norme relative aux Pompes centrifuges stationnaires pour le service de protection contre les incendies
+448	Guide for the Investigation of Pumps for Fire Protection Service
+448A	Flexible Couplings and Connecting Shafts for Stationary Fire Pumps
+448B	Standard for Residential Fire Pumps Intended for One- and Two-Family Dwellings and Manufactured Homes
+448C	Stationary, Rotary-Type, Positive-Displacement Pumps for Fire-Protection Service
+448D	Outline of Investigation for Fire Pump, Driver and Controller Assembly Rating Compatibility
+452	Standard for Antenna - Discharge Units
+458	Standard for Power Converters/Inverters and Power Converter/Inverter Systems for Land Vehicles and Marine Crafts
+458A	Outline of Investigation for Power Converters/Inverters for Electric Land Vehicles
+462	Standard for Heat Reclaimers for Gas-, Oil-, or Solid Fuel-Fired Appliances
+464	Audible Signaling Devices for Fire Alarm and Signaling Systems, Including Accessories
+464A	Audible Signal Appliances for General Signaling Use
+466	Standard for Electric Scales
+467	Grounding and Bonding Equipment
+469	Standard for Musical Instruments and Accessories
+471	Standard for Commercial Refrigerators and Freezers
+482	Standard for Portable Sun/Heat Lamps
+484	Standard for Room Air Conditioners
+486A- 486B	Wire Connectors
+486C	Splicing Wire Connectors
+486D	Sealed Wire Connector Systems
+486E	Standard for Equipment Wiring Terminals for Use with Aluminum and/or Copper Conductors
+486F	Standard for Bare and Covered Ferrules
+486G	Sealed Twist-On Connecting Devices
+
+488	Remote Burglar Alarm Signalling Centres
+489	Molded-Case Circuit Breakers, Molded-Case Switches, and Circuit-Breaker Enclosures
+489A	Circuit Breakers for Use in Communications Equipment
+489B	Molded-Case Circuit Breakers, Molded-Case Switches, and Circuit-Breaker Enclosures For Use With Photovoltaic (PV) Systems
+489C	Molded-Case Circuit Breakers and Molded-Case Switches for Use with Wind Turbines
+489D	US Naval Commercial-Off-the-Shelf (COTS) Designated Molded-Case Circuit Breakers and Accessories for Use on Non-Nuclear Naval Combatant Ships
+489F	Outline of Investigation for Molded-Case Circuit Breakers and Molded-Case Switches for Use with Battery Power Supplies
+489G	Outline of Investigation for Molded-Case Circuit Breakers, Molded-Case Switches, and Circuit-Breaker Enclosures,  650 - 1000 Volts AC and 650 - 1500 Volts DC
+489H	Outline of Investigation for Molded-Case Circuit Breakers, Molded-Case Switches, and Circuit-Breaker Enclosures, for Use with Direct Current (DC) Microgrids
+489I	Outline for Solid State Molded-Case Circuit Breakers
+491	Subject for Press Controls and Systems
+493	Standard for Thermoplastic-Insulated Underground Feeder and Branch-Circuit Cables
+495	Standard for Power-Operated Dispensing Devices for LP-Gas
+496	Lampholders
+497	Standard for Protectors for Paired-Conductor Communications Circuits
+497A	Standard for Secondary Protectors for Communications Circuits
+497B	Standard for Protectors for Data Communication and Fire Alarm Circuits
+497B	Standard for Protectors for Data Communications and Fire-Alarm Circuits
+497C	Standard for Protectors for Coaxial Communications Circuits
+497D	Component Secondary Protectors for Communications Circuits Used with Specified Voltage Suppression
+497E	Protectors for Antenna Lead-In Conductors
+498	Standard for Attachment Plugs and Receptacles
+498A	Current Taps and Adapters
+498B	Outline of Investigation for Receptacles with Integral Switching Means
+498C	Flatiron and Appliance Plugs
+498D	Attachment Plugs, Cord Connectors and Receptacles with Arcuate (Locking Type) Contacts
+498E	Attachment Plugs, Cord Connectors and Receptacles - Enclosure Types for Environmental Protection
+498F	Plugs, Socket-Outlets and Couplers with Arcuate (Locking Type) Contacts
+498M	Marine Shore Power Inlets
+499	Standard for Electric Heating Appliances
+501	Adhesives for Use in Heating and Cooling Appliances to Secure  Thermal Insulation Materials
+503	Standard for Carbon-Dioxide Fire Extinguishers / Norme sur les extincteurs au dioxyde de carbone
+504	Outline of Investigation for Mineral-Insulated, Metal-Sheathed Cable
+504	Dry Chemical Fire Extinguishers / Norme sur les extincteurs à poudres chimiques
+505	Fusible Links for Fire Protection Services
+506	Standard for Specialty Transformers
+507	Standard for Electric Fans
+507	Water Fire Extinguishers / Norme sur les extincteurs à eau
+508	Standard for Industrial Control Equipment
+508	THE RATING AND FIRE TESTING OF FIRE EXTINGUISHERS / CLASSIFICATION ET ESSAIS SUR FOYERS TYPES DES EXTINCTEURS
+508	Rating and Fire Testing of Fire Extinguishers / Classification et essais sur foyers types des extincteurs
+508A	Standard for Industrial Control Panels
+508B	Outline for Relay Used in Information Technology Equipment
+508E	IEC Type '2' Coordination Short Circuit Tests of Electromechanical Motor Controllers in Accordance with IEC Publication 947-4-1
+508I	Outline of Investigation for Disconnect Switches Intended for Use in Photovoltaic Systems
+509	Outline of Investigation for Bus Drop Cable
+510	ANSI/CAN/UL Standard for Polyvinyl Chloride, Polyethylene, and Rubber Insulating Tape / ANSI/CAN/UL Norme sur les rubans isolants de polychlorure de vinyle, de polyéthylène et de caoutchouc
+510A	ANSI/CAN/UL Standard for Component Tapes / ANSI/CAN/UL Norme sur les rubans pour composants
+511	Standard for Lined Fire Hose for Interior Standpipes and Municipal and Industrial Fire-Protection Services
+511	STANDARD  FOR LINED FIRE HOSE FOR INTERIOR  STANDPIPES AND MUNICIPAL AND  INDUSTRIAL FIRE PROTECTION SERVICES / NORME SUR LE TUYAU D'INCENDIE ENTOILÉ  POUR CONDUITES D'INCENDIE INTÉRIEURES  ET SERVICES MUNICIPAUX ET INDUSTRIELS  DE PROTECTION INCENDIE
+512	Standard for Halogenated Agent Hand and Wheeled Fire Extinguishers / Norme relative aux extincteurs à produits halogénés, à main et sur roues
+513	STANDARD FOR  THREADED COUPLINGS FOR  38 MM  AND 65 MM FIRE HOSE / NORME SUR LES RACCORDS FILETÉS POUR TUYAUX D'INCENDIE DE 38 MM ET DE 65 MM
+514	Dry Chemical for Use in Hand and Wheeled Fire Extinguishers
+514	Dry Chemical for Use in Hand and Wheeled Fire Extinguishers
+514	STANDARD  FOR DRY CHEMICAL FOR USE IN HAND AND WHEELED FIRE EXTINGUISHERS / NORME  SUR LES POUDRES CHIMIQUES UTILISÉES DANS  LES EXTINCTEURS, À MAIN ET SUR ROUES
+514A	Metallic Outlet Boxes
+514B	Conduit, Tubing, and Cable Fittings
+514C	Standard for Nonmetallic Outlet Boxes, Flush-Device Boxes, and Covers
+514D	Cover Plates for Flush-Mounted Wiring Devices
+515	Standard for Electrical Resistance Trace Heating for Commercial Applications
+515	STANDARD FOR AUTOMOBILE FIRE FIGHTING APPARATUS / NORME SUR LES ENGINS AUTOMOBILES DE LUTTE CONTRE L'INCENDIE
+515A	Outline of Investigation for Electrical Resistance Trace Heating and Associated Controls for Use In Sprinkler and Standpipe Systems
+518	STANDARD FOR COTTON-SYNTHETIC NON-PERCOLATING FORESTRY HOSE / NORME SUR LE TUYAU FORESTIER NON PERMÉABLE EN COTON ET EN FIBRES SYNTHÉTIQUES
+518.1	Standard for Synthetic Non-Percolating Forestry Hose
+518.1	SYNTHETIC NON-PERCOLATING FORESTRY HOSE / NORME SUR LE TUYAU FORESTIER NON PERMÉABLE EN FIBRES SYNTHÉTIQUES
+519	STANDARD FOR  COTTON-SYNTHETIC PERCOLATING FORESTRY HOSE / NORME SUR LE TUYAU FORESTIER PERMÉABLE EN COTON ET EN FIBRES SYNTHÉTIQUES
+519.1	Standard for Synthetic Percolating Forestry Hose
+519.1	Standard for Synthetic Percolating Forestry Hose / Norme sur le tuyau forestier perméable en fibres synthétiques
+520	STANDARD FOR FIRE HYDRANTS / NORME SUR LES POTEAUX D'INCENDIE
+521	Standard for Heat Detectors for Fire Protective Signaling Systems
+522	STANDARD  FOR FIRE EXTINGUISHER AND BOOSTER HOSE / NORME RELATIVE AUX TUYAUX  D’EXTINCTEUR ET DE DÉVIDOIR TOURNANT
+523	Telephone Service Drop Wire	
+524	Standard For The Installation Of Fire Alarm Systems / NORME SUR L’INSTALLATION DES SYSTÈMES D’ALARME INCENDIE
+524	STANDARD FOR INSTALLATION OF FIRE ALARM SYSTEMS / NORME SUR L'INSTALLATION DES SYSTÈMES D'ALARME D'INCENDIE
+525	Standard for Flame Arresters
+525	Standard for Flame Arresters
+525	Audible Signaling Devices for Fire Alarm and Signaling Systems, Including Accessories / Dispositifs de signalisation sonore des systèmes d’alarme incendie, y compris les accessoires
+526	VISIBLE SIGNALING DEVICES FOR FIRE ALARM AND SIGNALING SYSTEMS, INCLUDING ACCESSORIES / APPAREILS À SIGNAL VISUEL POUR SYSTÈMES D'ALARME INCENDIE, Y COMPRIS LES ACCESSOIRES 
+526	Visible Signaling Devices for Fire Alarm and Signaling Systems, Including Accessories / Appareils à signal visuel pour systèmes d’alarme incendie, y compris les accessoires
+527	STANDARD LABORATORY GUIDE FOR CONTROL UNITS FOR FIRE ALARM SYSTEMS / NORME SUR LES POSTES DE CONTRÔLE POUR LES SYSTÈMES D'ALARME INCENDIE
+528	Manual Stations for Fire Alarm Systems, Including Accessories  / Avertisseurs manuels d'incendie pour les systèmes d'alarme incendie, y compris les accessoires
+528	STANDARD FOR MANUAL STATIONS FOR FIRE ALARM SYSTEMS, INCLUDING ACCESSORIES / AVERTISSEURS MANUELS D'INCENDIE POUR LES SYSTÈMES D'ALARME INCENDIE, Y COMPRIS LES ACCESSOIRES
+529	Standard for Smoke Detectors for Fire Alarm Systems / Norme Sur Les Détecteurs De Fumée pour les Systèmes D'alarme D'incendie
+529A	VIDEO IMAGE SMOKE DETECTION SYSTEM DEVICES
+530	STANDARD FOR HEAT ACTUATED FIRE DETECTORS FOR FIRE ALARM SYSTEMS / NORME SUR LES DÉTECTEURS D’INCENDIE AÉROTHERMIQUES POUR LES SYSTÈMES D’ALARME INCENDIE
+531	Standard for Smoke-Alarms
+531	STANDARD FOR SMOKE ALARMS / NORME SUR LES AVERTISSEURS DE FUMÉE
+531	STANDARD FOR SMOKE ALARMS / NORME SUR LES AVERTISSEURS DE FUMÉE
+532	Réglementation de l’entretien et du rechargement des extincteurs à incendie portables / Réglementation de l’entretien et du rechargement des extincteurs à incendie portables
+532	Standard for the Regulation of the Servicing of Portable Fire Extinguishers
+532	STANDARD  FOR THE REGULATION OF THE SERVICING OF PORTABLE FIRE EXTINGUISHERS /  RÉGLEMENTATION DE L'ENTRETIEN ET  DU RECHARGEMENT DES EXTINCTEURS  À INCENDIE PORTABLES
+533	Standard For Egress Door Securing And Releasing Devices
+533	STANDARD FOR EGRESS DOOR SECURING AND RELEASING DEVICES / DISPOSITIFS DE FIXATION ET DE DÉBLOCAGE DE PORTE DE SORTIE
+536	Standard for Flexible Metallic Hose
+536	Flexible Metallic Hose
+536	Inspection and Testing of Fire Alarm Systems
+Inspection et mise à l'essai des réseaux avertisseurs d'incendie
+536	STANDARD FOR INSPECTION AND TESTING OF  FIRE ALARM SYSTEMS / NORME SUR L'INSPECTION ET LA MISE À L'ESSAI DES RÉSEAUX AVERTISSEURS D'INCENDIE
+536	STANDARD FOR INSPECTION AND TESTING OF FIRE ALARM SYSTEMS / NORMES SUR L'INSPECTION ET LA MISE À L'ESSAI DES SYSTÈMES D'ALARME INCENDIE
+537	Verification of Fire Alarm Systems
+Vérification des réseaux avertisseurs d'incendie
+537	STANDARD FOR VERIFICATION OF FIRE ALARM SYSTEMS / NORME LA VÉRIFICATION DES RÉSEAUX AVERTISSEURS D'INCENDIE
+537	STANDARD FOR VERIFICATION OF FIRE ALARM SYSTEMS / NORME LA VÉRIFICATION DES RÉSEAUX AVERTISSEURS D'INCENDIE
+538	STANDARD FOR SINGLE AND MULTIPLE STATION CARBON MONOXIDE ALARMS FOR NON-RESIDENTIAL APPLICATIONS / NORME SUR LES DÉTECTEURS DE MONOXYDE DE CARBONE À UN OU PLUSIEURS POSTES POUR LES APPLICATIONS NON RÉSIDENTIELLES
+539	Standard for Single and Multiple Station Heat Alarms
+539	Guide for the Investigation of Fire Alarm Devices, Single and Multiple Station, Mechanically-Operated Type
+540	Standard for the Installation of Residential Fire Warning Systems
+
+540	STANDARD FOR RESIDENTIAL FIRE AND LIFE SAFETY WARNING SYSTEMS: INSTALLATION, INSPECTION, TESTING AND MAINTENANCE / NORME SUR LES SYSTÈMES D'ALARME INCENDIE RÉSIDENTIELS ET DE SÉCURITÉ DES PERSONNES : INSTALLATION, INSPECTION, MISE À L'ESSAI ET ENTRETIEN
+541	Standard for Refrigerated Vending Machines
+541	Speakers for Fire Alarm and Signaling Systems, Including Accessories / Haut-parleurs pour réseaux avertisseurs d’incendie et systèmes de signalisation, y compris les accessoires
+542	Fluroescent Lamp Starters
+543	Standard for Internal Lug Quick-Connect Coulings for Fire Hose
+545	Residential Fire Warning Alarm Systems Control Units
+546	CONDUCTOR TERMINATION COMPOUNDS
+548	Standard for Devices and Accessories for Water Type Extinguishing Systems
+548	STANDARD FOR DEVICES AND ACCESSORIES FOR WATER TYPE EXTINGUISHING SYSTEMS / NORME SUR LES DISPOSITIFS ET ACCESSOIRES POUR SYSTÈMES D'EXTINCTION À EAU
+551	Standard for Transformer-Type Arc-Welding Machines
+551	Standard For Forged External-Lug Quick-Connect Couplings And Adapters For Forestry Fire Hose
+551	STANDARD FOR FORGED EXTERNAL-LUG QUICK CONNECT COUPLINGS AND ADAPTORS FOR FORESTRY FIRE HOSE / NORME SUR LES ADAPTATEURS ET LES RACCORDEMENTS INSTANTANÉS À ERGOT EXTERNE FORGÉS POUR TUYAUX D'INCENDIE FORESTIERS
+552	STANDARD FOR INSPECTION, TESTING AND MAINTENANCE OF SMOKE ALARMS / NORME SUR L'INSPECTION, LA MISE À L'ESSAI ET L'ENTRETIEN DES AVERTISSEURS DE FUMÉE
+553	Standard for the Installation of Smoke-Alarms (Superseded)
+553	STANDARD FOR INSTALLATION OF SMOKE ALARMS / NORME SUR L'INSTALLATION DES AVERTISSEURS DE FUMÉE
+554	Standard for Water Based Agent Fire Extinguishers / Extincteurs à agent à base d’eau
+555	Standard for Fire Dampers
+555	STANDARD FOR FIRE AND EMERGENCY SERVICE TECHNICAL RESCUE ROPES AND WATER RESCUE THROW ROPES AND ASSOCIATED EQUIPMENT / NORME RELATIVE AUX CORDES DE SAUVETAGE TECHNIQUE ET AUX CORDES À LANCER DE SAUVETAGE NAUTIQUE ET AU MATÉRIEL CONNEXE DES SERVICES D'INCENDIE ET D'URGENCE
+555C	Standard for Ceiling Dampers
+555S	Standard for Smoke Dampers
+557	Standard for Back-Pack Fire Extinguishers
+557	STANDARD FOR BACK-PACK FIRE EXTINGUISHERS
+558	Standard for Industrial Trucks, Internal Combustion Engine-Powered
+558	Standard for Industrial Trucks, Internal Combustion Engine-Powered
+558	Standard for External-Lug Quick-Connect Couplings and Adapters for Forestry Fire Hose
+558	STANDARD FOR EXTERNAL-LUG QUICK CONNECT COUPLINGS AND ADAPTORS FOR FORESTRY FIRE HOSE / NORME SUR LES ADAPTATEURS ET LES RACCORDEMENTS INSTANTANÉS À ERGOT EXTERNE POUR TUYAUX D’INCENDIE FORESTIERS
+559	Equipment For Fire Signal Receiving Centres And Systems
+ / Équipement Des Systèmes Et Des Centrales De Réception D'alarme Incendie
+559	STANDARD FOR EQUIPMENT FOR FIRE SIGNAL RECEIVING  CENTRES AND SYSTEMS / NORME SUR ÉQUIPEMENT DES SYSTÈMES ET DES CENTRALES DE RÉCEPTION D'ALARME INCENDIE
+559	STANDARD  FOR  EQUIPMENT  FOR  FIRE  SIGNAL  RECEIVING CENTRES AND SYSTEMS / NORMES SUR L'ÉQUIPEMENT DES SYSTÈMES ET DES CENTRALES DE RÉCEPTION D'ALARME INCENDIE
+560	Standard for Category 3 Aqueous Film-Forming Foam (AFFF) Liquid Concentrates
+561	Standard for Floor-Finishing Machines
+561	Installation And Services For  Fire Signal Receiving Centres And Systems
+561	STANDARD FOR INSTALLATION AND SERVICES FOR FIRE SIGNAL RECEIVING CENTRES AND SYSTEMS / NORME SUR L'INSTALLATION ET LES SERVICES - SYSTÈMES ET CENTRALES DE RÉCEPTION D'ALARME D'INCENDIE
+561	STANDARD FOR INSTALLATION AND SERVICES FOR  FIRE SIGNAL RECEIVING CENTRES AND SYSTEMS / NORME SUR L'INSTALLATION ET LES SERVICES - SYSTÈMES ET CENTRALES DE RÉCEPTION D'ALARME INCENDIE
+563	Standard for Ice Makers
+563	Standard fro Category 3 Film-Forming  Fluoroprotein (FFFP) Foam Liquid Concentrates
+565	Standard for Liquid-Level Gauges for Anhydrous Ammonia and LP-Gas
+566	Halocarbon Clean Agent Fire Extinguishers / Extincteurs aux agents propres à l’halocarbure
+567	Standard for Emergency Breakaway Fittings, Swivel Connectors and Pipe-Connection Fittings for Petroleum Products and LP-Gas
+567	Guide for the Investigation of Pipe Connectors for Flammable Liquids and LP-Gas
+567A	Standard for Emergency Breakaway Fittings, Swivel Connectors and Pipe-Connection Fittings for Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations up to 85 Percent (E0 - E85)
+567B	Emergency Breakaway Fittings, Swivel Connectors and Pipe-Connection Fittings for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends with Nominal Biodiesel Concentrations up to 20 Percent (B20), Kerosene, and Fuel Oil
+568	Nonmetallic Cable Tray Systems
+569	Standard for Pigtails and Flexible Hose Connectors for LP-Gas
+572	STANDARD FOR PHOTOLUMINESCENT AND  SELF-LUMINOUS EXIT SIGNS AND  PATH MARKING SYSTEMS
+572	STANDARD FOR PHOTOLUMINESCENT AND  SELF-LUMINOUS EXIT SIGNS AND  PATH MARKING SYSTEMS
+573	STANDARD FOR INSTALLATION OF ANCILLARY DEVICES CONNECTED TO FIRE ALARM SYSTEMS / NORME SUR L’INSTALLATION DES DISPOSITIFS AUXILIAIRES BRANCHÉS AUX SYSTÈMES D’ALARME INCENDIE
+574	Standard for Electric Oil Heaters
+574	STANDARD FOR FORGED 65 mm (2 1/2 in) EXTERNAL-LUG QUICK-CONNECT COUPLINGS AND ADAPTERS FOR FORESTRY FIRE HOSE / NORME SUR LES ADAPTATEURS ET LES RACCORDEMENTS INSTANTANÉS À ERGOT EXTERNE FORGÉS DE 65 mm (2 1/2 po) POUR TUYAUX D'INCENDIE FORESTIERS
+576	STANDARD FOR MASS NOTIFICATION SYSTEM EQUIPMENT AND ACCESSORIES / NORME SUR L'ÉQUIPEMENT ET LES ACCESSOIRES DES SYSTÈMES DE NOTIFICATION DE MASSE
+580	Standard for Tests for Uplift Resistance of Roof Assemblies
+583	Standard for Electric-Battery-Powered Industrial Trucks
+583	Guide for the Investigation of Electric Battery Powered Industrial Trucks
+586	Standard for High-Efficiency, Particulate, Air Filter Units
+588	Standard for Seasonal and Holiday Decorative Products
+588	STANDARD FOR GAS AND VAPOUR DETECTORS AND SENSORS, INCLUDING ACCESSORIES / NORME SUR LES DÉTECTEURS ET CAPTEURS DE GAZ ET DE VAPEUR, Y COMPRIS LES ACCESSOIRES
+590	Standard for Design, Installation, Inspection, Testing and Maintenance of Safety Way Guidance System / Norme sur la conception, l'installation, l'inspection, la mise à l'essai et l'entretien de systèmes de signalisation de sécurité
+593	Standard for the Servicing of Halon and Clean Agent Extinguishing Systems
+594	Standard for the Servicing of Restaurant Cooking Extinguishing Systems
+601	Standard for Shop Fabricated Steel Aboveground Horizontal Tanks for Flammable and Combustible Liquids
+Norme sur
+les réservoirs hors sol en acier fabriqués en usine pour liquides inflammables et combustibles
+601	STANDARD FOR SHOP FABRICATED STEEL ABOVEGROUND TANKS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES RÉSERVOIRS HORS SOL EN ACIER FABRIQUÉS EN USINE POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+602	Standard for Aboveground Steel Tanks for Fuel Oil and Lubricating Oil
+Norme sur les réservoirs en acier non enterrés pour le mazout et l’huile lubrifiante
+602	STANDARD FOR ABOVEGROUND STEEL TANKS FOR FUEL OIL  AND LUBRICATING OIL / NORME SUR LES RÉSERVOIRS EN ACIER NON ENTERRÉS POUR LE MAZOUT ET L'HUILE LUBRIFIANTE
+602	STANDARD FOR ABOVEGROUND STEEL TANKS FOR FUEL OIL  AND LUBRICATING OIL / NORME SUR LES RÉSERVOIRS EN ACIER NON ENTERRÉS POUR LE MAZOUT ET L'HUILE LUBRIFIANTE
+603	Standard for Power Supplies for Use with Burglar-Alarm Systems
+603	STANDARD FOR STEEL UNDERGROUND TANKS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES RÉSERVOIRS SOUTERRAINS EN ACIER POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+603.1	External Corrosion Protection Systems for Steel Underground Tanks for Flammable and Combustible Liquids
+603.1	STANDARD FOR EXTERNAL CORROSION PROTECTION SYSTEMS  FOR STEEL UNDERGROUND TANKS  FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES SYSTÈMES DE PROTECTION CONTRE LA CORROSION EXTÉRIEURE DES RÉSERVOIRS ENTERRÉS EN ACIER POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+604	STANDARD FOR  FACTORY- BUILT TYPE A CHIMNEYS / NORME SUR LES CHEMINÉES PRÉFABRIQUÉES DE TYPE A
+605	Subject for Portable Extinguishers
+605	STANDARD FOR GAS VENTS / NORME SUR LES CONDUITS D’ÉVACUATION À GAZ
+606	Standard for Linings and Screens for Use with Burglar-Alarm Systems
+608	Standard for Burglary Resistant Vault Doors and Modular Panels
+609	Standard for Local Burglar Alarm Units and Systems
+609	STANDARD FOR LOW TEMPERATURE VENTS TYPE L AND PL / NORME SUR LES CONDUITS D’ÉVACUATION À BASSE TEMPÉRATURE DE TYPES L ET PL
+610	STANDARD FOR FACTORY-BUILT FIREPLACE SYSTEMS / NORME SUR LES SYSTÈMES FOYERS À FEU OUVERT PRÉFABRIQUÉ
+612	STANDARD FOR HOSE AND HOSE ASSEMBLIES FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES TUYAUX FLEXIBLES ET TUYAUX FLEXIBLES À RACCORDS POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+615	STANDARD FOR FIBRE REINFORCED PLASTIC UNDERGROUND TANKS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES RÉSERVOIRS EN PLASTIQUE RENFORCÉ SOUTERRAINS POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+618	Standard for Concrete Masonry Units
+620	STANDARD FOR HOSE NOZZLE VALVES FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES PISTOLETS POUR  LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+621	Standard for Ice Cream Makers
+626	Water Fire Extinguishers
+627	Standard for Space Heaters for Use with Solid Fuels
+628	Standard for Fireplace Inserts
+629	STANDARD FOR  650 °C FACTORY- BUILT CHIMNEYS / NORME SUR LES CHEMINÉES PREFABRIQUÉES POUR DES TEMPÉRATURES N’EXCÉDENT PAS 650 °C
+632	Standard for Heat Shields
+632	STANDARD FOR HEAT SHIELDS / NORME SUR LES ÉCRANS THERMIQUES
+633	Flexible Underground Hose Connectors for Flammable and Combustible Liquids / Norme Sur les Raccords a Tuyaux Flexible Souterrain pour Liquids Inflammables et Combustibles
+633	STANDARD FOR FLEXIBLE CONNECTOR PIPING FOR FUELS / NORME POUR LES TUYAUX DE RACCORDEMENT FLEXIBLES POUR CARBURANTS
+634	Standard for Connectors and Switches for Use with Burglar-Alarm Systems
+634	STANDARD FOR HOSE SWIVEL CONNECTORS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES RACCORDS PIVOTANTS À TUYAU FLEXIBLE POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+634	CONNECTORS AND SWITCHES FOR USE WITH BURGLAR ALARM SYSTEMS
+635	Standard for Insulating Bushings
+635	STANDARD  FOR  LINING SYSTEMS FOR EXISTING MASONRY OR FACTORY-BUILT CHIMNEYS AND VENTS / NORME SUR LES SYSTÈMES DE CHEMISAGE POUR LES OUVRAGES DE MAÇONNERIE EXISTANTS OU LES CHEMINÉES ET LES CONDUITS D’ÉVACUATION PRÉFABRIQUÉS
+636	Standard for Holdup Alarm Units and Systems
+636	Standard for Type BH Gas Venting Systems
+639	Standard for Intrusion-Detection Units
+639	Standard for Steel Liner Assemblies for Solid-Fuel Burning Masonry Fireplaces
+639	STANDARD FOR STEEL LINER ASSEMBLIES FOR SOLID-FUEL BURNING MASONRY FIREPLACES / NORME SUR LES CHEMISAGES EN ACIER POUR FOYERS A FEU OUVERT EN MAÇONNERIE A COMBUSTIBLES SOLIDES
+640	STANDARD FOR LINING SYSTEMS FOR NEW MASONRY CHIMNEYS / NORME SUR LES SYSTÈMES DE CHEMISAGE POUR LES NOUVELLES CHEMINÉES DE MAÇONNERIE
+641	Standard for Type L Low-Temperature Venting Systems
+641	STANDARD FOR FACTORY-BUILT CHIMNEY CONNECTORS  AND  WALL PASS-THROUGH ASSEMBLIES / NORME SUR LES RACCORDS DE CHEMINÉE PRÉFABRIQUÉE ET LES TRAVERSÉES MURALES
+642	Compounds and Tape for Threaded Pipe Joints
+642	STANDARD FOR COMPOUNDS AND TAPES FOR THREADED PIPE JOINTS / NORME SUR LES COMPOSÉS ET RUBANS POUR JOINTS DE TUYAU FILETÉS
+643	Shop Fabricated Steel Aboveground Utility Tanks for Flammable and Combustible Liquids 
+644	Standard for Container Assemblies for LP-Gas
+644	STANDARD FOR EMERGENCY BREAKAWAY FITTINGS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES RACCORDS FRANGIBLES D’URGENCE POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+645	Standard For Power Roof Ventilators for Commercial and Institutional Kitchen Exhaust Systems
+646	Standard for Exhaust Hoods and Related Controls for Commercial and Institutional Kitchens
+647	Standard for Unvented Kerosene-Fired Room Heaters and Portable Heaters
+647	Standard for Exhaust Cleaning and Recirculation Assemblies for Commercial and Institutional Kitchen Exhaust Systems
+647A	SYNTHETIC FUELS FOR LISTED KEROSENE-FIRED PORTABLE HEATERS AND KEROSENE-FIRED ROOM HEATERS
+649	Standard for Grease Filters for Commercial and Insitutional Kitchen Exhaust Systems
+651	Standard for Schedule 40 and 80 Rigid PVC Conduit and Fittings
+651	Emergency Valves for Flammable and Combustible Liquids 
+651	STANDARD FOR EMERGENCY VALVES  FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES ROBINETS D'URGENCE POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+651A	Type EB and A Rigid PVC Conduit and HDPE Conduit
+652	Standard For Tank Assemblies For Collection, Storage and Removal Of Used Oil
+Norme sur les ensembles réservoirs destinés à la collecte, au stockage et à l'enlèvement de l'huile usagée
+652	STANDARD FOR TANK ASSEMBLIES FOR THE COLLECTION, STORAGE AND REMOVAL OF USED OIL / NORME SUR LES ENSEMBLES RÉSERVOIRS DESTINÉS À LA COLLECTE, AU STOCKAGE ET À L'ENLÈVEMENT DE L'HUILE USAGÉE
+653	Standard for Aboveground Steel Contained Tank Assemblies for Flammable and Combustible Liquids / Norme sur les ensembles réservoirs de confinement en acier hors sol pour les liquides inflammables et combustibles 
+653	STANDARD FOR ABOVEGROUND HORIZONTAL STEEL CONTAINED TANK ASSEMBLIES FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES ENSEMBLES RÉSERVOIRS DE CONFINEMENT EN ACIER HORIZONTAUX HORS SOL POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+655	Standard for Aboveground Protected Tank Assemblies for Flammable and Combustable Liquids
+655	STANDARD FOR ABOVEGROUND PROTECTED TANK ASSEMBLIES FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES ENSEMBLES RÉSERVOIRS PROTÉGÉS HORS SOL POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+656	STANDARD FOR OIL-WATER SEPARATORS / NORME SUR LES SÉPARATEURS HUILE-EAU
+656	STANDARD FOR OIL-WATER SEPARATORS / NORME SUR LES SÉPARATEURS HUILE-EAU
+660	Standard for Nonmetallic Underground Piping for Flammable and Combustible Liquids
+661	STANDARD FOR OVERFILL PROTECTION DEVICES FOR FLAMMABLE AND COMBUSTIBLE LIQUID STORAGE TANKS / NORME SUR LES DISPOSITIFS DE PROTECTION CONTRE LES DÉBORDEMENTS POUR LES RÉSERVOIRS DE STOCKAGE DE LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+662	Factory-Built Grease Ducts
+663	STANDARD FOR SPILL CONTAINMENT DEVICES FOR FLAMMABLE AND COMBUSTIBLE LIQUID ABOVEGROUND STORAGE TANKS / NORME SUR LES DISPOSITIFS DE CONFINEMENT DES DÉVERSEMENTS POUR LES RÉSERVOIRS DE STOCKAGE DE LIQUIDES INFLAMMABLES ET DE LIQUIDES COMBUSTIBLES HORS SOL
+664	STANDARD FOR CONTAINMENT SUMPS, SUMP FITTINGS, AND ACCESSORIES FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORMES SUR LES PUISARDS DE CONFINEMENT, RACCORDS DE PUISARD ET ACCESSOIRES POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+667	METALLIC UNDERGROUND PIPING FOR  FLAMMABLE AND COMBUSTIBLE LIQUIDS / CANALISATIONS SOUTERRAINES MÉTALLIQUES POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+668	Standard for Hose Valves for Fire-Protection Service
+668	Standard for Hose Valves for Fire Protection Service
+668	STANDARD FOR LINERS USED FOR SECONDARY CONTAINMENT OF ABOVEGROUND FLAMMABLE AND COMBUSTIBLE LIQUID TANKS / NORME SUR LES MEMBRANES DE CONFINEMENT SECONDAIRE POUR LES RÉSERVOIRS DE STOCKAGE DE LIQUIDES INFLAMMABLES ET DE LIQUIDES COMBUSTIBLES HORS SOL
+668	STANDARD FOR LINERS USED FOR SECONDARY CONTAINMENT OF ABOVEGROUND FLAMMABLE AND COMBUSTIBLE LIQUID TANKS / NORME SUR LES MEMBRANES DE CONFINEMENT SECONDAIRE POUR LES RÉSERVOIRS DE STOCKAGE DE LIQUIDES INFLAMMABLES ET DE LIQUIDES COMBUSTIBLES HORS SOL
+669	STANDARD FOR INTERNAL RETROFIT SYSTEMS FOR UNDERGROUND TANKS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES SYSTÈMES DE RÉNOVATION INTERNES DES RÉSERVOIRS SOUTERRAINS POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+670	STANDARD FOR ABOVEGROUND NONMETALLIC TANKS FOR FUEL OIL AND OTHER COMBUSTIBLE LIQUIDS / NORME SUR LES RÉSERVOIRS NON MÉTALLIQUES HORS SOL POUR LE MAZOUT ET AUTRES LIQUIDES COMBUSTIBLES
+674	Standard for Electric Motors and Generators for Use in Division 1 Hazardous (Classified) Locations
+674	STANDARD FOR UNVENTED ALCOHOL FUEL BURNING DECORATIVE APPLIANCES / NORME SUR LES APPAREILS DÉCORATIFS NON RACCORDÉS FONCTIONNANT À L’ALCOOL CARBURANT
+675.1	STANDARD FOR VOLUMETRIC LEAK DETECTION DEVICES FOR UNDERGROUND AND ABOVEGROUND STORAGE TANKS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES DISPOSITIFS DE DÉTECTION DES FUITES VOLUMÉTRIQUES POUR LES RÉSERVOIRS DE STOCKAGE SOUTERRAINS ET HORS SOL DE LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+675.2	STANDARD FOR NONVOLUMETRIC PRECISION LEAK DETECTION DEVICES FOR UNDERGROUND AND ABOVEGROUND STORAGE TANKS AND PIPING FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES DISPOSITIFS DE DÉTECTION DES FUITES DE PRÉCISION NON VOLUMÉTRIQUES POUR LES RÉSERVOIRS DE STOCKAGE ET LES TUYAUTERIES, SOUTERRAINS ET HORS SOL, DE LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+676	Standard for Underwater Luminaires and Submersible Junction Boxes
+676	STANDARD FOR REFURBISHING OF STORAGE TANKS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LA REMISE À NEUF DES RÉSERVOIRS DE STOCKAGE POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+676	STANDARD FOR REFURBISHING OF STORAGE TANKS FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LA REMISE À NEUF DES RÉSERVOIRS POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+676A	Potting Compounds for Swimming Pool, Fountain, and Spa Equipment
+677	STANDARD FOR FIRE TESTED ABOVEGROUND TANK ASSEMBLIES FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES ENSEMBLES RÉSERVOIRS HORS SOL RÉSISTANT AU FEU POUR LES LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+679	STANDARD FOR METALLIC AND NONMETALLIC UNDERGROUND PIPING FOR FLAMMABLE AND COMBUSTIBLE LIQUIDS / NORME SUR LES CANALISATIONS SOUTERRAINES MÉTALLIQUES ET NON MÉTALLIQUES POUR LIQUIDES INFLAMMABLES ET COMBUSTIBLES
+680	Standard for Emergency Vault Ventilators and Vault-Ventilating Ports
+681	Standard for Installation and Classification of Burglar and Holdup Alarm Systems
+687	Standard for Burglary-Resistant Safes
+687	Standard for Burglary-Resistant Safes
+693	EXCESS PRESSURE PUMPS FOR WET PIPE SPRINKLER SYSTEMS
+696	Standard for Electric Toys
+697	Standard for Toy Transformers
+698A	Standard for Industrial Control Panels Relating to Hazardous (Classified) Locations
+701.1	STANDARD FOR THERMAL INSULATION, POLYSTYRENE BOARDS / NORME SUR L'ISOLANT THERMIQUE EN POLYSTYRÈNE
+702.1	STANDARD FOR MINERAL FIBRE THERMAL INSULATION FOR BUILDINGS, PART 1: MATERIAL SPECIFICATION / NORME SUR L'ISOLANT THERMIQUE DE FIBRES MINÉRALES POUR BÂTIMENTS, PARTIE 1 : SPÉCIFICATIONS RELATIVES AU MATÉRIAU
+702.2	MINERAL FIBRE THERMAL INSULATION
+FOR BUILDINGS, PART 2: INSTALLATION
+702.2	STANDARD FOR MINERAL FIBRE  THERMAL INSULATION FOR BUILDINGS,  PART 2: INSTALLATION
+703	STANDARD FOR CELLULOSE FIBRE INSULATION FOR BUILDINGS / NORME SUR L'ISOLANT EN FIBRE CELLULOSIQUE POUR LES BÂTIMENTS
+704.1	STANDARD FOR THERMAL INSULATION, POLYURETHANE AND POLYISOCYANURATE, BOARDS, FACED / NORME SUR L'ISOLANT THERMIQUE EN POLYURÉTHANE ET EN POLYISOCYANURATE : PANNEAUX REVÊTUS
+705	Standard for Power Ventilators
+705.1	STANDARD FOR THERMAL INSULATION - SPRAY APPLIED RIGID POLYURETHANE FOAM, MEDIUM DENSITY - MATERIAL SPECIFICATION / NORME SUR L'ISOLANT THERMIQUE EN MOUSSE DE POLYURÉTHANE RIGIDE PULVÉRISÉE DE DENSITÉ MOYENNE - SPÉCIFICATIONS RELATIVES AUX MATÉRIAUX
+705.1	Standard for Thermal Insulation - Spray Applied Rigid Polyurethane Foam, Medium Density - Material - Specification / Norme sur l`isolant thermique en mousse de polyuréthane rigide pulvérisée, de densité moyenne :spécifications relatives aux matériaux
+705.2	Standard for Thermal Insulation – Spray Applied Rigid Polyurethane Foam, Medium Density – Application
+705.2	STANDARD FOR THERMAL INSULATION - SPRAY APPLIED RIGID POLYURETHANE FOAM, MEDIUM DENSITY - APPLICATION / NORME SUR L'ISOLANT THERMIQUE EN MOUSSE DE POLYURÉTHANE RIGIDE PULVÉRISÉE, DE DENSITÉ MOYENNE - APPLICATION
+706	Standard for Wood Fibre Thermal Insulation for Buildings / Norme sur l’isolant thermique en fibre de bois pour bâtiments
+706	Standard for Wood Fibre Thermal Insulation for Buildings
+706.1	STANDARD FOR WOOD FIBRE INSULATING BOARDS FOR BUILDINGS / NORME SUR LES PANNEAUX ISOLANTS EN FIBRE DE BOIS POUR BÂTIMENTS
+706.1	STANDARD FOR INSULATING WOOD FIBRE BOARDS FOR BUILDINGS / NORME SUR LES PANNEAUX ISOLANTS EN FIBRE DE BOIS POUR BÂTIMENTS 
+710	Standard for Exhaust Hoods for Commercial Cooking Equipment
+710.1	Standard for Thermal Insulation - Bead - Applied One Component Polyurethane Air Sealant Foam, Part 1: Material Specification / Norme sur l’isolant thermique – mousse d’étanchéité à l’air de polyuréthane monocomposant appliquée en cordon, partie 1 : spécifications relatives au matériau
+710.1	STANDARD FOR THERMAL INSULATION - BEAD-APPLIED ONE COMPONENT POLYURETHANE AIR SEALANT FOAM, PART 1: MATERIAL SPECIFICATION / NORME SUR L'ISOLANT THERMIQUE - MOUSSE D’ÉTANCHÉITÉ À L’AIR DE POLYURÉTHANE MONOCOMPOSANT APPLIQUÉE EN CORDON, PARTIE 1 : SPÉCIFICATIONS RELATIVES AU MATÉRIAU
+710.1	STANDARD FOR BEAD-APPLIED ONE COMPONENT POLYURETHANE AIR SEALANT FOAM, PART 1: MATERIAL SPECIFICATION / NORME SUR LA MOUSSE D'ÉTANCHÉITÉ À L'AIR DE POLYURÉTHANE MONOCOMPOSANT APPLIQUÉE EN CORDON, PARTIE 1 : SPÉCIFICATIONS RELATIVES AU MATÉRIAU 
+710A	Rooftop Grease and Oil Collection and Containment Systems	
+710B	Standard for Recirculating Systems
+710C	Ultraviolet Radiation Systems for Use in the Ventilation Control of Commercial Cooking Operations
+710C	Ultraviolet Radiation Systems for Use in the Ventilation Control of Commercial Cooking Operations
+711	Rating and Fire Testing of Fire Extinguishers
+711.1	STANDARD FOR THERMAL INSULATION - BEAD-APPLIED TWO COMPONENT POLYURETHANE AIR SEALANT FOAM, PART 1: MATERIAL SPECIFICATION / NORME SUR L'ISOLANT THERMIQUE - MOUSSE D’ÉTANCHÉITÉ À L’AIR DE POLYURÉTHANE BICOMPOSANT APPLIQUÉE EN CORDON, PARTIE 1 : SPÉCIFICATIONS RELATIVES AU MATÉRIAU
+711.1	STANDARD FOR BEAD-APPLIED TWO COMPONENT POLYURETHANE AIR SEALANT FOAM, PART 1: MATERIAL SPECIFICATION / NORME SUR LA MOUSSE D'ÉTANCHÉITÉ À L'AIR DE POLYURÉTHANE BICOMPOSANT APPLIQUÉE EN CORDON, PARTIE 1 : SPÉCIFICATIONS RELATIVES AU MATÉRIAU
+711A	Outline of Investigation for the Fire Test Method for Portable Hand-Held Extinguishers Intended for Use On Residential Cooking Equipment
+712.2	STANDARD FOR THERMAL INSULATION - LIGHT DENSITY, OPEN CELL SPRAY APPLIED SEMI-RIGID POLYURETHANE FOAM - INSTALLATION
+712.2	STANDARD FOR THERMAL INSULATION - LIGHT DENSITY, OPEN CELL SPRAY APPLIED SEMI-RIGID POLYURETHANE FOAM - INSTALLATION / NORME SUR L'ISOLANT THERMIQUE EN MOUSSE DE POLYURÉTHANE SEMI-RIGIDE PULVÉRISÉE, DE FAIBLE DENSITÉ ET À ALVÉOLES OUVERTS - INSTALLATION
+713	STANDARD METHOD OF SYSTEM TESTING -ML / MÉTHODE D'ESSAI NORMALISÉE  CARACTÉSYSTEM TEST-ML MATÉRIAUX
+713E	Testing Standard
+716.1	STANDARD FOR EXTERIOR INSULATION AND FINISH SYSTEMS (EIFS) - MATERIALS AND SYSTEMS / NORME POUR LES SYSTÈMES D'ISOLATION ET DE FINITION EXTÉRIEURS (SYSTÈMES SIFE) - MATÉRIAUX ET SYSTÈMES
+716.2	STANDARD FOR EXTERIOR INSULATION AND FINISH SYSTEMS (EIFS) - INSTALLATION OF EIFS COMPONENTS AND WATER RESISTIVE BARRIER / NORME POUR LES SYSTÈMES D'ISOLATION ET DE FINITION EXTÉRIEURS (SYSTÈMES SIFE) - INSTALLATION DES COMPOSANTS DES SYSTÈMES SIFE ET DE LA BARRIÈRE RÉSISTANT À L'EAU
+716.2	STANDARD FOR EXTERIOR INSULATION AND FINISH SYSTEMS (EIFS) - INSTALLATION OF EIFS COMPONENTS AND WATER RESISTIVE BARRIER / NORME POUR LES SYSTÈMES D'ISOLATION ET DE FINITION EXTÉRIEURS (SYSTÈMES SIFE) - INSTALLATION DES COMPOSANTS DES SYSTÈMES SIFE ET DE LA BARRIÈRE RÉSISTANT À L'EAU 
+716.3	STANDARD FOR EXTERIOR INSULATION AND FINISH SYSTEMS (EIFS) - DESIGN APPLICATION / NORME POUR LES SYSTÈMES D'ISOLATION ET DE FINITION EXTÉRIEURS (SYSTÈMES SIFE) - APPLICATION DE LA CONCEPTION
+718	STANDARD FOR SITE QUALITY ASSURANCE PROGRAM FOR SPRAY APPLIED POLYURETHANE FOAM / NORME SUR LE PROGRAMME D'ASSURANCE DE LA QUALITÉ DU CHANTIER RELATIF À LA MOUSSE DE POLYURÉTHANE PULVÉRISÉE
+719	Standard for Nonmetallic-Sheathed Cables
+723	Standard for Test for Surface Burning Characteristics of Building Materials
+723S	DROP-OUT CEILINGS INSTALLED BENEATH AUTOMATIC SPRINKLERS
+724	Outline of Investigation for Indirect Fired, Oil Burning Commercial Cooking Appliances
+726	Standard for Oil-Fired Boiler Assemblies
+727	Standard for Oil-Fired Central Furnaces
+729	Standard for Oil-Fired Floor Furnaces
+730	Standard for Oil-Fired Wall Furnaces
+730	Standard for Oil-Fired Wall Furnaces
+731	Standard for Oil-Fired Unit Heaters
+732	Standard for Oil-Fired Storage Tank Water Heaters
+733	Standard for Oil-Fired Air Heaters and Oil-Fired Direct-Fired Heaters
+737	Standard for Fireplace Stoves
+741	STANDARD FOR AIR BARRIER MATERIALS - SPECIFICATION / NORME SUR LES MATÉRIAUX D'ÉTANCHÉITÉ À L'AIR - SPÉCIFICATION
+742	STANDARD FOR AIR BARRIER ASSEMBLIES - SPECIFICATION
+742	STANDARD FOR AIR BARRIER ASSEMBLIES - SPECIFICATION / Norme sur les ensembles d'étanchéité à l'air - spécifications
+743.1	STANDARD FOR THERMAL INSULATION - LOW PRESSURE APPLIED TWO COMPONENT SPRAY POLYURETHANE FOAM, PART 1: MATERIAL SPECIFICATION / Norme pour l’isolation thermique – mousse de polyuréthane à deux composants pulvérisée à basse pression, Partie 1 : Spécification du matériau
+745	Subject 745
+745-1	Portable Electric Tools
+745- 2-31	Particular Requirements for Diamond Core Drills
+745- 2-32	Particular Requirements for Magnetic Drill Presses
+746	Subject 746
+746A	Standard for Polymeric Materials - Short Term Property Evaluations
+746B	Standard for Polymeric Materials - Long Term Property Evaluations
+746C	Standard for Polymeric Materials - Use in Electrical Equipment Evaluations
+746D	Standard for Polymeric Materials - Fabricated Parts
+746E	Polymeric Materials - Industrial Laminates, Filament Wound Tubing, Vulcanized Fibre, and Materials Used In Printed Wiring Boards
+746F	Standard for Polymeric Materials - Flexible Dielectric Film Materials for Use in Printed-Wiring Boards and Flexible Materials Interconnect Constructions
+746H	Outline of Investigation for Non-Halogenated Materials
+746R	Outline of Investigation for Restricted Use Substances in Polymeric Materials 
+749	Household Dishwashers
+749	Household Dishwashers
+749	Household Dishwashers
+751	Standard for Vending Machines
+752	Standard for Bullet-Resisting Equipment
+752A	Guide for the Investigation of Bullet-Resisting Glazing Material  
+753	Standard for Alarm Accessories for Automatic Water-Supply Control Valves for Fire-Protection Service
+753	Guide for the Investigation of Alarm Accessories for Automatic Water-Supply Control Valves for Fire Protection Services
+756	Standard for Coin and Currency Changers and Actuators
+758	Standard for Appliance Wiring Material
+762	POWER ROOF VENTILATORS FOR RESTAURANT EXHAUST APPLIANCES
+763	Standard for Motor-Operated Commercial Food Preparing Machines
+768	Standard for Combination Locks
+770	STANDARD FOR STANDARD TEST METHOD FOR DETERMINATION OF LONG-TERM THERMAL RESISTANCE OF CLOSED-CELL THERMAL INSULATING FOAMS / MÉTHODE D'ESSAI NORMALISÉE POUR LA DÉTERMINATION DE LA RÉSISTANCE THERMIQUE À LONG TERME DES MOUSSES ISOLANTES THERMIQUES À ALVÉOLES FERMÉS
+771	Standard for Night Depositories
+771.1	Guide for Preparing Thermal Insulation Standards, Part 1 - Material Specifications
+773	Standard for Plug-In Locking Type Photocontrols for Use with Area Lighting
+773	STANDARD FOR THERMAL INSULATION TERMINOLOGY / NORME SUR LA TERMINOLOGIE DE L'ISOLATION THERMIQUE
+773A	Standard for Nonindustrial Photoelectric Switches for Lighting Control
+774	GUIDE STANDARD DE LABORATOIRE POUR L'ÉVALUATION DES ÉMISSIONS DE COMPOSÉS ORGANIQUES VOLATILS DE LA MOUSSE DE POLYURÉTHANE
+774	STANDARD TEST METHOD FOR THE DETERMINATION OF VOLATILE ORGANIC COMPOUND EMISSIONS FROM POLYURETHANE FOAM / MÉTHODE D'ESSAI NORMALISÉE POUR LA DÉTERMINATION DES ÉMISSIONS DE COMPOSÉS ORGANIQUES VOLATILS DE LA MOUSSE DE POLYURÉTHANE
+774A	Standard for Graphic Arts Equipment
+775	Standard for Motor-Operated Water Pumps
+778	Standard for Electrically Conductive Floorings
+779	Guide for the Investigation of Electrically Conductive Floorings
+779	Standard for Electric Flashlights and Lanterns for Use in Hazardous (Classified) Locations
+783	Standard for Indicator Posts for Fire-Protection Service
+789	Indicator Posts for Fire Protection Service
+789	Standard for Standard Test Methods for Fire Tests of Roof Coverings
+790	Standard for Residential Incinerators
+791	Standard for Residential Incinerators
+791	Standard for Automatically Operated Roof Vents for Smoke and Heat
+793	ANSI/CAN/UL Automatically Operated Roof Vents for Smoke and Heat / Aérateurs exutoires à commande automatique pour la fumée et la chaleur
+793	Guide for the Investigation of Automatically Operated Smoke and Heat Roof Vents
+793	Standard for Commercial-Industrial Gas Heating Equipment
+795	Printed Wiring Boards
+796	Guide for the Investigation of Printed-Wiring Boards
+796	Standard for Flexible Materials Interconnect Constructions
+796F	Standard for Electrical Metallic Tubing - Steel
+797	Electrical Metallic Tubing - Steel
+797	Standard for Electrical Metallic Tubing - Aluminum and Stainless Steel
+797A	STANDARD ON ELECTRIC UTILITY WORKPLACE ELECTRICAL SAFETY FOR GENERATION, TRANSMISSION, AND DISTRIBUTION / NORME SUR SÉCURITÉ ÉLECTRIQUE AU TRAVAIL POUR LES SERVICES PUBLICS DE PRODUCTION, DE TRANSPORT ET DE DISTRIBUTION D
+801	Subject for Miscellaneous Wire
+805	Subject 805
+805	Standard for Capacitors
+810	Standard for Electrochemical Capacitors
+810A	DC Power Capacitors
+810B	Standard for Commercial Audio Equipment
+813	Gas-Tube-Sign Cable
+814	Standard for Cord Sets and Power-Supply Cords
+817	Standard for Electric Heaters For Use in Hazardous (Classified) Locations
+823	Standard for Electric Heaters For Use in Hazardous (Classified) Locations
+823	Standard for Household Electric Clocks
+826	Standard for Central-Station Alarm Services
+827	Hosted Central Station Services 
+827A	Managed Video Services
+827B	Subject for Control Units and Accessories for Fire Alarm Systems
+833	Standard for Heating, Water Supply, and Power Boilers - Electric
+834	Subject for Lighting Arresters
+838	Standard for Insulation Coordination Including Clearances and Creepage Distances for Electrical Equipment
+840	ANSI/CAN/UL/ULC Standard for Valves for Flammable and Combustible Liquids / Soupapes pour liquides inflammables et combustibles
+842	Guide for the Investigation of Valves for Flammable and Combustible Liquids
+842	ANSI/CAN/UL/ULC Valves for Flammable and Combustible Liquids / Soupapes pour liquides inflammables et combustibles
+842	Valves for Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations up to 85 Percent (E0 - E85)
+842A	Valves for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends with Nominal Biodiesel Concentrations up to 20 Percent (B20), Kerosene and Fuel Oil
+842B	Standard for Luminaires for Use in Hazardous (Classified) Locations
+844	Motor Control Centers
+845	Standard for Metallic Sprinkler Pipe for Fire Protection Service
+852	Standard for Service-Entrance Cables
+854	Busways
+857	Standard for Household Electric Ranges
+858	Standard for Safety-Related Solid-State Controls for Household Electric Ranges
+858A	Standard for Household Electric Personal Grooming Appliances
+859	Standard for Pipe Unions for Flammable and Combustible Fluids and Fire-Protection  Service
+860	Subject for Loose Fill Material (Fire Hazardous Classification of Building Materials)
+861	Standard for Time-Indicating and -Recording Appliances
+863	Standard for Control Units and Accessories for Fire Alarm Systems
+864	Standard for Electrostatic Air Cleaners
+867	Outline of Investigation for Commercial/Industrial Indoor Air Quality Systems, Ozone Generating Type
+867A	Reference Standard for Service Equipment
+869A	Standard for Wireways, Auxiliary Gutters, and Associated Fittings
+870	Standard for Temperature-Indicating and -Regulating Equipment
+873	Standard for Electric Dry-Bath Heaters
+875	Standard for Electric Sign Components
+879	LED KITS
+879A	POLYMERIC ENCLOSURE SYSTEMS FOR THE SPLICE BETWEEN NEON TUBING ELECTRODE LEADS AND GTO CABLE, AND THE GTO CABLE LEADING TO THE SPLICE
+879B	Sustainability for Manufacturing Organizations
+880	Standard for Underfloor Raceways and Fittings
+884	Standard for Delayed-Action Timelocks
+887	Switchboards
+891	Standard for Oil-Burning Stoves
+896	Standard for Air Filter Units
+900	Guide for the Investigation of Vehicle Alarm Systems and Units
+904	Guidelines for Integrating Health and Safety in the Workplace
+904Z	SOLENOIDS
+906	Standard for Fireplace Accessories
+907	Factory-Built Termination Caps for Use with Masonry Chimneys
+907a	Standard for Highway Emergency Signals
+912	Standard for Intrinsically Safe Apparatus and Associated Apparatus for Use in Class I, II, III, Division 1, Hazardous (Classified) Locations
+913	Standard for Intrinsically Safe Apparatus and Associated Apparatus for Use in Class I, II, III, Division 1, Hazardous (Classified) Locations
+913	Standard for Energy Management Equipment
+916	Standard for Clock-Operated Switches
+917	Standard for Clock-Operated Switches
+917	Commercial Dishwashers
+921	Standard for Commercial Dishwashers
+921	Standard for Microwave Cooking Appliances
+923	Standard for Emergency Lighting and Power Equipment
+924	Standard for Fluorescent-Lamp Ballasts
+935	Subject 935-1
+935-1	Ground-Fault Circuit-Interrupters
+943	Standard for Appliance Leakage-Current Interrupters
+943B	SPECIAL PURPOSE GROUND-FAULT CIRCUIT-INTERRUPTERS
+943C	Standard for Medium Heat Appliance Factory-Built Chimneys
+959	540°C and 760°C Industrial Chimneys
+959	Standard for Electric Hobby and Sports Equipment
+961	Standard for Household and Commercial Furnishings
+962	Standard for Furniture Power Distribution Units
+962A	Outline of Investigation for Merchandise Display and Rack Mounted Power Distribution Units
+962B	Standard for Sealing, Wrapping, and Marking Equipment
+963	Standard for Electrically Heated Bedding
+964	Subject for Industry Advisory Conference on Coatings (General Purpose and Fire Retardant) and Adhesives
+967	Standard for Marking and Labeling Systems
+969	Standard for Marking and Labeling Systems
+969	ANSI/CAN/UL Standard for Marking and Labeling Systems - Flag Labels, Flag Tags, Wrap-Around Labels and Related Products / Système de marquage etd
+969A	Retail Fixtures and Merchandise Displays
+970	Standard for Nonmetallic Underground Piping For Flammable Liquids
+971	Standard for Nonmetallic Underground Piping For Flammable Liquids
+971	Nonmetallic Underground Piping for Flammable and Combustible Liquids
+971	Metallic Underground Fuel Pipe
+971A	Standard for Burglary Resisting Glazing Material
+972	Standard for Burglary Resisting Glazing Material
+972	Standard for Burglary Resisting Glazing Material
+972	Standard for Fused Power-Circuit Devices
+977	Standard for Water Treatment Appliances
+979	Standard for Motor-Operated Household Food Preparing Machines
+982	Standard for Motor-Operated Household Food Preparing Machines
+982	Outline for Compatibility of Insulating Materials and Refrigerant/Oil for Use in Hermetic Refrigerant Motor-Compressors
+984A	Standard for Household Fire Warning System Units
+985	Standard for Stationary and Fixed Electric Tools
+987	Standard for Tests for Safety-Related Controls Employing Solid-State Devices
+991	STANDARD FOR SYSTEM TESTING USE ONLY
+991-15	STANDARD FOR SYSTEM TESTING USE 2ONLY
+991-16	Grease Interceptors
+996.2	Humidifiers
+998	Standard for Humidifiers
+998	Subject 999F
+999F	Standard for Fire Hydrants
+S520	INTEGRATED SYSTEMS TESTING OF  FIRE PROTECTION AND LIFE SAFETY SYSTEMS
+ESSAIS INTÉGRÉS DE SYSTÈMES DE PROTECTION INCENDIE ET DE SÉCURITÉ DES PERSONNES
+1001	Standard for Rotating Electrical Machines - General Requirements
+1004-1	Standard for Impedance Protected Motors
+1004-2	Standard for Thermally Protected Motors
+1004-3	Standard for Electric Generators
+1004-4	Standard for Fire Pump Motors
+1004-5	Standard for Servo and Stepper Motors
+1004-6	Standard for Electronically Protected Motors
+1004-7	Standard for Inverter Duty Motors
+1004-8	Form Wound and Medium Voltage Rotating Electrical Machines
+1004-9	Pool Pump Motors
+1004- 10	Transfer Switch Equipment
+1008	Standard for Transfer Switch Equipment, Over 1000 Volts
+1008A	Outline for Source Interconnection Switches
+1008B	Transfer Switch Equipment, Meter Mounted
+1008M	Transfer Switch Equipment, Meter Mounted
+1008M	Subject 1008S
+1008S	Standard for Power Units Other Than Class 2
+1012	Vacuum Cleaners, Blower Cleaners, and Household Floor Finishing Machines
+1017	Standard for Electric Aquarium Equipment
+1018	Standard for Thermal Cutoffs for Use in Electrical Appliances and Components
+1020	Standard for Line Isolation Monitors
+1022	Standard for Household Burglar-Alarm System Units
+1023	Burglar Alarm System Units, Household
+1023	Standard for Electric Household Cooking and Food Serving Appliances
+1026	Standard for High-Intensity-Discharge Lamp Ballasts
+1029	IGNITORS AND RELATED AUXILIARIES  FOR HID LAMP BALLASTS
+1029a	Standard for Sheathed Heating Elements
+1030	Standard for Burglary-Resistant Electric Locking Mechanisms
+1034	Standard for Antitheft Alarms and Devices
+1037	Guide for the Investigation of Anti-theft Alarms and Devices
+1037	Security Latch Devices
+1037B	Standard for Fire Test of Insulated Wall Construction
+1040	Standard for Electric Baseboard Heating Equipment
+1042	Standard for Grease Filters for Exhaust Ducts
+1046	Standard for Isolated Power Systems Equipment
+1047	Standard for Isolated Power Systems Equipment
+1047	Standard for Ground-Fault Sensing and Relaying Equipment
+1053	Standard for Halogenated Agent Extinguishing System Units
+1058	Standard for Halogenated Agent Extinguishing System Units
+1058	The Servicing of Halon and Clean Agent  Extinguishing Systems  / Entretien des systèmes  d'extinction au halon et aux agents propres
+1058.18	Standard for Terminal Blocks
+1059	Subject for Circuit Breaker and Ground Fault Circuit Interrupters
+1060	Standard for Unit Substations
+1062	Standard for Machine-Tool Wires and Cables
+1063	Standard for Low-Voltage AC and DC Power Circuit Breakers Used in Enclosures
+1066	US Naval Commercial Off The Shelf (COTS) Designated Three-Pole Low-Voltage AC Power Circuit Breakers, Drawout-Mounted Type, And Accessories/Functional Components For Use On Non-Nuclear Naval Combatant Ships
+1066A	Standard for Electrically Conductive Equipment and Materials for Use in Flammable Anesthetizing Locations
+1067	Standard for Hospital Signaling and Nurse Call Equipment
+1069	Standard for Medium-Voltage Power Cables
+1072	Standard for Medium-Voltage Power Cables
+1072	Standard for Proprietary Burglar Alarm Units and Systems
+1076	Proprietary Burglar Alarm Units and Systems 
+1076	Standard for Supplementary Protectors for Use in Electrical Equipment
+1077	Standard for Supplementary Protectors for Use in Electrical Equipment
+1077	Outline of Investigation for Automatically Resettable Supplementary Protectors
+1077A	Outline of Investigation for Automatically Resettable Supplementary Protectors
+1077A	Subject for Industry Advisory Conference on Untreated Plywood
+1078	Standard for Swimming Pool Pumps, Filters, and Chlorinators
+1081	Standard for Household Electric Coffee Makers and Brewing-Type Appliances
+1082	Household Electric Skillets and Frying-Type Appliances
+1083	Standard for Household Trash Compactors
+1086	Standard for Temporary Lighting Strings
+1088	Standard for Temporary Lighting Strings / Norme sur les jeux de lumières temporaires
+1088	Standard for Electric Snow Movers
+1090	Standard for Butterfly Valves for Fire-Protection Service
+1091	Preliminary Standard for Butterfly Valves for Fire Protection Service
+1091	Butterfly Valve Indicator Posts for Fire Protection Service
+1091A	Outline of Investigation for System Control Ball Valves for Fire Protection Service
+1091B	Double Insulation Systems for Use in Electrical Equipment
+1097	Standard for Alcohol and Kerosene Cooking Appliances for Marine Use
+1100	Standard for Solidified Fuel Cooking Appliances for Marine Use
+1101	Standard for Nonintegral Marine Fuel Tanks
+1102	Standard for Marine Navigation Lights
+1104	Standard for Marine Use Filters, Strainers, and Separators
+1105	Standard for Marine Manually Operated Shutoff Valves for Flammable Liquids
+1106	Electric Power Switches
+1107	Standard for Marine Combustible Gas Indicators
+1110	Standard for Marine Electric Motors and Generators (Cranking, Outdrive Tilt, Trim Tab, Generators, Alternators)
+1112	Standard for Electrically Operated Pumps for Nonflammable Liquids, Marine
+1113	Standard for Marine Engine Ignition Systems and Components
+1120	Standard for Marine Through-Hull Fittings and Sea-Valves
+1121	Standard for Marine Buoyant Devices
+1123	Standard for Marine Blowers
+1128	Standard for Wet Exhaust Components for Marine Engines
+1129	Standard for Mechanically and Electrically Operated Fuel Pumps for Marine Use
+1130	Marine Rigid and Flexible Air Ducting
+1136	Standard for Low Voltage Marine Lighting Fixtures
+1149	Standard for Recreational Boats
+1168	Standard for Buoyant Cushions
+1175	Standard for Buoyant Vests
+1177	Standard for Fully Inflatable Recreational Personal Flotation Devices
+1180	ANSI/CAN/UL Standard for Components for Personal Flotation Devices / ANSI/CAN/UL Norme sur les Composants de vêtements de flottaison individuels
+1191	Standard for Marine Filters and Strainers for Nonflammable Liquids
+1193	Standard for Floating Waterlights
+1196	Standard for Immersion Suits
+1197	Standard for Immersion Suits
+1197	Standard for Recreational Boats Less Than 20 Feet in Length
+1199	ANSI/CAN/UL/ULC Standard for Sensor Operated Backwater Prevention Systems / Norme sur les systèmes de prévention de retour d'eau à capteurs
+1201	Sensor Operated Backwater Prevention Systems / Norme sur les systèmes de prévention de retour d'eau à capteurs
+1201	Standard for Explosion-Proof and Dust-Ignition-Proof Electrical Equipment for Use in Hazardous (Classified) Locations
+1203	Parts Cleaners
+1204	Standard for Electric Commercial Clothes-Washing Equipment
+1206	Standard for Amateur Movie Lights
+1230	Standard for Battery Chargers for Charging Engine-Starter Batteries
+1236	Subject for Trash Compactors
+1237	Standard for Control Equipment for Use with Flammable Liquid Dispensing Devices
+1238	BATTERY OPERATED HOSE NOZZLE VALVE READERS
+1238A	Standard for Electric Commercial Clothes-Drying Equipment
+1240	Standard for Junction Boxes for Swimming Pool Luminaires
+1241	Standard for Electrical Intermediate Metal Conduit - Steel
+1242	Subject 1243 - Certification Program for Nonmetallic Petroleum Product Containers to ASTM D3435-80
+1243	Standard for Diesel Engines for Driving Centrifugal Fire Pumps
+1247	Outline of Investigation for Variable Speed Limiting Controls Installed with Diesel Engines for Driving Stationary Fire Pumps
+1247a	Standard for Engine-Generator Assemblies for Use in Recreational Vehicles
+1248	Standard for Engine-Generator Assemblies for Use in Recreational Vehicles
+1248	Pre-Engineered Dry and Wet Chemical Extinguishing System Units / Systèmes d'extinction d'incendie à poudres chimiques précalculés
+1254	Pre-Engineered Dry and Wet Chemical Extinguishing System Units / Systèmes d'extinction d'incendie à poudres chimiques précalculés
+1254	Fire Testing of Restaurant Cooking Area Fire Extinguishing System Units
+1254.6	The Servicing of Restaurant Cooking Area Extinguishing Systems  
+1254.18	Outline of Investigation for Dry Chemical Extinguishing System Units, Engineered Type
+1254E	 Outline of Investigation for Rubber-Gasketed Fittings and Metallic Pipe for Commercial Cooking Equipment Protection Extinguishing System Units
+1254F	Outline of Investigation for Stationary and Semi-Portable Hand Hose Line Dry Chemical Extinguishing System Units
+1254H	Outline of Investigation for Stationary and Semi-Portable Hand Hose Line Dry Chemical Extinguishing System Units
+1254H	Standard for Fire Test of Roof Deck Constructions
+1256	Piping and Couplings, Polyvinyl Chloride (PVC) for Underground Fire Service
+1285	Standard for Electric Water Heaters for Pools and Tubs
+1261	IRRIGATION CABLES
+1263	Irrigation Cables
+1263	Standard for Flammable Liquid Storage Cabinets
+1275	Guide for the Investigation of Storage Cabinets for Flammable Liquid
+1275	Outline of Investigation for Welding Cable
+1276	Standard for Electrical Power and Control Tray Cables with Optional Optical-Fiber Members
+1277	Standard for Movable and Wall- or Ceiling-Hung Electric Room Heaters
+1278	SOLAR COLLECTORS
+1279	Standard for Electromagnetic Interference Filters
+1283	Standard for Pipe and Couplings, Polyvinyl Chloride (PVC), and Oriented Polyvinyl Chloride (PVCO) for Underground Fire Service
+1285	Pipe and Couplings, Polyvinyl Chloride (PVC), and Oriented Polyvinyl Chloride (PVCO) for Underground Fire Service
+1285	Standard for Office Furnishings
+1286	Composite Panels
+1294	Standard for Shear Resistance Tests for Ceiling Boards for Manufactured Homes
+1296	Standard for Roof Trusses for Manufactured Homes
+1298	Subject for General Purpose Signaling Devices and Systems
+1302	Standard for Marine Shipboard Cable
+1309	Outline of Investigation for Cable for Use in Mobile Installations
+1309A	Standard for Class 2 Power Units
+1310	Standard for Nonmetallic Safety Cans for Petroleum Products
+1313	Standard for Special-Purpose Metal Containers
+1314	Standard for Special-Purpose Metal Containers
+1314	Standard for Metal Waste Paper Containers
+1315	ANSI/CAN/UL/ULC Standard for Fibre Reinforced Underground Tanks for Flammable and Combustible Liquids / Norme sur les réservoirs souterrains en plastique renforcé pour les liquides inflammables et combustibles
+1316	ANSI/CAN/UL/ULC Standard for Fibre Reinforced Underground Tanks for Flammable and Combustible Liquids  / ANSI/CAN/UL/ULC Norme sur les réservoirs souterrains en plastique renforcé pour les liquides inflammables et combustibles
+1316	POLYTETRAFLUOROETHYLENE PLASTIC SEAL MATERIALS
+1321	Standard for Fabricated Scaffold Planks and Stages
+1322	Standard for Scaffold Hoists
+1323	Standard for Station Inlets and Outlets
+1331	Standard for Organic Coatings for Steel Enclosures for Outdoor Use Electrical Equipment
+1332	EXIT DOORS
+1336	Outline of Investigation for LP-Gas, Natural Gas, and Manufactured Gas Devices for Engine Fuel Systems
+1337	Outline of Investigation for LP-Gas, Natural Gas, and Manufactured Gas Devices for Engine Fuel Systems
+1337	Outline for LP-Gas, Natural Gas, and Manufactured Gas Devices for Engine Fuel Systems
+1337	Standard for Hoists
+1340	Outline of Investigation for LP-Gas Vaporizers
+1349	GUIDE FOR THE INVESTIGATION  OF LP-GAS VAPORIZERS
+1349	Hose Reels
+1351	Outline of Investigation for Pipe Joint Sealing Compounds
+1356	Outline of Investigation for Oxygen-Fuel Gas Flash Arrester and Combination Flash Arrester and Back-Pressure Check Valves
+1357	Outline of Investigation for Compressed Gas Check Valves and Hose Couplers
+1358	Gas Boosters
+1362	Outline of Investigation for Gas Boosters
+1362	Standard for Relocatable Power Taps
+1363	Special Purpose Relocatable Power Taps
+1363A	Outline of Investigation for Corrugated Medical Tubing (CMT) Systems
+1365	Outline of Investigation for Corrugated Medical Tubing (CMT) Systems
+1365	Outline of Investigation for Insulated Bus Pipe
+1366	Outline of Investigation for Insulated Bus Pipe
+1366	Outline of Investigation for Restricted Use Substances in Metallic Components
+1368	ANSI/CAN/UL/ULC Aboveground Piping for Flammable and Combustible Liquids / La tuyauterie hors sol pour les liquides inflammables et combustibles
+1369	ANSI/CAN/UL/ULC Aboveground Piping for Flammable and Combustible Liquids / Norme sur la tuyauterie hors sol pour les liquides inflammables et combustibles
+1369	Unvented Alcohol Fuel Burning Decorative Appliances
+1370	Outline of Investigation for Pump Cable Submersed in Diesel Exhaust Fluid (DEF)
+1371	FACTORY-BUILT WATER HEATING GASIFICATION APPLIANCES
+1373	Outline of Investigation for Fire Tests of Balcony Assemblies
+1374	Methodology for Marketing Claim Verification: Security Capabilities Verified to level Bronze/Silver/Gold/Platinum/Diamond, UL MCV 1376
+1376	Outline for Wire Used in Low Voltage Seasonal Lighting Products In Circuits With a Maximum Available Power of 15W
+1377	GAS-FIRED COMBINED HEAT AND POWER APPLIANCES (mCHP)
+1378	Outline of Investigation for Aerosol Duct Sprayed Sealant
+1381	 Outline of Investigation for Sheet Metal Air Ducts with Sealed Joints
+1382	ANSI/CAN/UL/ULC Standard for Water-Based Automatic Extinguisher Units / Norme sur les unités de système d’extinction automatique à base d’eau
+1384	ANSI/CAN/UL/ULC Standard for Water-Based Automatic Extinguisher Units
+1384	Outline of Investigation for Cryogenic Submersible Pump Cable
+1385	Outline of Investigation for Cryogenic Submersible Pump Cable
+1385	ANSI/CAN/UL/ULC Plant Oil Extraction Equipment for Installation and Use in Ordinary (Unclassified) Locations and Hazardous (Classified) Locations / ANSI/CAN/UL/ULC Equipement d'extraction d'huile végétale destiné à être installé et utilisé dans des lieux (non classés) ordinaires et des lieux (classés) dangereux
+1389	Plant Oil Extraction Equipment for Installation and Use in Ordinary (Unclassified) Locations and Hazardous (Classified) Locations / Equipement d'extraction d'huile végétale destiné à être installé et utilisé dans des lieux (non classés) ordinaires et des lieux (classés) dangereux
+1389	Standard for Transformers and Motor Transformers for Use in Audio-, Radio-, and Television-Type Appliances
+1411	Standard for Fusing Resistors and Temperature-Limited Resistors for Radio- and Television- Type Appliances
+1412	Standard for High-Voltage Components for Television-Type Appliances
+1413	Standard for Overcurrent and Overtemperature Protectors for Radio- and Television- Type Appliances
+1416	Standard for Special Fuses for Radio- and Television- Type Appliances
+1417	Standard for Professional Video and Audio Equipment
+1419	Standard for Cables for Power-Limited Fire-Alarm Circuits
+1424	Standard for Cables for Non-Power-Limited Fire-Alarm Circuits
+1425	Standard for Cables for Non-Power-Limited Fire-Alarm Circuits
+1425	Electrical Cables for Boats
+1426	Standard for Pullout Switches
+1429	Standard for Personal Hygiene and Health Care Appliances
+1431	Standard for Thermistor-Type Devices
+1434	Standard for Outlet Circuit Testers and Similar Indicating Devices
+1436	Standard for Electrical Analog Instruments - Panel Board Types
+1437	Standard for Tests for Sharpness of Edges on Equipment
+1439	Coated electrical sleeving
+1441	Systems of Insulating Materials - General / Systèmes de matériaux d'isolation - Généralités
+1446	Outline of Investigation for Dry Type Transformer Insulation Systems Rated Above 600V
+1446A	Standard for Electric Lawn Mowers
+1447	Standard for Surge Protective Devices
+1449	Outline of Investigation for Electric Vehicle (EV) Surge Protective Devices
+1449A	Standard for Motor-Operated Air Compressors, Vacuum Pumps, and Painting Equipment
+1450	Standard for Electric Booster and Commercial Storage Tank Water Heaters
+1453	MOBILE HOME PIPE HEATING CABLE
+1462	Standard for Direct Acting Pressure Reducing and Pressure Restricting Valves
+1468	Standard for Strength of Body and Hydraulic Pressure Loss Testing of Backflow Special Check Valves
+1469	Solid-State Dimming Controls
+1472	Standard for Adjustable Drop Nipples for Sprinkler Systems
+1474	Standard for Adjustable Drop Nipples for Sprinkler Systems
+1474	Adjustable Drop Nipples for Sprinkler Systems
+1474	Outline of Investigation for Compressed Gas Shutoff Valves
+1477	Standard for Fire Pump Relief Valves
+1478	Pressure Relief Valves for Sprinkler Systems
+1478A	Standard for Fire Tests of Penetration Firestops
+1479	Speakers for Fire Alarm and Signaling Systems, Including Accessories
+1480	Speakers for Commercial and Professional Use
+1480A	Standard for Power Supplies for Fire-Protective Signaling Systems
+1481	Standard for Solid-Fuel Type Room Heaters
+1482	Standard for Residential Gas Detectors
+1484	Standard for Quick Opening Devices for Dry Pipe Valves for Fire Protection Service
+1486	Standard for Quick Opening Devices for Dry Pipe Valves for Fire-Protection Service
+1486	Outline of Investigation for Seasonal Use Modular Trees
+1488	Fire Resistant Pipe Protection Systems Carrying Combustible Liquids
+1489	Audio-Video Products and Accessories
+1492	Outline of Investigation for Underground Low-Energy Circuit Cable
+1493	Standard for Ignition-Protection Test for Marine Products
+1500	Standard for Hybrid Personal Flotation Devices
+1517	Outline of Investigation for Sprinkler Systems Wire
+1551	Standard for Electrically Isolated Semiconductor Devices
+1557	Standard for Metal-Enclosed Low-Voltage Power Circuit Breaker Switchgear
+1558	Standard for Insect-Control Equipment - Electrocution Type
+1559	Standard for Dry-Type General Purpose and Power Transformers
+1561	Standard for Transformers, Distribution, Dry-Type - Over 600 Volts
+1562	Standard for Electric Spas, Equipment Assemblies, and Associated Equipment
+1563	Standard for Electric Spas, Equipment Assemblies, and Associated Equipment
+1563	Standard for Industrial Battery Chargers
+1564	Standard for Industrial Battery Chargers
+1564	Positioning Devices
+1565	Standard for Receptacles and Switches Intended for Use with Aluminum Wire
+1567	Standard for Metal-Clad Cables
+1569	Standard for Stage and Studio Luminaires and Connector Strips
+1573	Standard for Track Lighting Systems
+1574	Flashlights and Lanterns
+1576	Standard for Optical Isolators
+1577	Reference Standard for Electrical Wires, Cables, and Flexible Cords
+1581	Outline for Roof and Gutter De-icing Cable Units
+1588	Standard for Sewing and Cutting Machines
+1594	Luminaires
+1598	Luminaires
+1598	Standard for Supplemental Requirements for Luminaires for Installation on Marine Vessels
+1598A	Standard for Supplemental Requirements for Luminaire Reflector Kits for Installation on Previously Installed Fluorescent
+1598B	Light-Emitting Diode (LED) Retrofit Luminaire Conversion Kits
+1598C	Standard for  Gasoline-Engine-Powered, Rigid-Cutting-Member Edgers and Edger-Trimmers
+1602	Standard for Central-Station Burglar-Alarm Units
+1610	Standard for Wall Protectors, Floor Protectors, and Hearth Extensions
+1618	Resdential Sprinklers for Fire Protection Service
+1626	Outline of Investigation for Residential Hose Cabinets
+1630	Standard for Digital Alarm Communicator System Units
+1635	Standard for Home Health Care Signaling Equipment
+1637	Visible Signaling Devices for Fire Alarm and Signaling Systems, Including Accessories
+1638	Visual Signal Appliances for General Signaling Use
+1638A	Standard for Portable Power-Distribution Equipment
+1640	Standard for Installation and Classification of Residential Burglar Alarm Systems
+1641	Lithium Batteries
+1642	Standard for Motor-Operated Massage and Exercise Machines
+1647	Portable Power Cable
+1650	Standard for Optical Fiber Cable
+1651	FLEXIBLE METALLIC TUBING
+1652	Flexible Metallic Tubing
+1652	Electrical Nonmetallic Tubing
+1653	Standard for Community-Antenna Television Cables
+1655	Standard for Attachment Plug Blades for Use in Cord Sets and Power-Supply Cords
+1659	Liquid-Tight Flexible Nonmetallic Conduit
+1660	Standard for Test for Flame Propagation Height of Electrical and Optical-Fiber Cables Installed Vertically in Shafts
+1666	Standard Test for Flame Propagation Height of Electrical and Optical-Fiber Cables Installed Vertically in Shafts
+1666	Subject for Medium Voltage Circuit Breakers and Metal-Clad Switchgear
+1670	Standard for Electric Space Heating Cables
+1673	Standard for Conductive-Path andDischarge Path Resistors
+1676	Subject for Communications Cable Assemblies
+1677	Standard for Household, Commercial, and Institutional-Use Carts, Stands and Entertainment Centers for Use with Audio and/or Video Equipment
+1678	Subject for ISO 9000 Registration Program
+1679	Outline of Investigation for Stage and Lighting Cables
+1680	Standard for Wiring Device Configurations
+1681	Plugs, Receptacles, and Cable Connectors of the Pin and Sleeve Type
+1682	Outline of Investigation for Electric Heating Products For Installation Under Floor Coverings
+1683	Standard for Vertical-Tray Fire-Propagation and Smoke-Release Test for Electrical and Optical-Fiber Cables
+1685	Standard for Pin and Sleeve Configurations
+1686	Standard for Data-Processing Cable
+1690	Single Pole Locking-Type Separable Connectors
+1691	Standard for Polymeric Materials - Coil Forms
+1692	Standard for Electric Radiant Heating Panels and Heating Panel Sets
+1693	Standard for Tests for Flammability of Small Polymeric Component Materials
+1694	Nonmetallic Mechanical Protection Tubing (NMPT)
+1696	Mechanical Protection Tubing (MPT) and Fittings
+1696	Subject 1697
+1697	Personal Emergency Response Equipment
+1698	Standard for Arc-Fault Circuit-Interrupters
+1699	Outline of Investigation for Outlet Branch Circuit Arc-Fault Circuit-Interrupters	
+1699A	Photovoltaic (PV) DC Arc-Fault Circuit Protection	
+1699B	System Combination Arc-Fault Circuit Protection
+1699C	Standard for Flat-Plate Photovoltaic Modules and Panels
+1703	FLAT-PLATE PHOTOVOLTAIC MODULES AND PANELS
+1703	Standard for Rapid Rise Fire Tests of Protection Materials for Structural Steel
+1709	Standard for Amplifiers for Fire Protective Signaling Systems
+1711	Tests for Ampacity of Insulated Electrical Conductors Installed in the Fire Protective System
+1712	Standard for Pressure Pipe and Couplings, Glass Fiber-Reinforced, for Underground Fire Service
+1713	Pressure Pipe and Couplings, Glass Fiber-Reinforced, for Underground Fire Service
+1713	Standard for Fire Test of Interior Finish Material
+1715	Fire Tests for Electrical Circuit Protective Systems
+1724	Standard for Automatic Drain Valves for Standpipe Systems
+1726	Standard for Commercial Electric Personal Grooming Appliances
+1727	Standard for Smoke Detector Monitors and Accessories for Individual Living Units of Multifamily Residences and Hotel/Motel Rooms
+1730	Standard for Smoke Detector Monitors and Accessories for Individual Living Units of Multifamily Residences and Hotel/Motel Rooms
+1730	Standard for Venting Systems for Gas-Burning Appliances, Categories II, III, and IV
+1738	Standard for Pilot-Operated Pressure-Control Valves for Fire-Protection Service
+1739	Standard for Robots and Robotic Equipment
+1740	Standard for Inverters, Converters, Controllers and Interconnection System Equipment for Use With Distributed Energy Resources
+1741	Standard for External Corrosion Protection Systems For Steel Underground Storage Tanks
+1746	Early Suppression Fast-Response Sprinklers
+1767	Standard for Cylinder Valves
+1769	Standard for Termination Boxes
+1773	Standard for High-Pressure Cleaning Machines
+1776	Standard for Chimney Liners
+1777	Standard for Uninterruptible Power Supply Equipment
+1778	Uninterruptible Power Systems
+1778	Outline for Direct Connect Systems for Solid Fuel Burning Appliances
+1783	Standard for Air Leakage Tests of Door Assemblies and Other Opening Protectives
+1784	Direct Plug-In Nightlights
+1786	Standard for Hydromassage Bathtubs
+1795	POWER DISTRIBUTION CENTERS FOR COMMUNICATIONS EQUIPMENT
+1801	Standard for Factory Follow-Up on Third Party Certified Portable Fire Extinguishers
+1803	Standard for Laboratory Hoods and Cabinets
+1805	FIRE-RESISTANT CABLE COATING MATERIALS
+1807	Standard for Ducted Heat Recovery Ventilators
+1812	Standard for Nonducted Heat Recovery Ventilators
+1815	Standard for Fire Test of Pneumatic Tubing for Flame and Smoke Characteristics
+1820	Standard for Fire Test of Pneumatic Tubing for Flame and Smoke Characteristics
+1820	ANSI/CAN/UL Standard for Thermoplastic Sprinkler Pipe and Fittings for Fire Protection Service / ANSI/CAN/UL Norme relative aux tuyaux et raccords de gicleurs thermoplastiques pour le service de protection contre les incendies
+1821	Outline of Investigation for Thermoplastic Sprinkler Pipe and Fittings for Low Pressure Dry Pipe Applications
+1821A	Evaluating Compatibility of Products with CPVC Piping
+1821B	Outline of Investigation for Electric Motors and Generators for Use in Class I, Division 2, Class I, Zone 2, Class II, Division 2 and Zone 22 Hazardous (Classified) Locations
+1836	Outline of Investigation for Electric Motors and Generators for Use in Class I, Division 2, Class I, Zone 2, Class II, Division 2 and Zone 22 Hazardous (Classified) Locations
+1836	Standard for Low Voltage Landscape Lighting Systems
+1838	Standard for Automotive Battery Booster Cables
+1839	Outline for Excavation Liners for Secondary Containment of Flammable and Combustible Liquids
+1854	Underground Fuel Tank Internal Retrofit Systems
+1856	Underground Fuel Tank Internal Retrofit Systems
+1856	Outline of Investigation for Power-Operated Chemical Pumps
+1861	Standard for Communications-Circuit Accessories
+1863	Standard for Communications-Circuit Accessories
+1863	Standard for Isolating Signal and Feedback Transformers for Use in Electronic Equipment
+1876	Standard for Fire Test of Plastic Sprinkler Pipe for Visible Flame and Smoke Characteristics
+1887	Standard for Fire Test of Plastic Sprinkler Pipe for Flame and Smoke Characteristics
+1887	Standard for Commercial Filters for Cooking Oil
+1889	Standard for Wire Bulletin Compounds
+1893	Subject 1893
+1893	Subject 1893
+1893	Standard for Uplift Tests for Roof Covering Systems
+1897	Standard for Solid-State Fan Speed Controls
+1917	Standard for Electric Plumbing Accessories
+1951	Outline of Investigation for Power Distribution Blocks
+1953	Outline of Investigation for Power Distribution Blocks
+1953	Standard for Refrigerant Recovery/Recycling Equipment
+1963	Outline for Rescue Equipment
+1964	Standard for Signaling Devices for the Hearing Impaired
+1971	ANSI/CAN/UL Standard for Batteries for Use in Stationary, Vehicle Auxiliary Power and Light Electric Rail (LER) Applications / Norme sur les batteries destinées aux appareils stationnaires, à l'alimentation auxiliaire pour véhicules et aux applications de système léger sur rail
+1973	ANSI/CAN/UL Standard for Evaluation for Repurposing Batteries / Norme sur les évaluation pour la transformation des batteries
+1974	Standard for Fire Tests for Foamed Plastics Used for Decorative Purposes
+1975	 Outline of Investigation for Crimp Tools for use with Connecting Devices
+1976	Standard for Component Connectors for Use in Data, Signal, Control and Power Applications
+1977	Standard for Grease Ducts
+1978	Standard for Grease Ducts
+1978	Standard for Grease Ducts
+1978	Standard for Central-Station Automation Systems
+1981	STANDARD FOR SIGNAL RECEIVING CENTRE AUTOMATION SYSTEM / STANDARD FOR SIGNAL RECEIVING CENTRE AUTOMATION SYSTEM
+1981	Subject for Drinking Water Program
+1983	Standard for Standby Batteries
+1989	Standard for Nonmetallic Underground Conduit with Conductors
+1990	Self-Ballasted Lamps and Lamp Adapters
+1993	Self-Ballasted Lamps and Lamp Adapters
+1993	Standard for Luminous Egress Path Marking Systems
+1994	Heating and Cooling Equipment
+1995	Standard for Electric Duct Heaters
+1996	Standard for Software in Programmable Components
+1998	Outline of Investigation for LP-Gas Cylinder Assemblies
+2003	Outline of Investigation for LP-Gas Cylinder Assemblies
+2003	Standard for Halon 1211 Recovery/Recharge Equipment
+2006	Standard for Halon 1211 Recovery/Recharge Equipment
+2006	Shatter Containment Of Lamps For Use In Regulated Food Establishments
+2007A	HYGIENIC DESIGN AND CONSTRUCTION  OF  RESIDENTIAL FOOD HEATING AND COOKING APPLIANCES
+2007B	Outline for Machinery
+2011	Outline for Machinery
+2011	Outline of Investigation for Machinery
+2011	Standard for General-Purpose Signaling Devices and Systems
+2017	Standard for Fixed and Location-Dedicated Electric Room Heaters
+2021	Standard for Optical Fiber and Communication Cable Raceway
+2024	Standard for Cable Routing Assemblies and Communications Raceways
+2024	GAS/VAPOR-BLOCKED CABLE CLASSIFIED FOR USE IN CLASS I HAZARDOUS (CLASSIFIED) LOCATIONS
+2029	Subject for Plumbing Products Classified in Accordance with International Publications
+2032	Standard for Single and Multiple Station Carbon Monoxide Alarms
+2034	Standard for Single and Multiple Station Carbon Monoxide Alarms
+2034	Flexible Connector Piping for Fuels
+2039	Standard for Folding Rollaway Tables
+2040	Standard for Fire Test for Heat and Visible Smoke Release for Discrete Products and Their Accessories Installed in Air-Handling Spaces
+2043	Standard for Commercial Closed-Circuit Television Equipment
+2044	RESIDENTIAL PIPE HEATING CABLE
+2049	National Industrial Security Systems
+2050	Standard for Household and Commercial Batteries
+2054	Outline of Investigation for Safety of Lithium-ion Power Banks
+2056	HIGH-SECURITY ELECTRONIC LOCKS
+2058	Standard for Adapters and Cylinder Connection Devices for Portable LP-Gas Cylinder Assemblies
+2061	ENCLOSURES FOR USE IN HAZARDOUS (CLASSIFIED) LOCATIONS
+2062	Outline for Battery Holders
+2069	Standard for Gas and Vapor Detectors and Sensors
+2075	CO Gas Test Kit for Gas and Vapor Detectors and Sensors
+2075A	Standard for Tests for Fire Resistance of Building Joint Systems
+2079	Standard for Tests for Fire Resistance of Building Joint Systems
+2079	Standard for Fire Resistant Tanks for Flammable and Combustible Liquids
+2080	Standard for Protected Aboveground Tanks for Flammable and Combustible Liquids
+2085	Standard for Vehicle Battery Adapters
+2089	Subject for Pre-Engineered Wet-Chemical Extinguishing System Units
+2092	Standard for Commercial/Industrial Gas and/or Oil-Burning Assemblies With Emission Reduction Equipment
+2096	Reference Standard for Double Insulation Systems for Use in Electronic Equipment
+2097	Standard for Field Erected Boiler Assemblies
+2106	Standard for Low Voltage Lighting Systems
+2108	Standard for Overheating Protection for Motors
+2111	Subject for Venting Systems for Use with Gas-Fired Vent Appliances
+2112	ANSI/CAN/UL/ULC Standard for Processed Solid-Fuel Firelogs and Firestarters / Norme sur les bûches et les allume-feu préfabriqués en combustible solide
+2115	ANSI/CAN/UL/ULC Processed Solid-Fuel Firelogs and Firestarters
+Norme sur les bûches et les allume-feu préfabriqués en combustible solide
+2115	PROTECTIVE SHIELDING GUARDS FOR PLUMBING
+2119	ANSI/CAN/UL/ULC Inert Gas Clean Agent Extinguishing System Units / ANSI/CAN/UL/ULC Unités de système d'extinction aux agents propres à gaz inerte
+2127	Inert Gas Clean Agent Extinguishing System Units / Unités de système d'extinction aux agents propres à gaz inerte
+2127	Halocarbon Clean Agent Fire Extinguishers
+2129	Outline of Investigation for Compressed Gas Cylinder Safety Caps
+2133	Outline of Investigation for Special Purpose Nonmetallic Containers and Tanks for Specific Combustible or Noncombustible Liquids
+2152	RUBBER HOSE FOR RADIANT HEATING
+2156	Electric Clothes Washing Machines and Extractors
+2157	Electric Clothes Washing Machines and Extractors
+2157	Electric Clothes Dryers
+2158	Electric Clothes Dryers
+2158	Standard for Clothes Dryer Transition Duct
+2158A	Standard for Neon Transformers and Power Supplies
+2161	Commercial Wood-Fired Baking Ovens - Refractory Type
+2162	COMMERCIAL WOOD-FIRED BAKING OVENS - REFRACTORY TYPE
+2162	ANSI/CAN/UL/ULC Halocarbon Clean Agent Extinguishing System Units / ANSI/CAN/UL/ULC Unités de système d'extinction aux agents propres à l'halocarbure
+2166	Halocarbon Clean Agent Extinguishing System Units / Unités de système d'extinction aux agents propres à l
+2166	Outline of Investigation for Plastic Pipe and Fitting Assemblies used as Self-Contained Automatic Extinguisher Units for Total Flooding Applications
+2166P	Water Mist Nozzles for Fire-Protection Service
+2167	Outline for Marking and Coding Equipment
+2178	Outline for Marking and Coding Equipment
+2178	Standard for Refrigerants
+2182	Subject for Modular Scaffold Stage Platforms and Modular Suspended Work Platforms
+2185	Outline for Commercial Butane-Fueled Portable Cook Stoves
+2191	Standard for Tests for Fire Resistive Cables
+2196	Standard for Stationary Engine Generator Assemblies
+2200	ANSI/CAN/UL/ULC Stationary Engine Generator Assemblies / Groupes électrogènes stationnaires
+2200	Stationary Engine Generator Assemblies / Groupes électrogènes stationnaires
+2200	Outline of Investigation for Fire Containment Testing of Stationary Engine Generator Enclosures
+2200A	Standard for Carbon Monoxide (CO) Emission Rate of Portable Generators
+2201	Standard for Electric Vehicle (EV) Charging System Equipment
+2202	Standard for Solvent Distillation Units
+2208	OIL/WATER SEPARATORS
+2215	Outline of Investigation for Oil/Water Separators
+2215	Standard for Impact Resistance of Prepared Roof Covering Materials
+2218	Impact Resistance of Roofing Systems
+2218A	Standard for Tests of Fire Resistive Grease Duct Enclosure Assemblies
+2221	Standard for Cables and Cable-Fittings For Use In Hazardous (Classified) Locations
+2225	Standard for Overfilling Prevention Devices
+2227	Standard for Personnel Protection Systems for Electric Vehicle (EV) Supply Circuits: General Requirements
+2231-1	Standard for Personnel Protection Systems for Electric Vehicle (EV) Supply Circuits: Particular Requirements for Protection Devices for Use in Charging Systems
+2231-2	Multi-Point Interconnection Power Cable Assemblies for Industrial Machinery
+2237	Standard for Cable Assemblies and Fittings for Industrial Control and Signal Distribution
+2238	Hardware for the Support of Conduit, Tubing, and Cable
+2239	Standard for Below-Grade Vaults for Flammable Liquid Storage Tanks
+2245	Subject for Hygiene Equipment for Use in Meat and Poultry Plants
+2247	Subject for Marina Fuel Storage, Piping, and Dispensing Systems
+2248	Outline of Investigation for Hydrogen Fuel Dispensing Systems 
+2249	Standard for Instrumentation Tray Cable
+2250	Standard for Plugs, Receptacles, and Couplers for Electric Vehicles
+2251	Standard for Receptacle Closures
+2255	Nonmetallic Sheathed Cable Interconnects
+2256	IDENTIFICATION TESTS FOR JACKET AND INSULATION MATERIALS USED IN PLENUM CABLES
+2257	ANSI/CAN/UL/ULC Standard for Aboveground Nonmetallic Tanks for Fuel Oil and Other Combustible Liquids / Norme sur les réservoirs non métalliques hors sol pour le mazout et autres liquides combustibles
+2258	ANSI/CAN/UL/ULC Standard for Aboveground Nonmetallic Tanks for Fuel Oil and Other Combustible Liquids / ANSI/CAN/UL/ULC Norme sur les réservoirs non métalliques hors sol pour le mazout et autres liquides combustibles
+2258	Subject for Network-Powered Broadband Communications Cable
+2261	CABLES FOR NETWORK-POWERED BROADBAND COMMUNICATIONS SYSTEMS
+2261	Fuel Cell Modules for Use in Portable and Stationary Equipment
+2262	BOROHYDRIDE FUEL CARTRIDGES WITH INTEGRAL FUEL PROCESSING FOR USE WITH PORTABLE FUEL CELL POWER SYSTEMS OR SIMILAR EQUIPMENT
+2262A	Electric Vehicle Cable
+2263	Subject 2264 Gaseous Hydrogen Generation Appliances
+2264	Outline of Investigation for Water Electrolysis Type Hydrogen Generators
+2264A	HYDROGEN GENERATORS USING WATER REACTION
+2264B	PORTABLE WATER ELECTROLYSIS TYPE HYDROGEN GENERATORS
+2264D	Subject 2265 - Fuel Cell Power Units and Fuel Storage Containers for Portable Devices
+2265	Outline of Investigation for Micro Fuel Cell Power Systems Using Direct Methanol Fuel Cell Technology
+2265A	Outline for Hand-Held or Hand-Transportable Alkaline (Direct Borohydride) Fuel Cell Power Units And Borohydride Fuel Cartridges For Use With Consumer Electronics or Information Technology Equipment
+2265C	Subject 2266 Subject 2266 Electromagnetic Compatibility, Electrical Safety, and Physical Protection of Stationary and Portable Fuel Cell Power Systems for Use with Commercial Network Telecommunications Equipment
+2266	Standard for Fuel Cell Power Systems for Installation in Industrial Electric Trucks
+2267	OPTICAL FIBER/COMMUNICATIONS/SIGNALING/COAXIAL CABLE OUTLET BOXES
+2269	ANSI/CAN/UL/ULC Standard for Batteries for Use In Light Electric Vehicle (LEV) Applications / Norme sur les batteries électriques pour véhicules électriques légers
+2271	ANSI/CAN/UL/ULC Batteries for Use in Light Electric Vehicle (LEV) Applications
+Norme sur les batteries électriques pour véhicules électriques légers
+2271	ANSI/CAN/UL Standard for Electrical Systems for Personal E-Mobility Devices / Systèmes électriques pour les appareils de mobilité personnelle
+2272	Other Recognized Document for Electrical Systems for Self-Balancing
+2272-O	Scooters
+2273	Festoon Cable
+2276	Outline of Investigation for Recreational Vehicle Cable
+2277	Flexible Motor Supply Cable and Wind Turbine Tray Cable
+2277	Flexible Motor Supply Cable and Wind Turbine Tray Cable
+2282	Environmental Claim Validation Procedure (ECVP) for Resistance to Bacterial Growth
+2283	Environmental Claim Validation Procedure (ECVP) for Resistance to Fungal Growth
+2305	Standard for Exhibition Display Units, Fabrication and Installation
+2311	Subject for Plumbing Fixtures
+2312	Subject for Transit System Equipment
+2316	Subject 2316 Internal Combustion Engine-Powered Industrial/Commercial Floor Cleaning Machines
+2317	Subject for Electric-Battery-Powered Cleaning Machines
+2321	PLATE WARMERS
+2325	Subject for Solid-State Light Emitting Components
+2329	Outline for Personnel Electrostatic Control Devices
+2333	Standard for Infrared Thermometers
+2335	Standard for Fire Tests of Storage Pallets
+2339	MOBILE AND MODULAR STAGES
+2344	Standard for Material Lifts
+2351	Standard for Spray Nozzles for Fire-Protection Service
+2351	Standard for Spray Nozzles for Fire-Protection Service
+2351	Spray Nozzles for Fire-Protection Service
+2351A	Outline of Investigation for Nozzle Adaptors with Integral Filter for Fire Protection Service
+2353	Standard for Safety for Single- and Multi-Layer Insulated Winding Wire
+2358	Outline of Investigation for Fire Tests of Pre-Lit Artificial Seasonal Use Trees and Other Seasonal Decorative Items
+2360	Standard for Test Methods for Determining the Combustibility Characteristics of Plastics Used in Semi-Conductor Tool Construction
+2361	CUSTOM-BUILT KIOSKS
+2365	Subject for Laundry Equipment Accessories
+2367	Standard for Solid State Overcurrent Protectors
+2368	Standard for Fire Exposure Testing of Intermediate Bulk Containers for Flammable and Combustible Liquids
+2375	Outline for Hip and Ridge Shingles
+2375	HIP AND RIDGE SHINGLES
+2388	Standard for Flexible Lighting Products
+2389	COAXIAL FAULT PROTECTORS FOR NETWORK-POWERED BROADBAND COMMUNICATIONS SYSTEMS
+2391	EQUIPMENT WITH REMOTE FEEDING TELECOMMUNICATION CIRCUITS INTENDED FOR BACKWARDS COMPATIBILITY IN LEGACY TELECOMMUNICATION EQUIPMENT
+2391	Equipment with Remote Feeding Telecommunication Circuits Intended for Backwards Compatibility in Legacy Telecommunication Equipment
+2395	Standard for Adhesives for Use in Heating and Cooling Appliances to Secure Thermal Insulation
+2399	Metal Venting Systems for Household clothes Dryers
+2405	Subject for Aboveground Secondarily-Contained Piping for Flammable Liquids
+2416	Audio/Video, Information and Communication Technology Equipment Cabinet, Enclosure and Rack Systems
+2419	ELECTRICALLY CONDUCTIVE CORROSION RESISTANT COMPOUNDS
+2420	Standard for Belowground Reinforced Thermosetting Resin Conduit (RTRC) and Fittings
+2422	ULTRAVIOLET CURING EQUIPMENT FOR COMMERCIAL USE
+2424	Subject for Communications & Power-Limited Cables
+2424	CABLE MARKED 'LIMITED COMBUSTIBLE'
+2431	Durability of Fire Resistive Coatings and Materials
+2432	DRY SYSTEM WATER DELIVERY TIME CALCULATION PROGRAMS
+2432	DRY SYSTEM WATER DELIVERY TIME CALCULATION PROGRAMS
+2436	Outline of Investigation for Spill Containment for Stationary Acid and Alkaline Electrolyte Battery Systems 
+2436	Outline of Investigation for Spill Containment for Stationary Acid and Alkaline Electrolyte Battery Systems 
+2438	Standard for Outdoor Seasonal-Use Cord-Connected Wiring Devices
+2441	COMPONENT - CONNECTOR HOUSINGS
+2442	Standard for Wall- and Ceiling-Mounts and Accessories
+2443	Standard for Flexible Sprinkler Hose with Fittings for Fire Protection Service
+2446	UNITARY BOILER ROOM SYSTEMS
+2447	Subject 2447 Containment Sumps
+2452	ELECTRIC SWIMMING POOL AND SPA COVER OPERATORS
+2453	Prefabricated Wiring Assemblies Prefabricated Wiring Assemblies
+2459	Insulated Multi-Pole Splicing Wire Connectors
+2460	Nonshielded Cable
+2485	Environmental Claim Validation Procedure (ECVP) for Recyclability of Paper-Based Products
+2505	CEMENTITIOUS MATERIALS USED FOR RESURFACING SMOKE CHAMBER OF MASONRY FIREPLACES
+2506	Refractory Panels For Masonry Fireplaces
+2515	Aboveground Reinforced Thermosetting Resin Conduit (RTRC) and Fittings
+2515A	Standard for Supplemental Requirements for Extra Heavy Wall Reinforced Thermosetting Resin Conduit (RTRC) and Fittings
+2518	Air Dispersion Systems
+2523	Solid Fuel-Fired Hydronic Heating Appliances, Water Heaters and Boilers	
+2524	ANSI/CAN/UL Standard for In-building 2-Way Emergency Radio Communication Enhancement Systems / Norme de sécurité pour les systèmes d'amélioration de la radiocommunication bidirectionnelle intérieure d'urgence
+2524A	Outline of Investigation for In-Building Auxiliary Radio Communication Systems
+2525	Two-Way Emergency Communications Systems for Rescue Assistance
+2556	Wire and Cable Test Methods
+2556	Wire and Cable Test Methods
+2557	Membrane Switches
+2558	Cable Management Systems - Cable Ties for Electrical Installations (62275)
+2560	Subject 2560 Emergency Call Systems for Assisted Living and Independent Living Facilities
+2561	Standard for 1400 Degree Fahrenheit Factory-Built Chimneys
+2562	Outline for Pendant Cable
+2562	Outline for Pendant Cable
+2563	HEAT RESISTANT WIRE
+2564	LOW-VOLTAGE SURGE WITHSTAND TELECOMMUNICATIONS OVERCURRENT PROTECTOR COMPONENTS
+2565	Industrial Metalworking and Woodworking Machine Tools
+2566	PART 2: LOW-VOLTAGE SURGE WITHSTAND TELECOMMUNICATIONS FUSES
+2567	PART 3: LOW-VOLTAGE SURGE WITHSTAND TELECOMMUNICATIONS POLYMER POSITIVE TEMPERATURE COEFFICIENT THERMISTOR (PPTC)
+2569	PART 5: LOW-VOLTAGE SURGE WITHSTAND TELECOMMUNICATIONS LINE FEED RESISTOR (LFR)
+2570	PART 6: LOW-VOLTAGE SURGE WITHSTAND TELECOMMUNICATIONS ELECTRONIC CURRENT LIMITERS (ECL)
+2571	IRRIGATION FEEDER, CONTROL, AND SIGNAL CABLES
+2572	Standard for Mass Notification Systems
+2573	Outline of Investigation for Automatic Air Release, Air/Vacuum and Combination Air Valves for Fire Protection Service
+2576	REFRACTORY COMBUSTION CHAMBER LINERS
+2577	Suspended Ceiling Grid Low Voltage Systems and Equipment
+2577	Standard for Suspended Ceiling Power Grid Systems and Equipment / Norme relative à l'équipement et systèmes de distribution de l’alimentation des treillis de plafond suspendu
+2579	LOW-VOLTAGE FUSES - FUSES FOR PHOTOVOLTAIC SYSTEMS
+2580	ANSI/CAN/UL/ULC Standard for Batteries for Use In Electric Vehicles / Norme sur les batteries pour véhicules électriques
+2580	ANSI/CAN/UL/ULC Standard for Batteries for Use In Electric Vehicles / ANSI/CAN/UL/ULC Norme sur les Batteries pour véhicules électriques
+2581	Outline of Investigation for Hydraulic Surge Suppressors for Water Based Fire Protection Systems
+2581A	Outline of Investigation for Expansion Chambers for Water Based Fire Protection Systems
+2582	Outline of Investigation for Hip and Ridge Vents
+2583	Outline of Investigation for Fuel Tank Accessories
+2585	REBUILT FLAMMABLE LIQUID METERS
+2586	Hose Nozzle Valves
+2586A	Hose Nozzle Valves For Gasoline and Gasoline/Ethanol Blends with Nominal Ethanol Concentrations up to 85 Percent (E0 - E85)
+2586B	Hose Nozzle Valves for Diesel Fuel, Biodiesel Fuel, Diesel/Biodiesel Blends With Nominal Biodiesel Concentrations Up To 20 Percent (B20), Kerosene, and Fuel Oil
+2586C	Outline of Investigation for Hose Nozzle Valves for Diesel Exhaust Fluid
+2591	Outline of Investigation for Battery Cell Separators
+2592	Low Voltage LED Wire
+2593	MOTOR DRIVEN TURNSTILE OPERATORS AND SYSTEMS
+2594	Standard for Electric Vehicle Supply Equipment
+2595	Standard for General Requirements for Battery-Powered Appliances
+2595	General Requirements for Battery-Powered Appliances
+2600	CAN/UL Standard for Relocatable Structures / Norme sur les structures relocalisables
+2600	Relocatable Buildings / Bâtiments relocalisables
+2610	Commercial Premises Security Alarm Units and Systems
+2640	Test Method for Server Performance
+2682	Outline of Investigation for Switch-Rated Plugs and Receptacles
+2683	Electric Heating Systems for Floor and Ceiling Installation
+2695	DC RATED ATTACHMENT PLUGS AND OUTLET DEVICES INTENDED FOR USE WITH INFORMATION TECHNOLOGY AND TELECOMMUNICATION EQUIPMENT INSTALLED IN RESTRICTED ACCESS LOCATIONS
+2703	Standard for Mounting Systems, Mounting Devices, Clamping/Retention Devices, and Ground Lugs for Use with Flat-Plate Photovoltaic Modules and Panels
+2710	Outline of Investigation for Sustainability for Portable Electronic Products
+2726	Outline of Investigation for Battery Lead Wire
+2727	RETROFIT MOTOR CONTROL CENTER UNITS FOR USE WITH SPECIFIED MOTOR CONTROL CENTER SECTIONS
+2728	PELLET FUEL BURNING COOKING APPLIANCES
+2728A	Outline of Investigation for Pellet Fuel Burning Cooking Appliances
+2729	Subject 2729
+2730	Subject 2730
+2731	Outline of Investigation for Telecommunication Central Office Power, Battery, and Distribution Cables
+2732	Subject 2732
+2733	SURFACE VEHICLE ON-BOARD CABLE
+2735	Standard for Electric Utility Meters
+2735C	Electric Utility Meters for Canada
+2736	SINGLE POLE SEPARABLE INTERCONNECTING CABLE CONNECTORS FOR USE WITH WIND TURBINE GENERATING SYSTEMS
+2738	Standard for Induction Power Transmitters and Receivers for use with Low Energy Products
+2743	ANSI/CAN/UL Standard for Portable Power Packs / ANSI/CAN/UL Norme pour les Blocs d'alimentation portatifs
+2745	Subject 2745
+2747	ELECTRIC VEHICLE POWER SUPPLIES
+2748	Standard for Arcing Fault Quenching Equipment
+2748A	Standard for Arcing Fault Interrupting Devices
+2749	Seasonal Use LED Drivers and Non-Integral LED Lighting Strings
+2750	Outline of Investigation for Wireless Power Transfer Equipment for Electric Vehicles
+2752	Outline of Investigation for Fabricated Stairways
+2753	Outline for Battery Operated Ride-On Lawn Mowers
+2755	Outline of Investigation for Modular Data Centers
+2759	Sustainability for Hard Surface Cleaners
+2761	Sustainability for Sealants and Caulking Compounds
+2762	Sustainability for Adhesives
+2764	Sustainability for Gas-Fired Condensing Hot Water Heating Boilers
+2765	Sustainability for Indirect Fired Domestic Hot Water Tanks
+2766	Sustainability for Energy Efficient Heating/Cooling Systems for Buildings
+2767	Sustainability for Paint and Varnish Remover
+2768	Sustainability for Architectural Surface Coatings
+2769	Sustainability for Corrosion Control Products
+2770	Sustainability for Commercial Car Wash Services
+2771	Sustainability for Paper Products
+2773	Sustainability for Pens, Mechanical Pencils, and Other Writing Instruments
+2775	ANSI/CAN/UL/ULC Standard for Fixed Condensed Aerosol Extinguishing System Units / ANSI/CAN/UL/ULC Norme sur les unités de système d’extinction fixe à aérosol de condensation
+2775	FIXED CONDENSED AEROSOL EXTINGUISHING SYSTEM UNITS
+2775	FIXED CONDENSED AEROSOL EXTINGUISHING SYSTEM UNITS
+2776	Sustainability for Laundry Detergents and Fabric Softeners
+2777	Sustainability for Hard Floor Care Products
+2778	Sustainability for Products Made From Recycled Plastic
+2780	Sustainability for Urinal Blocks
+2781	Sustainability for Pool and Spa Water Treatment Products
+2783	Sustainability for Instant Hand Antiseptic Products
+2784	Sustainability for Hand Cleaners
+2789	Environmental Claim Validation Procedure for Calculation of Estimated Recyclability Rate
+2790	Standard for Commercial Incinerators
+2791	Standard for Sustainability for  Drain and/or Grease Trap Additives: Biologically-based
+2792	Standard for Sustainability for Cleaning and Degreasing Compounds: Biologically-based
+2794	Standard for Sustainability for Disinfectants and Disinfectant Cleaners
+2795	Standard for Sustainability for Carpet and Upholstery Care Products
+2796	Standard for Sustainability for Odor Control Products
+2797	Standard for Sustainability for RV and/or Marine Holding Tank Additives: Biologically-based
+2798	Standard for Sustainability for Biological Digestion Additives for Cleaning and Odour Control
+2799	Environmental Claim Validation Procedure for Zero Waste to Landfill
+2799A	Environmental Claim Validation Procedure (ECVP) for Zero Waste Classifications
+2800-1	Medical Device Interoperability
+2801	Standard for Sustainability for Printing Inks
+2802	Performance Testing for Camera Image Quality
+2803	Standard for Sustainability for Printing Services
+2804	Environmental Claim Validation Procedure for Energy Savings Associated with the Use of a Plastic Additive
+2805	Standard for Sustainability for Compostable Paper Bags
+2806	Outline of Investigation for Heavy Duty Flexible Power Cable
+2807	Environmental Claim Validation Procedure for PVC Free Products
+2808	ANSI/CAN/UL Energy Monitoring Equipment / ANSI/CAN/UL Équipement de surveillance de l'énergie
+2809	Environmental Claim Validation Procedure (ECVP) for Recycled Content
+2809	Environmental Claim Validation Procedure (ECVP) for Recycled Content
+2818	GREENGUARD Certification Program For Chemical Emissions For Building Materials, Finishes And Furnishings
+2819	GREENGUARD Certification Program for Chemical and Particle Emissions for Electronic Equipment
+2820	GREENGUARD Certification Program for Chemical Emissions for Cleaners and Cleaning Maintenance Systems
+2821	UL GREENGUARD Certification Program Method for Measuring and Evaluating Chemical Emissions From Building Materials, Finishes and Furnishings
+2822	GREENGUARD Certification Program Method For Measuring And Evaluating Chemical Emissions  From Cleaners And Cleaning Maintenance Systems Using Dynamic Environmental Chambers
+2823	GREENGUARD Certification Program Method for Measuring and Evaluating Chemical and Particle Emissions From Electronic Equipment Using Dynamic Environmental Chambers
+2825	RESILIENCY OF NETWORK INFRASTRUCTURE COMPONENTS
+2826	Standard for Sustainability for Paperboard
+2829	Standard for Sustainability for Laundry Bleach
+2830	Standard for Sustainability for Septic Tank Additives: Alternative
+2831	US NAVAL COMMERCIAL OFF THE SHELF (COTS) THREE-POLE, RATED MAXIMUM VOLTAGE 4.76, 8.25, AND 15KV, AC, VACUUM CIRCUIT BREAKERS, DRAWOUT TYPE, WITHOUT INTERNAL OVERCURRENT PROTECTION, AND ACCESSORIES/COMPONENTS FOR USE ON NON-NUCLEAR NAVAL COMBATANT SHIPS
+2839	Environmental Claim Validation Procedure for Halogen Free Products
+2840	Standard for Sustainability for Steel for Use in Construction Products
+2841	Sustainability Outline for Slate Style Tablet Computers
+2845	Standard for Sustainability for Personal Care Products
+2846	Fire Test of Plastic Water Distribution Plumbing Pipe for Visible Flame and Smoke Characteristics
+2849	Standard for Electrical Systems for eBikes / Norme sur Systèmes électriques pour vélos électriques
+2851	Outline of Investigation for Low-voltage Distribution Systems and Equipment for Desk and Similar Work-surface Installations
+2852	Outline of Investigation for Validation Protocol for Flaming and Smoldering Polyurethane Foam
+2854	Standard for Sustainability for Renewable Low-Impact Electricity Products
+2855	Outline of Investigation for Folding Rollaway Tool Carts
+2860	Environmental Claim Validation Procedure (ECVP) for Calculation of Recycling and Recovery Rate
+2861	Environmental Claim Validation Procedure (ECVP) for Calculation of Ozone Depleting Substances (ODS) Destruction Efficiency
+2871	Outline of Investigation for Electric Vehicle (EV) Service and Production Chargers
+2872	Outline of Investigation for Heat Detecting Circuit Interrupters
+2874	Outline of Investigation for Electric Motors for Use in Hazardous (Classified) Locations - Protection by Pressurized Atmosphere Maintained above the UFL
+2875	Outline of Investigation for Modular Cable System Assemblies and Fittings for Industrial Control, Signal and Power Distribution
+2876	Outline of Investigation for Remote Racking Devices for Switchgear and Controlgear
+2877	Power Supplies, Medium Voltage
+2879	Outline of Investigation for Nitrogen Generator Units for Use with Dry Pipe Sprinkler Systems
+2880	Outline of Investigation for Limited-Power Wire and Cable Using Copper-Clad Aluminum Conductors
+2882	Outline of Investigation for Radio Head Cable
+2883	Standard for Sustainability for Disposable Wipers
+2884	Environmental Claim Validation Procedure for Substance Content Claims
+2885	Outline of Investigation for Acid Gas, Acidity and Conductivity of Combusted Materials and Assessment of Halogens
+2889	Electrically Operated Attic Lifts
+2891	Sustainability Outline for Indoor Air Quality for Building Interiors
+2985	Sustainability Standard for Thermal Insulation
+2900-1	ANSI/CAN/UL Standard for Software Cybersecurity for Network-Connectable Products, Part1: General Requirements / Norme sur la Cybersécurité des logiciels pour les produits à connexion réseau, partie 1: exigences générales
+2900- 2-1	Software Cybersecurity for Network-Connectable Products, Part 2-1: Particular Requirements for Network Connectable Components of Healthcare and Wellness Systems / Cybersécurité des logiciels pour les produits à connexion réseau, partie 2-1 : exigences particulières pour les composants à connexion réseau des systèmes de soins de santé et de mieux-être
+2900- 2-2	Outline for Software Cybersecurity for Network-Connectable Products, Part 2-2: Particular Requirements for Industrial Control Systems
+2900- 2-2	Software Cybersecurity for Network-Connectable Products, Part 2-2: Particular Requirements for Industrial Control Systems
+2900- 2-3	ANSI/CAN/UL Standard for Software Cybersecurity for Network-Connectable Products, Part 2-3: Particular Requirements for Security and Life Safety Signaling Systems / ANSI/CAN/UL/ULC Norme de Cybersécurité des logiciels pour les produits à connexion réseau, partie 2-3 : exigences particulières pour les systèmes de signalisation de sûreté et de sécurité des personnes
+2901	ANSI/CAN/UL Antifreeze Solutions for Use in Fire Sprinkler Systems / ANSI/CAN/UL Norme sur les solutions antigel pour les systèmes de gicleurs
+2901A	Outline of Investigation for Corrosion Control Additives for Use in Fire Sprinkler Systems
+2903	Outline of Investigation for Solar Tracker Power and Control Cable
+2904	ANSI/CAN/UL Standard Method for Testing and Assessing Particle and Chemical Emissions from 3D Printers / Méthode standard pour tester et évaluer les émissions de particules et de produits chimiques des imprimantes 3D
+2905	 Environmental Claim Validation Procedure for Indoor Air Quality (IAQ) Sensor Performance
+2908	Environmental Claim Validation Procedure for Determining Particle Removal for Non-filter Electrical Appliances
+2930	Outline of Investigation for Cord-and-Plug-Connected Health Care Facility Outlet Assemblies
+2930	Outline of Investigation for Cord-and-Plug-Connected Health Care Facility Outlet Assemblies
+2932	Health Risk Assessment Process Requirements for Personal Care Products
+2949	Environmental Claim Validation Procedure (ECVP) for Estimating Energy Use of a Display
+2980	Environmental Claim Validation Procedure (ECVP) for Zero Ozone Depleting Substances (ODS)
+2984	CAN/UL Management of Public Risks - Principles and Guidelines / CAN/UL Norme sur la gestion des risques pour le public - Principes et lignes directrices
+2985	Sustainability Outline for Thermal Inslation
+2986	Recommended Practice for Measuring Incident Energy Exposure, UL RP 2986
+2987	Outline of Investigation for Steel Sprinkler Pipe Corrosion Indicators
+2988	Outline of Investigation for Universal Hybrid Power and Signal/Control Cables
+2989	Outline of Investigation for Tracer Wire
+2990	Environmental Claim Validation Procedure (ECVP) for By-Product Synergy
+2991	Standard for Sustainability for Absorbent
+2992	Environmental Claim Validation Procedure (ECVP) for Determination and Verification of Chemical Emissions from Water Activated Flameless Heat Packets
+2994	Environmental Claim Validation Procedure (ECVP) for Particulate, Mold, Bacteria, and/or Allergen Filtration Efficacy for Air Filters
+2995	Lifts for Swimming Pools and Spas
+2996	Outline of Investigation for In-Ground Boxes
+2996	IN-GROUND BOXES
+2997	Environmental Claim Validation Procedure (ECVP) for Determination and Verification of Chemical and Particle Emissions from Chafing Fuel Products During Combustion
+2997	Environmental Claim Validation
+Procedure (ECVP) for Determination
+and Verification of Chemical and
+Particle Emissions from Combustion
+Devices Used Indoors
+2998	Environmental Claim Validation Procedure (ECVP) for Zero Ozone Emissions from Air Cleaners
+2998	Environmental Claim Validation Procedure (ECVP) for Zero Ozone Emissions from Air Cleaners
+2999	Individual Commercial Office Furnishings
+3002	Recommended Practice for Determining the Depth of Cut On a Test Probe Contacting the Spinning Blade of a Table Saw, UL RP 3002
+3003	Distributed Generation Cables
+3004	Outline of Investigation for Medium Voltage Junction Boxes
+3030	ANSI/CAN/UL Standard for Unmanned Aircraft Systems / ANSI/CAN/UL Norme pour les systèmes d’aéronef sans pilote
+3036	GREENGUARD Certification of Residential Indoor Air Quality
+3100	Outline of Investigation for Automated Mobile Platforms (AMPs) 
+3140	Environmental Claim Validation Procedure (ECVP) for Comparing Environmental Impacts of Sterilization Equipment
+3200	Outline of Investigation for Performance Testing of Engine and Turbine Generators
+3223	Outline of Investigation for Data Center Certification
+3225	Outline of Investigation for Water Leak Detection Systems
+3300	Outline of Investigation for Service, Communication, Information, Education and Entertainment Robots
+3400	Outline of Investigation for Additive Manufacturing Facility Safety Management
+3401	Outline for 3D Printed Building Construction
+3420	Standard for Formulated Plastics Packaging
+3456	Outline of Investigation for Electric-Battery-Powered Carts For Commercial Use
+3566	Outline of Investigation for Copper-Clad Aluminum Conductors
+3600	Outline of Investigation for Measuring and Reporting Circular Economy Aspects of
+Products, Sites and Organizations
+3703	Solar Trackers
+3730	Standard for Photovoltaic Junction Boxes
+3741	ANSI/CAN/UL Photovoltaic Hazard Control / Contrôle des risques liés au dispositif photovoltaïque
+3801	Outline of Investigation for Fault Limiters
+3802	Subject 3802
+3992	Outline of Investigation for Patch Cords Terminating in Eight-Position Modular Plug Connectors - Performance
+3992A	Outline of Investigation for Communications Cable Assemblies used in Power over Local Area Network (LAN) Cable Networks
+4000	Outline of Investigation for High Speed Cables
+4040	Outline of Investigation for Portable Wet-Type Dust Collectors for Collection of Combustible Metals
+4041	Outline of Investigation for Outdoor Furniture
+4127	Outline of Investigation for Low Voltage Battery Cable
+4128	Outline of Investigation for Intercell and Intertier Connectors for Use in Electrochemical Battery System Applications
+4128	Outline of Investigation for Intercell and Intertier Connectors for Use in Electrochemical Battery System Applications
+4128	Outline of Investigation for Intercell and Intertier Connectors for Use in Electrochemical Battery System Applications
+4143	Wind Turbine Generator - Life Time Extension (LTE)
+4200	Subject 4200
+4200A	Products Incorporating Button Cell Batteries of Lithium and Similar Technologies
+4248-1	Fuseholders - Part 1: General Requirements
+4248-4	Fuseholders - Part 4: Class CC
+4248-5	Fuseholders - Part 5: Class G
+4248-6	Fuseholders - Part 6: Class H
+4248-6	Fuseholders - Part 6: Class H
+4248-8	Fuseholders - Part 8: Class J
+4248-9	Fuseholders - Part 9: Class K
+4248- 11	Fuseholders - Part 11: Type C (Edison Base) and Type S Plug Fuse
+4248- 12	Fuseholders - Part 12: Class R
+4248- 15	Fuseholders - Part 15: Class T
+4248- 17	Outline of Investigation for Fuseholders - Part 17: Class CF Fuses
+4248- 18	Fuseholders - Part 18: Photovoltaic
+4248- 19	Fuseholders - Part 19: Photovoltaic Fuseholders
+4299	Outline of Investigation for Power Over HDBaseT (PoH) Cables
+4300	Outline of Investigation for Electrically Heated Insulated Covers for Compressed Gas Cylinders for Use in Hazardous (Classified) Locations
+4400	STANDARD FOR SAFETY OF PREMISES, BUILDINGS AND EQUIPMENT UTILIZED FOR THE CULTIVATION, PROCESSING AND PRODUCTION OF CANNABIS / NORME SUR LA SÉCURITÉ DES LOCAUX, DES BÂTIMENTS ET DE L'ÉQUIPEMENT UTILISÉS POUR LA CULTURE, LA TRANSFORMATION ET LA PRODUCTION DU CANNABIS
+4402	Indoor Air Quality in Buildings and Facilities Utilized for the Cultivation, Production and Processing of Cannabis
+4500	Environmental Claim Validation Procedure (ECVP) for Cleaning Solution Savings for Floor Scrubber Machines
+4600	Evaluation of Autonomous Products
+4703	Standard for Photovoltaic Wire
+4730	Nameplate, Datasheet, and Sampling Requirements of Photovoltaic Modules
+5085	Subject 5085
+5085	Subject 5085
+5085-1	Low Voltage Transformers - Part 1: General Requirements
+5085-2	Low Voltage Transformers - Part 2: General Purpose Transformers
+5085-3	Low Voltage Transformers - Part 3: Class 2 and Class 3 Transformers
+5085-4	Outline of Investigation for Construction-Site Transformers for Temporary Installations
+5086	Subject 5086
+5087	Subject 5087
+5500	Remote Software Updates
+5703	Determination of the Maximum Operating Temperature Rating of Photovoltaic (PV) Backsheet Materials
+5770	Recommended Practice for Evaluating Cables for Use in Repeated Flexing Applications, UL RP 5770
+5800	ANSI/CAN/UL Battery Fire Containment Products / Produits de confinement d'incendie de
+batteries
+6059	Particular Requirements for Switches for Tools
+6131	Subject 6131
+6131	Subject 6131
+6141	Standard for Wind Turbines Permitting Entry of Personnel
+6142	Small Wind Turbine Systems
+6171	Subject 6171
+6200	ANSI/CAN/UL/ULC Standard for Controllers for Use in Power Production / ANSI/CAN/UL/ULC Norme sur les appareils de commande utilisés dans la production d'énergie
+6200	Standard for Controllers for Use in Power Production / Norme sur les appareils de commande utilisés dans la production d'énergie
+6420	Equipment Used for System Isolation and Rated as a Single Unit
+6500	Standard for Audio/Video and Musical Instrument Apparatus for Household, Commercial, and Similar General Use
+6703	Standard for Connectors for Use in Photovoltaic Systems
+6944	Subject 6944
+6951	Subject 6951
+7001	Sustainability Standard for Household Refrigeration Appliances 
+7002	Sustainability Standard for Household
+Portable and Floor Care Appliances
+7003	Sustainability for Household Clothes Washers
+7003	Sustainability for Household Clothes Washers
+7004	Sustainability for Household Cooking Appliances
+7004	Sustainability Standard for Household Cooking Appliances
+7005	Sustainability for Household Clothes  Drying Appliances
+7005	Sustainability for Household Clothes Drying Appliances
+7006	Sustainability for Household Room Air Conditioning Appliances
+7007	Sustainability for Household Microwave Oven Appliances
+7008	Sustainability Standard for Household Dehumidifier Appliances
+7008	Sustainability Standard for Household Dehumidifier Appliances
+7008	Sustainability Standard for Household Dehumidifier Appliances
+7010	Environmental Claim Validation Procedure (ECVP) for Formaldehyde Reduction
+7103	Outline of Investigation for Building-Integrated Photovoltaic Roof Coverings
+712.1	STANDARD FOR THERMAL INSULATION - LIGHT DENSITY, OPEN CELL SPRAY APPLIED SEMI-RIGID POLYURETHANE FOAM - MATERIAL SPECIFICATION / NORME SUR L’ISOLANT THERMIQUE EN MOUSSE DE POLYURÉTHANE SEMI-RIGIDE PULVÉRISÉE, DE FAIBLE DENSITÉ ET À ALVÉOLES OUVERTS - SPÉCIFICATIONS RELATIVES AU MATÉRIAU
+713.2	STANDARD FOR SYSTEM TESTING 2 - ML / NORME SUR LES SYSTEM TESTING 2 - ML FILETÉS POUR TUYAUX D'INCENDIE DE 38 MM ET DE 65 MM
+717.1	STANDARD FOR FLAT WALL INSULATING CONCRETE FORM (ICF) UNITS / NORME SUR LES COFFRAGES À BÉTON ISOLANTS POUR MURS PLATS
+717.1	STANDARD FOR FLAT WALL INSULATING CONCRETE FORM (ICF) UNITS - MATERIAL PROPERTIES / NORME SUR LES UNITÉS DE COFFRAGE À BÉTON ISOLANT POUR MURS PLATS - PROPRIÉTÉS DES MATÉRIAUX
+7700-1	PORTABLE PNEUMATIC TOOLS
+7700- 2-1	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Drills and Rotary Hammers
+7700- 2-2	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Screwdrivers, Ratchets and Impact Wrenches
+7700- 2-3	Outline for Portable Pneumatic Tools; Part 2: Particular Requirements for Grinders
+7700- 2-4	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Sanders, Polishers and Buffers
+7700- 2-5	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Circular Saws and Circular Knives
+7700- 2-6	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Percussion Tools and Percussion Hammers
+7700- 2-8	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Shears and Nibblers
+7700- 2-11	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Reciprocating Saws
+7700- 2-14	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Planers
+7700- 2-17	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Routers and Trimmers
+7700- 2-30	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Nailers, Staplers and Other Fastening Tools
+7700- 2-33	Outline of Investigation for Portable Pneumatic Tools; Part 2: Particular Requirements for Portable Band Saws
+7700- 2-37	Outline of Investigation for Pneumatic Tools; Part 2: Particular Requirements for Plate Jointers
+8139	Electrical Systems of Electronic Cigarettes and Vaping Devices / Systèmes électriques des cigarettes électroniques et des dispositifs de vapotage
+8203	Outline of Investigation for Performance Testing for Ingress of Fibrous Indoor Dust
+8203	Test Method for Performance on the Ingress of Fibrous Indoor Dust
+8521	Outline of Investigation for Aboveground Container Refueling Systems for LP-Gas
+8521	Outline of Investigation for Aboveground Container Refueling Systems for LP-Gas
+8703	CONCENTRATOR PHOTOVOLTAIC MODULES AND ASSEMBLIES
+8703	CONCENTRATOR PHOTOVOLTAIC MODULES AND ASSEMBLIES
+8750	Standard for Light Emitting Diode (LED) Equipment for Use in Lighting Products
+8752	Organic Light Emitting Diode (OLED) Panels
+8752	Standard for Organic Light Emitting Diode (OLED) Panels / Norme relative aux panneaux à diodes électroluminescentes organiques (DELO)
+8753	Field-Replaceable Light Emitting Diode (LED) Light Engines	
+8753	Standard for Field-Replaceable Light Emitting Diode (LED) Light Engines / Norme relative aux systèmes avec module et convertisseur pour diodes électroluminescentes (DEL) remplaçables sur place
+8754	Holders, Bases and Connectors for Solid-State (LED) Light Engines and Arrays
+8754	Standard for Holders, Bases, and Connectors for Solid-State (LED) Light Engines and Arrays / Norme relative à l'équipement et aux systèmes basse tension des treillis de plafond suspendu
+8782	Outline of Investigation for Pollution Control Units for Commercial Cooking Operations
+8800	ANSI/CAN/UL Standard for Horticultural Lighting Equipment And Systems  / ANSI/CAN/UL Norme sur l'équipement et les systèmes d'éclairage d'horticulture 
+8801	Outline of Investigation for Photovoltaic-Powered Luminaire Systems
+8802	Outline of Investigation for Germicidal Systems
+9004	Product Category Rule (PCR) for Part B: Builders Hardware
+9005	Product Category Rules (PCR) for Part B: Commercial Steel Doors and/or Steel Frames
+9540	ANSI/CAN/UL Standard for Energy Storage Systems and Equipment / Norme De Systèmes et équipement de stockage de l'énergie
+9540A	ANSI/CAN/UL Standard for Test Method for Evaluating Thermal Runaway Fire Propagation in Battery Energy Storage Systems / ANSI/CAN/UL Norme sur la méthode d’essai pour l’évaluation de la propagation du feu par emballement thermique dans les systèmes de stockage d’énergie en batterie
+9595	ANSI/CAN/UL Standard for Factory Follow-Up on Personal Flotation Devices (PFDs) / ANSI/CAN/UL Norme pour le suivi en usine des équipements individuels de flottabilité (EIF)
+9691	Recommended Practice for Nameplates for Use in Electrical Installations
+9703	Outline of Investigation for Distributed Generation Wiring Harnesses
+9705	FIRE TESTS - FULL-SCALE ROOM TEST FOR SURFACE PRODUCTS / ESSAIS AU FEU - ESSAI DANS UNE PIÈCE EN VRAIE GRANDEUR POUR LES PRODUITS DE SURFACE
+9741	Outline of Investigation for Bidirectional Electric Vehicle (EV) Charging System Equipment
+9798	Environmental Claim Validation Procedure (ECVP) for Biobased Content
+9990	Outline of Investigation for Information and Communication Technology (ICT) Power Cables
+9990	Outline for Information and Communication Technology (ICT) Power Cables
+10001	Product Category Rules for Power Inverter Products
+10003	Product Category Rule (PCR) Guidance for Wooden Pallets, EPD Requirements
+10004	Product Category Rules for Printers
+10005	Product Category Rules for Three-Zone Multi-Temperature Transport Refrigeration Units
+10006	Product Category Rules (PCR) for preparing an Environmental Product Declaration (EPD) for the Product Category: Tires
+10006J	Product Category Rules (PCR) for preparing an Environmental Product Declaration (EPD) for the Product Category: Tires (Japanese)
+10007	Product Category Rules for Hand Dryers
+10010	Product Category Rules for Building Related Products and Services (Version 2.0)
+10010	Product Category Rules for Building Related Products and Services (Version 1.3)
+10010	Product Category Rules for Building Related Products and Services (Version 3.0)
+10010	Product Category Rules for Building Related Products and Services (Version 3.1)
+10010	Product Category Rules for Building Related Products and Services (Version 3.2)
+10010- 1	Product Category Rules (PCR) Guidance for Building-Related Products and Services Part B: Building
+Envelope Thermal Insulation EPD Requirements
+10010- 2	Product Category Rules (PCR) Guidance for 
+Building-Related Products and Services Part B: Sanitary Ceramic EPD Requirements (Version 2.1)
+10010- 3	Product Category Rules for Part B: Mechanical, Specialty, Thermal, and Acoustic Insulation Product EPD Requirements
+10010- 4	Product Category Rules Part B: Water Cooled Chiller EPD Requirements (Version 2.0)
+10010- 5	Product Category Rules for Part B: Insulated Metal Panels, Metal Composite Panels, and Metal Cladding: Roof and Wall Panels
+10010- 6	Product Category Rules (PCR) Guidance for Building-Related Products and Services Part B: Plumbing Vessel EPD Requirements(Version 2.0)
+10010- 7	Product Category Rules (PCR) Guidance for Building-Related Products and Services Part B: Flooring EPD Requirements
+10010- 8	Addednum for the Product Category Rules (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD for Bathroom Fittings and Showers
+10010- 9	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Structural and Architectural Wood Products EPD Requirements (Version 1.1)
+10010- 10	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Wall and Door Protection EPD Requirements
+10010- 11	Product Category Rules (PCR) Guidance for Building Related Products and Services Part B:
+Asphalt Shingles, Built-up Asphalt Membrane Roofing and Modified Bituminous Membrane Roofing EPD Requirements
+10010- 12	Product Category Rules for Building-Related Products and Services Part B: Metal Ceiling and
+Interior Wall Panel System EPD Requirements
+10010- 13	Product Category Rules for Building-Related Products and Services Part B: Builders Hardware EPD Requirements
+10010- 14	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD for Products of aluminium and aluminium alloys
+10010- 15	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD for Building metals
+10010- 16	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD Coatings with organic binders
+10010- 17	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD for Curtain Walling
+10010- 18	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD for Metal Ceilings
+10010- 19	Product Category Rule (PCR) for preparing an environmental product declaration (EPD) for PCR: IBU Part B: Coatings with Organic Binders and EDF EPD for Paints
+10010- 20	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD for Technical Textiles
+10010- 21	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Requirements on the EPD for thin walled profiles and profiled panels of metal
+10010- 22	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Piping systems for use for sewage and storm water (under gravity)
+10010- 23	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Wire and Cable
+10010- 24	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Engineered Stone 
+10010- 25	Product Category Rule (PCR) for Preparing an Environment Product Declaration (EPD) for Product Group Cladding Systems Products
+10010- 26	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Non-Metal Ceiling Panel EPD Requirements
+10010- 27	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Commercial Steel Doors and Steel Frames EPD
+Requirements
+10010- 28	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Kitchen and Bath Fixture Fittings and Accessory Products EPD Requirements
+10010- 29	Product Category Rules for Part B: Concrete Masonry and Segmental Concrete Paving Product EPD Requirements
+10010- 30	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Joint Compound EPD Requirements
+10010- 31	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Processed Glass EPD Requirements
+10010- 32	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Building and Construction Sealant EPD
+Requirements
+10010- 33	Product Category Rules for preparing an environmental product declaration (EPD): ASTM PCR for Single Ply Roofing Membranes
+10010- 34	Product Category Rule (PCR) Guidance for Building-Related Products and Services Part B: Designated Steel Construction Product EPD Requirements	
+10377	CAN/UL Standard for Consumer Product Safety - Guidelines for Suppliers / Sécurité des produits de consommation  - Lignes directrices pour les fournisseurs
+116875	Outline for Lead (Pb) Content Verification of Products in Contact with Potable Water
+120002	Certificate Standard for AEx Equipment for Hazardous (Classified) Locations
+120101	Standard for Definitions and Information Pertaining to Electrical Equipment in Hazardous Locations
+120202	Recommendations for the Preparation, Content, and Organization of Intrinsic Safety Control Drawings
+120404	Pressurized Enclosures
+121201	Nonincendive Electrical Equipment for Use  in Class I and II, Division 2 and Class III, Divisions 1 and 2 Hazardous (Classified) Locations
+121203	Portable Electronic Products Suitable for Use in Class I and II, Division 2, Class I Zone 2 and Class III, Division 1 and 2 Hazardous (Classified) Locations
+121203	Portable Electronic Products Suitable for Use in Class I and II, Division 2, Class I, Zone 2 and Class III, Division 2 and 2 Hazardous (Classified) Locations
+121303	Guide for Use of Detectors for Flammable Gases
+122001	General Requirements for Electrical Ignition Systems for Internal Combustion Engines in Class I, Division 2 or Zone 2, Hazardous (Classified) Locations
+122701	Requirements for Process Sealing Between Electrical Systems and Flammable or Combustible Process Fluids
+122701	Requirements for Process Sealing Between Electrical Systems and Flammable or Combustible Process Fluids
+12402- 4	ANSI/CAN/UL Personal Flotation Devices - Part 4: Lifejackets, Performance Level 100 - Safety Requirements / Équipements individuels de flottabilité - partie 4 : gilets de sauvetage, niveau de performance 100 - exigences de sécurité
+12402- 5	Standard for Personal Flotation Devices - Part 5: Buoyancy Aids (Level 50) - Safety Requirements / Norme de Équipements individuels de flottabilité/Vêtements de flottaison individuels  - Partie 5 : Aides à la flottabilité (niveau 50) - Exigences de sécurité
+12402- 9	Standard for Personal Flotation Devices - Part 9: Test Methods / Equipements individuels de flottabilite/ Vetements de flottaison individuels - Partie 9 : Methodes d'essai
+15027- 2	ANSI/CAN/UL Standard for Immersion suits - Part 2: Abandonment Suits, Requirements Including Safety / Combinaisons d’immersion – Partie 2 :
+Combinaisons d’abandon, exigences,
+y compris la sécurité
+15027- 3	ANSI/CAN/UL Standard for Immersion Suits - Part 3: Test Methods / Combinaisons de protection thermique en cas d'immersion - Partie 3 : Méthodes d'essai
+24480	Design Guideline for Promoting Circadian Entrainment with Light for Day-Active People
+60034- 1	Standard for Rotating Electrical Machines - Part 1: Rating and Performance
+60034- 2-1	Rotating electrical machines - Part 2-1: Standard methods for determining losses and efficiency from tests (excluding machines for traction vehicles)
+60034- 5	Rotating Electrical Machines - Part 5: Degrees of Protection Provided by the Integral Design of Rotating Electrical Machines (IP Code) - Classification
+60065	Standard for Audio, Video and Similar Electronic Apparatus - Safety Requirements
+60079- 0	Explosive Atmospheres - Part 0: Equipment - General Requirements
+60079- 0	Explosive Atmospheres - Part 0: Equipment - General Requirements
+60079- 1	Explosive Atmospheres - Part 1: Equipment Protection by Flameproof Enclosures “d”
+60079- 2	Explosive Atmospheres - Part 2: Equipment Protection by Pressurized Enclosures "p"
+60079- 2	Explosive Atmospheres - Part 2: Equipment Protection by Pressurized Enclosure “p”
+60079- 5	Explosive Atmospheres - Part 5: Equipment protection by powder filling 'q'
+60079- 6	Explosive atmospheres - Part 6: Equipment protection by oil immersion 'o'
+60079- 7	Electrical Apparatus for Explosive Gas Atmospheres - Part 7: Increased Safety 'e'
+60079- 7	Explosive Atmospheres - Part 7: Equipment protection by increased safety 'e'
+60079- 11	Explosive Atmospheres - Part 11: Equipment Protection by Intrinsic Safety "i"
+60079- 13	Explosive Atmospheres - Part 13: Equipment protection by pressurized room "p" and artificially ventilated room "v"
+60079- 15	Electrical Apparatus for Explosive Gas Atmospheres - Part 15: Construction, Test and Marking of Type of Protection 'n' Electrical Apparatus
+60079- 15	Explosive atmospheres - Part 15: Equipment protection by type of protection "n"
+60079- 17	Explosive Atmospheres – Part 17: Electrical Installations Inspection and Maintenance
+60079- 18	Electrical Apparatus for Explosive Gas Atmospheres - Part 18: Construction, Test and Marking of Type of Protection Encapsulation 'm' Electrical Apparatus
+60079- 18	Explosive atmospheres - Part 18: Equipment protection by encapsulation “m”
+60079- 25	Explosive Atmospheres – Part 25: Intrinsically Safe Electrical Systems
+60079- 26	Explosive Atmospheres – Part 26: Equipment with Equipment Protection Level (EPL) Ga
+60079- 28	Explosive Atmospheres - Part 28: Protection of Equipment and Transmission Systems Using Optical Radiation
+60079- 29-1	Explosive Atmospheres - Part 29-1: Gas Detectors - Performance Requirements of Detectors for Flammable Gases
+60079- 29-2	Explosive Atmospheres – Part 29-2: Gas Detectors – Selection, Installation, Use and Maintenance of Detectors for Flammable Gases and Oxygen
+60079- 29-4	Explosive Atmospheres - Part 29-4: Gas Detectors - Performance Requirements of Open Path Detectors for Flammable Gases 
+60079- 30-1	Explosive Atmospheres - Part 30-1: Electrical Resistance Trace Heating - General and Testing Requirements
+60079- 31	Explosive Atmospheres - Part 31: Equipment Dust Ignition Protection by Enclosure "t"
+60086- 4	Primary Batteries - Part 4: Safety of Lithium Batteries
+60320- 1	Appliance Couplers for Household and Similar General Purposes - Part 1: General Requirements
+60320- 1	Appliances Couplers for Household and Similar General Purposes - Part 1: General Requirements
+60320- 3	Appliance Couplers for Household and
+Similar General Purposes – Part 3:
+Standard Sheets and Gauges
+60335- 1	Standard for Safety of Household and Similar Electrical Appliances, Part 1:  General Requirements
+60335- 1	Standard for Safety of Household and Similar Electrical Appliances, Part 1:  General Requirements
+60335- 1	Safety of Household and Similar Appliances, Part 1: General Requirements
+60335- 2-3	Standard for Safety of Household and Similar Electrical Appliances, Part 2:  Particular Requirements for Electric Irons
+60335- 2-8	Standard for Safety for Household and Similar Electrical Appliances, Part 2:  Particular Requirements for Shavers, Hair Clippers, and Similar Appliances
+60335- 2-8	Standard for Safety for Household and Similar Electrical Appliances, Part 2:  Particular Requirements for Shavers, Hair Clippers, and Similar Appliances
+60335- 2-14	Subject 60335-2-14 Household and Similar Electrical Appliances, Part 2: Particular Requirements for for Kitchen Machines
+60335- 2-14	Subject 60335-2-14
+60335- 2-24	Safety Requirements for Household and Similar Electrical Appliances, Part 2: Particular Requirements for Refrigerating Appliances, Ice-Cream Appliances and Ice-Makers
+60335- 2-24	Safety Requirements for Household and Similar Electrical Appliances, Part 2: Particular Requirements for Refrigerating Appliances, Ice-Cream Appliances and Ice-Makers
+60335- 2-25	Subject for Household and Similar Electrical Appliances
+60335- 2-29	Household and similar electrical appliances - Safety - Part 2-29: Particular
+requirements for battery chargers
+60335- 2-32	Subject 60335-2-32
+60335- 2-34	Standard for Household and Similar Electrical Appliances, Part 2: Particular Requirements for Motor-Compressors
+60335- 2-34	Household and Similar Electrical Appliances - Safety - Part 2-34: Particular Requirements for Motor-Compressors
+60335- 2-40	Household And Similar Electrical Appliances - Safety - Part 2-40: Particular Requirements for Electrical Heat Pumps, Air-Conditioners and Dehumidifiers
+60335- 2-52	Household and similar electrical appliances - Safety - Part 2-52: Particular requirements for oral hygiene appliances
+60335- 2-67	Household and Similar Electrical Appliances - Safety - Part 2-67: Particular Requirements for Floor Treatment Machines, for Commercial Use
+60335- 2-68	Standard for Household And Similar Electrical Appliances - Safety - Part 2-68: Particular Requirements for Spray Extraction Machines, for Commercial Use
+60335- 2-69	Household and Similar Electrical Appliances - Safety - Part 2-69: Particular requirements for wet and dry vacuum cleaners, including power brush, for commercial use	
+60335- 2-72	Household and Similar Electrical Appliances - Safety - Part 2-72: Particular Requirements for Floor Treatment Machines With or Without Traction Drive, for Commercial Use
+60335- 2-79	Household and Similar Electrical Appliances - Safety - Part 2-79: Particular Requirements for High Pressure Cleaners and Steam Cleaners
+60335- 2-82	Subject 60335-2-82
+60335- 2-89	Household and Similar Electrical Appliances –
+Safety – Part 2-89: Particular Requirements for Commercial Refrigerating Appliances with an Incorporated or Remote Refrigerant Unit or Compressor
+60335- 2-1000	Standard for Safety for Household and Similar Electrical Appliances: Particular Requirements for Electrically Powered Pool Lifts
+60384- 14	Safety Requirements for Fixed Capacitors for Use in Electronic Equipment - Part 14: Sectional Specification: Fixed Capacitors for Electromagnetic Interference Suppression and Connection to the Supply Mains
+60601- 1	Medical Electrical Equipment, Part 1: General Requirements for Safety
+60691	Standard for Thermal-Links - Requirements and Application Guide
+60692	Outline of Investigation for Circuit Interrupters with Fire Extinguishing Agent for Use in Electrical Appliances and Components
+60730- 1	Automatic Electrical Controls for Household and Similar Use; Part 1: General Requirements
+60730- 1	Automatic Electrical Controls - Part 1: General Requirements
+60730- 2-3	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Thermal Protectors for Ballasts for Tubular Fluorescent Lamps
+60730- 2-4	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Thermal Motor Protectors for Motor-Compressors of Hermetic and Semi-Hermetic Type
+60730- 2-4	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Thermal Motor Protectors for Motor-Compressors of Hermetic and Semi-Hermetic Type
+60730- 2-5	Subject 60730-2-5
+60730- 2-6	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Automatic Electrical Pressure Sensing Controls Including Mechanical Requirements
+60730- 2-7	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Timers and Time Switches
+60730- 2-7	Automatic Electrical Controls - Part 2-7: Particular Requirements for Timers and Time Switches
+60730- 2-8	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Electrically Operated Water Valves, Including Mechanical Requirements
+60730- 2-8	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Electrically Operated Water Valves, Including Mechanical Requirements
+60730- 2-9	Standard for Automatic Electrical Controls For Household and Similar Use; Part 2: Particular Requirements For Temperature Sensing Controls
+60730- 2-9	Automatic Electrical Controls - Part 2-9: Particular Requirements for Temperature Sensing Controls
+60730- 2-10	Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Motor Starting Relays
+60730- 2-11	Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Energy Regulators
+60730- 2-12	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Electrically Operated Door Locks
+60730- 2-13	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Humidity Sensing Controls
+60730- 2-14	Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Electric Actuators
+60730- 2-14	Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Electric Actuators
+60730- 2-15	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Automatic Electrical Air Flow, Water Flow and Water Level Sensing Controls
+60730- 2-18	Standard for Automatic Electrical Controls for Household and Similar Use; Part 2: Particular Requirements for Automatic Electrical Water and Air Flow Sensing Controls Including Mechanical Requirements
+60730- 2-22	Automatic Electrical Controls - Part 2-22: Particular Requirements for Thermal Motor Protectors
+60743	Live Working -  Terminology for Tools, Equipment and Devices
+60745- 1	Hand-Held Motor-Operated Electric Tools - Safety - Part 1: General Requirements
+60745- 2-1	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-1: Particular Requirements for Drills and Impact Drills
+60745- 2-2	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-2: Particular Requirements for Screwdrivers and Impact Wrenches
+60745- 2-3	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-3: Particular Requirements for Grinders, Polishers and Disk-Type Sanders
+60745- 2-4	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-4: Particular Requirements for Sanders and Polishers Other Than Disk Type
+60745- 2-5	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-5: Particular Requirements for Circular Saws
+60745- 2-6	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-6: Particular Requirements for Hammers
+60745- 2-8	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-8: Particular Requirements for Shears and Nibblers
+60745- 2-9	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-9: Particular Requirements for Tappers
+60745- 2-11	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-11: Particular Requirements for Reciprocating Saws
+60745- 2-12	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-12: Particular Requirements For Concrete Vibrators
+60745- 2-13	Hand-Held Motor-Operated Electric Tools – Safety – Part 2-13: Particular Requirements for Chain Saws
+60745- 2-14	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-14: Particular Requirements for Planers
+60745- 2-15	Subject 60745-2-15
+60745- 2-16	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-16: Particular Requirements for Tackers
+60745- 2-17	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-17: Particular Requirements for Routers and Trimmers
+60745- 2-18	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-18: Particular Requirements For Strapping Tools
+60745- 2-19	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-19: Particular Requirements For Jointers
+60745- 2-20	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-20: Particular Requirements For Band Saws
+60745- 2-21	Hand-Held Motor-Operated Electric Tools - Safety - Part 2-21: Particular Requirements For Drain Cleaners
+60745- 2-22	Subject 60745-2-22
+60745- 2-23	Hand-Held Motor-Operated electric Tools - Safety - Part 2-23: Particular Requirements for Die Grinders and Small Rotary Tools
+60832- 1	Live working - Insulating sticks and attachable devices - Part 1: Insulating sticks
+Travaux sous tension – Perches isolantes et outils adaptables – Partie 1: Perches isolantes
+60832- 2	Live working – Insulating sticks and attachable devices – Part 2: Attachable devices
+Travaux sous tension – Perches isolantes et outils adaptables – Partie 2: Outils adaptables
+60839- 11-1	Alarm and Electronic Security Systems - Part 11-1: Electronic Access Control Systems - System and Components Requirements
+60855- 1	Live working - Insulating foam-filled tubes and solid rods - Part 1: Tubes and rods of a circular cross-section / Travaux sous tension - Tubes isolants repmplis de mousse et tiges isolants pleines - Partie 1: Tubes et tiges de section circulaire
+60895	Live Working – Conductive Clothing For Use at Nominal Voltage Up to 800 kV a.c. and ± 600 kV d.c.
+60900	Hand Tools for Live Working up to 1000 V a.c. and 1500 V d.c.
+Outils à Main Pour Travaux Sous Tension Jusqu'à 1 000 V en Courant Alternatif et  1 500 V en Courant Continu
+60903	Live working – Electrical insulating gloves
+Travaux sous tension – Gants isolants électriques
+60939- 3	Passive filter units for electromagnetic interference suppression - Part 3: Passive filter units for which safety tests are appropriate
+60947- 1	Standard for Low-Voltage Switchgear and Controlgear - Part 1: General Rules
+60947- 4-1	Standard for Low-Voltage Switchgear and Controlgear - Part 4-1: Contactors and motor-starters - Electromechanical contactors and motor-starters
+60947- 4-2	Voltage Switchgear and Controlgear - Part 4-2: Contactors and Motor-Starters - AC Semiconductor Motor Controllers and Starters
+60947- 5-1	Low-Voltage Switchgear and Controlgear – Part 5-1: Control Circuit Devices and Switching Elements – Electromechanical Control Circuit Devices
+60947- 5-2	Standard for Low-Voltage Switchgear and Controlgear - Part 5-2: Control circuit devices and switching elements - Proximity switches
+60947- 5-5	Standard for Low-Voltage Switchgear and Controlgear - Part 5-5: Control circuit devices and switching elements - Electrical emergency stop device with mechanical latching function
+60947- 7-1	Standard for Low-Voltage Switchgear And Controlgear - Part 7-1: Ancillary equipment - Terminal blocks for copper conductors
+60947- 7-2	Standard for Low-Voltage Switchgear and Controlgear - Part 7-2: Ancillary Equipment - Protective Conductor Terminal Blocks for Copper Conductors
+60947- 7-3	Low-Voltage Switchgear and Controlgear - Part 7-3: Ancillary Equipment - Safety Requirements for Fuse Terminal Blocks
+60947- 7-4	Low-Voltage Switchgear and Controlgear - Part 7-4: Ancillary equipment - PCB terminal blocks for copper conductors
+60950- 1	Information Technology Equipment - Safety - Part 1: General Requirements
+60950- 21	Information Technology Equipment - Safety - Part 21: Remote Power Feeding
+60950- 22	Information Technology Equipment - Safety - Part 22: Equipment to be Installed Outdoors
+60950- 23	Information Technology Equipment - Safety - Part 23: Large Data Storage Equipment
+60974- 1	Standard for Arc Welding Equipment; Part 1: Welding Power Sources
+60984	Sleeves of Insulating Material for Live Working
+Protège-Bras en Matériaux Isolants Pour Travaux Electriques
+61010- 1	Safety Requirements for Electrical Equipment for Measurement, Control, and Laboratory Use - Part 1: General Requirements
+61010- 2-010	Safety Requirements for Electrical Equipment for Measurement, Control and Laboratory Use - Part 2-010: Particular Requirements for Laboratory Equipment for the Heating of Materials
+61010- 2-011	Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-011: Particular Requirements for Refrigerating Equipment
+61010- 2-012	Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-012: Particular Requirements for Climatic and Environmental Testing and Other Conditioning Equipment
+61010- 2-020	Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-020: Particular Requirements for Laboratory Equipment for Laboratory Centrifuges
+61010- 2-030	Safety requirements for Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-030: Particular Requirements for Equipment Having Testing or Measuring Circuits
+61010- 2-032	Safety Requirements for Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-032: Particular Requirements for Hand-Held and Hand-Manipulated Current Sensors for Electrical Test and Measurement
+61010- 2-033	Safety Requirements for Electrical Equipment for Measurement, Control and Laboratory Use – Part 2-033: Particular Requirements for Hand-Held Multimeters for Domestic and Professional Use, Capable of Measuring Mains Voltage
+61010- 2-034	Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-034: Particular Requirements for Measurement Equipment for Insulation Resistance and Test Equipment for Electric Strength
+61010- 2-040	Electrical Equipment for Measurement, Control, and Laboratory Use – Part 2-040: Particular Requirements for Sterilizers and Washer-Disinfectors Used to Treat Medical Materials
+61010- 2-051	Safety Requirements for Electrical Equipment for Measurement, Control and Laboratory Use - Part 2-051: Particular Requirements for Laboratory Equipment for Mixing and Stirring
+61010- 2-061	Safety Requirements for Electrical Equipment for Measurement, Control and Laboratory Use - Part 2-061: Particular Requirements for Laboratory Atomic Spectrometers with Thermal Atomization and Ionization
+61010- 2-081	Safety Requirements for Electrical Equipment for Measurement, Control and Laboratory Use - Part 2-081: Particular Requirements for Automatic and Semi-Automatic Laboratory Equipment for Analysis and Other Purposes
+61010- 2-091	Standard for Safety Requirements for Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-091: Particular Requirements for Cabinet X-Ray Systems
+61010- 2-101	Safety Requirements for Electrical Equipment for Measurement, Control and Laboratory Use - Part 2-101: Particular Requirements for In Vitro Diagnostic (IVD) Medical Equipment
+61010- 2-201	Standard for Safety Requirements for Electrical Equipment for Measurement, Control, and Laboratory Use - Part 2-201: Particular Requirements for Control Equipment
+61010- 031	Safety Requirements for Electrical Equipment for Measurement, Control and Laboratory Use - Part 031: Safety requirements for hand-held probe assemblies for electrical measurement and test
+61010A- 1	Standard for Electrical Equipment for Laboratory Use; Part 1: General Requirements
+61010A- 1	Electrical Equipment For Laboratory Use; Part 1:  General Requirements
+61058- 1	Switches for Appliances - Part 1: General Requirements
+61058- 1-1	Switches for Appliances - Part 1-1: Requirements for Mechanical Switches
+61058- 1-2	Switches for Appliances - Part 1-2: Requirements for Electronic Switches
+61058- 2-5	Switches for Appliances - Part 2-5: Particular Requirements for Change-Over Selectors
+61058- 2-6	Switches for appliances - Part 2-6: Particular requirements for switches used in electric motoroperated hand-held tools, transportable tools and lawn and garden machinery
+61111	Live working - Electrical insulating matting 
+Travaux sous tension – Tapis isolants électriques
+61112	Live Working – Electrical Insulating Blankets
+Travaux sous tension – Nappes isolantes électriques
+61131- 2	Programmable Controllers - Part 2: Equipment Requirements and Tests
+61215- 1	Terrestrial photovoltaic (PV) modules - Design qualification and type approval - Part 1: Test requirements
+61215- 1-1	Terrestrial photovoltaic (PV) modules - Design qualification and type approval - Part 1-1: Special requirements for testing of crystalline silicon photovoltaic (PV) modules
+61215- 1-2	Terrestrial photovoltaic (PV) modules - Design qualification and type approval - Part 1-2: Special requirements for testing of thin-film Cadmium Telluride (CdTe) based photovoltaic (PV) modules
+61215- 1-3	Terrestrial photovoltaic (PV) modules - Design qualification and type approval - Part 1-3: Special requirements for testing of thin-film amorphous silicon based photovoltaic (PV) modules
+61215- 1-4	Terrestrial photovoltaic (PV) modules - Design qualification and type approval - Part 1-4: Special requirements for testing of thin-film Cu(In,Ga)(S,Se)2 based photovoltaic (PV) modules
+61215- 2	Terrestrial photovoltaic (PV) modules - Design qualification and type approval - Part 2: Test procedures
+61229	Rigid Protective Covers for Live Working on a.c. Installations
+Protecteurs Rigides pour Travaux Sous Tension sur Des Installations à Courant Alternatif
+61230	Live working -- Portable Equipment for Grounding and Bonding
+Travaux sous tension -- Dispositifs Portables Pour la Mise à la Terre et la Continuité des Masses
+61235	Live working -- Insulating Hollow Tubes for Electrical Purposes
+Travaux Sous Tension -- Tubes Creux Isolants Pour Travaux Electriques
+61236	Live working – Saddles, stick clamps and their accessories
+Travaux sous tension – Selles, manchons et leurs accessoires
+61243- 1	Live working -- Voltage detectors -- Part 1: Capacitive type to be used for voltages exceeding 1kV a.c.
+Travaux sous tension -- Détecteurs de tension -- Partie 1: Détecteurs de type capacitif pour usage sur des tensions alternatives de plus de 1 kV
+61243- 2	Live working -- Voltage Detectors -- Part 2: Resistive Type to be Used for Voltages Exceeding 1 kV to 36 kV a.c.
+Travaux Sous Tension -- Détecteurs de Tension -- Partie 2: Type Résistif Pour Usage sur des Tensions Alternatives de 1 kV à 36 kV
+61243- 3	Live working – Voltage detectors – Part 3: Two-pole low-voltage type
+Travaux sous tension – Détecteurs de tension - Partie 3: Type bipolaire basse tension
+61318	Live Working - Conformity Assessment Applicable to Tools, Devices and Equipment
+Travaux sous tension - Évaluation de la conformité applicable à l'outillage, au matériel et aux dispositifs
+61328	Live Working - Guidelines for the Installation of Transmission Line Conductors and Earthwires - Stringing Equipment and Accessory Items
+Travaux sous tension – Lignes directrices pour l'installation des conducteurs et câbles de garde des lignes de transport -  Équipement de déroulage et accessoires
+61472	Live Working – Minimum Approach Distances for A.C. Systems in the Voltage range 72,5 Kv to 800 Kv – A Method of Calculation
+61477	Live Working - Minimum Requirements for the Utilization of Tools, Devices and Equipment
+Travaux Sous Tension – Exigences Minimales pour L'utlisation des Outils, Dispositifs et Équipements
+61478	Live Working - Ladders of Insulating Material
+Travaux Sous Tension – Échelles en Matériau Isolant
+61479	Live working - Flexible Conductor Covers (Line Hoses) of Insulating Material
+Travaux Sous Tension – Protecteurs de conducteurs flexibles en matériau isolant
+61482- 1	Live Working - Portable Phase Comparators for Use on Voltages from 1 kV to 36 kV a.c.
+Travaux sous tension - Comparateurs de phase portatifs pour utilisation a des tensions alternatifs de 1 kV a 36 kV
+61482- 1-1	Live Working – Protective Clothing Against the Thermal Hazards of an Electric Arc - Part 1-1: Test methods - Method 1: Determination of the arc rating (ATPV or EBT50) of flame resistant materials for clothing
+Travaux sous tension – Vetements de protection contre les dangers thermiques d'un arc electrique - Partie 1-1: Methodes d'essai - Methode 1: Determination de la caracteristique d'arc (ATPV ou EBT50) de materiaux resistant a la flamme pour vetements
+61482- 2	Live Working – Protective Clothing Against the Thermal Hazards of an Electric Arc - Part 2: Requirements
+Travaux sous tension – Vetements de protection contre les dangers thermiques d'un arc electrique - Partie 2: Exigences
+61496- 1	Standard for Electro-Sensitive Protective Equipment, Part 1: General Requirements and Tests
+61496- 1	Standard for Electro-Sensitive Protective Equipment, Part 1: General Requirements and Tests
+61496- 2	Electro-Sensitive Protective Equipment, Part 2: Particular Requirements for Equipment Using Active Opto-Electronic Protective Devices (AOPDs)
+61496- 2	Standard for Electro-Sensitive Protective Equipment, Part 2: Particular Requirements for Equipment Using Active Opto-Electronic Protective Devices (AOPDs)
+61724- 1	Standard for Photovoltaic System Performance - Part 1: Monitoring
+61724- 2	Standard for Photovoltaic System Performance - Part 2: Capacity Evaluation Method
+61724- 3	Standard for Photovoltaic System Performance - Part 3: Energy Evaluation Method
+61730- 1	Photovoltaic (PV) Module Safety Qualification - Part 1: Requirements for Construction
+61730- 2	Photovoltaic (PV) Module Safety Qualification - Part 2: Requirements for Testing
+61800- 5-1	Adjustable Speed Electrical Power Drive Systems - Part 5-1: Safety Requirements - Electrical, Thermal and Energy
+61800- 5-2	Adjustable Speed Electrical Power Drive Systems - Part 5-2: Safety Requirements - Functional
+61810- 1	Electromechanical Elementary Relays - Part 1: General Requirements
+61911	Live Working - Guidelines for the Installation of Distribution Line Conductors  - Stringing Equipment and Accessory Items
+61965	Travaux Sous Tension – Lignes directrices pour l'installation des conducteurs  des lignes de distribution -  Équipement de déroulage et accessoires
+62093	Mechanical Safety for Cathode Ray Tubes
+62108	Balance-of-System Components for Photovoltaic Systems – Design Qualification Natural Environments
+62109	Concentrator Photovoltaic (CPV) Modules and Assemblies - Design Qualification and Type Approval
+62109- 1	Power Converters for use in Photovoltaic Power Systems - Part 1: General Requirements
+62133	Power Converters for use in Photovoltaic Power Systems - Part 1: General Requirements
+62133- 1	Standard For Safety For Secondary Cells And Batteries Containing Alkaline Or Other Non-Acid Electrolytes - Safety Requirements For Portable Sealed Secondary Cells, And For Batteries Made From Them, For Use In Portable Applications
+62133- 2	Secondary Cells and Batteries Containing Alkaline or Other Non-Acid Electrolytes - Safety Requirements for Portable Sealed Secondary Cells, and for Batteries Made from Them, for Use in Portable Applications - Part 1: Nickel Systems
+62192	Secondary Cells and Batteries Containing Alkaline or Other Non-Acid Electrolytes - Safety Requirements for Portable Sealed Secondary Cells, and for Batteries Made from Them, for Use in Portable Applications - Part 2: Lithium Systems
+62193	Live Working – Insulating Ropes
+Travaux sous tension – Cordes isolantes
+62237	Live working –Telescopic sticks and telescopic measuring sticks
+Travaux sous tension –Perches téléscopiques et perches de mesure téléscopiques
+62275	Live Working - Insulating hoses with fittings for use with hydraulic tools and equipment
+Travaux sous tension - Conduit flexibles isolants avec raccord utilisés avec les outils et matérial hydrauliques
+62368- 1	Cable Management Systems - Cable Ties for Electrical Installations
+62368- 1	Audio/Video, Information and Communication Technology Equipment - Part 1: Safety Requirements
+62368- 1	Audio/video, information and communication technology equipment - Part 1: Safety requirements
+62841- 1	Audio/Video, Information and Communication Technology Equipment - Part 1: Safety Requirements
+62841- 2-1	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 1: General Requirements
+62841- 2-2	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-1: Particular Requirements For Hand-Held Drills and Impact Drills
+62841- 2-3	Electric Motor-Operated Hand-Held Tools, Transportable Tools and Lawn and Garden Machinery-Part 2-2: Hand-Held Screwdrivers and Impact
+62841- 2-4	Standard for Electric Motor-Operated Hand- held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-3: Particular Requirements For Hand-Held Grinders, Disc-Type Polishers And Disc-Type Sanders
+62841- 2-5	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-4: Particular Requirements For Hand-Held Sanders And Polishers Other Than Disc Type
+62841- 2-8	Electric Motor-Operated Hand-Held Tools, Transportable Tools and Lawn and Garden Machinery-Part2-5: Hand-Held Circular Saws
+62841- 2-9	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-8: Particular Requirements For Hand-Held Shears and Nibblers
+62841- 2-10	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-9: Particular Requirements For Hand-Held Tappers And Threaders
+62841- 2-11	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-10: Particular Requirements For Hand-Held Mixers
+62841- 2-14	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-11 Particular Requirements for Hand-Held Reciprocating Saws
+62841- 2-17	Electric Motor-Operated Hand-Held Tools, Transportable Tools and Lawn and Garden Machinery – Safety – Part 2-14: Particular Requirements for Hand-Held Planers
+62841- 2-21	Electric Motor-Operated Hand-Held Tools, Transportable Tools and Lawn and Garden Machinery - Safety - Part 2-17: Particular Requirements for Hand-Held Routers
+62841- 3-1	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 2-21: Particular Requirements For Hand-Held Drain Cleaners
+62841- 3-4	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery – Safety – Part 3-1:  Particular Requirements for Transportable Table Saws
+62841- 3-6	Electric Motor-Operated Hand-Held Tools,Transportable Tools And Lawn And Garden Machinery Safety-Part 3-4 Particular Requirements for Transportable Bench Grinders
+62841- 3-7	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 3-6:Transportable Diamond Drills with Liquid System
+62841- 3-9	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 3-7 Particular Requirements for Transportable Wall Saws
+62841- 3-10	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 3-9: Particular Requirements For Transportable Mitre Saws
+62841- 3-12	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 3-10: Particular requirements for Transportable Cut-Off Machines
+62841- 3-13	Electric Motor-Operated Hand-Held Tools, Transportable Tools and Lawn and Garden Machinery – Safety – Part 3-12: Particular Requirements for Transportable Threading Machines
+62841- 3-14	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 3-13: Particular Requirements For Transportable Drills
+62841- 3-1000	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery – Safety – Part 3-14: Particular Requirements for Transportable Drain Cleaners
+62841- 4-1	Electric Motor-Operated Hand-Held Tools, Transportable  Tools And Lawn And Garden Machinery - Safety - Part 3-1000: Particular Requirements For Transportable Laser Engravers
+62841- 4-2	Standard for Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 4-1: Particular Requirements For Chain Saws
+62841- 4-1000	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 4-2 Particular Requirements for Hedge Trimmers
+63345	Electric Motor-Operated Hand-Held Tools, Transportable Tools And Lawn And Garden Machinery - Safety - Part 4-1000: Particular Requirements For Utility Machines
+67377	Outline of Investigation for Buoyant Media for Protection Against Full Surface Fires in Fixed Flammable or Combustible Liquid Tanks or Repositories
+713002	Outline of Investigation for Oxygen Reduction Fire Protection System Units
+80079- 20-1	System Testing Use
+80079- 20-2	Explosive Atmospheres - Part 20-1: Material Characteristics for Gas and Vapour Classification - Test Methods and Data
+80079- 36	Explosive Atmospheres - Part 20-2: Material Characteristics - Combustible Dusts Test Methods
+80079- 37	Explosive Atmospheres - Part 36: Non-Electrical Equipment for Explosive Atmospheres - Basic Method and Requirements
+920001	Explosive Atmospheres - Part 37: Non-Electrical Equipment for Explosive Atmospheres - Non Electrical Type of Protection Constructional Safety 
+920002	Performance Requirements for Toxic Gas Detectors
+920004	Standard for Installation, Operation, and Maintenance of Toxic Gas-Detection Instruments
+920401	Performance Requirements for Open Path Toxic Gas-Detectors
+62091	Performance Requirements for Instruments Used to Detect Oxygen-Deficient/Oxygen-Enriched Atmospheres
+CCD  003	Low-Voltage Switchgear and Controlgear- Controllers for Drivers of Stationary Fire Pumps
+CCD  020	Renewable Low-Impact Electricity Products
+CCD  029	Gypsum Wallboard
+CCD  033	Water Conserving Products
+CCD  035	Office Furniture and Panel Systems
+CCD  138	Office Machines
+CCD  152	De-icing Chemical for Airport Runways
+2723	Flooring Products
+2724	ECOLOGO Certification Program for Responsible Development for Mineral Exploration Companies
+2819	ECOLOGO Certification Program for Responsible Development for Suppliers of the Mineral Exploration Industry
+2820	GREENGUARD Certification Program for Chemical and Particle Emissions for Electronic Equipment
+2822	GREENGUARD Certification Program for Chemical Emissions for Cleaners and Cleaning Maintenance System
+2823	GREENGUARD Certification Program Method For Measuring And Evaluating Chemical Emissions From Cleaner
+2824	GREENGUARD Certification Program Method for Measuring and Evaluating Chemical and Particle Emissions

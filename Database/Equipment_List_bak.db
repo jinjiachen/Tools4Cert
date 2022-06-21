@@ -1,0 +1,50 @@
+EC No.	Model Description	Model	Calibration	Tags
+EC5865	Digital Power Meter	WT310E	6/11/2018	Power input
+EC5119	Digital Power Meter	WT310HC	12/14/2018	Power input
+EC5939	Digital Power Meter	WT310E	12/3/2018	Power input
+EC5940	Digital Power Meter	WT310E	12/3/2018	Power input
+EC5214-14	Digital Power Meter	WT310	7/29/2018	Power input
+EC5866	Digital Power Meter	WT310EH	6/11/2018	Power input
+EC3620	AC/DC Digital Power Meter	青智8716CT	5/8/2018	Power input
+EC3039	AC/DC Digital Power Meter	青智8716CT	1/11/2018	Power input
+EC3121	AC/DC Digital Power Meter	青智8716CT	4/24/2018	Power input
+EC5110	Data Acquisition/Switching Unit	HP仪 34970A	10/20/2018	Temperature
+EC6087	Data Acquisition/Switching Unit	HP仪 34970A	1/2/2019	Temperature
+EC6086	Data Acquisition/Switching Unit	HP仪 34970A	1/2/2019	Temperature
+EC5907	Data Acquisition/Switching Unit	HP仪 34970A	11/13/2018	Temperature
+EC4008	Data Acquisition/Switching Unit	HP仪 34970A	10/28/2018	Temperature
+EC5916	Data Acquisition/Switching Unit	HP仪 34970A	11/13/2018	Temperature
+EC2527	Data Acquisition/Switching Unit	HP仪 34970A	1/12/2019	Temperature
+EC5109	Data Acquisition/Switching Unit	HP仪 34970A	10/20/2018	Temperature
+EC2194	Data Acquisition/Switching Unit	HP仪 34970A	9/7/2018	Temperature
+EC3685	Data Acquisition/Switching Unit	HP仪 34970A	9/27/2018	Temperature
+EC4232	Milliohm Meter	毫欧计 3541	7/26/2018	Resistance
+EC5171	Stop Watch	秒表 JD-3BII	1/2/2019	Time
+EC2732	Stop Watch	秒表 JD-2II	1/26/2019	Time
+EC2834	AC Hi-Pot Tester	耐压仪 ZHZ8	11/19/2018	Electric Strength
+EC4768	AC Hi-Pot Tester	耐压仪 ZHZ8	11/19/2018	Electric Strength
+EC4937		插头放电	8/16/2018	Discharge Voltage
+EC2632	Digital Scale	电子称 TCS-150G3	7/25/2018	Weight
+EC2639	Digital Scale	电子称 AWH-15(SA)	1/26/2019	Weight
+EC5937	AC Frequency Converter	艾普斯 KDF-11005G	12/3/2018	Power Source
+EC5113	AC Frequency Converter	艾普斯 	No record	Power Source
+EC5936	AC Frequency Converter	艾普斯 KDF-11005G	12/3/2018	Power Source
+EC5564	AC Frequency Converter	艾普斯 	No record	Power Source
+EC5114	AC Frequency Converter	艾普斯 	No record	Power Source
+EC2285	Reel Machine	卷线盘拉伸	12/1/2018	
+EC3260			8/31/2018	IP test(1-2)
+EC2554			9/5/2018	IP test(3-6)
+EC3335	AC Leakage Current Tester	美标泄漏电流表 229-2	7/4/2018	Leakage Current
+EC3074	Leakage Current Filter	Fig 4	9/6/2018	Leakage Current
+EC5800	Digital Multimeter	万用表 287C	10/19/2018	Leakage Current
+EC4009	Digital Multimeter	万用表 289	11/3/2018	Leakage Current
+EC2743		Fig 3	No record	
+EC4819	Climate Chamber	小潮态箱 SETH-Z-102U	4/22/2019	Power input, Temperature
+EC2065	Climate Test Chamber	步入式潮态箱 SEWTH-Z-160	7/25/2018	Power input, Temperature
+EC5816		灼热丝	12/2/2018	Glowing wire test(GWT)
+EC4918		针焰	8/4/2018	Needle flame test(NFT)
+EC4919	Tracking Index Tester	漏电起痕	6/11/2018	CTI,PTI
+EC2019		球压压块	1/28/2018	Ball pressure
+EC2132		球压压块	11/21/2018	Ball pressure
+EC3304	High Temperature Oven	烘箱	1/26/2019	
+EC4983	Pocket Magnifier		11/26/2018	

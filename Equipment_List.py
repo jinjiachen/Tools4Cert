@@ -5,10 +5,10 @@ Version="Name: EC-search V0.1"
 Description="Description: This software is used to search the equipment lists quickly.The database will be synchronized with the lists."
 while True:
     try:
-        para=raw_input("Please input the EC number:")
+        para=input("Please input the EC number:")
         cmd='find "'+para+'" .\Database\Equipment_List.db'
         os.system(cmd)
-        flag=raw_input("Press Enter to exit! Others to continue!")
+        flag=input("Press Enter to continue! Others to EXIT!")
         if flag!="":
             break
         else:

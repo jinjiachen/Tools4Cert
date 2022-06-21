@@ -1,4 +1,6 @@
 #!/bin/python
+import os
+
 print("**********")
 print("Main Menu")
 print("1.Supported Refrigerants")
@@ -132,12 +134,18 @@ while 1:
         "Lower_flammability_limit":0.215
         }
     R=input("Please input the refrigerant designation:")
+    Refrigerants=[R32,R50,R143a,R152a,R170,R290,R600,R600a,R1150,R1270,E170,R142b,R1234yf,R1234ze,R444A,R444B,R447A,R447B,R451A,R451B,R452B,R454A,R454B,R454C,R457A]
+    Refrigerants_str=["R32","R50","R143a","R152a","R170","R290","R600","R600a","R1150","R1270","E170","R142b","R1234yf","R1234ze","R444A","R444B","R447A","R447B","R451A","R451B","R452B","R454A","R454B","R454C","R457A"]
+#    print(Refrigerants_str.index(R))
     index=["Safety_group","Auto_ignition_temperature","Lower_flammability_limit"]
+    print("="*20+"Result"+"="*20)
     for i in index:
-        print(i+":"+str(R[i]))
+        print(i+":"+str(Refrigerants[Refrigerants_str.index(R)][i]))
 
+    print("="*20+"End"+"="*20)
     tmp=input("Press 'e' to exit! Others to contine!")
     if tmp=="e":
         break
     else:
         continue
+        os.system("cls")
