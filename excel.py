@@ -1,5 +1,5 @@
 #/bin/python 
-#coding:utf-8
+#-*-coding:utf-8-*-
 
 import xlrd
 import xlwt
@@ -8,7 +8,7 @@ from xlutils.copy import copy
 import xlwings as xw
 
 def Menu():
-#    choice=input("1.ÌáÈ¡Êı¾İ\n2.ĞŞ¸Ä±¨¸æ")
+#    choice=input("1.æå–æ•°æ®\n2.ä¿®æ”¹æŠ¥å‘Š")
     choice=input("1.Extract data\n2.Revise the report")
     if choice=='1':
         rpt=input("Please input the report path:")
@@ -23,8 +23,8 @@ def Menu():
         get_data(rpt,data)
     elif choice=='2':
 #        app=xw.App(visible=True,add_book=False)
-        rpt=input("Please input the report path:") #ÊäÈëÒªĞŞ¸ÄµÄ±¨¸æµÄÂ·¾¶
-        data=input("Please input the data source path:") #ÊäÈëÊı¾İÔ´µÄÂ·¾¶
+        rpt=input("Please input the report path:") #è¾“å…¥è¦ä¿®æ”¹çš„æŠ¥å‘Šçš„è·¯å¾„
+        data=input("Please input the data source path:") #è¾“å…¥æ•°æ®æºçš„è·¯å¾„
         app=xw.App(visible=False,add_book=False)
         wb=app.books.open(rpt)
         sh=wb.sheets['4.0 Components']
@@ -62,7 +62,7 @@ def get_data(rpt_fn, data_fn):
     font=xlwt.Font()
     font.name='Arial'
     font.bold=True
-    font.height=20*10  #10ºÅ×ÖÌå,20Îª»ùÊı
+    font.height=20*10  #10å·å­—ä½“,20ä¸ºåŸºæ•°
     style.font=font
     borders=xlwt.Borders()
     borders.left=xlwt.Borders.THIN
@@ -72,8 +72,8 @@ def get_data(rpt_fn, data_fn):
     style.borders=borders
     alignment=xlwt.Alignment()
     alignment.wrap=1
-    alignment.horz=0x01 #0x01×ó¶ÔÆë0x02¾ÓÖĞ0x03ÓÒ¶ÔÆë
-    alignment.vert=0x01 #0x00ÉÏ¶ÔÆë0x01¾ÓÖĞx02ÏÂ¶ÔÆë
+    alignment.horz=0x01 #0x01å·¦å¯¹é½0x02å±…ä¸­0x03å³å¯¹é½
+    alignment.vert=0x01 #0x00ä¸Šå¯¹é½0x01å±…ä¸­x02ä¸‹å¯¹é½
     style.alignment=alignment
 
     print(xls_new)
@@ -87,7 +87,7 @@ def get_data(rpt_fn, data_fn):
         sheet_new.write(i,5,sheet_data.cell_value(i-(rpt_start-data_start),data_col4).replace(',',', '),style)
     xls_new.save('output.xls')	
 
-def get_name(filename): #»ñÈ¡Ãû×ÖÁĞ±í
+def get_name(filename): #è·å–åå­—åˆ—è¡¨
     a=[]
     xls=xlrd.open_workbook(filename,formatting_info=True)
     sheet=xls.sheet_by_name('4.0 Components')
@@ -101,7 +101,7 @@ def get_name(filename): #»ñÈ¡Ãû×ÖÁĞ±í
                 a.append(i)
     return a
 
-def get_manufacturer(filename): #»ñÈ¡ÖÆÔìÉÌÁĞ±í
+def get_manufacturer(filename): #è·å–åˆ¶é€ å•†åˆ—è¡¨
     a=[]
     xls=xlrd.open_workbook(filename,formatting_info=True)
     sheet=xls.sheet_by_name('4.0 Components')
@@ -113,7 +113,7 @@ def get_manufacturer(filename): #»ñÈ¡ÖÆÔìÉÌÁĞ±í
                 a.append(i)
     return a
 
-def sort_by_name(filename): #°´ÕÕÃû×ÖÅÅĞò
+def sort_by_name(filename): #æŒ‰ç…§åå­—æ’åº
     xls=xlrd.open_workbook(filename,formatting_info=True)
     xls_new=copy(xls)
     sheet=xls.sheet_by_name('4.0 Components')
@@ -123,7 +123,7 @@ def sort_by_name(filename): #°´ÕÕÃû×ÖÅÅĞò
     font=xlwt.Font()
     font.name='Arial'
     font.bold=True
-    font.height=20*10  #10ºÅ×ÖÌå,20Îª»ùÊı
+    font.height=20*10  #10å·å­—ä½“,20ä¸ºåŸºæ•°
     style.font=font
     borders=xlwt.Borders()
     borders.left=xlwt.Borders.THIN
@@ -133,8 +133,8 @@ def sort_by_name(filename): #°´ÕÕÃû×ÖÅÅĞò
     style.borders=borders
     alignment=xlwt.Alignment()
     alignment.wrap=1
-    alignment.horz=0x01 #0x01×ó¶ÔÆë0x02¾ÓÖĞ0x03ÓÒ¶ÔÆë
-    alignment.vert=0x01 #0x00ÉÏ¶ÔÆë0x01¾ÓÖĞx02ÏÂ¶ÔÆë
+    alignment.horz=0x01 #0x01å·¦å¯¹é½0x02å±…ä¸­0x03å³å¯¹é½
+    alignment.vert=0x01 #0x00ä¸Šå¯¹é½0x01å±…ä¸­x02ä¸‹å¯¹é½
     style.alignment=alignment
 
     k=1
@@ -149,7 +149,7 @@ def sort_by_name(filename): #°´ÕÕÃû×ÖÅÅĞò
                 
     xls_new.save('output.xls')
         
-def sort_by_manufacturer(filename): #°´ÕÕÖÆÔìÉÌÅÅĞò
+def sort_by_manufacturer(filename): #æŒ‰ç…§åˆ¶é€ å•†æ’åº
     xls=xlrd.open_workbook(filename,formatting_info=True)
     xls_new=copy(xls)
     sheet=xls.sheet_by_name('4.0 Components')
@@ -159,7 +159,7 @@ def sort_by_manufacturer(filename): #°´ÕÕÖÆÔìÉÌÅÅĞò
     font=xlwt.Font()
     font.name='Arial'
     font.bold=True
-    font.height=20*10  #10ºÅ×ÖÌå,20Îª»ùÊı
+    font.height=20*10  #10å·å­—ä½“,20ä¸ºåŸºæ•°
     style.font=font
     borders=xlwt.Borders()
     borders.left=xlwt.Borders.THIN
@@ -169,8 +169,8 @@ def sort_by_manufacturer(filename): #°´ÕÕÖÆÔìÉÌÅÅĞò
     style.borders=borders
     alignment=xlwt.Alignment()
     alignment.wrap=1
-    alignment.horz=0x01 #0x01×ó¶ÔÆë0x02¾ÓÖĞ0x03ÓÒ¶ÔÆë
-    alignment.vert=0x01 #0x00ÉÏ¶ÔÆë0x01¾ÓÖĞx02ÏÂ¶ÔÆë
+    alignment.horz=0x01 #0x01å·¦å¯¹é½0x02å±…ä¸­0x03å³å¯¹é½
+    alignment.vert=0x01 #0x00ä¸Šå¯¹é½0x01å±…ä¸­x02ä¸‹å¯¹é½
     style.alignment=alignment
 
     k=1
@@ -185,85 +185,131 @@ def sort_by_manufacturer(filename): #°´ÕÕÖÆÔìÉÌÅÅĞò
                 
     xls_new.save('output.xls')
     
-def copy_line(sheet,row): #xlwings:¸´ÖÆÖ¸¶¨ĞĞ
-    index=f'C{row}:F{row}' #¹¹ÔìC1:F1×Ö·û´®Ë÷Òı
-    while sheet[f'C{row}'].value==None: #¼ì²éÖ¸¶¨ĞĞCÁĞÊÇ·ñÎª¿Õ£¬Èç¹ûÎª¿Õ£¬ÏòÉÏÑ°ÕÒÖªµÀÕÒµ½·Ç¿ÕÊıÖµ
-        row=row-1
-    data=sheet[index].value #°ÑC1:F1µÄÄÚÈİ¸´ÖÆ¸ødata
-    data[0]=sheet[f'C{row}'].value #°ÑCÁĞµÄÊıÖµ¸üĞÂÏÂ£¬ÒÔ·ÀÎª¿Õ
+def copy_line(sheet,row): #xlwings:å¤åˆ¶æŒ‡å®šè¡Œ
+    index=f'B{row}:F{row}' #æ„é€ B1:F1å­—ç¬¦ä¸²ç´¢å¼•
+    data=sheet[index].value #æŠŠB1:F1çš„å†…å®¹å¤åˆ¶ç»™data
+    row_b=row
+    row_c=row
+    row_d=row
+    row_f=row
+    while sheet[f'B{row_b}'].value==None: #æ£€æŸ¥æŒ‡å®šè¡ŒBåˆ—(éƒ¨ä»¶å)æ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºï¼Œå‘ä¸Šå¯»æ‰¾ç›´åˆ°æ‰¾åˆ°éç©ºæ•°å€¼
+        row_b=row_b-1
+    while sheet[f'C{row_c}'].value==None: #æ£€æŸ¥æŒ‡å®šè¡ŒCåˆ—(éƒ¨ä»¶å)æ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºï¼Œå‘ä¸Šå¯»æ‰¾ç›´åˆ°æ‰¾åˆ°éç©ºæ•°å€¼
+        row_c=row_c-1
+    while sheet[f'D{row_d}'].value==None: #æ£€æŸ¥æŒ‡å®šè¡ŒDåˆ—(åˆ¶é€ å•†)æ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºï¼Œå‘ä¸Šå¯»æ‰¾ç›´åˆ°æ‰¾åˆ°éç©ºæ•°å€¼
+        row_d=row_d-1
+    while sheet[f'F{row_f}'].value==None: #æ£€æŸ¥æŒ‡å®šè¡ŒFåˆ—(æŠ€æœ¯å‚æ•°)æ˜¯å¦ä¸ºç©ºï¼Œå¦‚æœä¸ºç©ºï¼Œå‘ä¸Šå¯»æ‰¾ç›´åˆ°æ‰¾åˆ°éç©ºæ•°å€¼
+        row_f=row_f-1
+    data[0]=sheet[f'B{row_b}'].value #æŠŠBåˆ—çš„æ•°å€¼æ›´æ–°ä¸‹ï¼Œä»¥é˜²ä¸ºç©º
+    data[1]=sheet[f'C{row_c}'].value #æŠŠCåˆ—çš„æ•°å€¼æ›´æ–°ä¸‹ï¼Œä»¥é˜²ä¸ºç©º
+    data[2]=sheet[f'D{row_d}'].value #æŠŠDåˆ—çš„æ•°å€¼æ›´æ–°ä¸‹ï¼Œä»¥é˜²ä¸ºç©º
+    data[4]=sheet[f'F{row_f}'].value #æŠŠFåˆ—çš„æ•°å€¼æ›´æ–°ä¸‹ï¼Œä»¥é˜²ä¸ºç©º
     return data
 
-def paste_line(sheet,row,data): #xlwings:Ö¸¶¨ĞĞÕ³Ìù
+def paste_line(sheet,row,data): #xlwings:æŒ‡å®šè¡Œç²˜è´´
 #    row=str(row)
 #    index='C'+str(row)+':'+'F'+str(row)
-    index=f'C{row}:F{row}'
+    index=f'B{row}:F{row}'
     sheet[index].value=data
 
-def insert_line(sheet,row,data): #xlwings:ÔÚÖ¸¶¨ĞĞºó²åÈë¿ÕĞĞ²¢Ğ´ÈëÊı¾İ
+def insert_line(sheet,row,data): #xlwings:åœ¨æŒ‡å®šè¡Œåæ’å…¥ç©ºè¡Œå¹¶å†™å…¥æ•°æ®
     sheet.api.Rows(str(row+1)).Insert()
     paste_line(sheet,str(row+1),data)
 
-def get_row_number(sheet,col,words): #xlwings:²éÕÒ¹Ø¼ü´Ê²¢·µ»ØĞĞÊı
-    for i in range(1,100):
+def get_row_number(sheet,col,words): #xlwings:æŸ¥æ‰¾å…³é”®è¯å¹¶è¿”å›è¡Œæ•°
+    for i in range(1,200):
         cell=sheet[f'{col}{i}'].value
         if cell==words:
             return i
             break
 
-def lookdown(sheet,col,row): #xlwings:¼ÌĞøÍùÏÂÑ°ÕÒ£¬ÊÇ·ñÓĞ¿ÕÖµ£¬Ö±µ½ÕÒµ½ÏÂÒ»¸ö·Ç¿Õµ¥Ôª¸ñ
+def lookdown(sheet,col,row): #xlwings:ç»§ç»­å¾€ä¸‹å¯»æ‰¾ï¼Œæ˜¯å¦æœ‰ç©ºå€¼ï¼Œç›´åˆ°æ‰¾åˆ°ä¸‹ä¸€ä¸ªéç©ºå•å…ƒæ ¼
     while(sheet[f'{col}{row+1}'].value==None):
         row=row+1
     return row
 
-def fmt(sheet):#Ä¿Ç°Ö÷ÒªÊÇºÏ²¢nameÁĞµÄµ¥Ôª¸ñ
-    for i in range(1,100):
+def fmt(sheet):#ç›®å‰ä¸»è¦æ˜¯åˆå¹¶nameåˆ—çš„å•å…ƒæ ¼
+    for i in range(1,200):
         pass
     
+def str_fmt(str):
+    str=str.replace('ï¼Œ',',')
+    str=str.replace(',',', ')
+    str=str.replace('  ',' ')
+    return str
 
-def row_range(sheet,data): #xlwings:²éÕÒÏàÍ¬nameµÄ²¿¼şµÄĞĞÊı·¶Î§
+def list_fmt(list):
+    for i in range(1,len(list)):
+        list[i]=str_fmt(list[i])
+    return list
+
+def row_range(sheet,data): #xlwings:æŸ¥æ‰¾ç›¸åŒnameçš„éƒ¨ä»¶çš„è¡Œæ•°èŒƒå›´
     rows=[]
-    for i in range(1,100):#ÔÚ±¨¸æµÄ´ËĞĞÊı·¶Î§ÄÚÈ¥Æ¥Åä
-        if sheet[f'c{i}'].value==data[0]:#cÁĞÖĞÑ°ÕÒdata[0]£¬¼´Name
-            row_start=i #Í¬nameµÄ²¿¼şµÄÆğÊ¼ĞĞ
-            rows.append(row_start)#ÕÒµ½¶ÔÓ¦µÄ¹Ø¼ü´Ê£¬¼ÇÂ¼¿ªÊ¼ĞĞ
+    for i in range(1,200):#åœ¨æŠ¥å‘Šçš„æ­¤è¡Œæ•°èŒƒå›´å†…å»åŒ¹é…
+        if sheet[f'c{i}'].value==data[1]:#cåˆ—ä¸­å¯»æ‰¾data[0]ï¼Œå³Name
+            row_start=i #åŒnameçš„éƒ¨ä»¶çš„èµ·å§‹è¡Œ
+            rows.append(row_start)#æ‰¾åˆ°å¯¹åº”çš„å…³é”®è¯ï¼Œè®°å½•å¼€å§‹è¡Œ
             row_end=lookdown(sheet,'c',i)
-            rows.append(row_end)#¼ÇÂ¼Ôİ¶¨µÄ½áÊøĞĞ£¬Èç¹ûÏÂ·½ÊÇÍ¬Ò»²¿¼ş£¬Ôò»á±»ºóÃæµÄÌæ´ú£¬Èç¹û²»ÊÇ£¬Õâ¾ÍÊÇ×îÖÕµÄĞĞÊı
-            while(sheet[f'c{row_end+1}'].value==data[0]):
-                row_end=row_end+1#Í¬nameµÄ²¿¼şµÄ½áÊøĞĞ
-                rows[1]=row_end #ÕÒµ½Í¬ÑùµÄ²¿¼şÃû£¬¸üĞÂ½áÊøĞĞ
+            rows.append(row_end)#è®°å½•æš‚å®šçš„ç»“æŸè¡Œï¼Œå¦‚æœä¸‹æ–¹æ˜¯åŒä¸€éƒ¨ä»¶ï¼Œåˆ™ä¼šè¢«åé¢çš„æ›¿ä»£ï¼Œå¦‚æœä¸æ˜¯ï¼Œè¿™å°±æ˜¯æœ€ç»ˆçš„è¡Œæ•°
+            while(sheet[f'c{row_end+1}'].value==data[1]):
+                row_end=row_end+1#åŒnameçš„éƒ¨ä»¶çš„ç»“æŸè¡Œ
+                rows[1]=row_end #æ‰¾åˆ°åŒæ ·çš„éƒ¨ä»¶åï¼Œæ›´æ–°ç»“æŸè¡Œ
         if len(rows)==2:
             break
     return rows
 #    return min(rows),max(rows)
 
-def update4(sheet1,sheet2,):#xlwings:¸üĞÂ4.0ĞÅÏ¢
-    for i in range(1,100): #ÔÚ´ËĞĞÊı·¶Î§ÄÚÈ¥Æ¥ÅäĞèÒªĞŞ¸ÄµÄĞÅÏ¢
-        if sheet2[f'h{i}'].value=="A": #ÅĞ¶ÏHÁĞÊÇ·ñÎªA£¬AÎªĞÂÔö
-            data=copy_line(sheet2,i)#¸´ÖÆ¶ÔÓ¦ĞĞµÄÊı¾İ
+def update4(sheet1,sheet2,):#xlwings:æ›´æ–°4.0ä¿¡æ¯
+    for i in range(1,200): #åœ¨æ­¤è¡Œæ•°èŒƒå›´å†…å»åŒ¹é…éœ€è¦ä¿®æ”¹çš„ä¿¡æ¯
+        if sheet2[f'h{i}'].value=="A": #åˆ¤æ–­Håˆ—æ˜¯å¦ä¸ºAï¼ŒAä¸ºæ–°å¢
+            data=copy_line(sheet2,i)#å¤åˆ¶å¯¹åº”è¡Œçš„æ•°æ®
             print('add:',data)
-            for j in range(1,100):#ÔÚ±¨¸æµÄ´ËĞĞÊı·¶Î§ÄÚÈ¥Æ¥Åä
-                if sheet1[f'c{j}'].value==data[0]:#cÁĞÖĞÑ°ÕÒdata[0]£¬¼´Name
+            for j in range(1,200):#åœ¨æŠ¥å‘Šçš„æ­¤è¡Œæ•°èŒƒå›´å†…å»åŒ¹é…
+                if sheet1[f'c{j}'].value==data[1]:#cåˆ—ä¸­å¯»æ‰¾data[1]ï¼Œå³Name
                     row=lookdown(sheet1,'c',j)
-                    while(sheet1[f'c{row+1}'].value==data[0]):#ÏÂÒ»¸öÈç¹ûNameÏàÍ¬£¨¼´Í¬Ò»¸ö²¿¼ş£©£¬Ôò¼ÌĞøÏòÏÂ
+                    while(sheet1[f'c{row+1}'].value==data[1]):#ä¸‹ä¸€ä¸ªå¦‚æœNameç›¸åŒï¼ˆå³åŒä¸€ä¸ªéƒ¨ä»¶ï¼‰ï¼Œåˆ™ç»§ç»­å‘ä¸‹
                         row=row+1
                     print(row)
                     break
-            insert_line(sheet1,row,data) #ÔÚ¸ÃĞĞºóÃæ²åÈëÊı¾İ
-        elif sheet2[f'h{i}'].value=="R": #ÅĞ¶ÏHÁĞÊÇ·ñÎªR£¬RÎªĞŞ¸Ä
-            data=copy_line(sheet2,i)#¸´ÖÆ¶ÔÓ¦ĞĞµÄÊı¾İ
+            insert_line(sheet1,row,list_fmt(data)) #åœ¨è¯¥è¡Œåé¢æ’å…¥æ•°æ®
+        elif sheet2[f'h{i}'].value=="RF": #åˆ¤æ–­Håˆ—æ˜¯å¦ä¸ºRFï¼ŒRFä¸ºä¿®æ”¹æŠ€æœ¯å‚æ•°
+            data=copy_line(sheet2,i)#å¤åˆ¶å¯¹åº”è¡Œçš„æ•°æ®
             print('revise:',data)
-#            for j in range(1,100):#ÔÚ±¨¸æµÄ´ËĞĞÊı·¶Î§ÄÚÈ¥Æ¥Åä
-#                if sheet1[f'c{j}'].value==data[0]:#cÁĞÖĞÑ°ÕÒdata[0]£¬¼´Name
-#                    row_start=j #Í¬nameµÄ²¿¼şµÄÆğÊ¼ĞĞ
-#                    row_end=lookdown(sheet1,'c',j)
-#                    while(sheet1[f'c{row+1}'].value==data[0]):
-#                        row_end=row_end+1#Í¬nameµÄ²¿¼şµÄ½áÊøĞĞ
-#                    break
-            rows=row_range(sheet1,data)
+            rows=row_range(sheet1,data) #è¿”å›å¯¹åº”éƒ¨ä»¶ç›¸åº”çš„è¡Œæ•°èŒƒå›´
             print(rows)
-            for j in range(rows[0],row[1]+1):#ÔÚÍ¬Ò»¸ö²¿¼şµÄĞĞÊı·¶Î§ÄÚÈ¥Æ¥ÅäĞÅÏ¢
-#                paste_line(sheet1,row,data)
-                pass
+            for j in range(rows[0],rows[1]+1):#åœ¨åŒä¸€ä¸ªéƒ¨ä»¶çš„è¡Œæ•°èŒƒå›´å†…å»åŒ¹é…ä¿¡æ¯
+                data_rpt=copy_line(sheet1,j)
+#                if sheet1[f'd{j}'].value.upper()==data[2].upper() and sheet1[f'e{j}'].value.upper()==data[3].upper(): #åŒ¹é…åˆ¶é€ å•†ä¸å‹å·ï¼Œå½“ä¸€è‡´æ—¶ï¼Œè¿›è¡Œåé¢çš„æ“ä½œ
+                if data_rpt[2].upper()==data[2].upper() and data_rpt[3].upper()==data[3].upper(): #åŒ¹é…åˆ¶é€ å•†ä¸å‹å·ï¼Œå½“ä¸€è‡´æ—¶ï¼Œè¿›è¡Œåé¢çš„æ“ä½œ
+                    data=list_fmt(data)
+                    paste_line(sheet1,j,data) #ä¿®æ”¹æŠ€æœ¯å‚æ•°(technical data), ç”¨äº†æ•´è¡Œå¤åˆ¶çš„æ–¹æ³•ï¼Œä½†æ˜¯å…¶å®åªæ˜¯ä¿®æ”¹æŠ€æœ¯å‚æ•°é‚£ä¸€åˆ—ï¼Œå› ä¸ºéƒ¨ä»¶åç§°ï¼Œåˆ¶é€ å•†ï¼Œå‹å·éƒ½æ˜¯ä¸€è‡´çš„
+                    print('revisie technical data:',data[4])
+        elif sheet2[f'h{i}'].value=="RE": #åˆ¤æ–­Håˆ—æ˜¯å¦ä¸ºREï¼ŒREä¸ºä¿®æ”¹å‹å·
+            data=copy_line(sheet2,i)#å¤åˆ¶å¯¹åº”è¡Œçš„æ•°æ®
+            print('revise:',data)
+            rows=row_range(sheet1,data) #è¿”å›å¯¹åº”éƒ¨ä»¶ç›¸åº”çš„è¡Œæ•°èŒƒå›´
+            print(rows)
+            for j in range(rows[0],rows[1]+1):#åœ¨åŒä¸€ä¸ªéƒ¨ä»¶çš„è¡Œæ•°èŒƒå›´å†…å»åŒ¹é…ä¿¡æ¯
+                data_rpt=copy_line(sheet1,j)
+                if data_rpt[2].upper()==data[2].upper() and data_rpt[4].upper()==data[4].upper(): #åŒ¹é…åˆ¶é€ å•†ä¸æŠ€æœ¯å‚æ•°ï¼Œå½“ä¸€è‡´æ—¶ï¼Œè¿›è¡Œåé¢çš„æ“ä½œ
+#                if sheet1[f'd{j}'].value==data[1] and sheet1[f'f{j}'].value==data[3]: #åŒ¹é…åˆ¶é€ å•†ä¸æŠ€æœ¯å‚æ•°ï¼Œå½“ä¸€è‡´æ—¶ï¼Œè¿›è¡Œåé¢çš„æ“ä½œ
+                    data=list_fmt(data)
+                    paste_line(sheet1,j,data) #ä¿®æ”¹å‹å·(model), ç”¨äº†æ•´è¡Œå¤åˆ¶çš„æ–¹æ³•ï¼Œä½†æ˜¯å…¶å®åªæ˜¯ä¿®æ”¹å‹å·é‚£ä¸€åˆ—ï¼Œå› ä¸ºéƒ¨ä»¶åç§°ï¼Œåˆ¶é€ å•†ï¼ŒæŠ€æœ¯å‚æ•°éƒ½æ˜¯ä¸€è‡´çš„
+                    print('revise model:',data[3])
+        elif sheet2[f'h{i}'].value=="RD": #åˆ¤æ–­Håˆ—æ˜¯å¦ä¸ºRDï¼ŒRDä¸ºä¿®æ”¹åˆ¶é€ å•†
+            data=copy_line(sheet2,i)#å¤åˆ¶å¯¹åº”è¡Œçš„æ•°æ®
+            print('revise:',data)
+            rows=row_range(sheet1,data) #è¿”å›å¯¹åº”éƒ¨ä»¶ç›¸åº”çš„è¡Œæ•°èŒƒå›´
+            print(rows)
+            for j in range(rows[0],rows[1]+1):#åœ¨åŒä¸€ä¸ªéƒ¨ä»¶çš„è¡Œæ•°èŒƒå›´å†…å»åŒ¹é…ä¿¡æ¯
+                data_rpt=copy_line(sheet1,j)
+#                print(sheet1[f'e{j}'].value==data[2])
+#                print(sheet1[f'f{j}'].value)
+#                print(data_rpt[3])
+                if sheet1[f'e{j}'].value==data[3] and data_rpt[4]==data[4]: #åŒ¹é…å‹å·ä¸æŠ€æœ¯å‚æ•°ï¼Œå½“ä¸€è‡´æ—¶ï¼Œè¿›è¡Œåé¢çš„æ“ä½œ
+#                if sheet1[f'e{j}'].value==data[2] and sheet1[f'f{j}'].value==data[3]: #åŒ¹é…å‹å·ä¸æŠ€æœ¯å‚æ•°ï¼Œå½“ä¸€è‡´æ—¶ï¼Œè¿›è¡Œåé¢çš„æ“ä½œ
+                    paste_line(sheet1,j,data) #ä¿®æ”¹åˆ¶é€ å•†(manufacturer), ç”¨äº†æ•´è¡Œå¤åˆ¶çš„æ–¹æ³•ï¼Œä½†æ˜¯å…¶å®åªæ˜¯ä¿®æ”¹åˆ¶é€ å•†é‚£ä¸€åˆ—ï¼Œå› ä¸ºéƒ¨ä»¶åç§°ï¼Œå‹å·ï¼ŒæŠ€æœ¯å‚æ•°éƒ½æ˜¯ä¸€è‡´çš„
+                    print('revise manufacturer:',data[2])
 #    wb.save('output1.xls')
         
     
