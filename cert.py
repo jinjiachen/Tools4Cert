@@ -1,5 +1,3 @@
-#coding=utf8
-
 from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
@@ -7,6 +5,14 @@ from lxml import etree
 import os
 import pdb
 import urllib
+
+def Menu():
+    choice=input("请选择认证的类型：\n1.UL认证\n2.TUV莱茵认证\n3.VDE认证\n4.CSA认证\n5.TUV南德")
+    if choice=='1':
+        UL(driver)
+    elif choice=='2':
+        TUV(driver)
+
 
 def Driver():
     #Chrom的配置
@@ -109,12 +115,15 @@ def UL(driver):
                 print('控制号无效!!')
                 continue
             for i in range(0,len(company)):
+                print('-'*20+str(i)+'-'*20)
                 print(company[i])
                 print(Control[i])
                 print(CCN[i])
                 print(base_url+link[i])
                 print('\n')
-            driver.get(base_url+link[0])
+
+            choice=input('请选择对应的序号：')
+            driver.get(base_url+link[int(choice)])
             time.sleep(1)
             html=driver.page_source
             selector=etree.HTML(html)
@@ -134,58 +143,81 @@ def UL(driver):
     #        print('\n')
     #        print(name[0]+control_no[0])
     #        print(addressline[0]+city[0]+province[0]+postalcode[0]+country[0])
-            print(models)
+#            print(models)
             for i in models:
+                if model==i or model.upper()==i:
+                    print('找到型号：',i)
+                    break
                 if model in i or model.upper() in i:
-                    print(i)
+                    print('-'*20)
+                    print('找到相似型号：',i)
     
-    time.sleep(5)
-    driver.close()
-    driver.quit()
+#    time.sleep(2)
+#    driver.close()
+#    driver.quit()
 
 def TUV(driver):
-    cert=input('请输入TUV证书号:')
-#    pdb.set_trace()
-    url='https://www.certipedia.com/certificates/'+cert+'?locale=en'
-    selector=get_html(url)
-#    res=urllib.request.urlopen(url)
-#    html=res.read()
-#    selector=etree.HTML(html)
-    pages=selector.xpath('//div[@class="tuv-pagination__pages"]/a/text()')
-    company=selector.xpath('//div[@class="certificate-holder-address"]/strong/text()')
-    name=selector.xpath('//div[@class="model-designation"]/../text()')
-    products=[]
-    for page in pages:
-        url='https://www.certipedia.com/certificates/'+cert+'?locale=en&page_number='+page
-        selector=get_html(url)
-        models=selector.xpath('//div[@class="model-designation"]/p/text()')
-        for model in models:
-            if 'Model Designation' in model:
-                pass
-            else:
-                products.append(model)
-    print("Certificate Holder:"," ".join(company))
-    print("Certified Product:",name[0].strip())
-    print("\n".join(products))
-#    print(pages)
+    while True:
+        input('按回车继续')
+        os.system('cls')
+        cert=input('请输入TUV证书号:')
+        words=input('请输入型号：')
+        if cert=='exit':
+            break
+        else:
+        #    pdb.set_trace()
+            url='https://www.certipedia.com/certificates/'+cert+'?locale=en'
+            selector=get_html(url)
+        #    res=urllib.request.urlopen(url)
+        #    html=res.read()
+        #    selector=etree.HTML(html)
+            pages=selector.xpath('//div[@class="tuv-pagination__pages"]/a/text()')
+            company=selector.xpath('//div[@class="certificate-holder-address"]/strong/text()')
+            name=selector.xpath('//div[@class="model-designation"]/../text()')
+            products=[]
+            for page in pages:
+                url='https://www.certipedia.com/certificates/'+cert+'?locale=en&page_number='+page
+                selector=get_html(url)
+                models=selector.xpath('//div[@class="model-designation"]/p/text()')
+                for model in models:
+                    if 'Model Designation' in model:
+                        pass
+                    else:
+                        products.append(model)
+            print("Certificate Holder:"," ".join(company))
+            print("Certified Product:",name[0].strip())
+            for product in products:
+                if words==product:
+                    print('找到精准型号：',product.strip())
+                    print('-'*20)
+                    break
+                elif words.split('-')[0] in product:
+                    print('找到相似型号如下：\n',product.strip())
+                    print('-'*20)
+#            print("\n".join(products))
+#            print(pages)
 
 def get_html(url):
-    start=time.time()
+#    start=time.time()
     driver.get(url)
 #    time.sleep(1)
     html=driver.page_source
     selector=etree.HTML(html)
-    end=time.time()
-    print(end-start)
+#    end=time.time()
+#    print(end-start)
     return selector
 
 if __name__=='__main__':
     driver=Driver()
-    print('engine start!')
-    while True:
+    Menu()
+    driver.close()
+    driver.quit()
+#    driver=Driver()
+#    print('engine start!')
+#    while True:
 #    start=time.time()
 #    UL(driver)    
-        TUV(driver)
+#        TUV(driver)
 #    end=time.time()
 #    print(end-start)
 
