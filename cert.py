@@ -17,7 +17,7 @@ def Menu():
 def Driver():
     #Chrom的配置
     options = webdriver.ChromeOptions()
-    #options.add_argument("--proxy-server=http://192.168.2.108:8889")
+    options.add_argument("--proxy-server=http://192.168.2.108:8889")
     #options.add_argument("--no-proxy-server")
     options.add_argument("--headless")
     #options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"')
@@ -97,8 +97,11 @@ def UL(driver):
     
     while True:
         E=input('Please input the control number:')
-        os.system('cls')
-    #    os.system('clear')
+        model=input('Please input the model name:')
+        if os.name=='nt':
+            os.system('cls')
+        elif os.name=='posix':
+            os.system('clear')
         if E=='exit':
             break
         else:
@@ -115,42 +118,61 @@ def UL(driver):
                 print('控制号无效!!')
                 continue
             for i in range(0,len(company)):
+                driver.get(base_url+link[i])
+                time.sleep(1)
+                html=driver.page_source
+                selector=etree.HTML(html)
+                models=selector.xpath('//prodid/text()')
+                if len(models)==0:
+                    models=selector.xpath('//a[@style="text-decoration: none;"]/text()')
+                elif len(models)==0:
+                    models=selector.xpath('//prodid/b/text()')
                 print('-'*20+str(i)+'-'*20)
                 print(company[i])
                 print(Control[i])
                 print(CCN[i])
                 print(base_url+link[i])
+                for i in models:
+                    if model==i or model.upper()==i:
+                        print('找到型号：',i)
+                        break
+                    elif model.split('-')[0] in i or model.split('-')[0].upper() in i:
+                        print('-'*20)
+                        print('找到相似型号：',i)
+#                    else:
+#                        print('没有找到对应型号')
+
                 print('\n')
 
-            choice=input('请选择对应的序号：')
-            driver.get(base_url+link[int(choice)])
-            time.sleep(1)
-            html=driver.page_source
-            selector=etree.HTML(html)
-    #        name=selector.xpath('//nameline/text()')
-    #        control_no=selector.xpath('//table[@width="100%"]/tbody/tr[3]/td[2]/text()')
-    #        addressline=selector.xpath('//addressline/text()')
-    #        city=selector.xpath('//city/text()')
-    #        province=selector.xpath('//province/text()')
-    #        postalcode=selector.xpath('//postalcode/text()')
-    #        country=selector.xpath('//country/text()')
-            models=selector.xpath('//prodid/text()')
-            if len(models)==0:
-                models=selector.xpath('//a[@style="text-decoration: none;"]/text()')
-            elif len(models)==0:
-                models=selector.xpath('//prodid/b/text()')
-            model=input('Please input the model name:')
-    #        print('\n')
-    #        print(name[0]+control_no[0])
-    #        print(addressline[0]+city[0]+province[0]+postalcode[0]+country[0])
-#            print(models)
-            for i in models:
-                if model==i or model.upper()==i:
-                    print('找到型号：',i)
-                    break
-                if model in i or model.upper() in i:
-                    print('-'*20)
-                    print('找到相似型号：',i)
+#            choice=input('请选择对应的序号：')
+#            driver.get(base_url+link[int(choice)])
+#            time.sleep(1)
+#            html=driver.page_source
+#            selector=etree.HTML(html)
+#    #        name=selector.xpath('//nameline/text()')
+#    #        control_no=selector.xpath('//table[@width="100%"]/tbody/tr[3]/td[2]/text()')
+#    #        addressline=selector.xpath('//addressline/text()')
+#    #        city=selector.xpath('//city/text()')
+#    #        province=selector.xpath('//province/text()')
+#    #        postalcode=selector.xpath('//postalcode/text()')
+#    #        country=selector.xpath('//country/text()')
+#            models=selector.xpath('//prodid/text()')
+#            if len(models)==0:
+#                models=selector.xpath('//a[@style="text-decoration: none;"]/text()')
+#            elif len(models)==0:
+#                models=selector.xpath('//prodid/b/text()')
+#            model=input('Please input the model name:')
+#    #        print('\n')
+#    #        print(name[0]+control_no[0])
+#    #        print(addressline[0]+city[0]+province[0]+postalcode[0]+country[0])
+##            print(models)
+#            for i in models:
+#                if model==i or model.upper()==i:
+#                    print('找到型号：',i)
+#                    break
+#                if model in i or model.upper() in i:
+#                    print('-'*20)
+#                    print('找到相似型号：',i)
     
 #    time.sleep(2)
 #    driver.close()
@@ -159,7 +181,10 @@ def UL(driver):
 def TUV(driver):
     while True:
         input('按回车继续')
-        os.system('cls')
+        if os.name=='nt':
+            os.system('cls')
+        elif os.name=='posix':
+            os.system('clear')
         cert=input('请输入TUV证书号:')
         words=input('请输入型号：')
         if cert=='exit':
@@ -187,24 +212,24 @@ def TUV(driver):
             print("Certificate Holder:"," ".join(company))
             print("Certified Product:",name[0].strip())
             for product in products:
-                if words==product:
+                if words==product or words.upper()==product:
                     print('找到精准型号：',product.strip())
                     print('-'*20)
                     break
-                elif words.split('-')[0] in product:
+                elif words.split('-')[0] in product or words.split('-')[0].upper() in product:
                     print('找到相似型号如下：\n',product.strip())
                     print('-'*20)
 #            print("\n".join(products))
 #            print(pages)
 
 def get_html(url):
-#    start=time.time()
+    start=time.time()
     driver.get(url)
 #    time.sleep(1)
     html=driver.page_source
     selector=etree.HTML(html)
-#    end=time.time()
-#    print(end-start)
+    end=time.time()
+    print(end-start)
     return selector
 
 if __name__=='__main__':
