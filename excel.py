@@ -7,10 +7,11 @@ import xlwt
 from xlutils.copy import copy
 import xlwings as xw
 import time
+import os
 
 def Menu():
 #    choice=input("1.提取数据\n2.修改报告")
-    choice=input("1.Extract data\n2.Revise the report")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)")
     if choice=='1':
         rpt=input("Please input the report path:")
         rpt_start=int(input("Please input the start line of report:"))
@@ -25,6 +26,11 @@ def Menu():
     elif choice=='2':
 #        app=xw.App(visible=True,add_book=False)
         rpt=input("Please input the report path:") #输入要修改的报告的路径
+#        rpt=os.path.abspath(rpt)
+#        rpt_dir=os.path.dirname(rpt)
+#        filename=os.path.basename(rpt)
+#        print(rpt_dir)
+#        print(os.path.basename(rpt))
         data=input("Please input the data source path:") #输入数据源的路径
         app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
@@ -38,24 +44,24 @@ def Menu():
         update4(sh,sh1,sh12)
         end=time.time()
         print('operating time:',end-start)
-#        a=get_row_number(sh1,'h','A')
-#        data=copy_line(sh1,a)
-#        print(data)
-#        print(sh['c44'].value)
-#        print(len(data[0]))
-#        print(len(sh['c44'].value))
-#        print(data[0]==sh['c44'].value)
-#        a=get_row_number(sh,'c',data[0])
-#        a=lookdown(sh,'c',a)
-#        print(a)
-#        insert_line(sh,a,data)
-#        print(row_range(sh,data))
-        wb.save('output1.xls')
+        wb.save(rpt[:-4]+'_output.xls')
         wb.close()
         wb1.close()
 #        app.quit()
         app.kill()
-#        a=get_name('201100941SHA-001_R3.xls')
+    elif choice=='3':
+        app=xw.App(visible=False,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+#        rpt=os.path.abspath(rpt)
+        wb=app.books.open(rpt)
+        sht7=wb.sheets['7.0 Illustrations']
+        manual_path=input('输入说明书的路径')
+        update7(sht7,manual_path)
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
     
 
 def get_data(rpt_fn,rpt_start, data_fn,data_start,data_end,data_col1,data_col2,data_col3,data_col4):
@@ -248,7 +254,8 @@ def lookdown(sheet,col,row): #xlwings:继续往下寻找，是否有空值，直
     return row
 
 def fmt(sheet):#目前主要是合并name列的单元格
-    name=get_col_list(sheet,'c',1,sheet_total_rows(sheet)) #获取C列的部件名
+#    name=get_col_list(sheet,'c',1,sheet_total_rows(sheet)) #获取C列的部件名
+    name=get_col_list(sheet,'c',1,sheet.used_range.last_cell.row) #获取C列的部件名
     print(name)
     for value in name:
         data=[]
@@ -307,7 +314,8 @@ def list_fmt(list):
 
 def row_range(sheet,data): #xlwings:查找相同name的部件的行数范围
     rows=[]
-    total_row=sheet_total_rows(sheet)+1
+#    total_row=sheet_total_rows(sheet)+1
+    total_row=sheet.used_range.last_cell.row#返回最大的行数
     for i in range(1,total_row):#在报告的此行数范围内去匹配
         if sheet[f'c{i}'].value==data[1]:#c列中寻找data[0]，即Name
             row_start=i #同name的部件的起始行
@@ -338,12 +346,20 @@ def row_range(sheet,data): #xlwings:查找相同name的部件的行数范围
 #    return rows
 
 def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
-    row_rev=sheet_total_rows(sheet3)+1
-    for i in range(1,sheet_total_rows(sheet2)+1): #在此行数范围内去匹配需要修改的信息
+    '''
+    sheet1为报告的sec4.0
+    sheet2为数据报告的sec4.0
+    sheet3为报告的sec12.0
+    '''
+    row_rev=sheet_total_rows(sheet3)+1#SEC12的行数,这里不能用used_range来代替，因为used_range会把空行包含进去，包括格式的改变
+#    print(sheet2.used_range.last_cell.row)
+    for i in range(1,sheet2.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
+        print(i)
         if sheet2[f'h{i}'].value=="A": #判断H列是否为A，A为新增
             data=copy_line(sheet2,i)#复制对应行的数据
             print('add:',data)
-            for j in range(1,sheet_total_rows(sheet1)+1):#在报告的此行数范围内去匹配
+#            for j in range(1,sheet_total_rows(sheet1)+1):#在报告的此行数范围内去匹配
+            for j in range(1,sheet1.used_range.last_cell.row):#在报告的此行数范围内去匹配
                 if sheet1[f'c{j}'].value==data[1]:#c列中寻找data[1]，即Name
                     row=lookdown(sheet1,'c',j)
                     while(sheet1[f'c{row+1}'].value==data[1]):#下一个如果Name相同（即同一个部件），则继续向下
@@ -358,7 +374,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
             row_rev=row_rev+1
         elif sheet2[f'h{i}'].value=="RF": #判断H列是否为RF，RF为修改技术参数
             data=copy_line(sheet2,i)#复制对应行的数据
-#            print('revise:',data)
+            print('revise:',data)
 #            rows=row_range(sheet1,'c',data[1]) #返回对应部件相应的行数范围
             rows=row_range(sheet1,data) #返回对应部件相应的行数范围
             print(rows)
@@ -403,8 +419,44 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
                     print('revise manufacturer:',data[2])
                     update12(sheet3,row_rev,data_rpt,data,'RD')
                     row_rev=row_rev+1
+        elif sheet2[f'h{i}'].value=="D": #判断H列是否为D，D为删除
+            data=copy_line(sheet2,i)#复制对应行的数据
+            print('delete:',data)
+            rows=row_range(sheet1,data) #返回对应部件相应的行数范围
+            print(rows)
+            for j in range(rows[0],rows[1]+1):#在同一个部件的行数范围内去匹配信息
+                data_rpt=copy_line(sheet1,j)
+#                print(data_rpt[2],data[2])
+#                print(data_rpt[4],data[4])
+                if data_rpt[2]==data[2] and sheet1[f'e{j}'].value==data[3] and data_rpt[4]==data[4]: #匹配部件名，制造商和型号，当一致时，进行后面的操作
+                    sheet1[f'c{j}'].api.EntireRow.Delete()#删除改行
+                    update12(sheet3,row_rev,data_rpt,data,'D')
+                    row_rev=row_rev+1
 
     fmt(sheet1)
+
+def update7(sheet,manual_path): #xlwings:在7.0自动插入说明书
+    last_row=sheet.used_range.last_cell.row #返回最后一行的行号
+#    sheet[f'a3:j{last_row}'].clear_contents()#清除A列相关行数的内容
+    sheet[f'a3:j{last_row}'].delete()#删除对应行数
+    while sheet.pictures.count>0:#当sheet中有图片时，删除图片
+        sheet.pictures[0].delete()
+    number=sheet.pictures.count#当前的图片数量
+    row=5
+    top=12.75*row #12.75初始行高，5为行数
+    for root,dirs,files in os.walk(manual_path,topdown=False):#遍历路径下的文件和文件夹，返回root,dirs,files的三元元组
+        files.sort()#对文件进行排序
+        files.sort(key=len) #在对文件的长度进行排序
+        for file in files:#遍历所有的文件
+#            print(files)
+            print(manual_path+file)
+            sheet.pictures.add(manual_path+file)#插入图片
+            sheet.pictures[number].width=450
+            sheet.pictures[number].top=top
+            sheet[f'a{row-2}'].value=f'Illustration 2 - Manual - page {number+1}'
+            row=row+56
+            top=top+12.75*56 #56行为分页的行数
+            number=number+1
 
 def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入12.0
     if cmd=="RD":#修改制造商
@@ -415,6 +467,8 @@ def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入1
         sentence="Revise the technical data of "+data_rpt[1].lower().split('\n')[0]+" "+str(data_rpt[3])+" by "+data_rpt[2].split('\n')[0]+"\nfrom\n\""+data_rpt[4]+"\"\nto\n\""+data[4]+"\"."
     elif cmd=="A":
         sentence='Add alternative '+data[1].lower().split('\n')[0]+' '+str(data[3])+' by '+data[2].split('\n')[0]
+    elif cmd=="D":
+        sentence='Delete '+data[1].lower().split('\n')[0]+' '+str(data[3])+' by '+data[2].split('\n')[0]
     sheet12[f'c{row}'].value='4'
     sheet12[f'd{row}'].value=data_rpt[0]
     sheet12[f'e{row}'].value=sentence
@@ -429,7 +483,7 @@ def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入1
 #    rng3=sheet.range('d1').expand('table')
 #    return max(rng1.rows.count,rng2.rows.count,rng3.rows.count)
 
-def sheet_total_rows(sheet): #xlwings:返回工作簿的最大行数
+def sheet_total_rows(sheet): #xlwings:返回工作簿的最大行数,当整行都是合并单元格的时候，则会返回7个None的列表，类似空行，此时会返回错误行数,尝试用used_range函数来替换
     i=0
     empty=[] 
     while i<=6: #这个循环就是构造一个空数列，7个None
