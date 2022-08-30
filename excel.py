@@ -11,7 +11,7 @@ import os
 
 def Menu():
 #    choice=input("1.提取数据\n2.修改报告")
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR")
     if choice=='1':
         rpt=input("Please input the report path:")
         rpt_start=int(input("Please input the start line of report:"))
@@ -61,6 +61,22 @@ def Menu():
         update7(sht7,manual_path)
         wb.save(rpt[:-4]+'_output.xls')
         wb.close()
+        app.kill()
+    elif choice=='4':
+#        app=xw.App(visible=False,add_book=False)
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("输入需要更新的报告路径:") #输入要更新的报告的路径
+        template=input("输入CDR新模板的路径:") #输入模板的路径
+        wb=app.books.open(rpt)
+        if template=='':
+            wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xls')
+        else:
+            wb_template=app.books.open(template)
+        update_CDR(wb_template,wb)
+        input('pause')
+        wb.save(rpt[:-4]+'_update.xls')
         app.kill()
     
 
@@ -237,6 +253,9 @@ def paste_line(sheet,row,data): #xlwings:指定行粘贴
 def insert_line(sheet,row,data): #xlwings:在指定行后插入空行并写入数据
     sheet.api.Rows(str(row+1)).Insert()
     paste_line(sheet,str(row+1),data)
+
+def insert_blank_line(sheet,row): #xlwings:在指定行后插入空行
+    sheet.api.Rows(str(row+1)).Insert()
 
 def get_row_number(sheet,col,words): #xlwings:查找关键词并返回行数
     for i in range(1,200):
@@ -436,14 +455,18 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
     fmt(sheet1)
 
 def update7(sheet,manual_path): #xlwings:在7.0自动插入说明书
+    letters=[chr(i) for i in range(97,123)] #26个字母的列表
+    letters=letters+['a'+chr(i) for i in range(97,123)]#在26个字母的基础上增加aa-az
+    letters=letters+['b'+chr(i) for i in range(97,123)]#在52个字母的基础上增加ba-bz
+    row_height=12.5 #默认行高
     last_row=sheet.used_range.last_cell.row #返回最后一行的行号
 #    sheet[f'a3:j{last_row}'].clear_contents()#清除A列相关行数的内容
-    sheet[f'a3:j{last_row}'].delete()#删除对应行数
+    sheet[f'a2:j{last_row}'].delete()#删除对应行数
     while sheet.pictures.count>0:#当sheet中有图片时，删除图片
         sheet.pictures[0].delete()
     number=sheet.pictures.count#当前的图片数量
     row=5
-    top=12.75*row #12.75初始行高，5为行数
+    top=row_height*row #12.5初始行高，5为行数
     for root,dirs,files in os.walk(manual_path,topdown=False):#遍历路径下的文件和文件夹，返回root,dirs,files的三元元组
         files.sort()#对文件进行排序
         files.sort(key=len) #在对文件的长度进行排序
@@ -453,9 +476,10 @@ def update7(sheet,manual_path): #xlwings:在7.0自动插入说明书
             sheet.pictures.add(manual_path+file)#插入图片
             sheet.pictures[number].width=450
             sheet.pictures[number].top=top
-            sheet[f'a{row-2}'].value=f'Illustration 2 - Manual - page {number+1}'
+            sheet[f'a{row-2}'].value=f'Illustration 2{letters[number]} - Manual - page {number+1}' #插入文字描述
+            sheet[f'a{row-2}'].characters[:16].font.bold=True #部分字体加粗
             row=row+56
-            top=top+12.75*56 #56行为分页的行数
+            top=top+row_height*56 #56行为分页的行数
             number=number+1
 
 def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入12.0
@@ -476,6 +500,56 @@ def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入1
     sheet12[f'd{row}'].api.Font.Color=0xFF00FF
     sheet12[f'e{row}'].api.Font.Color=0xFF00FF
 #    wb.save('output1.xls')
+
+def update_CDR(workbook,workbook_data):
+    '''
+    workbook为CDR的模板
+    workbook_data为需要更新的报告
+    '''
+    sheets_name=get_sheets_name(workbook)#获取工作簿中的表名
+    workbook.sheets.add('tmp')#增加一个临时的sheet
+    for sheet_name in sheets_name:
+        if sheet_name=='ATM':
+            pass
+        elif sheet_name=='Instructions':
+            pass
+        elif sheet_name=='1.0 Reference':
+            pass
+        else:
+            workbook.sheets[sheet_name].delete()
+    for i in range(1,12):#1.0到12.0的索引
+        workbook_data.sheets[i].copy(after=workbook.sheets[i])#2.0到12.0的工作表
+        input('')
+    workbook.sheets['tmp'].delete()#删除临时的sheet
+
+    #以下对一些外部链接做处理
+    workbook.sheets['9.0 MLS']['b3'].value='=\'1.0 Reference\'!$B$6'
+    workbook.sheets['9.0 MLS']['b4'].value='=\'1.0 Reference\'!$B$7'
+    workbook.sheets['9.0 MLS']['b5'].value='=\'1.0 Reference\'!$B$8'
+    workbook.sheets['9.0 MLS']['b6'].value='=\'2.0 Description\'!$B$3'
+    workbook.sheets['10.0 General']['a36'].value='=Instructions!$P$2'
+    workbook.sheets['10.0 General']['a38'].value='=Instructions!$Q$2'
+    workbook.sheets['10.0 General']['a39'].value='=Instructions!$R$2'
+    workbook.sheets['10.0 General']['a40'].value='=IF(Instructions!$S$2 >"",Instructions!$S$2,"")'
+    for row in range(1,workbook.sheets['5.0 CEC Comps'].used_range.last_cell.row):
+        if workbook.sheets['5.0 CEC Comps'].range(f'a{row}').value=='Photo #':
+            workbook.sheets['5.0 CEC Comps'].range(f'a{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'a{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'b{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'b{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'c{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'c{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').formula.split(']')[1]
+    
+def update12(): #xlwings:写入测试总结
+    pass
+    
+
+
+def get_sheets_name(workbook): #获取工作簿中所有的表名
+    sheets_name=[]
+    for i in workbook.sheets:
+        sheets_name.append(i.name)
+    return sheets_name
+    
         
 #def sheet_total_rows(sheet): #返回sheet最大的行数,此方法在连续的时候有效，当有合并单元格的时候就会出现问题
 #    rng1=sheet.range('a1').expand('table')
