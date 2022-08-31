@@ -257,6 +257,12 @@ def insert_line(sheet,row,data): #xlwings:在指定行后插入空行并写入�
 def insert_blank_line(sheet,row): #xlwings:在指定行后插入空行
     sheet.api.Rows(str(row+1)).Insert()
 
+def insert_blank_lines(sheet,row,numbers): #xlwings:基于insert_blank_line在指定行后插入多个空行
+    i=1
+    while i<=numbers:
+        sheet.api.Rows(str(row+1)).Insert()
+        i=i+1
+
 def get_row_number(sheet,col,words): #xlwings:查找关键词并返回行数
     for i in range(1,200):
         cell=sheet[f'{col}{i}'].value
@@ -539,9 +545,45 @@ def update_CDR(workbook,workbook_data):
             workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').formula.split(']')[1]
             workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').formula.split(']')[1]
     
-def update12(): #xlwings:写入测试总结
-    pass
+def update8(sheet): #xlwings:写入测试总结
+    std_ul60335_2_40={
+    'name':'UL 60335-1: 2016 Ed. 6\nCSA C22.2#60335-1: 2016 Ed. 2\nCSA C22.2#60335-2-40: 2019 Ed. 3',
+    '10':['10','Power input and current'],
+    '11':['11','Heating'],
+    '13':['13','Leakage current and electric strength at operating temperature'],
+    '15':['15','Moisture resistance'],
+    '16':['16','Leakage current and electric strength'],
+    '17':['17','Overload protection of transformers and associated circuits'],
+    '19':['19','Abnormal operation'],
+    '20':['20','Stability and mechanical hazards'],
+    '21':['21','Mechanical strength'],
+    '22':['22','Construction'],
+    '23':['23','Internal wiring'],
+    '24':['24','Components'],
+    '25':['25','Supply connection and external flexible cords'],
+    '26':['26','Terminals for external conductors'],
+    '27':['27','Provision for earthing'],
+    '28':['28','Screws and connections'],
+    '30':['30','Resistance to heat and fire'],
+    '31':['31','Resistance to rusting'],
+}
     
+    row=95#固定锚点
+    insert_blank_lines(sheet,row,5+len(std_ul60335_2_40)-1)
+
+    #以下为一些固定内容的填写
+    sheet[f'b{row+1}:c{row+1}'].merge()
+    sheet[f'b{row+3}:f{row+3}'].merge()
+    sheet[f'b{row+4}:f{row+4}'].merge()
+    sheet[f'a{row+5}:f{row+5}'].merge()
+    sheet[f'a{row+1}'].value='Evaluation Period'
+    sheet[f'e{row+1}'].value='Project No.'
+    sheet[f'a{row+2}'].value='Sample Rec. Date'
+    sheet[f'c{row+2}'].value='Condition'
+    sheet[f'e{row+2}'].value='Sample ID.'
+    sheet[f'a{row+3}'].value='Test Location'
+    sheet[f'a{row+4}'].value='Test Procedure'
+    sheet[f'a{row+5}'].value='Determination of the result includes consideration of measurement uncertainty from the test equipment and methods.  The product was tested as indicated below with results in conformance to the relevant test criteria.'
 
 
 def get_sheets_name(workbook): #获取工作簿中所有的表名
