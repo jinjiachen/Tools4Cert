@@ -11,7 +11,7 @@ import os
 
 def Menu():
 #    choice=input("1.提取数据\n2.修改报告")
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结")
     if choice=='1':
         rpt=input("Please input the report path:")
         rpt_start=int(input("Please input the start line of report:"))
@@ -63,8 +63,8 @@ def Menu():
         wb.close()
         app.kill()
     elif choice=='4':
-#        app=xw.App(visible=False,add_book=False)
-        app=xw.App(visible=True,add_book=False)
+        app=xw.App(visible=False,add_book=False)
+#        app=xw.App(visible=True,add_book=False)
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("输入需要更新的报告路径:") #输入要更新的报告的路径
@@ -75,10 +75,19 @@ def Menu():
         else:
             wb_template=app.books.open(template)
         update_CDR(wb_template,wb)
-        input('pause')
-        wb.save(rpt[:-4]+'_update.xls')
+#        input('pause')#调试用
+#        wb.save(rpt[:-4]+'_update.xls')#老报告保存是错误的
+        wb_template.save(rpt[:-4]+'_update.xls')#新模板的报告才是需要保存的
         app.kill()
-    
+    elif choice=='5':
+#        app=xw.App(visible=False,add_book=False)
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("输入需要更新的报告路径:") #输入要更新的报告的路径
+        wb=app.books.open(rpt)
+        sht8=wb.sheets['8.0 Test Summary']
+        update8(sht8)
 
 def get_data(rpt_fn,rpt_start, data_fn,data_start,data_end,data_col1,data_col2,data_col3,data_col4):
     rpt_end=rpt_start+(data_end-data_start)
@@ -519,13 +528,13 @@ def update_CDR(workbook,workbook_data):
             pass
         elif sheet_name=='Instructions':
             pass
-        elif sheet_name=='1.0 Reference':
-            pass
+#        elif sheet_name=='1.0 Reference':
+#            pass
         else:
             workbook.sheets[sheet_name].delete()
-    for i in range(1,12):#1.0到12.0的索引
-        workbook_data.sheets[i].copy(after=workbook.sheets[i])#2.0到12.0的工作表
-        input('')
+    for i in range(0,12):#1.0到12.0的索引
+        workbook_data.sheets[i].copy(after=workbook.sheets[i])#复制1.0到12.0的工作表
+#        input('')#调试用
     workbook.sheets['tmp'].delete()#删除临时的sheet
 
     #以下对一些外部链接做处理
@@ -539,51 +548,72 @@ def update_CDR(workbook,workbook_data):
     workbook.sheets['10.0 General']['a40'].value='=IF(Instructions!$S$2 >"",Instructions!$S$2,"")'
     for row in range(1,workbook.sheets['5.0 CEC Comps'].used_range.last_cell.row):
         if workbook.sheets['5.0 CEC Comps'].range(f'a{row}').value=='Photo #':
-            workbook.sheets['5.0 CEC Comps'].range(f'a{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'a{row+1}').formula.split(']')[1]
-            workbook.sheets['5.0 CEC Comps'].range(f'b{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'b{row+1}').formula.split(']')[1]
-            workbook.sheets['5.0 CEC Comps'].range(f'c{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'c{row+1}').formula.split(']')[1]
-            workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').formula.split(']')[1]
-            workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').value=workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'a{row+1}').value='=\''+workbook.sheets['5.0 CEC Comps'].range(f'a{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'b{row+1}').value='=\''+workbook.sheets['5.0 CEC Comps'].range(f'b{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'c{row+1}').value='=\''+workbook.sheets['5.0 CEC Comps'].range(f'c{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').value='=\''+workbook.sheets['5.0 CEC Comps'].range(f'f{row+1}').formula.split(']')[1]
+            workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').value='=\''+workbook.sheets['5.0 CEC Comps'].range(f'i{row+1}').formula.split(']')[1]
     
 def update8(sheet): #xlwings:写入测试总结
     std_ul60335_2_40={
-    'name':'UL 60335-1: 2016 Ed. 6\nCSA C22.2#60335-1: 2016 Ed. 2\nCSA C22.2#60335-2-40: 2019 Ed. 3',
-    '10':['10','Power input and current'],
-    '11':['11','Heating'],
-    '13':['13','Leakage current and electric strength at operating temperature'],
-    '15':['15','Moisture resistance'],
-    '16':['16','Leakage current and electric strength'],
-    '17':['17','Overload protection of transformers and associated circuits'],
-    '19':['19','Abnormal operation'],
-    '20':['20','Stability and mechanical hazards'],
-    '21':['21','Mechanical strength'],
-    '22':['22','Construction'],
-    '23':['23','Internal wiring'],
-    '24':['24','Components'],
-    '25':['25','Supply connection and external flexible cords'],
-    '26':['26','Terminals for external conductors'],
-    '27':['27','Provision for earthing'],
-    '28':['28','Screws and connections'],
-    '30':['30','Resistance to heat and fire'],
-    '31':['31','Resistance to rusting'],
+    'Test Description':'UL 60335-1: 2016 Ed. 6\nCSA C22.2#60335-1: 2016 Ed. 2\nUL 60335-2-40:2019 Ed.3\nCSA C22.2#60335-2-40: 2019 Ed. 3\nClause',
+    '10':'Power input and current',
+    '11':'Heating',
+    '13':'Leakage current and electric strength at operating temperature',
+    '15':'Moisture resistance',
+    '16':'Leakage current and electric strength',
+    '17':'Overload protection of transformers and associated circuits',
+    '19':'Abnormal operation',
+    '20':'Stability and mechanical hazards',
+    '21':'Mechanical strength',
+    '22':'Construction',
+    '23':'Internal wiring',
+    '24':'Components',
+    '25':'Supply connection and external flexible cords',
+    '26':'Terminals for external conductors',
+    '27':'Provision for earthing',
+    '28':'Screws and connections',
+    '30':'Resistance to heat and fire',
+    '31':'Resistance to rusting',
 }
     
     row=95#固定锚点
-    insert_blank_lines(sheet,row,5+len(std_ul60335_2_40)-1)
+    insert_blank_lines(sheet,row,5+len(std_ul60335_2_40)+1)#固定行数5，标准的相应测试章节的行数，+1为空行
 
     #以下为一些固定内容的填写
-    sheet[f'b{row+1}:c{row+1}'].merge()
+    sheet[f'b{row+1}:d{row+1}'].merge()
     sheet[f'b{row+3}:f{row+3}'].merge()
     sheet[f'b{row+4}:f{row+4}'].merge()
     sheet[f'a{row+5}:f{row+5}'].merge()
+    sheet[f'a{row+6}:f{row+6}'].merge()
     sheet[f'a{row+1}'].value='Evaluation Period'
+    sheet[f'a{row+1}'].color=(192,192,192)
     sheet[f'e{row+1}'].value='Project No.'
+    sheet[f'e{row+1}'].color=(192,192,192)
     sheet[f'a{row+2}'].value='Sample Rec. Date'
+    sheet[f'a{row+2}'].color=(192,192,192)
     sheet[f'c{row+2}'].value='Condition'
+    sheet[f'c{row+2}'].color=(192,192,192)
     sheet[f'e{row+2}'].value='Sample ID.'
+    sheet[f'e{row+2}'].color=(192,192,192)
     sheet[f'a{row+3}'].value='Test Location'
+    sheet[f'a{row+3}'].color=(192,192,192)
     sheet[f'a{row+4}'].value='Test Procedure'
+    sheet[f'a{row+4}'].color=(192,192,192)
     sheet[f'a{row+5}'].value='Determination of the result includes consideration of measurement uncertainty from the test equipment and methods.  The product was tested as indicated below with results in conformance to the relevant test criteria.'
+    sheet[f'a{row+6}'].value='The following tests were performed: '
+    for i in range(1,len(std_ul60335_2_40)):
+        sheet[f'a{row+6+i}:c{row+6+i}'].merge()
+        sheet[f'd{row+6+i}:f{row+6+i}'].merge()
+        sheet[f'd{row+6+i}:f{row+6+i}'].api.HorizontalAlignment=-4108
+        if i==1:
+            sheet[f'a{row+6+i}'].value=list(std_ul60335_2_40.keys())[i-1]
+            sheet[f'd{row+6+i}'].value=list(std_ul60335_2_40.values())[i-1]
+            sheet[f'a{row+6+i}'].color=(192,192,192)
+            sheet[f'd{row+6+i}'].color=(192,192,192)
+        else:
+            sheet[f'd{row+6+i}'].value=list(std_ul60335_2_40.keys())[i-1]
+            sheet[f'a{row+6+i}'].value=list(std_ul60335_2_40.values())[i-1]
 
 
 def get_sheets_name(workbook): #获取工作簿中所有的表名
