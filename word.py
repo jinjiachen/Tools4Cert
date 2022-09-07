@@ -11,6 +11,42 @@ from docx import Document
 from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from win32com.client import Dispatch
+
+def doc2docx(path):#将doc文件转换成docx
+    '''path具体到文件'''
+    w = Dispatch('Word.Application') #打开word程序
+    w.Visible = 0 #后台运行，不可见
+    w.DisplayAlerts = 0
+    doc = w.Documents.Open(path) #打开对应的doc文件
+    newpath = os.path.splitext(path)[0] + '.docx' #生成docx文件路径
+    doc.SaveAs(newpath, 12, False, "", True, "", False, False, False, False)#12为docx的类型
+    doc.Close()
+    w.Quit()
+#    os.remove(path)#不删除源文件
+    return newpath
+
+
+def doc2pdf(path):#将doc文件转换成pdf
+    '''path具体到文件'''
+    w = Dispatch('Word.Application') #打开word程序
+    w.Visible = 0 #后台运行，不可见
+    w.DisplayAlerts = 0
+    doc = w.Documents.Open(path) #打开对应的doc文件
+    newpath = os.path.splitext(path)[0] + '.pdf' #生成docx文件路径
+    doc.SaveAs(newpath, 17)#17为pdf的类型
+    doc.Close()
+    w.Quit()
+#    os.remove(path)#不删除源文件
+    return newpath
+
+def docs2pdfs(path):#批量转换doc为pdf文件
+    '''输入文件夹路径即可'''
+    files=[f for f in os.listdir(path) if f.endswith('.doc')]
+    file_path=[os.path.join(path, filename) for filename in files]
+    for file in file_path:
+        doc2pdf(file)
+
 
 def find_table(tables,search_string):#关键词查找对应表格
     table_components=[]
