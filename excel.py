@@ -11,7 +11,7 @@ import os
 
 def Menu():
 #    choice=input("1.提取数据\n2.修改报告")
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8.0自动分页功能tmp")
     if choice=='1':
         rpt=input("Please input the report path:")
         rpt_start=int(input("Please input the start line of report:"))
@@ -88,6 +88,40 @@ def Menu():
         wb=app.books.open(rpt)
         sht8=wb.sheets['8.0 Test Summary']
         update8(sht8)
+    elif choice=='6':
+        app=xw.App(visible=False,add_book=False)
+#        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("输入需要提取的报告路径:") #输入要更新的报告的路径
+        wb=app.books.open(rpt)
+        uc_all=get_UC(wb)
+        for i in uc_all:
+            print(i)
+        wb.close()
+        app.kill()
+    elif choice=='7':
+        app=xw.App(visible=False,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        wb=app.books.open(rpt)
+        sht3=wb.sheets['3.0 Photos']
+        photo_path=input('输入照片所在路径')
+        update3(sht3,photo_path)
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
+    elif choice=='8':
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        wb=app.books.open(rpt)
+        sht4=wb.sheets['4.0 Components']
+        sht5=wb.sheets['5.0 CEC Comps']
+        Page_break(sht5)
+        
 
 def get_data(rpt_fn,rpt_start, data_fn,data_start,data_end,data_col1,data_col2,data_col3,data_col4):
     rpt_end=rpt_start+(data_end-data_start)
@@ -378,6 +412,33 @@ def row_range(sheet,data): #xlwings:查找相同name的部件的行数范围
 #        if len(rows)==2:
 #            break
 #    return rows
+
+
+def update3(sheet,photo_path): #xlwings:在3.0自动插入照片
+    row_height=12.5 #默认行高12.5pt
+    last_row=sheet.used_range.last_cell.row #返回最后一行的行号
+#    sheet[f'a3:j{last_row}'].clear_contents()#清除A列相关行数的内容
+    sheet[f'a3:j{last_row}'].delete()#删除对应行数
+    while sheet.pictures.count>0:#当sheet中有图片时，删除图片
+        sheet.pictures[0].delete()
+    number=sheet.pictures.count#当前的图片数量
+    row=5
+    top=row_height*row #12.5pt初始行高，5为行数
+    for root,dirs,files in os.walk(photo_path,topdown=False):#遍历路径下的文件和文件夹，返回root,dirs,files的三元元组
+        files.sort()#对文件进行排序
+        files.sort(key=len) #在对文件的长度进行排序
+        for file in files:#遍历所有的文件
+#            print(files)
+            print(photo_path+file)
+            sheet.pictures.add(photo_path+file)#插入图片
+            sheet.pictures[number].width=288 #单位为pt，72pt=1inch，即288/72=4inch
+            sheet.pictures[number].top=sheet[f'a1:a{row}'].height #用行数来定位
+            sheet.pictures[number].left=50.5 #单元格默认列宽50.5
+            sheet[f'a{row-2}'].value=f'Photo {number+1} - ' #插入文字描述
+            sheet[f'a{row-2}'].characters[:9].font.bold=True #部分字体加粗
+            row=row+28 #56行一页，28行一半中间位置
+            number=number+1
+
 
 def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
     '''
@@ -671,6 +732,144 @@ def get_col_list(sheet,col,row_start,row_end): #xlwings:获取指定列的文本
                 col_values.append(i)
     return col_values
     
+def get_UC(wb):#xlwings: 获取5.0相关信息
+    sht1=wb.sheets['1.0 Reference']
+    sht5=wb.sheets['5.0 CEC Comps']
+    total_row=sht5.used_range.last_cell.row#返回最大的行数
+    uc_all=[]
+    for i in range(1,total_row):#在报告的此行数范围内去匹配
+        if sht5[f'a{i}'].value=='Photo #':#a列中寻找Photo
+            uc_info={
+                'photo_no':sht5[f'a{i+1}'].value,
+                'item_no':sht5[f'b{i+1}'].value,
+                'name':sht5[f'c{i+1}'].value,
+                'manufacturer':sht5[f'f{i+1}'].value,
+                'model':sht5[f'i{i+1}'].value,
+                'rating':sht5[f'c{i+2}'].value
+}
+        if sht5[f'a{i}'].value=='WINDING(S) RESISTANCE':#a列中寻找winding
+            if 'Compressor'.lower() in uc_info['name'].lower() and 'Hz' in uc_info['rating']: #交流压缩机
+                j=3
+                while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':
+                    uc_info[f'designation_{j-2}']=sht5[f'a{i+j}'].value
+                    uc_info[f'wire_size_{j-2}']=sht5[f'c{i+j}'].value
+                    uc_info[f'resistance_{j-2}']=sht5[f'j{i+j}'].value
+                    j=j+1
+            elif 'motor' in uc_info['name'].lower() and 'Hz' in uc_info['rating']: #交流电机
+                j=3
+                while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':
+                    uc_info[f'designation_{j-2}']=sht5[f'a{i+j}'].value
+                    uc_info[f'wire_size_{j-2}']=sht5[f'c{i+j}'].value
+                    uc_info[f'resistance_{j-2}']=sht5[f'j{i+j}'].value
+                    j=j+1
+            elif 'compressor' in uc_info['name'].lower() and 'dc' in uc_info['rating'].lower(): #DC压缩机
+                j=3
+                while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':
+                    uc_info[f'designation_{j-2}']=sht5[f'a{i+j}'].value
+                    uc_info[f'wire_size_{j-2}']=sht5[f'c{i+j}'].value
+                    uc_info[f'resistance_{j-2}']=sht5[f'j{i+j}'].value
+                    j=j+1
+            elif 'motor' in uc_info['name'].lower() and 'dc' in uc_info['rating'].lower(): #DC电机
+                j=3
+                while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':
+                    uc_info[f'designation_{j-2}']=sht5[f'a{i+j}'].value
+                    uc_info[f'wire_size_{j-2}']=sht5[f'c{i+j}'].value
+                    uc_info[f'resistance_{j-2}']=sht5[f'j{i+j}'].value
+                    j=j+1
+            elif 'SMPS'.lower() in uc_info['name'].lower() or 'tranformer' in uc_info['name'].lower(): #开关电源
+                j=3#WINDING后面两行是格式，跳开
+                while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':#找到VERIFICATION PROCESS这一行，行数-3就是实际的绕组数量
+                    uc_info[f'designation_{j-2}']=sht5[f'a{i+j}'].value
+                    uc_info[f'wire_size_{j-2}']=sht5[f'c{i+j}'].value
+                    uc_info[f'resistance_{j-2}']=sht5[f'j{i+j}'].value
+                    j=j+1
+
+#                j=2#WINDING后面两行是格式，跳开
+#                while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':#找到VERIFICATION PROCESS这一行，行数-3就是实际的绕组数量
+#                    j=j+1
+#                for k in range(1,j-3+1):#j-3为绕组数量，+1是因为range不包含上限
+#                    uc_info[f'winding_{k}']=sht5[f'c{i+2+k}'].value
+#                    uc_info[f'resistance_{k}']=sht5[f'j{i+2+k}'].value
+
+        if sht5[f'a{i}'].value=='Dielectric Strength':#a列中寻找dielectric strength这一行
+            j=1
+            while sht5[f'd{i+j}'].value!=None:
+                uc_info[f'location_{j}']=sht5[f'd{i+j}'].value
+                uc_info[f'voltage_{j}']=sht5[f'h{i+j}'].value
+                j=j+1
+
+
+            uc_all.append(uc_info)
+    return uc_all
+    
+
+def Page_break(sheet):#xlwings:自动分页功能
+    last_row=sheet.used_range.last_cell.row#工作簿最大的行数
+    if sheet.name=='4.0 Components':
+        start=1
+        end=1
+        while end<=last_row:#在最大行数范围内进行分页
+            while sheet[f'a{start}:a{end}'].height<=680:#680为分页的最大行高，超出此行高则分页
+                end=end+1#一行行增加，直到范围内最大的行数
+            while sheet[f'a{end}'].value==None:#如合并单元格，则不应该在中间分页，往上寻找直到找到合适的分页处
+                if end>last_row:#是否超出最大行数，超出则不需要再分页，退出
+                    break
+                else:
+                    end=end-1#如果在最大行数范围内，则往上寻找合适的单元格分页
+            sheet.api.HPageBreaks.Add(Before=sheet[f'a{end}'].api)#在上方添加分页符
+            start=end#添加分页后的行数为后一页起点
+
+    elif sheet.name=='5.0 CEC Comps':
+        counts=0
+        rows=[]
+        for i in range(1,last_row):#在报告的此行数范围内去匹配
+            if sheet[f'a{i}'].value=='INSULATED COIL ':#a列中寻找INSULATED COIL 
+                counts=counts+1#计算找到多少个insulated coil
+                rows.append(i)#记录对应的行数
+        rows.append(last_row+1)#加入最后一行，把最后的一段考虑进去,+1是由于end取值时做-1处理
+        print(rows)
+        for i in range(0,len(rows)):
+            if i+1>=len(rows):
+                break
+            elif i==0:
+                start=1
+                end=rows[i+1]-1
+            elif i!=0:
+                start=rows[i]-1
+                end=rows[i+1]-1
+            print(f'正在处理{start}-{end}之间的分页')
+
+            if sheet[f'a{start}:a{end}'].height<=680:
+                sheet.api.HPageBreaks.Add(Before=sheet[f'a{end}'].api)#在上方添加分页符
+                print(f'无需再分割，在{end}上方分页')
+
+            else:
+                scan=start
+                while sheet[f'a{start}:a{scan}'].height<=680 and scan<=end:#680为分页的最大行高，超出此行高则分页
+                    scan=scan+1
+                    if sheet[f'a{scan}'].value=='WINDING(S) RESISTANCE':
+                        break
+                while sheet[f'a{scan}'].value==None:#如合并单元格，则不应该在中间分页，往上寻找直到找到合适的分页处
+#                    if scan>end:#是否超出最大行数，超出则不需要再分页，退出
+#                        break
+#                    else:
+#                        scan=scan-1#如果在最大行数范围内，则往上寻找合适的单元格分页
+                    if scan==last_row:
+                        break
+                    else:
+                        scan=scan-1
+                sheet.api.HPageBreaks.Add(Before=sheet[f'a{scan}'].api)#在上方添加分页符
+                print(start,scan,sheet[f'a{start}:a{scan}'].height)
+                print(f'需要分割，在{scan}上方分页')
+                start=scan
+                if end==last_row:
+                    sheet.api.HPageBreaks.Add(Before=sheet[f'a{end+1}'].api)#在上方添加分页符
+                else:
+                    sheet.api.HPageBreaks.Add(Before=sheet[f'a{end}'].api)#在上方添加分页符
+
+            print('='*10)
+
+
     
 
 if __name__=='__main__':
