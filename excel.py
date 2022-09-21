@@ -8,21 +8,32 @@ from xlutils.copy import copy
 import xlwings as xw
 import time
 import os
+import re
 
 def Menu():
 #    choice=input("1.提取数据\n2.修改报告")
     choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8.0自动分页功能tmp")
     if choice=='1':
-        rpt=input("Please input the report path:")
-        rpt_start=int(input("Please input the start line of report:"))
-        data=input("Please input the data source path:")
+        path_rpt=input("Please input the report path:")
+        path_data=input("Please input the data source path:")
         data_start=int(input("Please input the start line of data:"))
         data_end=int(input("Please input the end line of data:"))
-        data_col1=int(input("Please choose four columns of data (1/4):"))
-        data_col2=int(input("Please choose four columns of data (2/4):"))
-        data_col3=int(input("Please choose four columns of data(3/4):"))
-        data_col4=int(input("Please choose four columns of data (4/4):"))
-        get_data(rpt,rpt_start,data,data_start,data_end,data_col1,data_col2,data_col3,data_col4)
+        col1=input("Please choose four columns of data (1/4):")
+        col2=input("Please choose four columns of data (2/4):")
+        col3=input("Please choose four columns of data(3/4):")
+        col4=input("Please choose four columns of data (4/4):")
+        col5=input("是否有单独提供证书，如有，请指出证书号所在列")
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        wb_rpt=app.books.open(path_rpt)
+        wb_data=app.books.open(path_data)
+        data=get_data(wb_data.sheets[0],data_start,data_end,col1,col2,col3,col4,col5)
+        generate4(wb_rpt.sheets['4.0 Components'],data)
+        wb_rpt.save(path_rpt[:-4]+'_output.xls')
+        wb_rpt.close()
+        wb_data.close()
+        app.kill()
     elif choice=='2':
 #        app=xw.App(visible=True,add_book=False)
         rpt=input("Please input the report path:") #输入要修改的报告的路径
@@ -123,7 +134,7 @@ def Menu():
         Page_break(sht5)
         
 
-def get_data(rpt_fn,rpt_start, data_fn,data_start,data_end,data_col1,data_col2,data_col3,data_col4):
+def get_data_old(rpt_fn,rpt_start, data_fn,data_start,data_end,data_col1,data_col2,data_col3,data_col4):
     rpt_end=rpt_start+(data_end-data_start)
     xls_rpt=xlrd.open_workbook(rpt_fn,formatting_info=True)
     print(xls_rpt)
@@ -261,6 +272,42 @@ def sort_by_manufacturer(filename): #按照制造商排序
                 k=k+1
                 
     xls_new.save('output.xls')
+
+def get_data(sheet,row_start,row_end,column1,column2,column3,column4,column5):#xlwings:获取工作簿指定范围内的数据
+    data=[]
+    for row in range(row_start,row_end+1):
+        rows_value=[]
+        rows_value.append(sheet[f'{column1}{row}'].value)
+        rows_value.append(sheet[f'{column2}{row}'].value)
+        rows_value.append(sheet[f'{column3}{row}'].value)
+        rows_value.append(sheet[f'{column4}{row}'].value)
+        if sheet[f'{column5}{row}'].value==None:
+            pass
+        elif rows_value[1]==None:
+            pass
+        else:
+            result=re.search('\w\d{5,6}',sheet[f'{column5}{row}'].value)
+            print(result)
+            if result!=None:
+                rows_value[1]=rows_value[1]+'\n('+result.group()+')'
+        data.append(rows_value)
+    return data
+
+
+def generate4(sheet,data):#xlwings:自动写入数据，主要针对新报告时4.0数据的写入
+    '''
+    sheet:报告的SEC4.0
+    data:需要写入的数据，一般由get_data获取
+    '''
+    row=sheet_total_rows(sheet)+1#用sheet_total_rows获取连续数据的最后一行，+1为后一行开始写入数据
+    for data in data:
+        print(f'正在第{row}行写入数据')
+        sheet[f'c{row}:f{row}'].value=list_fmt(data)
+        insert_blank_line(sheet,row)
+        row=row+1
+
+#    fmt(sheet)
+
     
 def copy_line(sheet,row): #xlwings:复制指定行
     index=f'B{row}:F{row}' #构造B1:F1字符串索引
@@ -360,6 +407,7 @@ def str_fmt(str):
     str=str.replace('）',')')#替换中文括号
     str=str.replace('：',':')#替换中文冒号
     str=str.replace('；',';')#替换中文分号
+    str=str.replace('、',',')#替换中文顿号
 
     if ',' in str:
         str=separate(str,',')
@@ -431,7 +479,8 @@ def update3(sheet,photo_path): #xlwings:在3.0自动插入照片
 #            print(files)
             print(photo_path+file)
             sheet.pictures.add(photo_path+file)#插入图片
-            sheet.pictures[number].width=288 #单位为pt，72pt=1inch，即288/72=4inch
+#            sheet.pictures[number].width=288 #单位为pt，72pt=1inch，即288/72=4inch
+            sheet.pictures[number].height=288 #单位为pt，72pt=1inch，即288/72=4inch
             sheet.pictures[number].top=sheet[f'a1:a{row}'].height #用行数来定位
             sheet.pictures[number].left=50.5 #单元格默认列宽50.5
             sheet[f'a{row-2}'].value=f'Photo {number+1} - ' #插入文字描述
