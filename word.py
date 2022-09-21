@@ -12,6 +12,24 @@ from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from win32com.client import Dispatch
+import xlwings as xw
+from excel import get_UC
+
+def Menu():
+    choice=input('请输入你的选择：\n1.生成年检报告')
+    if choice=='1':
+        path_xls=input('请输入需要做年检的报告（excel)的路径')
+        path_doc=input('请输入年检报告(wrod)的路径')
+        app=xw.App(visible=False,add_book=False)
+#        wb=app.books.open(rpt_xls)
+#        data=get_UC(wb)
+#        wb.close()
+#        app.kill()
+#        print(data)
+#        docx=Document(rpt_doc)
+        Annual_checks(app,path_xls,path_doc)
+#        docx.save(path_doc)
+        app.kill()
 
 def doc2docx(path):#将doc文件转换成docx
     '''path具体到文件'''
@@ -135,9 +153,78 @@ def is_italic_row(row):
             break 
     return True
 
-#def obmit_row(list):
-#    for l in list:
         
+def Annual_check(docx,data,component):#查找一份报告中SEC5.0信息并写入到年检报告中
+#    table=docx.tables[0]
+    table_content=find_table(docx.tables,'Unlisted Component')#年检报告中目录那张表格
+    table_test=find_table(docx.tables,'Model No.')#年检报告中耐压测试的表格
+    table_construction=find_table(docx.tables,'Model')#年检报告中物理检查那张表格
+    print('找到目录表格:',len(table_content))
+    print('找到耐压测试表格:',len(table_test))
+    print('找到结构表格:',len(table_construction))
+    for uc in data['uc_info']:
+        if component in uc['name'].lower():#只处理指定的部件
+            row_cells=table_content[0].add_row().cells#找到目录表格后增加一行，写入对应的数据
+            row_cells[0].text=uc['name']
+            row_cells[1].text=uc['manufacturer']
+            row_cells[2].text=uc['model']
+            row_cells[3].text=data['basic_info']['report']
+            row_cells[4].text=str(uc['photo_no'])
+            row_cells[5].text=str(uc['item_no'])
+
+
+            #以下部分为多个绕组信息处理
+            k=1
+            while f'designation_{k}' in list(uc.keys()):
+                row_cells=table_construction[0].add_row().cells#找到结构表格后增加一行，写入对应数据
+                row_cells[0].text=uc['model']
+                row_cells[1].text=uc[f'designation_{k}']
+                row_cells[2].text=str(uc[f'wire_size_{k}'])
+                row_cells[3].text=str(uc[f'resistance_{k}'])
+#                row_cells[4].text=
+                row_cells[5].text='Pass'
+                k=k+1
+
+
+            j=1
+            while f'location_{j}' in list(uc.keys()):#找到测试表格后增加一行，写入对应数据
+                row_cells=table_test[0].add_row().cells
+                row_cells[0].text=uc['model']
+                row_cells[1].text=uc['manufacturer']
+                row_cells[2].text=uc[f'location_{j}']
+                row_cells[3].text=uc[f'rating'].split(',')[0]
+                row_cells[4].text=uc[f'voltage_{j}']
+                row_cells[5].text='Pass'
+                j=j+1
+
+#        cells=table_construction[0].columns[0].cells
+##        for i in range(0,len(cells)+1):
+#        i=0
+#        while i+1<len(cells):
+#            start=i
+#            while cells[i].text==cells[i+1].text and i+1<len(cells):
+#                print('len:',len(cells))
+#                print(i+1)
+#                i=i+1
+#            if i==len(cells):
+#                pass
+#            else:
+#                end=i
+#                cells[start].merge(cells[end])
+#            i=i+1
+            
+def Annual_checks(app,path_xls,path_doc):#查找目录下所有报告的SEC5.0信息并写入到年检报告中
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')]#列出目录下所有的xls文件
+    file_path=[os.path.join(path_xls, filename) for filename in files]#拼接目录和文件生成每个文件的绝对路径
+    print(file_path)
+    for file in file_path:#遍历每一个文件
+        wb=app.books.open(file)
+        data=get_UC(wb)#提取SEC5.0信息
+        wb.close()
+        docx=Document(path_doc)
+        Annual_check(docx,data,'smps')#引用函数把年检信息写入年检报告
+        docx.save(path_doc)
+            
 
 if __name__=='__main__':
     data=input('请输入要提取的数据文件的路径：')
