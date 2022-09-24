@@ -28,7 +28,13 @@ def Menu():
         app.screen_updating=False#取消屏幕刷新
         wb_rpt=app.books.open(path_rpt)
         wb_data=app.books.open(path_data)
-        data=get_data(wb_data.sheets[0],data_start,data_end,col1,col2,col3,col4,col5)
+        for sheet in wb_data.sheets:
+            print(sheet)
+            if sheet.name=='4.0 Components':
+                sht_data=sheet
+            else:
+                sheet=wb_data.sheets[0]
+        data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
         generate4(wb_rpt.sheets['4.0 Components'],data)
         wb_rpt.save(path_rpt[:-4]+'_output.xls')
         wb_rpt.close()
@@ -303,10 +309,48 @@ def generate4(sheet,data):#xlwings:自动写入数据，主要针对新报告时
     for data in data:
         print(f'正在第{row}行写入数据')
         sheet[f'c{row}:f{row}'].value=list_fmt(data)
+        sheet[f'c{row}:f{row}'].api.Font.Color=0xFF00FF
         insert_blank_line(sheet,row)
         row=row+1
 
 #    fmt(sheet)
+    last_row=sheet.used_range.last_cell.row
+    for col in ['c','d','e','f']:
+        index=row_index=get_index(sheet,col)
+        merge_by_index(sheet,col,index)
+        print(row_index)
+            
+
+def get_index(sheet,col):#xlwings:此函数服务于合并单元格，记录指定列非空单元格的行数
+    rows=[]
+    last_row=sheet.used_range.last_cell.row
+    print(last_row)
+    for i in range(1,last_row):#在报告的此行数范围内去匹配
+        if sheet[f'{col}{i}'].value=='Name':#过滤Name这一行
+            pass
+        elif sheet[f'{col}{i}'].value=='Manufacturer/ trademark2':#过滤这一行
+            pass
+        elif sheet[f'{col}{i}'].value=='Type / model2':#过滤这一行
+            pass
+        elif sheet[f'{col}{i}'].value=='Technical data and securement means':#过滤这一行
+            pass
+        elif sheet[f'{col}{i}'].value!=None:#指定列是否为空
+            rows.append(i)#记录对应的行数
+    rows.append(max(row_max(sheet,'c'),row_max(sheet,'d'),row_max(sheet,'e'),row_max(sheet,'f'))+1)#找到C,D,E,F列中最大的行数，+1是为了匹配merge_by_index函数
+    return rows
+
+def merge_by_index(sheet,col,index):#xlwings:基于get_index的索引来合并单元格
+    for i in range(0,len(index)):#遍历每一个索引
+        if i+1>len(index)-1:#超出索引，则退出
+            break
+        elif index[i+1]-index[i]>1:#比较两个索引之间是否大于1，大于1则合并
+            sheet[f'{col}{index[i]}:{col}{index[i+1]-1}'].merge()
+
+def row_max(sheet,col):#xlwings:获取某一列的最大行数
+    row=sheet.used_range.last_cell.row#最大行数
+    while sheet[f'{col}{row}'].value==None:
+        row=row-1
+    return row
 
     
 def copy_line(sheet,row): #xlwings:复制指定行
@@ -786,6 +830,9 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
     sht5=wb.sheets['5.0 CEC Comps']
     total_row=sht5.used_range.last_cell.row#返回最大的行数
     uc_all=[]
+    basic_info={
+        'report':sht1['b3'].value
+}
     for i in range(1,total_row):#在报告的此行数范围内去匹配
         if sht5[f'a{i}'].value=='Photo #':#a列中寻找Photo
             uc_info={
@@ -849,7 +896,7 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
 
 
             uc_all.append(uc_info)
-    return uc_all
+    return {'uc_info':uc_all,'basic_info':basic_info}
     
 
 def Page_break(sheet):#xlwings:自动分页功能
