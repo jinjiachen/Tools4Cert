@@ -19,7 +19,7 @@ def Menu():
     choice=input('请输入你的选择：\n1.生成年检报告')
     if choice=='1':
         path_xls=input('请输入需要做年检的报告（excel)的路径')
-        path_doc=input('请输入年检报告(wrod)的路径')
+        path_doc=input('请输入年检报告(word)的路径')
         app=xw.App(visible=False,add_book=False)
 #        wb=app.books.open(rpt_xls)
 #        data=get_UC(wb)
@@ -27,7 +27,8 @@ def Menu():
 #        app.kill()
 #        print(data)
 #        docx=Document(rpt_doc)
-        Annual_checks(app,path_xls,path_doc)
+        for component in ['compressor','motor','smps','transformer']:
+            Annual_checks(app,path_xls,path_doc,component)
 #        docx.save(path_doc)
         app.kill()
 
@@ -212,18 +213,30 @@ def Annual_check(docx,data,component):#查找一份报告中SEC5.0信息并写�
 #                end=i
 #                cells[start].merge(cells[end])
 #            i=i+1
+
+def exit_file(file_path):#判断一个文件是否存在
+    dirname=os.path.dirname(file_path)
+    filename=os.path.basename(file_path)
+    for file in os.listdir(dirname):
+        if filename==file:
+            return True
+
             
-def Annual_checks(app,path_xls,path_doc):#查找目录下所有报告的SEC5.0信息并写入到年检报告中
+def Annual_checks(app,path_xls,path_doc,component):#查找目录下所有报告的SEC5.0信息并写入到年检报告中
     files=[f for f in os.listdir(path_xls) if f.endswith('.xls')]#列出目录下所有的xls文件
     file_path=[os.path.join(path_xls, filename) for filename in files]#拼接目录和文件生成每个文件的绝对路径
+    new_file=path_doc[:-4]+component+'.docx'
     print(file_path)
-    for file in file_path:#遍历每一个文件
+    for file in file_path:
         wb=app.books.open(file)
         data=get_UC(wb)#提取SEC5.0信息
         wb.close()
-        docx=Document(path_doc)
-        Annual_check(docx,data,'smps')#引用函数把年检信息写入年检报告
-        docx.save(path_doc)
+        if exit_file(new_file):
+            docx=Document(new_file)
+        else:
+            docx=Document(path_doc)
+        Annual_check(docx,data,component)#引用函数把年检信息写入年检报告
+        docx.save(new_file)
             
 
 if __name__=='__main__':
