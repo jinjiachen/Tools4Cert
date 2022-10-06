@@ -12,7 +12,7 @@ import re
 
 def Menu():
 #    choice=input("1.提取数据\n2.修改报告")
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8.0自动分页功能tmp")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -33,7 +33,7 @@ def Menu():
             if sheet.name=='4.0 Components':
                 sht_data=sheet
             else:
-                sheet=wb_data.sheets[0]
+                sht_data=wb_data.sheets[0]
         data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
         generate4(wb_rpt.sheets['4.0 Components'],data)
         wb_rpt.save(path_rpt[:-4]+'_output.xls')
@@ -130,14 +130,29 @@ def Menu():
         wb.close()
         app.kill()
     elif choice=='8':
-        app=xw.App(visible=True,add_book=False)
+        app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("Please input the report path:") #输入要修改的报告的路径
         wb=app.books.open(rpt)
         sht4=wb.sheets['4.0 Components']
         sht5=wb.sheets['5.0 CEC Comps']
+        Page_break(sht4)
         Page_break(sht5)
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
+    elif choice=='9':
+        app=xw.App(visible=False,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        wb=app.books.open(rpt)
+        sht4=wb.sheets['4.0 Components']
+        sort_by_item(sht4)
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
         
 
 def get_data_old(rpt_fn,rpt_start, data_fn,data_start,data_end,data_col1,data_col2,data_col3,data_col4):
@@ -966,18 +981,33 @@ def Page_break(sheet):#xlwings:自动分页功能
             print('='*10)
 
 
+def cell_unmerge(sheet):#xlwings:拆分单元格并填充相同数据
+    last_row=max(row_max(sheet,'c'),row_max(sheet,'d'),row_max(sheet,'e'),row_max(sheet,'f'))#找到C,D,E,F列中最大的行数，排除最下方notes部分
+    for row in range(3,last_row+1):#遍历除了固定格式外的所有行
+        for column in ['a','b','c','d','e','f']:
+            if sheet[f'{column}{row}'].merge_cells:#是否为合并单元格
+                address=sheet[f'{column}{row}'].merge_area.address#获取合并单元格的范围
+                sheet[address].unmerge()#拆分单元格
+                sheet[address].value=sheet[address].value[0]#拆分后赋予相同的值
+
+
+def sort_by_item(sheet):#xlwings:按照item进行排序,提取item的序列，按照序列从大到小在B列查找，从最后一行倒序查找，增加效率
+    last_row=max(row_max(sheet,'c'),row_max(sheet,'d'),row_max(sheet,'e'),row_max(sheet,'f'))#找到C,D,E,F列中最大的行数，排除最下方notes部分
+    items=get_col_list(sheet,'b',3,last_row)#获取item的所有编号
+    items=sorted(items,reverse=True)#由大到小排序
+#    print(items)
+    for item_no in items:#遍历每一个item序号
+        row=last_row#从下往上遍历
+        while sheet[f'b{row}'].value!=item_no:#从下往上找，知道找到对应的序号
+            row=row-1#找不到则行号-1
+        if sheet[f'b{row}'].merge_cells:#找到对应item后判断对应的单元格是否为合并单元格，如是则对应区域一起剪切
+            address=sheet[f'b{row}'].merge_area.address#获取合并单元格对应的区域范围
+            sheet[address].api.EntireRow.Cut()#剪切该区域的完整行
+        else:
+            sheet[f'b{row}'].api.EntireRow.Cut()#不是合并单元格，直接剪切
+        sheet['a3'].api.EntireRow.Insert()#在第三行上方插入剪切的数据
+
     
 
 if __name__=='__main__':
     Menu()
-#    rpt=input("Please input the report path:")
-#    rpt_start=int(input("Please input the start line of report:"))
-#    data=input("Please input the data source path:")
-#    data_start=int(input("Please input the start line of data:"))
-#    data_end=int(input("Please input the end line of data:"))
-#    data_col1=int(input("Please choose four columns of data (1/4):"))
-#    data_col2=int(input("Please choose four columns of data (2/4):"))
-#    data_col3=int(input("Please choose four columns of data(3/4):"))
-#    data_col4=int(input("Please choose four columns of data (4/4):"))
-#    get_data(rpt,data)
-#    sort_by_name(rpt)
