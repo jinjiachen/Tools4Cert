@@ -17,7 +17,7 @@ def Menu():
 def Driver():
     #Chrom的配置
     options = webdriver.ChromeOptions()
-    options.add_argument("--proxy-server=http://192.168.2.108:8889")
+#    options.add_argument("--proxy-server=http://192.168.2.108:8889")
     #options.add_argument("--no-proxy-server")
     options.add_argument("--headless")
     #options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"')
@@ -50,6 +50,8 @@ def UL(driver):
     user.send_keys('shelway.wu@intertek.com')
     password=driver.find_element(By.ID,'loginPass')
     password.send_keys('Ul123456')
+    check=driver.find_element(By.XPATH,'//input[@id="cnConsent"]')
+    check.click()
     login=driver.find_element(By.ID,'main-login')
     login.submit()
     print('login')
