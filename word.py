@@ -16,21 +16,39 @@ import xlwings as xw
 from excel import get_UC
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF')
     if choice=='1':
-        path_xls=input('请输入需要做年检的报告（excel)的路径')
+        path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
         path_doc=input('请输入年检报告(word)的路径')
-        app=xw.App(visible=False,add_book=False)
-#        wb=app.books.open(rpt_xls)
-#        data=get_UC(wb)
-#        wb.close()
-#        app.kill()
-#        print(data)
-#        docx=Document(rpt_doc)
+        path_doc=path_doc.replace('"','')#去除"号,做预处理
+        app=xw.App(visible=False,add_book=False)#创建app对象，传入Annual_checks函数
         for component in ['compressor','motor','smps','transformer']:
             Annual_checks(app,path_xls,path_doc,component)
-#        docx.save(path_doc)
-        app.kill()
+        app.kill()#关闭进程
+    elif choice=='2':
+        data=input('请输入要提取的数据文件的路径：')
+        data=data.replace('"','')
+        docx=Document(data)
+        new_docx=Document()
+        tables=docx.tables
+        print('the numbers of tables:',len(tables))
+        table_components=find_table(tables,'hello')
+        print('找到部件清单的表格：',table_components)
+        rows_value=get_more(table_components)
+        print('获取的数据行数：',len(rows_value))
+        new_table=new_docx.add_table(rows=len(rows_value),cols=6,style="Table Grid")
+        print('生成的新表格的行数：',len(new_table.rows))
+        write_table(new_table,rows_value)
+        new_docx.save(data[:-5]+'output.docx')
+    elif choice=='3':
+        path=input('请输入需要转换的doc文件路径：')
+        path=path.replace('"','')
+        doc2docx(path)
+    elif choice=='4':
+        path=input('请输入需要转换的doc文件夹路径：')
+        path=path.replace('"','')
+        docs2pdfs(path)
+
 
 def doc2docx(path):#将doc文件转换成docx
     '''path具体到文件'''
@@ -108,7 +126,8 @@ def get_rows(table):#输入一个表格，返回一个以列表为元素的列�
 #        elif row.cells[0].text=='Object / part No.':
 #            print('删除Object / part No.所在行')
 #            continue
-        for i in range(1,7):#针对table24.1,会返回8个cell, 取其中的1-6个，头和尾是重复的，不知道原因
+#        for i in range(1,7):#针对table24.1,会返回8个cell, 取其中的1-6个，头和尾是重复的，不知道原因
+        for i in range(0,6):#针对标准的TRF中table24.1
             values.append(row.cells[i].text)#把一行的数据放在value这个列表中
 #            print(values)
 #            break
@@ -122,12 +141,14 @@ def get_more(tables):#输入多个表格，返回每行的数据
         rows_values=rows_values+get_rows(table)#把每个表格的行数据拼接起来
     return rows_values
 
-def write_table(rows_value):#把获取的数据写入到新建的表格中
+def write_table(new_table,rows_value):#把获取的数据写入到新建的表格中
     for i in range(0,len(rows_value)-1):#遍历数据列表中的每一个元素
+#        print(f'写入数据第{i}行')
         for j in range(0,6):
             new_table.rows[i].cells[j].text=rows_value[i][j]
             new_table.rows[i].cells[j].paragraphs[0].runs[0].font.name='Arial'
             new_table.rows[i].cells[j].paragraphs[0].runs[0].font.size=Pt(10)
+            print(f'写入数据第{i}行第{j}列数据')
 
 def is_italic_cell(cell):#判断表格中的cell是否为斜体,如果是空的，返回None，如果为斜体返回Ture，其他返回False
     if cell.text=='':
@@ -155,11 +176,11 @@ def is_italic_row(row):
     return True
 
         
-def Annual_check(docx,data,component):#查找一份报告中SEC5.0信息并写入到年检报告中
+def Annual_check(docx,data,component):
 #    table=docx.tables[0]
-    table_content=find_table(docx.tables,'Unlisted Component')#年检报告中目录那张表格
-    table_test=find_table(docx.tables,'Model No.')#年检报告中耐压测试的表格
-    table_construction=find_table(docx.tables,'Model')#年检报告中物理检查那张表格
+    table_content=find_table(docx.tables,'Unlisted Component')
+    table_test=find_table(docx.tables,'Model No.')
+    table_construction=find_table(docx.tables,'Model')
     print('找到目录表格:',len(table_content))
     print('找到耐压测试表格:',len(table_test))
     print('找到结构表格:',len(table_construction))
@@ -222,45 +243,26 @@ def exit_file(file_path):#判断一个文件是否存在
             return True
 
             
-def Annual_checks(app,path_xls,path_doc,component):#查找目录下所有报告的SEC5.0信息并写入到年检报告中
-    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')]#列出目录下所有的xls文件
-    file_path=[os.path.join(path_xls, filename) for filename in files]#拼接目录和文件生成每个文件的绝对路径
+def Annual_checks(app,path_xls,path_doc,component):
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')]
+    file_path=[os.path.join(path_xls, filename) for filename in files]
     new_file=path_doc[:-4]+component+'.docx'
     print(file_path)
     for file in file_path:
         wb=app.books.open(file)
-        data=get_UC(wb)#提取SEC5.0信息
+        data=get_UC(wb)
         wb.close()
         if exit_file(new_file):
             docx=Document(new_file)
         else:
             docx=Document(path_doc)
-        Annual_check(docx,data,component)#引用函数把年检信息写入年检报告
+        Annual_check(docx,data,component)
         docx.save(new_file)
             
 
-if __name__=='__main__':
-    data=input('请输入要提取的数据文件的路径：')
-#    docx=Document(r'B:\其他客户\220602760SHA_Schneider_IEC_report\Others\UL EN报告\SA12773-13CA18037 CB Report ACRC301S ACRC301H.docx')
-    docx=Document(data)
-    new_docx=Document()
-    tables=docx.tables
-    print('the numbers of tables:',len(tables))
-#    table_components=Search_table(tables,'hello') 
-    table_components=find_table(tables,'hello')
-    print('找到部件清单的表格：',table_components)
-#    print(len(table_components.rows))
-#    rows_value=get_rows(table_components)
-#    rows_value=[]
-#    if False:
-#        rows_value=get_rows(table_components)
-#    else:
-#        for table in table_components:
-#            rows_value=rows_value+get_rows(table)
-    rows_value=get_more(table_components)
-    print('获取的数据行数：',len(rows_value))
+def update_components():#更新修改table24.1
+    pass
 
-    new_table=new_docx.add_table(rows=len(rows_value),cols=6,style="Table Grid")
-    print('生成的新表格的行数：',len(new_table.rows))
-    write_table(rows_value)
-    new_docx.save(r'B:\其他客户\220602760SHA_Schneider_IEC_report\Others\UL EN报告\output.docx')
+
+if __name__=='__main__':
+    Menu()
