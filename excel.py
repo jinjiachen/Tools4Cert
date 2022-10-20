@@ -11,11 +11,12 @@ import os
 import re
 
 def Menu():
-#    choice=input("1.提取数据\n2.修改报告")
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
+        path_rpt=path_rpt.replace('"','')
+        path_data=path_data.replace('"','')
         data_start=int(input("Please input the start line of data:"))
         data_end=int(input("Please input the end line of data:"))
         col1=input("Please choose four columns of data (1/4):")
@@ -43,12 +44,14 @@ def Menu():
     elif choice=='2':
 #        app=xw.App(visible=True,add_book=False)
         rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
 #        rpt=os.path.abspath(rpt)
 #        rpt_dir=os.path.dirname(rpt)
 #        filename=os.path.basename(rpt)
 #        print(rpt_dir)
 #        print(os.path.basename(rpt))
         data=input("Please input the data source path:") #输入数据源的路径
+        data=data.replace('"','')
         app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
@@ -72,6 +75,7 @@ def Menu():
         app.screen_updating=False#取消屏幕刷新
         rpt=input("Please input the report path:") #输入要修改的报告的路径
 #        rpt=os.path.abspath(rpt)
+        rpt=rpt.replace('"','')
         wb=app.books.open(rpt)
         sht7=wb.sheets['7.0 Illustrations']
         manual_path=input('输入说明书的路径')
@@ -85,7 +89,9 @@ def Menu():
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("输入需要更新的报告路径:") #输入要更新的报告的路径
+        rpt=rpt.replace('"','')
         template=input("输入CDR新模板的路径:") #输入模板的路径
+        template=template.replace('"','')
         wb=app.books.open(rpt)
         if template=='':
             wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xls')
@@ -102,6 +108,7 @@ def Menu():
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("输入需要更新的报告路径:") #输入要更新的报告的路径
+        rpt=rpt.replace('"','')
         wb=app.books.open(rpt)
         sht8=wb.sheets['8.0 Test Summary']
         update8(sht8)
@@ -111,6 +118,7 @@ def Menu():
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("输入需要提取的报告路径:") #输入要更新的报告的路径
+        rpt=rpt.replace('"','')
         wb=app.books.open(rpt)
         uc_all=get_UC(wb)
         for i in uc_all:
@@ -122,9 +130,11 @@ def Menu():
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
         wb=app.books.open(rpt)
         sht3=wb.sheets['3.0 Photos']
         photo_path=input('输入照片所在路径')
+        photo_path=photo_path+'\\'
         update3(sht3,photo_path)
         wb.save(rpt[:-4]+'_output.xls')
         wb.close()
@@ -134,6 +144,7 @@ def Menu():
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
         wb=app.books.open(rpt)
         sht4=wb.sheets['4.0 Components']
         sht5=wb.sheets['5.0 CEC Comps']
@@ -147,12 +158,115 @@ def Menu():
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
         wb=app.books.open(rpt)
         sht4=wb.sheets['4.0 Components']
         sort_by_item(sht4)
         wb.save(rpt[:-4]+'_output.xls')
         wb.close()
         app.kill()
+    elif choice=='10':
+        app=xw.App(visible=False,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        wb=app.books.open(rpt)
+        sht3=wb.sheets['3.0 Photos']
+        sht4=wb.sheets['4.0 Components']
+        sync_item(sht3,sht4)
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
+    elif choice=='11':
+        app=xw.App(visible=False,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        wb=app.books.open(rpt)
+        sht3=wb.sheets['3.0 Photos']
+        get_shapes(sht3)
+        init_item(sht3,'Line Callout 2')
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
+    elif choice=='123':
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        wb=app.books.open(rpt)
+        sht3=wb.sheets['3.0 Photos']
+        sht4=wb.sheets['4.0 Components']
+        sht5=wb.sheets['5.0 CEC Comps']
+        sht7=wb.sheets['7.0 Illustrations']
+        sht8=wb.sheets['8.0 Test Summary']
+        sht12=wb.sheets['12.0 Revisions']
+        wb.save(rpt[:-4]+'_output.xls')
+        while True:
+            choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item")
+            if choice=='1':
+                path_data=input("Please input the data source path:")
+                path_data=path_data.replace('"','')
+                data_start=int(input("Please input the start line of data:"))
+                data_end=int(input("Please input the end line of data:"))
+                col1=input("Please choose four columns of data (1/4):")
+                col2=input("Please choose four columns of data (2/4):")
+                col3=input("Please choose four columns of data(3/4):")
+                col4=input("Please choose four columns of data (4/4):")
+                col5=input("是否有单独提供证书，如有，请指出证书号所在列")
+                wb_data=app.books.open(path_data)
+                for sheet in wb_data.sheets:
+                    print(sheet)
+                    if sheet.name=='4.0 Components':
+                        print('find',sheet.name)
+                        sht_data=sheet
+                    else:
+                        sht_data=wb_data.sheets[0]
+                data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
+                generate4(wb.sheets['4.0 Components'],data)
+            elif choice=='2':
+                data=input("Please input the data source path:") #输入数据源的路径
+                data=data.replace('"','')
+                app=xw.App(visible=False,add_book=False)
+                wb_data=app.books.open(data)
+                sht4_data=wb_data.sheets['4.0 Components']
+                start=time.time()
+                update4(sht4,sht4_data,sh12)
+                end=time.time()
+                print('operating time:',end-start)
+            elif choice=='3':
+                manual_path=input('输入说明书的路径')
+                update7(sht7,manual_path)
+            elif choice=='7':
+                photo_path=input('输入照片所在路径')
+                photo_path=photo_path+'\\'
+                update3(sht3,photo_path)
+            elif choice=='8':
+                Page_break(sht4)
+                Page_break(sht5)
+            elif choice=='9':
+                sort_by_item(sht4)
+            elif choice=='10':
+                sync_item(sht3,sht4)
+            elif choice=='11':
+                get_shapes(sht3)
+                init_item(sht3,'Line Callout 2')
+            elif choice=='s':#用于把修改好的内容同步保存到原报告
+                wb.save(rpt.replace('_output',''))
+                wb.save(rpt[:-4]+'_output.xls')
+            elif choice=='exit' or choice=='q':
+                break
+            input('any key to contine!')
+            os.system('cls')
+
+#        input('any key to contine!')
+        wb.save()
+        wb.close()
+        app.kill()
+
         
 
 def get_data_old(rpt_fn,rpt_start, data_fn,data_start,data_end,data_col1,data_col2,data_col3,data_col4):
@@ -394,7 +508,7 @@ def paste_line(sheet,row,data): #xlwings:指定行粘贴
 #    index='C'+str(row)+':'+'F'+str(row)
     index=f'B{row}:F{row}'
     sheet[index].value=data
-    sheet[index].api.Font.Color=0xFF00FF
+#    sheet[index].api.Font.Color=0xFF00FF
 #    sheet[index].api.Font.Bold=True
 #    sheet[index].api.Font.Size
 #    sheet[index].api.Font.Name
@@ -525,7 +639,8 @@ def update3(sheet,photo_path): #xlwings:在3.0自动插入照片
     row_height=12.5 #默认行高12.5pt
     last_row=sheet.used_range.last_cell.row #返回最后一行的行号
 #    sheet[f'a3:j{last_row}'].clear_contents()#清除A列相关行数的内容
-    sheet[f'a3:j{last_row}'].delete()#删除对应行数
+#    sheet[f'a3:j{last_row}'].delete()#删除对应区域的内容，格式保留
+    sheet[f'a3:j{last_row}'].api.EntireRow.Delete()#删除对应区域的行数
     while sheet.pictures.count>0:#当sheet中有图片时，删除图片
         sheet.pictures[0].delete()
     number=sheet.pictures.count#当前的图片数量
@@ -570,6 +685,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
                     print(row)
                     break
             insert_line(sheet1,row,list_fmt(data)) #在该行后面插入数据
+            sheet1[f'a{row+1}:f{row+1}'].font.color=0xFF00FF#插入数据后修改字体颜色,这里用row不用j，row才是实际的行数
             data_rpt=data
             update12(sheet3,row_rev,data_rpt,data,'A')
 #            insert_line(sheet3,row_rev,update12(data_rpt,data,'A'))
@@ -587,6 +703,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
                 if data_rpt[2].upper()==data[2].upper() and data_rpt[3].upper()==data[3].upper(): #匹配制造商与型号，当一致时，进行后面的操作
                     data=list_fmt(data)
                     paste_line(sheet1,j,data) #修改技术参数(technical data), 用了整行复制的方法，但是其实只是修改技术参数那一列，因为部件名称，制造商，型号都是一致的
+                    sheet1[f'f{j}'].font.color=0xFF00FF#插入数据后修改字体颜色
                     print('revisie technical data from',data_rpt[4],'to',data[4])
                     update12(sheet3,row_rev,data_rpt,data,'RF')
                     row_rev=row_rev+1
@@ -602,6 +719,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
 #                if sheet1[f'd{j}'].value==data[1] and sheet1[f'f{j}'].value==data[3]: #匹配制造商与技术参数，当一致时，进行后面的操作
                     data=list_fmt(data)
                     paste_line(sheet1,j,data) #修改型号(model), 用了整行复制的方法，但是其实只是修改型号那一列，因为部件名称，制造商，技术参数都是一致的
+                    sheet1[f'e{j}'].font.color=0xFF00FF#插入数据后修改字体颜色
                     print('revise model:',data[3])
                     update12(sheet3,row_rev,data_rpt,data,'RE')
                     row_rev=row_rev+1
@@ -619,6 +737,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
                 if sheet1[f'e{j}'].value==data[3] and data_rpt[4]==data[4]: #匹配型号与技术参数，当一致时，进行后面的操作
 #                if sheet1[f'e{j}'].value==data[2] and sheet1[f'f{j}'].value==data[3]: #匹配型号与技术参数，当一致时，进行后面的操作
                     paste_line(sheet1,j,data) #修改制造商(manufacturer), 用了整行复制的方法，但是其实只是修改制造商那一列，因为部件名称，型号，技术参数都是一致的
+                    sheet1[f'd{j}'].font.color=0xFF00FF#插入数据后修改字体颜色
                     print('revise manufacturer:',data[2])
                     update12(sheet3,row_rev,data_rpt,data,'RD')
                     row_rev=row_rev+1
@@ -670,12 +789,22 @@ def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入1
     if cmd=="RD":#修改制造商
         sentence="Revise the manufacturer of "+data_rpt[1].lower().split('\n')[0]+" "+str(data_rpt[3])+' \nfrom\n\"'+data_rpt[2].split('\n')[0]+'\"\nto\n\"'+data[2].split('\n')[0]+'\".'
     elif cmd=="RE":#修改型号
+        if type(data[3])==float:
+            print('transfer data[3]')
+            data[3]=int(data[3])#data[3]为model列，当型号为纯数字时，转换为整型，防止12.0型号出现浮点的问题
+        if type(data_rpt[3])==float:
+            print('transfer data_rpt[3]')
+            data_rpt[3]=int(data_rpt[3])#data_rpt[3]为报告的model列，当型号为纯数字时，转换为整型，防止12.0出现浮点问题
         sentence='Revise the model name of '+data_rpt[1].lower().split('\n')[0]+" by "+data_rpt[2].split('\n')[0]+'\nfrom\n\"'+str(data_rpt[3])+'\"\nto\n\"'+str(data[3])+'\".'
     elif cmd=="RF":#修改技术参数
         sentence="Revise the technical data of "+data_rpt[1].lower().split('\n')[0]+" "+str(data_rpt[3])+" by "+data_rpt[2].split('\n')[0]+"\nfrom\n\""+data_rpt[4]+"\"\nto\n\""+data[4]+"\"."
     elif cmd=="A":
+        if type(data[3])==float:
+            data[3]=int(data[3])#data[3]为model列，当型号为纯数字时，转换为整型，防止12.0型号出现浮点的问题
         sentence='Add alternative '+data[1].lower().split('\n')[0]+' '+str(data[3])+' by '+data[2].split('\n')[0]
     elif cmd=="D":
+        if type(data[3])==float:
+            data[3]=int(data[3])#data[3]为model列，当型号为纯数字时，转换为整型，防止12.0型号出现浮点的问题
         sentence='Delete '+data[1].lower().split('\n')[0]+' '+str(data[3])+' by '+data[2].split('\n')[0]
     sheet12[f'c{row}'].value='4'
     sheet12[f'd{row}'].value=data_rpt[0]
@@ -917,6 +1046,7 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
 def Page_break(sheet):#xlwings:自动分页功能
     last_row=sheet.used_range.last_cell.row#工作簿最大的行数
     if sheet.name=='4.0 Components':
+        print('正在对sec4进行分页！')
         start=1
         end=1
         while end<=last_row:#在最大行数范围内进行分页
@@ -931,6 +1061,7 @@ def Page_break(sheet):#xlwings:自动分页功能
             start=end#添加分页后的行数为后一页起点
 
     elif sheet.name=='5.0 CEC Comps':
+        print('正在对sec5进行分页！')
         counts=0
         rows=[]
         for i in range(1,last_row):#在报告的此行数范围内去匹配
@@ -1006,6 +1137,63 @@ def sort_by_item(sheet):#xlwings:按照item进行排序,提取item的序列，�
         else:
             sheet[f'b{row}'].api.EntireRow.Cut()#不是合并单元格，直接剪切
         sheet['a3'].api.EntireRow.Insert()#在第三行上方插入剪切的数据
+
+def sync_item(sheet_photo,sheet_components):#xlwings:同步修改后的item号
+    '''
+    sheet_photo为报告的sec3.0
+    sheet_components为报告的sec4.0
+    '''
+    rows=[]
+    for i in range(1,sheet_components.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
+        rows.append(i)#将范围存储为列表
+#    print(rows)
+#    print(sorted(rows,reverse=True))
+    scan_direction=input('请选择扫描方向（up/down)：up为从下往上扫，down为从上往下扫')
+    if scan_direction=='up':
+        rows=sorted(rows,reverse=True)
+    elif scan_direction=='down':
+        rows=sorted(rows,reverse=False)
+    print(rows)
+    for i in rows:#将列表倒序遍历，顺序遍历会有重复item号问题
+#        print(i)
+        if sheet_components[f'h{i}'].value==None:#H列为空则pass
+            pass
+        elif sheet_components[f'b{i}'].value==None:#item列如果有合并单元格，改行不是单元格首行，则pass
+            pass
+        elif '+' in sheet_components[f'h{i}'].value or '-' in sheet_components[f'h{i}'].value: #判断H列是否有+-符号，有则为需要修改的item
+            print(f'正在处理第{i}行的item号')
+            old_no=sheet_components[f'b{i}'].value#记录修改前的item号
+            new_no=old_no+int(sheet_components[f'h{i}'].value)#计算需要更改后的item号
+            sheet_components[f'b{i}'].value=new_no#将item号更新
+            change_photo_no(sheet_photo,old_no,new_no,'Line')#同步更新3.0中的序号
+
+
+def get_shapes(sheet):#xlwings:获取sheet中所有的shape对象
+    for shape in sheet.shapes:
+        if shape.text==None:
+            print(shape.name)
+        else:
+            print(shape.name+':'+shape.text)
+
+
+def init_item(sheet,shape_name):
+    value=1
+    for shape in sheet.shapes:
+        if shape_name==shape.name:
+            shape.text=value
+            value+=1
+
+
+def change_photo_no(sheet,old_no,new_no,shape_name):#xlwings:更改sec3.0中部件的索引
+    '''
+    sheet:报告中sec3.0
+    old_no:照片中需要更改的索引
+    new_no:照片中的新索引
+    '''
+    for shape in sheet.shapes:#遍历所有的shape对象
+        if shape_name in shape.name:#判断是否为部件索引对应的图形
+            if shape.text==str(int(old_no)):#找到需要更改的索引
+                shape.text=new_no#赋予新的索引值
 
     
 
