@@ -11,7 +11,7 @@ import os
 import re
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -32,7 +32,10 @@ def Menu():
         for sheet in wb_data.sheets:
             print(sheet)
             if sheet.name=='4.0 Components':
+                print('find',sheet.name)
                 sht_data=sheet
+                break
+#                print(sht_data.name)
             else:
                 sht_data=wb_data.sheets[0]
         data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
@@ -191,6 +194,25 @@ def Menu():
         wb.save(rpt[:-4]+'_output.xls')
         wb.close()
         app.kill()
+    elif choice=='12':
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        data=input("Please input the data source path:") #输入数据源的路径
+        data=data.replace('"','')
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        wb=app.books.open(rpt)
+        wb_data=app.books.open(data)
+        sht5_rpt=wb.sheets[4]
+        for sheet in wb_data.sheets:
+            print(sheet)
+            if sheet.name=='5.0 CEC Comps':
+                sht5_data=sheet
+            else:
+                sht5_data=wb_data.sheets[0]
+        fill_CEC(sht5_rpt,sht5_data)
+
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
         app.display_alerts=False #取消警告
@@ -206,7 +228,7 @@ def Menu():
         sht12=wb.sheets['12.0 Revisions']
         wb.save(rpt[:-4]+'_output.xls')
         while True:
-            choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item")
+            choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n指令：")
             if choice=='1':
                 path_data=input("Please input the data source path:")
                 path_data=path_data.replace('"','')
@@ -223,6 +245,8 @@ def Menu():
                     if sheet.name=='4.0 Components':
                         print('find',sheet.name)
                         sht_data=sheet
+                        break
+#                        print(sht_data)
                     else:
                         sht_data=wb_data.sheets[0]
                 data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
@@ -234,7 +258,7 @@ def Menu():
                 wb_data=app.books.open(data)
                 sht4_data=wb_data.sheets['4.0 Components']
                 start=time.time()
-                update4(sht4,sht4_data,sh12)
+                update4(sht4,sht4_data,sht12)
                 end=time.time()
                 print('operating time:',end-start)
             elif choice=='3':
@@ -254,6 +278,18 @@ def Menu():
             elif choice=='11':
                 get_shapes(sht3)
                 init_item(sht3,'Line Callout 2')
+            elif choice=='12':
+                data=input("Please input the data source path:") #输入数据源的路径
+                data=data.replace('"','')
+                wb_data=app.books.open(data)
+                for sheet in wb_data.sheets:
+                    print(sheet.name)
+                    if sheet.name=='5.0 CEC Comps':
+                        print('找到sec5.0')
+                        sht5_data=sheet
+                    else:
+                        sht5_data=wb_data.sheets[0]
+                fill_CEC(sht5,sht5_data)
             elif choice=='s':#用于把修改好的内容同步保存到原报告
                 wb.save(rpt.replace('_output',''))
                 wb.save(rpt[:-4]+'_output.xls')
@@ -575,24 +611,27 @@ def separate(str,symbol): #字符串和分隔符拆分并重组函数，解决�
     
 def str_fmt(str):
 #以下为中文的符号的处理
-    str=str.replace('，',',')#替换中文逗号
-    str=str.replace('（','(')#替换中文括号
-    str=str.replace('）',')')#替换中文括号
-    str=str.replace('：',':')#替换中文冒号
-    str=str.replace('；',';')#替换中文分号
-    str=str.replace('、',',')#替换中文顿号
-
-    if ',' in str:
-        str=separate(str,',')
-        print('正在分割逗号：',str)
-    if ':' in str:
-        str=separate(str,':')
-        print('正在分割冒号：',str)
-    if ';' in str:
-        str=separate(str,';')
-        print('正在分割分号：',str)
-
-    return str
+    if str!=None:
+        str=str.replace('，',',')#替换中文逗号
+        str=str.replace('（','(')#替换中文括号
+        str=str.replace('）',')')#替换中文括号
+        str=str.replace('：',':')#替换中文冒号
+        str=str.replace('；',';')#替换中文分号
+        str=str.replace('、',',')#替换中文顿号
+    
+        if ',' in str:
+            str=separate(str,',')
+            print('正在分割逗号：',str)
+        if ':' in str:
+            str=separate(str,':')
+            print('正在分割冒号：',str)
+        if ';' in str:
+            str=separate(str,';')
+            print('正在分割分号：',str)
+    
+        return str
+    else:
+        return str
 
 def list_fmt(list):
     for i in range(1,len(list)):
@@ -647,14 +686,16 @@ def update3(sheet,photo_path): #xlwings:在3.0自动插入照片
     row=5
     top=row_height*row #12.5pt初始行高，5为行数
     for root,dirs,files in os.walk(photo_path,topdown=False):#遍历路径下的文件和文件夹，返回root,dirs,files的三元元组
-        files.sort()#对文件进行排序
-        files.sort(key=len) #在对文件的长度进行排序
+#        files.sort(key=len) #在对文件的长度进行排序
+        files.sort(key=mysort)#对文件进行排序
         for file in files:#遍历所有的文件
 #            print(files)
             print(photo_path+file)
             sheet.pictures.add(photo_path+file)#插入图片
-#            sheet.pictures[number].width=288 #单位为pt，72pt=1inch，即288/72=4inch
-            sheet.pictures[number].height=288 #单位为pt，72pt=1inch，即288/72=4inch
+            if sheet.pictures[number].width>sheet.pictures[number].height:
+                sheet.pictures[number].width=354 #单位为pt，72pt=1inch，即288/72=4inch
+            else:
+                sheet.pictures[number].height=288 #单位为pt，72pt=1inch，即288/72=4inch
             sheet.pictures[number].top=sheet[f'a1:a{row}'].height #用行数来定位
             sheet.pictures[number].left=50.5 #单元格默认列宽50.5
             sheet[f'a{row-2}'].value=f'Photo {number+1} - ' #插入文字描述
@@ -1016,7 +1057,7 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
                     uc_info[f'wire_size_{j-2}']=sht5[f'c{i+j}'].value
                     uc_info[f'resistance_{j-2}']=sht5[f'j{i+j}'].value
                     j=j+1
-            elif 'SMPS'.lower() in uc_info['name'].lower() or 'tranformer' in uc_info['name'].lower(): #开关电源
+            elif 'power unit'.lower() in uc_info['name'].lower() or 'pwb'.lower() in uc_info['name'].lower() or 'SMPS'.lower() in uc_info['name'].lower() or 'tranformer' in uc_info['name'].lower(): #开关电源
                 j=3#WINDING后面两行是格式，跳开
                 while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':#找到VERIFICATION PROCESS这一行，行数-3就是实际的绕组数量
                     uc_info[f'designation_{j-2}']=sht5[f'a{i+j}'].value
@@ -1052,12 +1093,21 @@ def Page_break(sheet):#xlwings:自动分页功能
         while end<=last_row:#在最大行数范围内进行分页
             while sheet[f'a{start}:a{end}'].height<=680:#680为分页的最大行高，超出此行高则分页
                 end=end+1#一行行增加，直到范围内最大的行数
+                mark=end#记录该行位置
+                print(f'mark:{mark}')
             while sheet[f'a{end}'].value==None:#如合并单元格，则不应该在中间分页，往上寻找直到找到合适的分页处
+                print(f'end:{end}')
                 if end>last_row:#是否超出最大行数，超出则不需要再分页，退出
                     break
                 else:
                     end=end-1#如果在最大行数范围内，则往上寻找合适的单元格分页
+                    if sheet[f'a{start}:a{end}'].height<=550:#当分页过小时，则不再向上寻找合适单元格
+                        end=mark#回到当初记录的位置,此时在此位置进行分页时可行的，但是比较粗犷，下面再进一步优化，在D列制造商出寻找合适位置分页
+                        while sheet[f'd{end}'].value==None:#如合并单元格，则不应该在中间分页，往上寻找直到找到合适的分页处
+                            end=end-1
+                        break
             sheet.api.HPageBreaks.Add(Before=sheet[f'a{end}'].api)#在上方添加分页符
+            print(f'在{end}行上方分页')
             start=end#添加分页后的行数为后一页起点
 
     elif sheet.name=='5.0 CEC Comps':
@@ -1165,7 +1215,7 @@ def sync_item(sheet_photo,sheet_components):#xlwings:同步修改后的item号
             old_no=sheet_components[f'b{i}'].value#记录修改前的item号
             new_no=old_no+int(sheet_components[f'h{i}'].value)#计算需要更改后的item号
             sheet_components[f'b{i}'].value=new_no#将item号更新
-            change_photo_no(sheet_photo,old_no,new_no,'Line')#同步更新3.0中的序号
+            change_photo_no(sheet_photo,old_no,new_no,'Line')#同步更新3.0中的序号,默认用line作为关键词去匹配，后期可能需要优化
 
 
 def get_shapes(sheet):#xlwings:获取sheet中所有的shape对象
@@ -1176,10 +1226,10 @@ def get_shapes(sheet):#xlwings:获取sheet中所有的shape对象
             print(shape.name+':'+shape.text)
 
 
-def init_item(sheet,shape_name):
+def init_item(sheet,shape_name):#xlwings:对sec3中的item号进行排序
     value=1
     for shape in sheet.shapes:
-        if shape_name==shape.name:
+        if shape_name in shape.name:
             shape.text=value
             value+=1
 
@@ -1196,6 +1246,63 @@ def change_photo_no(sheet,old_no,new_no,shape_name):#xlwings:更改sec3.0中部�
                 shape.text=new_no#赋予新的索引值
 
     
+def fill_CEC(sheet_rpt,sheet_data):#xlwings:自动填充5.0信息
+#    model_rpt=
+#    total_row=sheet_data.used_range.last_cell.row#返回最大的行数
+#    for row in range(1,total_row):#在数据的此行数范围内去匹配
+#        if sheet_data[f'i{row}'].value==model_rpt:
+#            i=row+4
+#            while sheet_data[f'a{i}']!='WINDING(S) RESISTANCE':
+#                data=copy_line(sheet_data,i)
+
+
+    for row in range(1,sheet_data.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
+        print(row)
+        if sheet_data[f'l{row}'].value=="A": #判断L列是否为A，A为新增
+            manufacturer=sheet_data[f'f{row}'].value
+            model=sheet_data[f'i{row}'].value
+            start=row+5
+            row_scan=start
+            print(manufacturer)
+            print(model)
+            while sheet_data[f'a{row_scan}'].value!='WINDING(S) RESISTANCE':
+                row_scan+=1
+                print(sheet_data[f'a{row_scan}'].value)
+            end=row_scan
+            data=sheet_data[f'a{start}:k{end}'].value
+            print(f'复制{start}:{end}行的数据',data)
+            for row_rpt in range(1,sheet_rpt.used_range.last_cell.row):#在报告的此行数范围内去匹配
+                if sheet_rpt[f'f{row_rpt}'].value==manufacturer and sheet_rpt[f'i{row_rpt}'].value==model:
+                    row_insert=row_rpt+4
+                    sheet_rpt[f'a{row_rpt+3}'].value=sheet_rpt[f'a{row_rpt+3}'].value.replace(' (refer to illustration _ for assembly drawing) ','')
+                    insert_blank_lines(sheet_rpt,row_insert,len(data))
+#                    input('check')
+                    for i in range(start,end):
+                        row_insert+=1
+                        sheet_rpt[f'a{row_insert}:b{row_insert}'].merge()
+                        sheet_rpt[f'c{row_insert}:d{row_insert}'].merge()
+                        sheet_rpt[f'e{row_insert}:f{row_insert}'].merge()
+                        sheet_rpt[f'g{row_insert}:k{row_insert}'].merge()
+                        print(f"在第{row_insert}行写入数据：sheet_data[f'a{i}'].value")
+                        sheet_rpt[f'a{row_insert}'].value=str_fmt(sheet_data[f'a{i}'].value)
+                        if sheet_data[f'g{i}'].value!=None:
+                            ul_no=re.search('\w\d{5,6}',sheet_data[f'g{i}'].value)
+                            if ul_no!=None:
+                                sheet_rpt[f'c{row_insert}'].value=str_fmt(sheet_data[f'c{i}'].value)+'\n('+ul_no.group()+')'
+                                sheet_rpt[f'g{row_insert}'].value=str_fmt(sheet_data[f'g{i}'].value.replace(ul_no.group(),''))
+                            else:
+                                sheet_rpt[f'c{row_insert}'].value=str_fmt(sheet_data[f'c{i}'].value)
+                                sheet_rpt[f'g{row_insert}'].value=str_fmt(sheet_data[f'g{i}'].value)
+                        else:
+                            sheet_rpt[f'c{row_insert}'].value=str_fmt(sheet_data[f'c{i}'].value)
+                            sheet_rpt[f'g{row_insert}'].value=str_fmt(sheet_data[f'g{i}'].value)
+                        sheet_rpt[f'e{row_insert}'].value=str_fmt(sheet_data[f'e{i}'].value)
+                        sheet_rpt[f'a{row_insert}:k{row_insert}'].font.color=0xFF00FF
+
+def mysort(filename):
+    print(filename.split('_')[0])
+    return filename.split('_')[0]
+
 
 if __name__=='__main__':
     Menu()
