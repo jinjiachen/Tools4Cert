@@ -14,15 +14,17 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from win32com.client import Dispatch
 import xlwings as xw
 from excel import get_UC
+from PyPDF2 import PdfFileMerger
+import PyPDF2
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印')
     if choice=='1':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
         path_doc=input('请输入年检报告(word)的路径')
         path_doc=path_doc.replace('"','')#去除"号,做预处理
         app=xw.App(visible=False,add_book=False)#创建app对象，传入Annual_checks函数
-        for component in ['compressor','motor','smps','transformer']:
+        for component in ['compressor','motor','smps','transformer','pwb','power unit']:
             Annual_checks(app,path_xls,path_doc,component)
         app.kill()#关闭进程
     elif choice=='2':
@@ -48,6 +50,58 @@ def Menu():
         path=input('请输入需要转换的doc文件夹路径：')
         path=path.replace('"','')
         docs2pdfs(path)
+    elif choice=='5':
+        target_path = input('PDF的文件夹路径:')
+        pdf_merge(target_path)
+    elif choice=='6':
+        path=input('请输入需要转换的doc文件夹路径：')
+        path=path.replace('"','')
+        doc2pdf(path)
+    elif choice=='7':
+        pdf_file=input('请输入pdf文件的路径:')
+#        pdfWriter = PyPDF2.PdfFileWriter()      # 用于写pdf
+#        pdfReader = PyPDF2.PdfFileReader(pdf_file)   # 读取pdf内容
+        watermark='K:\Database\watermark.pdf'
+        add_watermark(pdf_file,watermark)
+#        # 遍历pdf的每一页,添加水印
+#        for page in range(pdfReader.numPages):
+#            page_pdf = add_watermark(watermark, pdfReader.getPage(page))
+#            pdfWriter.addPage(page_pdf)
+#        
+#        with open(pdf_file, 'wb') as target_file:
+#            pdfWriter.write(target_file)
+    elif choice=='draft':
+        path=input('请输入需要转换的doc文件夹路径：')
+        watermark='K:\Database\watermark.pdf'
+        path=path.replace('"','')
+        docs2pdfs(path)
+        pdf_merge(path)
+        add_watermark(path+'\Draft_report.pdf',watermark)
+
+
+
+def add_watermark(pdf_path,watermark):
+    """
+    将水印pdf与pdf的一页进行合并
+    :param water_file:
+    :param page_pdf:
+    :return:
+    """
+    pdf_water = PyPDF2.PdfFileReader(watermark)
+    pdf_file = PyPDF2.PdfFileReader(pdf_path)   # 读取pdf内容
+    pdfWriter = PyPDF2.PdfFileWriter()      # 用于写pdf
+#    pdf_file.mergePage(pdf_file.getPage(0))
+    # 遍历pdf的每一页,添加水印
+    for page in range(pdf_file.numPages):
+        pdf_page=pdf_file.getPage(page)
+        pdf_page.mergePage(pdf_water.getPage(0))
+        pdfWriter.addPage(pdf_page)
+
+    print(os.path.dirname(pdf_path))
+    
+    with open(os.path.dirname(pdf_path)+'\draft.pdf', 'wb') as target_file:
+        pdfWriter.write(target_file)
+    return target_file
 
 
 def doc2docx(path):#将doc文件转换成docx
@@ -83,6 +137,18 @@ def docs2pdfs(path):#批量转换doc为pdf文件
     file_path=[os.path.join(path, filename) for filename in files]
     for file in file_path:
         doc2pdf(file)
+
+
+def pdf_merge(path):
+    pdf_lst = [f for f in os.listdir(path) if f.endswith('.pdf')]
+    pdf_lst = [os.path.join(path, filename) for filename in pdf_lst]
+    
+    file_merger = PdfFileMerger()
+    for pdf in pdf_lst:
+        file_merger.append(pdf)     # 合并pdf文件
+    
+    file_merger.write(os.path.join(path,'Draft_report.pdf'))
+    pass
 
 
 def find_table(tables,search_string):#关键词查找对应表格
@@ -249,8 +315,10 @@ def Annual_checks(app,path_xls,path_doc,component):
     new_file=path_doc[:-4]+component+'.docx'
     print(file_path)
     for file in file_path:
+        print(f'正在处理{file}')
         wb=app.books.open(file)
         data=get_UC(wb)
+        print(data)
         wb.close()
         if exit_file(new_file):
             docx=Document(new_file)
