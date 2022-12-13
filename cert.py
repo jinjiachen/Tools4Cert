@@ -5,13 +5,28 @@ from lxml import etree
 import os
 import pdb
 import urllib
+import requests
+requests.packages.urllib3.disable_warnings
+import warnings
+warnings.filterwarnings("ignore")
 
 def Menu():
-    choice=input("请选择认证的类型：\n1.UL认证\n2.TUV莱茵认证\n3.VDE认证\n4.CSA认证\n5.TUV南德")
+    choice=input("请选择认证的类型：\n1.UL认证\n2.TUV莱茵认证\n3.VDE认证\n4.CSA认证\n5.TUV南德\n11.UL查询（模拟请求)")
     if choice=='1':
         UL(driver)
     elif choice=='2':
         TUV(driver)
+    elif choice=='11':
+        while True:
+            ul_no=input('请输入需要查询的关键字:')
+            url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
+            res_basic=ul_search(url)
+            links=basic_info(res_basic)
+            no=input('请选择对应的部件序号:')
+            res_details=ul_search('https://iq.ulprospector.com'+links[int(no)])
+            models=certificate(res_details)
+            model=input('想要查找的型号：')
+            filters(models,model)
 
 
 def Driver():
@@ -224,21 +239,99 @@ def TUV(driver):
 #            print("\n".join(products))
 #            print(pages)
 
-def get_html(url):
+def get_html(url):#通过selenium获取html后转换为lxml的对象
     start=time.time()
     driver.get(url)
 #    time.sleep(1)
-    html=driver.page_source
-    selector=etree.HTML(html)
+    html=driver.page_source#获取html源码
+    selector=etree.HTML(html)#转化为lxml
     end=time.time()
     print(end-start)
     return selector
 
+
+def ul_search(url):#通过模拟请求方式查询黄卡号
+#    url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
+    header={
+            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+            'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8',
+            'Cache-Control':'max-age=0',
+            'Connection':'keep-alive',
+            'cookie':r'OptanonAlertBoxClosed=2022-06-28T01:31:48.056Z; chdc_prod=1; ASP.NET_SessionId=t5hq2xglh15qrdamw2ei32ag; SERVERID=iis01; OptanonConsent=isGpcEnabled=1&datestamp=Thu+Dec+01+2022+10:46:17+GMT+0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=202208.1.0&geolocation=CN;SH&isIABGlobal=false&hosts=&consentId=46ba3005-17c9-4853-85a2-59a6198cb6a3&interactionCount=1&landingPath=https://iq2.ulprospector.com/session/new?redirect=http%3a%2f%2fiq.ulprospector.com%2fen&groups=C0001:1,C0002:0,C0003:0,C0004:0; __cfruid=4af465e232c4d53e4b982f857d1659058a17a42c-1670406501; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5NDk1MDIwNjM5NzI5OTY4Mzg0MTg0ODMwNjg5MjgwIiwiZSI6ImppbmxlaXBpbmdAZHJlYW1lLnRlY2giLCJuIjoiSmVzc2UgSmluIiwidXJpIjoiaHR0cHM6Ly9jb3JlLnVscHJvc3BlY3Rvci5jb20vdXNlcnMvMjk0OTUwMjA2Mzk3Mjk5NjgzODQxODQ4MzA2ODkyODAiLCJzaWQiOiJjMzAwYzhiZC0wMzIzLTQxMmYtOTc3MS0zMWQ5YWM5ZjRmZjIiLCJuYmYiOjE2NzA0ODQzMDAsImV4cCI6MTY3MzA3NjMwMCwiaWF0IjoxNjcwNDg0MzAwLCJpc3MiOiJVTFByb3NwZWN0b3IiLCJhdWQiOiJodHRwOi8vd3d3LnVscHJvc3BlY3Rvci5jb20ifQ.QJjIXr4PHZecOSFtgvpH8MqK7nQ-iV4Clg6WOJL_Ksc; pro_iq=projwt=l-OVw-2MrBtUK22YurM2RjssCQNBH1vmOtfPlvZzSkasQsdMMTKVNIerr3Rl5_IJMVvqfdm2NwnGfgqm1an9GKzy5Rul7E65JjNIUah_5QsI8SZI0sObkfPfMq4HKYnJxpeKnF0lHpZAzG2TFMAftxNnIdXLZt9wMgu2lzZt272tpCqmPDIdtzvuIBV8OCtIhmbQIIqmrs7ieuFOQtIT10h2DnijM4GnUPAFgf4kw575bhpCelnfEocg3xOESe76D1vp2g3LJQCOUiVftLkuow9VswykQi2hI4Dgt0I5yxU15y_BafIIAmdYAk3ngHaouPvVtvMMgQ6P5WI0NcxTeugQqapvHfo_pYE7MylemBzlv7FG4cPO8YuSn_pLICR0oXXDE0e7F1DbLUrbvA5DcnjeoPQ1; OptanonConsent=isGpcEnabled=1&datestamp=Thu+Dec+08+2022+15:31:06+GMT+0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=202210.1.0&geolocation=CN;SH&isIABGlobal=false&hosts=&consentId=46ba3005-17c9-4853-85a2-59a6198cb6a3&interactionCount=1&landingPath=https://iq2.ulprospector.com/session/new?redirect=http%3a%2f%2fiq.ulprospector.com%2fen&groups=C0001:1,C0002:0,C0003:0,C0004:0',
+            'Host':'iq.ulprospector.com',
+            'Refer':'https://iq.ulprospector.com/en',
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1474.0'
+            }
+
+    data={
+            'p':'10005,10048,10006,10047',
+            'qm':'q:E485395'
+            }
+
+#以下两个方法2选1，get方法直接用url比较方便
+    while True:
+        try:
+    #    res=requests.get(url,headers=header,params=data,verify=False)#方法1
+            res=requests.get(url,headers=header,timeout=5,verify=False)#方法2
+            html=res.text
+            selector=etree.HTML(html)#转化为lxml
+            return selector
+            break
+        except:
+            print('连接超时，正在重新连接！')
+
+def basic_info(selector):#针对搜索结果进行处理并输出所需要的信息
+    links=selector.xpath('//tbody/tr/td[1]/a/@href')#详细信息的链接
+    number=selector.xpath('//tbody/tr/td[1]/a/span/text()')#黄卡号
+    company=selector.xpath('//tbody/tr/td[2]/div/span/text()')#公司名称
+    description=selector.xpath('//tbody/tr/td[4]/div/span/text()')#部件的描述信息
+
+    print('-'*10+'以下是查询结果'+'-'*10)
+    for index in range(0,len(links)):#格式化输出
+        print(str(index)+'\t',number[index]+'\t',company[index]+'\t',description[index]+'\t')
+    return links
+
+
+def certificate(selector):#查找证书中所有的型号
+    models=[]
+    if len(models)==0:
+        print('mode 1')
+        models=selector.xpath('//prodid/text()')
+    if len(models)==0:
+        print('mode 2')
+        models=selector.xpath('//prodid/b/text()')
+    if len(models)==0:
+        print('mode 3')
+        models=selector.xpath('//prodid/a/text()')
+#        models=selector.xpath('//a[@style="text-decoration: none;"]/text()')
+    print(models)
+    return models
+
+
+def filters(models,model):#对所有型号进行过滤，是否有查找的型号
+    '''
+    models：一个列表
+    model:字符串，想要查找的型号
+    '''
+    for i in models:
+        if model==i or model.upper()==i:
+            print('找到型号：',i)
+            return 'green'
+            break
+        elif model.split('-')[0] in i or model.split('-')[0].upper() in i:
+            print('-'*20)
+            print('找到相似型号：',i)
+            return 'yellow'
+#        else:
+#            print('没有找到对应型号')
+
+
+
 if __name__=='__main__':
-    driver=Driver()
+#    driver=Driver()
     Menu()
-    driver.close()
-    driver.quit()
+#    driver.close()
+#    driver.quit()
 #    driver=Driver()
 #    print('engine start!')
 #    while True:
