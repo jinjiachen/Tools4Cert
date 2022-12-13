@@ -16,6 +16,7 @@ import xlwings as xw
 from excel import get_UC
 from PyPDF2 import PdfFileMerger
 import PyPDF2
+import time
 
 def Menu():
     choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印')
@@ -242,7 +243,7 @@ def is_italic_row(row):
     return True
 
         
-def Annual_check(docx,data,component):
+def Annual_check(docx,data,component):#对具体的年检信息进行写入
 #    table=docx.tables[0]
     table_content=find_table(docx.tables,'Unlisted Component')
     table_test=find_table(docx.tables,'Model No.')
@@ -309,19 +310,19 @@ def exit_file(file_path):#判断一个文件是否存在
             return True
 
             
-def Annual_checks(app,path_xls,path_doc,component):
-    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')]
-    file_path=[os.path.join(path_xls, filename) for filename in files]
-    new_file=path_doc[:-4]+component+'.docx'
+def Annual_checks(app,path_xls,path_doc,component):#对多个报告生成对应部件的年检报告
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')] #列出所有的xls文件
+    file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
+    new_file=path_doc[:-4]+component+'.docx'#构造新的docx文件路径，即输出对应部件的年检报告
     print(file_path)
-    for file in file_path:
+    for file in file_path:#遍历所有的xls文件，即所有需要做年检的报告
         print(f'正在处理{file}')
         wb=app.books.open(file)
-        data=get_UC(wb)
+        data=get_UC(wb)#提取相应的UC信息
         print(data)
         wb.close()
         if exit_file(new_file):
-            docx=Document(new_file)
+            docx=Document(new_file)#如果存在对应的年检报告，则在对应报告中添加
         else:
             docx=Document(path_doc)
         Annual_check(docx,data,component)
@@ -330,6 +331,33 @@ def Annual_checks(app,path_xls,path_doc,component):
 
 def update_components():#更新修改table24.1
     pass
+
+def content_replace(documents,old_word,new_word):#替换对应文字，保持格式不变
+    paragraphs=documents.paragraphs
+    for paragraph in paragraphs:
+        if old_word in paragraph.text:
+            text=paragraph.text
+            name=paragraph.runs[0].font.name
+            size=paragraph.runs[0].font.size
+            color=paragraph.runs[0].font.color.rgb
+            print(text,name,size,color)
+            update_text=text.replace(old_word,new_word)
+            paragraph.text=update_text
+            paragraph.runs[0].font.name=str(name)
+            paragraph.runs[0].font.size=int(size)
+#            paragraph.runs[0].font.color=str(color)
+
+def Annual_init(path_doc):
+    client_name='Yoau'
+    report_No='202111002SHA-001'
+    control_No='3061710'
+    docx=Document(path_doc)
+    content_replace(docx,'CUSTOMER NAME',client_name)
+    content_replace(docx,'<report no.>',report_No)
+    content_replace(docx,'<issue_date>',time.strftime('%d-%m-%Y'))
+    content_replace(docx,'<Control Number>',control_No)
+    docx.save(path_doc[:-4]+'init'+'.docx')
+
 
 
 if __name__=='__main__':
