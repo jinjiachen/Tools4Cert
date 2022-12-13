@@ -1,5 +1,10 @@
-#/bin/python 
-#-*-coding:utf-8-*-
+#/bin/python #-*-coding:utf-8-*-
+
+'''
+Author: Michael Jin
+Date: 2022-04
+
+'''
 
 import xlrd
 import xlwt
@@ -9,9 +14,14 @@ import xlwings as xw
 import time
 import os
 import re
+from cert import ul_search
+from cert import basic_info
+from cert import certificate
+from cert import filters
+#import warnings
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -97,7 +107,11 @@ def Menu():
         template=template.replace('"','')
         wb=app.books.open(rpt)
         if template=='':
-            wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xls')
+            CDR=input('请选择对应的CDR类型：\n1.普通CDR\n2.CDRMM')
+            if CDR=='1':
+                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xls')
+            elif CDR=='2':
+                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDRMM V5 Form.xls')
         else:
             wb_template=app.books.open(template)
         update_CDR(wb_template,wb)
@@ -189,8 +203,14 @@ def Menu():
         rpt=rpt.replace('"','')
         wb=app.books.open(rpt)
         sht3=wb.sheets['3.0 Photos']
-        get_shapes(sht3)
-        init_item(sht3,'Line Callout 2')
+#        get_shapes(sht3)
+        line=get_line(sht3)#获取3.0中线的类型
+        if line==None:
+            print('并未捕获线的类型')
+        else:
+            print('捕捉到线的类型:',line)
+        init_item(sht3,line)
+#        init_item(sht3,'AutoShape')
         wb.save(rpt[:-4]+'_output.xls')
         wb.close()
         app.kill()
@@ -209,9 +229,19 @@ def Menu():
             print(sheet)
             if sheet.name=='5.0 CEC Comps':
                 sht5_data=sheet
+                break
             else:
                 sht5_data=wb_data.sheets[0]
         fill_CEC(sht5_rpt,sht5_data)
+    elif choice=='13':
+        rpt=input("Please input the report path:") #输入要检查的报告的路径
+        rpt=rpt.replace('"','')
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        wb=app.books.open(rpt)
+        sht4=wb.sheets['4.0 Components']
+        check(sht4,'Yes')
 
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
@@ -276,8 +306,13 @@ def Menu():
             elif choice=='10':
                 sync_item(sht3,sht4)
             elif choice=='11':
-                get_shapes(sht3)
-                init_item(sht3,'Line Callout 2')
+#                get_shapes(sht3)
+                line=get_line(sht3)#获取3.0中线的类型
+                if line==None:
+                    print('并未捕获线的类型')
+                else:
+                    print('捕捉到线的类型:',line)
+                init_item(sht3,line)
             elif choice=='12':
                 data=input("Please input the data source path:") #输入数据源的路径
                 data=data.replace('"','')
@@ -287,6 +322,7 @@ def Menu():
                     if sheet.name=='5.0 CEC Comps':
                         print('找到sec5.0')
                         sht5_data=sheet
+                        break
                     else:
                         sht5_data=wb_data.sheets[0]
                 fill_CEC(sht5,sht5_data)
@@ -295,6 +331,11 @@ def Menu():
                 wb.save(rpt[:-4]+'_output.xls')
             elif choice=='exit' or choice=='q':
                 break
+            elif choice=='r':
+                wb.close()
+                wb=app.books.open(rpt)
+                wb.save(rpt[:-4]+'_output.xls')
+                pass
             input('any key to contine!')
             os.system('cls')
 
@@ -452,7 +493,9 @@ def get_data(sheet,row_start,row_end,column1,column2,column3,column4,column5):#x
         rows_value.append(sheet[f'{column2}{row}'].value)
         rows_value.append(sheet[f'{column3}{row}'].value)
         rows_value.append(sheet[f'{column4}{row}'].value)
-        if sheet[f'{column5}{row}'].value==None:
+        if column5=='':#没有输入控制号所在列
+            pass
+        elif sheet[f'{column5}{row}'].value==None:#控制号所在列是否为空
             pass
         elif rows_value[1]==None:
             pass
@@ -481,15 +524,24 @@ def generate4(sheet,data):#xlwings:自动写入数据，主要针对新报告时
 #    fmt(sheet)
     last_row=sheet.used_range.last_cell.row
     for col in ['c','d','e','f']:
-        index=row_index=get_index(sheet,col)
-        merge_by_index(sheet,col,index)
-        print(row_index)
+#        index=row_index=get_index(sheet,col)
+        if col=='c':#a,b,c三列的单元格合并是一致的，一起处理
+            print(f'正在合并A，B，C列的单元格')
+            index=get_index(sheet,col)
+            merge_by_index(sheet,col,index)
+            merge_by_index(sheet,'a',index)
+            merge_by_index(sheet,'b',index)
+        else:#对D,E,F列的单元格进行合并操作
+            print(f'正在合并{col}列的单元格')
+            index=get_index(sheet,col)
+            merge_by_index(sheet,col,index)
+        print(index)
             
 
 def get_index(sheet,col):#xlwings:此函数服务于合并单元格，记录指定列非空单元格的行数
     rows=[]
     last_row=sheet.used_range.last_cell.row
-    print(last_row)
+#    print(last_row)
     for i in range(1,last_row):#在报告的此行数范围内去匹配
         if sheet[f'{col}{i}'].value=='Name':#过滤Name这一行
             pass
@@ -611,7 +663,8 @@ def separate(str,symbol): #字符串和分隔符拆分并重组函数，解决�
     
 def str_fmt(str):
 #以下为中文的符号的处理
-    if str!=None:
+    if str!=None and type(str)=='str':
+#    if str!=None:
         str=str.replace('，',',')#替换中文逗号
         str=str.replace('（','(')#替换中文括号
         str=str.replace('）',')')#替换中文括号
@@ -1091,7 +1144,7 @@ def Page_break(sheet):#xlwings:自动分页功能
         start=1
         end=1
         while end<=last_row:#在最大行数范围内进行分页
-            while sheet[f'a{start}:a{end}'].height<=680:#680为分页的最大行高，超出此行高则分页
+            while sheet[f'a{start}:a{end}'].height<=650:#650为分页的最大行高，超出此行高则分页
                 end=end+1#一行行增加，直到范围内最大的行数
                 mark=end#记录该行位置
                 print(f'mark:{mark}')
@@ -1216,6 +1269,7 @@ def sync_item(sheet_photo,sheet_components):#xlwings:同步修改后的item号
             new_no=old_no+int(sheet_components[f'h{i}'].value)#计算需要更改后的item号
             sheet_components[f'b{i}'].value=new_no#将item号更新
             change_photo_no(sheet_photo,old_no,new_no,'Line')#同步更新3.0中的序号,默认用line作为关键词去匹配，后期可能需要优化
+#            change_photo_no(sheet_photo,old_no,new_no,'AutoShape')#同步更新3.0中的序号,默认用line作为关键词去匹配，后期可能需要优化
 
 
 def get_shapes(sheet):#xlwings:获取sheet中所有的shape对象
@@ -1225,13 +1279,36 @@ def get_shapes(sheet):#xlwings:获取sheet中所有的shape对象
         else:
             print(shape.name+':'+shape.text)
 
+def get_line(sheet):#xlwings:获取3.0中指示线的类型
+    for shape in sheet.shapes:
+        if 'Line' in shape.name:
+            print('get shape.name:',shape.name)
+            return shape.name.split(' ')[0] #捕捉到的是其中一个线的具体型号,返回一部分关键字
+            break
+        elif 'AutoShape' in shape.name:
+            print('get shape.name:',shape.name)
+            return shape.name.split(' ')[0]#捕捉到的是其中一个线的具体型号,返回一部分关键字
+            break
+
 
 def init_item(sheet,shape_name):#xlwings:对sec3中的item号进行排序
     value=1
+    shapes_wanted=[]
+#    for shape in sheet.shapes:
+#        if shape_name in shape.name:
+#            shapes_wanted.append(shape)
+#    print(shapes_wanted.sort(key=shape_top))
+#    print(shapes_wanted[0])
+
     for shape in sheet.shapes:
         if shape_name in shape.name:
             shape.text=value
+            print(shape.name+f':{value}')
             value+=1
+
+def shape_top(shape):
+    print('shape top:',shape.top)
+    return str(shape.top)
 
 
 def change_photo_no(sheet,old_no,new_no,shape_name):#xlwings:更改sec3.0中部件的索引
@@ -1261,30 +1338,33 @@ def fill_CEC(sheet_rpt,sheet_data):#xlwings:自动填充5.0信息
         if sheet_data[f'l{row}'].value=="A": #判断L列是否为A，A为新增
             manufacturer=sheet_data[f'f{row}'].value
             model=sheet_data[f'i{row}'].value
-            start=row+5
+            start=row+5#数据的起始行数
             row_scan=start
             print(manufacturer)
             print(model)
             while sheet_data[f'a{row_scan}'].value!='WINDING(S) RESISTANCE':
                 row_scan+=1
                 print(sheet_data[f'a{row_scan}'].value)
-            end=row_scan
-            data=sheet_data[f'a{start}:k{end}'].value
+            end=row_scan#数据的终止行数
+            data=sheet_data[f'a{start}:k{end}'].value#复制范围内的值
             print(f'复制{start}:{end}行的数据',data)
             for row_rpt in range(1,sheet_rpt.used_range.last_cell.row):#在报告的此行数范围内去匹配
-                if sheet_rpt[f'f{row_rpt}'].value==manufacturer and sheet_rpt[f'i{row_rpt}'].value==model:
+#                    print(string_strip(sheet_rpt[f'f{row_rpt}'].value))
+#                print(string_strip(manufacturer))
+                if string_strip(sheet_rpt[f'f{row_rpt}'].value)==string_strip(manufacturer) and sheet_rpt[f'i{row_rpt}'].value==model:#如果制造商和型号都相同，则认定为找到对应的部件
                     row_insert=row_rpt+4
                     sheet_rpt[f'a{row_rpt+3}'].value=sheet_rpt[f'a{row_rpt+3}'].value.replace(' (refer to illustration _ for assembly drawing) ','')
-                    insert_blank_lines(sheet_rpt,row_insert,len(data))
-#                    input('check')
-                    for i in range(start,end):
+                    insert_blank_lines(sheet_rpt,row_insert,len(data))#在指定行下方插入对应数据的空白行
+                    for i in range(start,end):#遍历数据段的行数
                         row_insert+=1
+                        #以下合并单元格调整格式用
                         sheet_rpt[f'a{row_insert}:b{row_insert}'].merge()
                         sheet_rpt[f'c{row_insert}:d{row_insert}'].merge()
                         sheet_rpt[f'e{row_insert}:f{row_insert}'].merge()
                         sheet_rpt[f'g{row_insert}:k{row_insert}'].merge()
                         print(f"在第{row_insert}行写入数据：sheet_data[f'a{i}'].value")
-                        sheet_rpt[f'a{row_insert}'].value=str_fmt(sheet_data[f'a{i}'].value)
+                        #因为合并单元格，所以只对a,c,e,g列的单元格进行赋值即可
+                        sheet_rpt[f'a{row_insert}'].value=str_fmt(sheet_data[f'a{i}'].value)#把a列的数据赋值
                         if sheet_data[f'g{i}'].value!=None:
                             ul_no=re.search('\w\d{5,6}',sheet_data[f'g{i}'].value)
                             if ul_no!=None:
@@ -1297,12 +1377,64 @@ def fill_CEC(sheet_rpt,sheet_data):#xlwings:自动填充5.0信息
                             sheet_rpt[f'c{row_insert}'].value=str_fmt(sheet_data[f'c{i}'].value)
                             sheet_rpt[f'g{row_insert}'].value=str_fmt(sheet_data[f'g{i}'].value)
                         sheet_rpt[f'e{row_insert}'].value=str_fmt(sheet_data[f'e{i}'].value)
-                        sheet_rpt[f'a{row_insert}:k{row_insert}'].font.color=0xFF00FF
+                        sheet_rpt[f'a{row_insert}:k{row_insert}'].font.color=0xFF00FF#对新增的数据颜色区分
 
-def mysort(filename):
-    print(filename.split('_')[0])
-    return filename.split('_')[0]
+def mysort(filename):#xlwings:自定义排序函数
+    print(filename.split('_')[0])#提取文件名前面的数字
+    return int(filename.split('_')[0])#转换为数字来排序，如果是字符串排序，会出现问题
 
+def string_strip(string):#只保留字符串中的字母
+    if string!=None and type(string)=='str':
+        string=string.replace(' ','')#替换空格
+        string=string.replace(',','')#替换逗号
+        string=string.replace('.','')#替换句号
+        string=string.replace('-','')#替换连接符
+        string=string.replace('_','')#替换下划线
+        string=string.replace('，','')#替换中文逗号
+        return string.upper()
+
+def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
+    '''
+    sheet: SEC4.0
+    '''
+    for row in range(3,sheet.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
+        print(f'正在核对第{row}行')
+        manufacturer=sheet[f'd{row}'].value
+        scan=row#扫描的行数
+        while manufacturer==None:#当有合并单元格时，向上扫描，获取制造商信息
+            scan=scan-1
+            manufacturer=sheet[f'd{scan}'].value
+        ul_no=re.search('\w\d{5,6}',manufacturer)#提取黄卡号
+        model=str(sheet[f'e{row}'].value)#转化为字符，针对纯数字问题
+        mark=sheet[f'g{row}'].value
+        if mark=='NR':
+            continue
+        elif mark=='See 5.0':
+            continue
+        elif mark==None:
+            continue
+        elif ul_no==None:
+            continue
+        else:
+            url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no.group()
+            if ptf=='Yes':
+                print(url)
+            selector_basic=ul_search(url)#用get方法提交搜索请求，返回搜索结果的response
+            links=basic_info(selector_basic)#输出查询的结果并返回详细连接
+            if ptf=='Yes':
+                print(links)
+            if len(links)==0:
+                print('invalid cert')
+                continue
+            else:
+                selector_details=ul_search('https://iq.ulprospector.com'+links[0])#此处暂时只对一个链接做处理，后续优化
+                models=certificate(selector_details)
+                if filters(models,model)=='green':
+                    sheet[f'h{row}'].value='ok'
+                elif filters(models,model)=='yellow':
+                    sheet[f'h{row}'].value='to be check'
+
+    
 
 if __name__=='__main__':
     Menu()
