@@ -18,10 +18,11 @@ from cert import ul_search
 from cert import basic_info
 from cert import certificate
 from cert import filters
+import pdfplumber
 #import warnings
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -191,7 +192,12 @@ def Menu():
         wb=app.books.open(rpt)
         sht3=wb.sheets['3.0 Photos']
         sht4=wb.sheets['4.0 Components']
-        sync_item(sht3,sht4)
+        line=get_line(sht3)#获取3.0中线的类型
+        if line==None:
+            print('并未捕获线的类型')
+        else:
+            print('捕捉到线的类型:',line)
+        sync_item(sht3,sht4,line)
         wb.save(rpt[:-4]+'_output.xls')
         wb.close()
         app.kill()
@@ -233,6 +239,10 @@ def Menu():
             else:
                 sht5_data=wb_data.sheets[0]
         fill_CEC(sht5_rpt,sht5_data)
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        wb_data.close()
+        app.kill()
     elif choice=='13':
         rpt=input("Please input the report path:") #输入要检查的报告的路径
         rpt=rpt.replace('"','')
@@ -242,7 +252,27 @@ def Menu():
         wb=app.books.open(rpt)
         sht4=wb.sheets['4.0 Components']
         check(sht4,'Yes')
-
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
+    elif choice=='14':
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        path=input("Please input the ML application path:") #输入申请表的路径
+        path=path.replace('"','')
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        wb=app.books.open(rpt)
+        sht9=wb.sheets['9.0 MLS']
+        sht12=wb.sheets['12.0 Revisions']
+        item=get_ML_item(sht12)
+        data=get_ML_info(path,'Yes')
+        print(f'报告中已有多重列名ML{item}',)
+        modify_ML(sht9,item,data,'A')
+        wb.save(rpt[:-4]+'_output.xls')
+        wb.close()
+        app.kill()
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
         app.display_alerts=False #取消警告
@@ -255,10 +285,11 @@ def Menu():
         sht5=wb.sheets['5.0 CEC Comps']
         sht7=wb.sheets['7.0 Illustrations']
         sht8=wb.sheets['8.0 Test Summary']
+        sht9=wb.sheets['9.0 MLS']
         sht12=wb.sheets['12.0 Revisions']
         wb.save(rpt[:-4]+'_output.xls')
         while True:
-            choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n指令：")
+            choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名\n指令：")
             if choice=='1':
                 path_data=input("Please input the data source path:")
                 path_data=path_data.replace('"','')
@@ -294,6 +325,10 @@ def Menu():
             elif choice=='3':
                 manual_path=input('输入说明书的路径')
                 update7(sht7,manual_path)
+            elif choice=='6':
+                uc_all=get_UC(wb)
+                for i in uc_all:
+                    print(i)
             elif choice=='7':
                 photo_path=input('输入照片所在路径')
                 photo_path=photo_path+'\\'
@@ -304,7 +339,12 @@ def Menu():
             elif choice=='9':
                 sort_by_item(sht4)
             elif choice=='10':
-                sync_item(sht3,sht4)
+                line=get_line(sht3)#获取3.0中线的类型
+                if line==None:
+                    print('并未捕获线的类型')
+                else:
+                    print('捕捉到线的类型:',line)
+                sync_item(sht3,sht4,line)
             elif choice=='11':
 #                get_shapes(sht3)
                 line=get_line(sht3)#获取3.0中线的类型
@@ -326,23 +366,34 @@ def Menu():
                     else:
                         sht5_data=wb_data.sheets[0]
                 fill_CEC(sht5,sht5_data)
-            elif choice=='s':#用于把修改好的内容同步保存到原报告
+            elif choice=='13':
+                check(sht4,'Yes')
+            elif choice=='14':
+                path=input("Please input the ML application path:") #输入申请表的路径
+                path=path.replace('"','')
+                item=get_ML_item(sht12)
+                data=get_ML_info(path,'Yes')
+                print(f'报告中已有多重列名ML{item}',)
+                modify_ML(sht9,item,data,'A')
+            elif choice=='w':#用于把修改好的内容同步保存到原报告
                 wb.save(rpt.replace('_output',''))
                 wb.save(rpt[:-4]+'_output.xls')
             elif choice=='exit' or choice=='q':
                 break
+            elif choice=='wq':
+                wb.save(rpt.replace('_output',''))
+                wb.close()
+                app.kill()
             elif choice=='r':
                 wb.close()
                 wb=app.books.open(rpt)
                 wb.save(rpt[:-4]+'_output.xls')
-                pass
             input('any key to contine!')
             os.system('cls')
 
-#        input('any key to contine!')
-        wb.save()
-        wb.close()
-        app.kill()
+#        wb.save()
+#        wb.close()
+#        app.kill()
 
         
 
@@ -615,7 +666,8 @@ def insert_blank_lines(sheet,row,numbers): #xlwings:基于insert_blank_line在�
         i=i+1
 
 def get_row_number(sheet,col,words): #xlwings:查找关键词并返回行数
-    for i in range(1,200):
+    row_max=sheet.used_range.last_cell.row
+    for i in range(1,row_max):
         cell=sheet[f'{col}{i}'].value
         if cell==words:
             return i
@@ -1231,6 +1283,7 @@ def sort_by_item(sheet):#xlwings:按照item进行排序,提取item的序列，�
     items=sorted(items,reverse=True)#由大到小排序
 #    print(items)
     for item_no in items:#遍历每一个item序号
+        print(f'正在查找{item_no}')
         row=last_row#从下往上遍历
         while sheet[f'b{row}'].value!=item_no:#从下往上找，知道找到对应的序号
             row=row-1#找不到则行号-1
@@ -1241,7 +1294,7 @@ def sort_by_item(sheet):#xlwings:按照item进行排序,提取item的序列，�
             sheet[f'b{row}'].api.EntireRow.Cut()#不是合并单元格，直接剪切
         sheet['a3'].api.EntireRow.Insert()#在第三行上方插入剪切的数据
 
-def sync_item(sheet_photo,sheet_components):#xlwings:同步修改后的item号
+def sync_item(sheet_photo,sheet_components,line):#xlwings:同步修改后的item号
     '''
     sheet_photo为报告的sec3.0
     sheet_components为报告的sec4.0
@@ -1268,7 +1321,7 @@ def sync_item(sheet_photo,sheet_components):#xlwings:同步修改后的item号
             old_no=sheet_components[f'b{i}'].value#记录修改前的item号
             new_no=old_no+int(sheet_components[f'h{i}'].value)#计算需要更改后的item号
             sheet_components[f'b{i}'].value=new_no#将item号更新
-            change_photo_no(sheet_photo,old_no,new_no,'Line')#同步更新3.0中的序号,默认用line作为关键词去匹配，后期可能需要优化
+            change_photo_no(sheet_photo,old_no,new_no,line)#同步更新3.0中的序号,默认用line作为关键词去匹配，后期可能需要优化
 #            change_photo_no(sheet_photo,old_no,new_no,'AutoShape')#同步更新3.0中的序号,默认用line作为关键词去匹配，后期可能需要优化
 
 
@@ -1434,7 +1487,148 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
                 elif filters(models,model)=='yellow':
                     sheet[f'h{row}'].value='to be check'
 
+
+def get_ML_info(path,ptf='No'):#xlwings：获取多重列名的型号
+    '''
+    path:多重列名申请表的PDF路径
+    '''
+    print('!!!适用于申请表版本:SFT-ETL-OP-19t (11-November-2021) Mandatory, 其他版本可能会遇到提取信息错乱等问题')
+    pdf=pdfplumber.open(path)#打开pdf
+    page1=pdf.pages[0]#获取第一页
+    text1=page1.extract_text()#提取第一页的文本内容
+    res=re.search('Company Name:[\s\S]*Associated',text1)#提取相关内容
+    content=res.group().split('\n')#按行分段提取内容为列表
+    for line in content:
+        if 'Company Name' in line:
+            res=re.search(':[\s\S]*:',line)#提取列名厂家啊
+            ML_company=res.group().replace('Company Name:','').replace(':','').strip()
+        if 'Brand Name' in line:
+            res=re.search(': +\w+',line)#提取商标
+            Brand=res.group().replace(':','').strip()
+        if 'Address' in line:#提取街道信息
+            res=re.search(':[\s\S]*:',line)
+            street=res.group().replace('Street Address:','').replace(':','').strip()
+        if 'City' in line:
+            res=re.search(':[\s\S]*City',line)#提取城市
+            city=res.group().replace('City','').replace(':','').strip()
+        if 'Country' in line:
+            res=re.search(':[\s\S]*:',line)#提取国家
+            country=res.group().replace('Country:','').replace(':','').strip()
+    if ptf=='Yes':
+        print('ML company:',ML_company)
+        print('Brand name:',Brand)
+        print('Address:',street+city)
+        print('Country:',country)
+
+    page2=pdf.pages[1]#获取第二页
+    text2=page2.extract_text()#提取第二页的文本内容
+    res=re.search('MODELS[\s\S]*A complimentary',text2)#使用正则提取型号相关的部分
+    content=res.group()
+    content=content.replace('MODELS','')#删除多余信息
+    content=content.replace('A complimentary','')#删除多余信息
+    content=content.strip()#去除首尾空格
+    models_line=content.split('\n')#以行为单位获取内容
+    if ptf=='Yes':
+        print('获取的所有型号相关信息：',models_line)
+    ML_models=[]
+    basic_models=[]
+    for models in models_line:#遍历每一行
+        models=models.strip()#去除首尾多余空格
+        if ptf=='Yes':
+            print('正在处理:',models)
+        res=re.search('^[\s\S]* ',models)#提取多重列名型号
+        ML_model=res.group().strip()
+        res=re.search(' [\s\S]*$',models)#提取基本列名型号
+        basic_model=res.group().strip()
+        if ptf=='Yes':
+            print('ML model:',ML_model)
+            print('basic model:',basic_model)
+        ML_models.append(ML_model)
+        basic_models.append(basic_model)
+
+    return [ML_company,street+city,country,Brand,ML_models,basic_models]
+#    print(ML_models,basic_models)
+
+def get_ML_item(sheet):#xlwings:查找使用过的最大列名
+    '''
+    sheet: sec12的工作簿
+    '''
+    item_max=0#记录最大的列名号，初始为0
+    print(sheet.used_range.last_cell.row)
+    for row in range(5,sheet.used_range.last_cell.row+2):#从第五行开始,+1是因为range前闭后开
+        if sheet[f'c{row}'].value==9.0:
+            value=sheet[f'd{row}'].value#获取item列的数值
+            item=re.search('\d+',value).group()#提取数字部分
+            item_max=max(item_max,int(item))
+    return item_max
+
+def modify_ML(sheet,item,data,act):#xlwings:自动修改多重列名
+    '''
+    sheet:SEC9
+    item:多重列名的序号
+    data:由get_ML_info获得的数据列表
+    act:具体的行为，如新增，删除等
+    '''
+    row_max=sheet.used_range.last_cell.row
+    if act=='A':#新增列名
+        if int(item)<3:#当已有列名小于3时的新增，因为报告模板已有
+            row=get_row_number(sheet,'a','MULTIPLE LISTEE '+str(int(item)+1))#item为已有的列名数，+1为新增,定位写入的行数
+            sheet[f'b{row}'].value=data[0]#多重列名厂家
+            sheet[f'b{row+1}'].value=data[1]#地址
+            sheet[f'b{row+2}'].value=data[2]#国家
+            sheet[f'b{row+3}'].value=data[3]#商标
+            sheet[f'b{row+5}'].value='=B3'
+            sheet[f'b{row+6}'].value='=B4'
+            sheet[f'b{row+7}'].value='=B5'
+
+            ML_model=''
+            for model in data[4]:#型号字符串的拼接处理
+                if ML_model=='':
+                    ML_model=model
+                else:
+                    ML_model=ML_model+'\n\n'+model
+            sheet[f'a{row+10}'].value=ML_model
+
+            basic_model=''
+            for model in data[5]:#型号字符串的拼接处理
+                if basic_model=='':
+                    basic_model=model
+                else:
+                    basic_model=basic_model+'\n\n'+model
+            sheet[f'c{row+10}'].value=basic_model
+        elif int(item)>=3:#当已有列名大于3时的新增，需要自己写入
+            insert_row=sheet.used_range.last_cell.row+2
+            print(f'在{insert_row}行处开始写入')
+            sheet.api.Rows("8:18").Copy(sheet.api.Rows(insert_row))
+            sheet[f'a{insert_row}'].value=f'MULTIPLE LISTEE {item+1}'
+            sheet[f'a{insert_row+9}'].value=f'MULTIPLE LISTEE {item+1} MODELS'
+
+            sheet[f'b{insert_row}'].value=data[0]#多重列名厂家
+            sheet[f'b{insert_row+1}'].value=data[1]#地址
+            sheet[f'b{insert_row+2}'].value=data[2]#国家
+            sheet[f'b{insert_row+3}'].value=data[3]#商标
+            sheet[f'b{insert_row+5}'].value='=B3'
+            sheet[f'b{insert_row+6}'].value='=B4'
+            sheet[f'b{insert_row+7}'].value='=B5'
+
+            ML_model=''
+            for model in data[4]:#型号字符串的拼接处理
+                if ML_model=='':
+                    ML_model=model
+                else:
+                    ML_model=ML_model+'\n\n'+model
+            sheet[f'a{insert_row+10}'].value=ML_model
+
+            basic_model=''
+            for model in data[5]:#型号字符串的拼接处理
+                if basic_model=='':
+                    basic_model=model
+                else:
+                    basic_model=basic_model+'\n\n'+model
+            sheet[f'c{insert_row+10}'].value=basic_model
+            pass
     
+
 
 if __name__=='__main__':
     Menu()
