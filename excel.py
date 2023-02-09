@@ -168,7 +168,8 @@ def Menu():
         sht5=wb.sheets['5.0 CEC Comps']
         Page_break(sht4)
         Page_break(sht5)
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='9':
@@ -379,6 +380,8 @@ def Menu():
                 wb.save(rpt.replace('_output',''))
                 wb.save(rpt[:-4]+'_output.xls')
             elif choice=='exit' or choice=='q':
+                wb.close()
+                app.kill()
                 break
             elif choice=='wq':
                 wb.save(rpt.replace('_output',''))
@@ -544,6 +547,16 @@ def get_data(sheet,row_start,row_end,column1,column2,column3,column4,column5):#x
         rows_value.append(sheet[f'{column2}{row}'].value)
         rows_value.append(sheet[f'{column3}{row}'].value)
         rows_value.append(sheet[f'{column4}{row}'].value)
+
+        #检查制造商列是否有黄卡号，如有则进行格式处理
+        if rows_value[1]!=None:
+            ul_no=re.search('\w\d{5,6}',rows_value[1])
+            print('制造商列找到黄卡号，正在进行格式处理！')
+            if ul_no!=None:
+                rows_value[1]=str_fmt(rows_value[1].replace('('+ul_no.group()+')',''))#删除原有的黄卡号信息
+                rows_value[1]=rows_value[1]+'\n('+ul_no.group()+')'#写入新的黄卡号
+
+        #以下第5列是可选的，针对单独给出认证号的情形，将认证号提取出来
         if column5=='':#没有输入控制号所在列
             pass
         elif sheet[f'{column5}{row}'].value==None:#控制号所在列是否为空
@@ -713,36 +726,45 @@ def separate(str,symbol): #字符串和分隔符拆分并重组函数，解决�
     return new_str
 
     
-def str_fmt(str):
+def str_fmt(string,ptf='No'):
 #以下为中文的符号的处理
-    if str!=None and type(str)=='str':
-#    if str!=None:
-        str=str.replace('，',',')#替换中文逗号
-        str=str.replace('（','(')#替换中文括号
-        str=str.replace('）',')')#替换中文括号
-        str=str.replace('：',':')#替换中文冒号
-        str=str.replace('；',';')#替换中文分号
-        str=str.replace('、',',')#替换中文顿号
+    if ptf=='Yes':
+        print('输入得数据类型为：',type(string))
+    if string!=None and isinstance(string,str):
+        string=string.replace('，',',')#替换中文逗号
+        string=string.replace('（','(')#替换中文括号
+        string=string.replace('）',')')#替换中文括号
+        string=string.replace('：',':')#替换中文冒号
+        string=string.replace('；',';')#替换中文分号
+        string=string.replace('、',',')#替换中文顿号
+
+        #下面对非整数数字的分隔符做处理
+        pattern=re.search('\d+,\d+\s?[AWwmm]',string)#匹配诸如13,6W, 12,9 A这类用逗号分割的数字以及对应的单位，数字和单位间可能有空格
+        if pattern!=None:#如果有匹配到，则进行如下处理
+            original_value=pattern.group()#提取匹配到的原始内容
+            fmt_value=original_value.replace(',','.')#把逗号改为小数点
+            fmt_value=fmt_value.replace(' ','')#去除单位前的空格
+            string=string.replace(original_value,fmt_value)#将对应内容进行替换
     
-        if ',' in str:
-            str=separate(str,',')
-            print('正在分割逗号：',str)
-        if ':' in str:
-            str=separate(str,':')
-            print('正在分割冒号：',str)
-        if ';' in str:
-            str=separate(str,';')
-            print('正在分割分号：',str)
+        if ',' in string:
+            string=separate(string,',')
+            print('正在分割逗号：',string)
+        if ':' in string:
+            string=separate(string,':')
+            print('正在分割冒号：',string)
+        if ';' in string:
+            string=separate(string,';')
+            print('正在分割分号：',string)
+
     
-        return str
+        return string
     else:
-        return str
+        return string
 
 def list_fmt(list):
     for i in range(1,len(list)):
         if isinstance(list[i],str)==True: #只针对字符串进行格式化操作
-#            print('正在处理：',list[i])
-            list[i]=str_fmt(list[i])
+            list[i]=str_fmt(list[i],'No')
     return list
 
 def row_range(sheet,data): #xlwings:查找相同name的部件的行数范围
@@ -818,7 +840,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
     row_rev=sheet_total_rows(sheet3)+1#SEC12的行数,这里不能用used_range来代替，因为used_range会把空行包含进去，包括格式的改变
 #    print(sheet2.used_range.last_cell.row)
     for i in range(1,sheet2.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
-        print(i)
+        print('-'*10+f'正在处理第{i}行'+'-'*10)
         if sheet2[f'h{i}'].value=="A": #判断H列是否为A，A为新增
             data=copy_line(sheet2,i)#复制对应行的数据
             print('add:',data)
@@ -1344,24 +1366,28 @@ def get_line(sheet):#xlwings:获取3.0中指示线的类型
             break
 
 
-def init_item(sheet,shape_name):#xlwings:对sec3中的item号进行排序
+def init_item(sheet,shape_name,ptf='No'):#xlwings:对sec3中的item号进行排序
     value=1
     shapes_wanted=[]
-#    for shape in sheet.shapes:
-#        if shape_name in shape.name:
-#            shapes_wanted.append(shape)
-#    print(shapes_wanted.sort(key=shape_top))
-#    print(shapes_wanted[0])
-
     for shape in sheet.shapes:
         if shape_name in shape.name:
+            shapes_wanted.append(shape)#提取需要的图形
+            if ptf=='Yes':
+                print('unsort:'+shape.name+':'+str(shape.text)+':'+str(shape.top))
+    shapes_wanted.sort(key=shape_top)#根据高度位置对图形进行排序
+
+#    for shape in sheet.shapes:#遍历每一个shape，给其赋值
+    for shape in shapes_wanted:#遍历排序后的shape，给其赋值
+        if shape_name in shape.name:
             shape.text=value
-            print(shape.name+f':{value}')
+            print(shape.name+f':{value}'+':'+str(shape.top))
             value+=1
 
-def shape_top(shape):
-    print('shape top:',shape.top)
-    return str(shape.top)
+def shape_top(shape):#返回图形高度位置信息，用来排序
+    top=str(shape.top)
+    top=top.split('.')[0]
+#    print(top)
+    return int(top)
 
 
 def change_photo_no(sheet,old_no,new_no,shape_name):#xlwings:更改sec3.0中部件的索引
