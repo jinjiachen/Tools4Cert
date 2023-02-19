@@ -51,7 +51,8 @@ def Menu():
                 sht_data=wb_data.sheets[0]
         data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
         generate4(wb_rpt.sheets['4.0 Components'],data)
-        wb_rpt.save(path_rpt[:-4]+'_output.xls')
+#        wb_rpt.save(path_rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb_rpt.close()
         wb_data.close()
         app.kill()
@@ -78,7 +79,8 @@ def Menu():
         update4(sh,sh1,sh12)
         end=time.time()
         print('operating time:',end-start)
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         wb1.close()
 #        app.quit()
@@ -94,7 +96,8 @@ def Menu():
         sht7=wb.sheets['7.0 Illustrations']
         manual_path=input('输入说明书的路径')
         update7(sht7,manual_path)
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='4':
@@ -154,7 +157,8 @@ def Menu():
         photo_path=input('输入照片所在路径')
         photo_path=photo_path+'\\'
         update3(sht3,photo_path)
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='8':
@@ -181,7 +185,8 @@ def Menu():
         wb=app.books.open(rpt)
         sht4=wb.sheets['4.0 Components']
         sort_by_item(sht4)
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='10':
@@ -199,7 +204,8 @@ def Menu():
         else:
             print('捕捉到线的类型:',line)
         sync_item(sht3,sht4,line)
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='11':
@@ -218,7 +224,8 @@ def Menu():
             print('捕捉到线的类型:',line)
         init_item(sht3,line)
 #        init_item(sht3,'AutoShape')
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='12':
@@ -240,7 +247,8 @@ def Menu():
             else:
                 sht5_data=wb_data.sheets[0]
         fill_CEC(sht5_rpt,sht5_data)
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         wb_data.close()
         app.kill()
@@ -253,7 +261,8 @@ def Menu():
         wb=app.books.open(rpt)
         sht4=wb.sheets['4.0 Components']
         check(sht4,'Yes')
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='14':
@@ -271,7 +280,8 @@ def Menu():
         data=get_ML_info(path,'Yes')
         print(f'报告中已有多重列名ML{item}',)
         modify_ML(sht9,item,data,'A')
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
     elif choice=='123':
@@ -288,7 +298,8 @@ def Menu():
         sht8=wb.sheets['8.0 Test Summary']
         sht9=wb.sheets['9.0 MLS']
         sht12=wb.sheets['12.0 Revisions']
-        wb.save(rpt[:-4]+'_output.xls')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
         while True:
             choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名\n指令：")
             if choice=='1':
@@ -378,7 +389,8 @@ def Menu():
                 modify_ML(sht9,item,data,'A')
             elif choice=='w':#用于把修改好的内容同步保存到原报告
                 wb.save(rpt.replace('_output',''))
-                wb.save(rpt[:-4]+'_output.xls')
+#                wb.save(rpt[:-4]+'_output.xls')
+                wb.save(rpt[:-5]+'_output.xlsm')
             elif choice=='exit' or choice=='q':
                 wb.close()
                 app.kill()
@@ -387,16 +399,13 @@ def Menu():
                 wb.save(rpt.replace('_output',''))
                 wb.close()
                 app.kill()
+                break
             elif choice=='r':
                 wb.close()
                 wb=app.books.open(rpt)
                 wb.save(rpt[:-4]+'_output.xls')
             input('any key to contine!')
             os.system('cls')
-
-#        wb.save()
-#        wb.close()
-#        app.kill()
 
         
 
