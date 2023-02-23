@@ -290,6 +290,7 @@ def Menu():
         app.screen_updating=False#取消屏幕刷新
         rpt=input("Please input the report path:") #输入要修改的报告的路径
         rpt=rpt.replace('"','')
+        output_file=output_path(rpt)
         wb=app.books.open(rpt)
         sht3=wb.sheets['3.0 Photos']
         sht4=wb.sheets['4.0 Components']
@@ -298,8 +299,7 @@ def Menu():
         sht8=wb.sheets['8.0 Test Summary']
         sht9=wb.sheets['9.0 MLS']
         sht12=wb.sheets['12.0 Revisions']
-#        wb.save(rpt[:-4]+'_output.xls')
-        wb.save(rpt[:-5]+'_output.xlsm')
+        wb.save(output_file)
         while True:
             choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名\n指令：")
             if choice=='1':
@@ -389,13 +389,13 @@ def Menu():
                 modify_ML(sht9,item,data,'A')
             elif choice=='w':#用于把修改好的内容同步保存到原报告
                 wb.save(rpt.replace('_output',''))
-#                wb.save(rpt[:-4]+'_output.xls')
-                wb.save(rpt[:-5]+'_output.xlsm')
+                wb.save(output_file)
             elif choice=='exit' or choice=='q':
                 wb.close()
                 app.kill()
                 break
             elif choice=='wq':
+                wb.save(output_file)
                 wb.save(rpt.replace('_output',''))
                 wb.close()
                 app.kill()
@@ -848,7 +848,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
     '''
     row_rev=sheet_total_rows(sheet3)+1#SEC12的行数,这里不能用used_range来代替，因为used_range会把空行包含进去，包括格式的改变
 #    print(sheet2.used_range.last_cell.row)
-    for i in range(1,sheet2.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
+    for i in range(1,sheet2.used_range.last_cell.row+1): #在此行数范围内去匹配需要修改的信息,+1是因为range函数
         print('-'*10+f'正在处理第{i}行'+'-'*10)
         if sheet2[f'h{i}'].value=="A": #判断H列是否为A，A为新增
             data=copy_line(sheet2,i)#复制对应行的数据
@@ -856,6 +856,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
 #            for j in range(1,sheet_total_rows(sheet1)+1):#在报告的此行数范围内去匹配
             for j in range(1,sheet1.used_range.last_cell.row):#在报告的此行数范围内去匹配
                 if sheet1[f'c{j}'].value==data[1]:#c列中寻找data[1]，即Name
+#                if sheet1[f'c{j}'].value.strip()==data[1].strip():#c列中寻找data[1]，即Name
                     row=lookdown(sheet1,'c',j)
                     while(sheet1[f'c{row+1}'].value==data[1]):#下一个如果Name相同（即同一个部件），则继续向下
                         row=row+1
@@ -1662,6 +1663,23 @@ def modify_ML(sheet,item,data,act):#xlwings:自动修改多重列名
                     basic_model=basic_model+'\n\n'+model
             sheet[f'c{insert_row+10}'].value=basic_model
             pass
+
+def output_path(file_path,ptf='No'):
+    '''
+    file_path:文件的具体路径
+    '''
+    path_split=os.path.split(file_path)
+    output_path=os.path.join(path_split[0],'output')
+    if os.path.exists(output_path):
+        pass
+    else:
+        if ptf=='Yes':
+            print('正在创建output文件夹')
+        os.mkdir(output_path)
+    if ptf=='Yes':
+        print(output_file)
+    output_file=os.path.join(output_path,path_split[1][:-5]+'_output.xlsm')
+    return output_file
     
 
 
