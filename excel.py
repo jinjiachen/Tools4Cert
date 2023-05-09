@@ -113,7 +113,8 @@ def Menu():
         if template=='':
             CDR=input('请选择对应的CDR类型：\n1.普通CDR\n2.CDRMM')
             if CDR=='1':
-                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xls')
+#                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xls')
+                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xlsm')
             elif CDR=='2':
                 wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDRMM V5 Form.xls')
         else:
@@ -121,7 +122,8 @@ def Menu():
         update_CDR(wb_template,wb)
 #        input('pause')#调试用
 #        wb.save(rpt[:-4]+'_update.xls')#老报告保存是错误的
-        wb_template.save(rpt[:-4]+'_update.xls')#新模板的报告才是需要保存的
+#        wb_template.save(rpt[:-4]+'_update.xls')#新模板的报告才是需要保存的
+        wb_template.save(rpt[:-5]+'_update.xlsm')
         app.kill()
     elif choice=='5':
 #        app=xw.App(visible=False,add_book=False)
@@ -953,8 +955,8 @@ def update7(sheet,manual_path): #xlwings:在7.0自动插入说明书
         files.sort(key=len) #在对文件的长度进行排序
         for file in files:#遍历所有的文件
 #            print(files)
-            print(manual_path+file)
-            sheet.pictures.add(manual_path+file)#插入图片
+            print(manual_path+'\\'+file)
+            sheet.pictures.add(manual_path+'\\'+file)#插入图片
             sheet.pictures[number].width=450
             sheet.pictures[number].top=top
             sheet[f'a{row-2}'].value=f'Illustration 2{letters[number]} - Manual - page {number+1}' #插入文字描述
@@ -1194,7 +1196,7 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
                     uc_info[f'wire_size_{j-2}']=sht5[f'c{i+j}'].value
                     uc_info[f'resistance_{j-2}']=sht5[f'j{i+j}'].value
                     j=j+1
-            elif 'power unit'.lower() in uc_info['name'].lower() or 'pwb'.lower() in uc_info['name'].lower() or 'SMPS'.lower() in uc_info['name'].lower() or 'tranformer' in uc_info['name'].lower(): #开关电源
+            elif 'power unit'.lower() in uc_info['name'].lower() or 'pwb'.lower() in uc_info['name'].lower() or 'SMPS'.lower() in uc_info['name'].lower() or 'transformer' in uc_info['name'].lower(): #开关电源
                 j=3#WINDING后面两行是格式，跳开
                 while sht5[f'a{i+j}'].value!='VERIFICATION PROCESS':#找到VERIFICATION PROCESS这一行，行数-3就是实际的绕组数量
                     uc_info[f'designation_{j-2}']=sht5[f'a{i+j}'].value
@@ -1592,10 +1594,12 @@ def get_ML_item(sheet):#xlwings:查找使用过的最大列名
     item_max=0#记录最大的列名号，初始为0
     print(sheet.used_range.last_cell.row)
     for row in range(5,sheet.used_range.last_cell.row+2):#从第五行开始,+1是因为range前闭后开
+#        print(f'正在比对第{row}行') #debug
         if sheet[f'c{row}'].value==9.0:
             value=sheet[f'd{row}'].value#获取item列的数值
-            item=re.search('\d+',value).group()#提取数字部分
-            item_max=max(item_max,int(item))
+            if re.search('\d+',str(value))!=None:
+                item=re.search('\d+',str(value)).group()#提取数字部分
+                item_max=max(item_max,int(item))
     return item_max
 
 def modify_ML(sheet,item,data,act):#xlwings:自动修改多重列名
