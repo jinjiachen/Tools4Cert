@@ -251,8 +251,10 @@ def Annual_check(docx,data,component):#对具体的年检信息进行写入
     print('找到目录表格:',len(table_content))
     print('找到耐压测试表格:',len(table_test))
     print('找到结构表格:',len(table_construction))
+    flag=1#正常写入年检信息返回0，默认1
     for uc in data['uc_info']:
         if component in uc['name'].lower():#只处理指定的部件
+            flag=0#检测到年检信息，更改返回值为0
             row_cells=table_content[0].add_row().cells#找到目录表格后增加一行，写入对应的数据
             row_cells[0].text=uc['name']
             row_cells[1].text=uc['manufacturer']
@@ -274,6 +276,21 @@ def Annual_check(docx,data,component):#对具体的年检信息进行写入
                 row_cells[5].text='Pass'
                 k=k+1
 
+            #当数据大于一行时，进行合并操作
+            if k>2:
+                total_rows=len(table_construction[0].rows)-1#获取结构表格总行数，-1是为了匹配索引
+                col_0=table_construction[0].columns[0].cells#获取结构表格第一列的单元格
+
+                #清除需要合并单元格中除第一格外的其他数据
+                for col in range(total_rows-(k-3),total_rows+1):
+                    print(f'清除结构表格第{col}行数据',col_0[col].text)
+                    col_0[col].text=""
+
+#                print('k:',k)
+                #合并单元格
+                print(f'合并结构表格第{total_rows-k+2}:{total_rows}行的单元格')
+                table_construction[0].cell(total_rows-k+2,0).merge(table_construction[0].cell(total_rows,0))
+
 
             j=1
             while f'location_{j}' in list(uc.keys()):#找到测试表格后增加一行，写入对应数据
@@ -286,21 +303,25 @@ def Annual_check(docx,data,component):#对具体的年检信息进行写入
                 row_cells[5].text='Pass'
                 j=j+1
 
-#        cells=table_construction[0].columns[0].cells
-##        for i in range(0,len(cells)+1):
-#        i=0
-#        while i+1<len(cells):
-#            start=i
-#            while cells[i].text==cells[i+1].text and i+1<len(cells):
-#                print('len:',len(cells))
-#                print(i+1)
-#                i=i+1
-#            if i==len(cells):
-#                pass
-#            else:
-#                end=i
-#                cells[start].merge(cells[end])
-#            i=i+1
+            #当数据大于一行时，进行合并操作
+            if j>2:
+                total_rows=len(table_test[0].rows)-1#获取测试表格总行数，-1是为了匹配索引
+                col_0=table_test[0].columns[0].cells#获取测试表格第一列的单元格
+                col_1=table_test[0].columns[1].cells#获取测试表格第二列的单元格
+
+                #清除需要合并单元格中除第一格外的其他数据
+                for col in range(total_rows-(j-3),total_rows+1):
+                    print(f'清除测试表格第{col}行数据',col_0[col].text)
+                    col_0[col].text=""
+                    col_1[col].text=""
+
+                print('j:',j)
+                #合并单元格
+                print(f'合并测试表格第{total_rows-j+2}:{total_rows}行的单元格')
+                table_test[0].cell(total_rows-j+2,0).merge(table_test[0].cell(total_rows,0))
+                table_test[0].cell(total_rows-j+2,1).merge(table_test[0].cell(total_rows,1))
+    return flag
+
 
 def exit_file(file_path):#判断一个文件是否存在
     dirname=os.path.dirname(file_path)
@@ -325,8 +346,8 @@ def Annual_checks(app,path_xls,path_doc,component):#对多个报告生成对应�
             docx=Document(new_file)#如果存在对应的年检报告，则在对应报告中添加
         else:
             docx=Document(path_doc)
-        Annual_check(docx,data,component)
-        docx.save(new_file)
+        if not Annual_check(docx,data,component):#如果返回为0，则为正常写入数据，此时保存年检报告
+            docx.save(new_file)
             
 
 def update_components():#更新修改table24.1
