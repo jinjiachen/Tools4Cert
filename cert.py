@@ -39,7 +39,7 @@ def Driver():
     options = webdriver.ChromeOptions()
 #    options.add_argument("--proxy-server=http://192.168.2.108:8889")
     #options.add_argument("--no-proxy-server")
-    options.add_argument("--headless")
+#    options.add_argument("--headless")
     #options.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"')
     #options.add_argument('user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36"')
     #options.add_argument('user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36')
@@ -262,7 +262,7 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
             'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8',
             'Cache-Control':'max-age=0',
             'Connection':'keep-alive',
-            'cookie':r'OptanonAlertBoxClosed=2022-06-28T01:31:48.056Z; chdc_prod=1; ASP.NET_SessionId=cip5yrlw1zbh0blm15oydov5; SERVERID=iis03; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4NjAyNDkxNzg4NzQ4NTkxMzc0NTczMTM5MDM0MTEyIiwiZSI6InNoZWx3YXkud3VAaW50ZXJ0ZWsuY29tIiwibiI6IlNoZWx3YXkgV3UiLCJ1cmkiOiJodHRwczovL2NvcmUudWxwcm9zcGVjdG9yLmNvbS91c2Vycy8yODYwMjQ5MTc4ODc0ODU5MTM3NDU3MzEzOTAzNDExMiIsInNpZCI6ImM2NTJmNWU4LTAxZTgtNGUzZC1iNDFiLTkzMGU0ZjY5MTNjYyIsIm5iZiI6MTY3NTc1OTcxMCwiZXhwIjoxNjc4MzUxNzEwLCJpYXQiOjE2NzU3NTk3MTAsImlzcyI6IlVMUHJvc3BlY3RvciIsImF1ZCI6Imh0dHA6Ly93d3cudWxwcm9zcGVjdG9yLmNvbSJ9.unsXQwFnWVvhIPzN0y-fqst_wDAh9lVEau5eFilVFz0; __cfruid=73a182391e73501b4f3d60e8ee4b41ea0966d488-1675910715; ii_sess=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiJjNjUyZjVlOC0wMWU4LTRlM2QtYjQxYi05MzBlNGY2OTEzY2MiLCJpZCI6IjI4NjAyNDkxNzg4NzQ4NTkxMzc0NTczMTM5MDM0MTEyIiwibmJmIjoxNjc1OTExNDg4LCJleHAiOjE2NzU5MTE2NjgsImlhdCI6MTY3NTkxMTQ4OCwiaXNzIjoiVUxQcm9zcGVjdG9yIiwiYXVkIjoiaHR0cDovL3d3dy51bHByb3NwZWN0b3IuY29tIn0.oJa00w9ZTAMfQ6b8leVMaLYh3s5758zT4qExs6v_TnA; OptanonConsent=isGpcEnabled=1&datestamp=Thu+Feb+09+2023+10:58:19+GMT+0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=202212.1.0&hosts=&groups=C0001:1,C0002:0,C0003:0,C0004:0&consentId=24e9e77b-e2ed-42ee-9370-c6dbdd4dbe83&geolocation=CN;SH&isIABGlobal=false&interactionCount=0&landingPath=NotLandingPage&AwaitingReconsent=false; pro_iq=projwt=h4KhJbOm7z3KEy6aP7WJIaRDkKe5VAIKlEYbfzLsqCCQ3qzccogOeO9eCXQOpkNcBKKfDcsYO-brXwconhUxsgg4Lz2aj0eOSFePceFrtyDhlC8VptqHe2ygElTa9vsdnGlnvvCuD4keQuQFxonH25EYCUXU591nSs25JEoRfQ7WF5ncWZlXPXGZPjvWEb89uXxy26aI9De8Q95-CPXOV4WHtdldeRWee-d6_GFzGeglD5g1HOJZA9nkEnDIlqP2mGiynSsZsiWMrSoT6CQ0_wkpEDb1jvADJkyYtxNdXOxLc_z7JHVouVAuSLAFzU88-4NHPlREfUo76TBHZBpmDt9Zs0PwJwOKun0PIJoaF2JQnY0xDvomr5hrzvG0JLp_qJo7ecSJr_UexcQ5b58VOZZOfTc1',
+            'cookie':r'OptanonAlertBoxClosed=2022-06-28T01:31:48.056Z; chdc_prod=1; ASP.NET_SessionId=0qba0ummmru0lxselqtcpigu; SERVERID=iis01; __cfruid=9707ed2155af4f5d850417b241d7820c682da426-1684216760; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI4NjAyNDkxNzg4NzQ4NTkxMzc0NTczMTM5MDM0MTEyIiwiZSI6InNoZWx3YXkud3VAaW50ZXJ0ZWsuY29tIiwibiI6IlNoZWx3YXkgV3UiLCJ1cmkiOiJodHRwczovL2NvcmUudWxwcm9zcGVjdG9yLmNvbS91c2Vycy8yODYwMjQ5MTc4ODc0ODU5MTM3NDU3MzEzOTAzNDExMiIsInNpZCI6IjBiZDY3MDU5LWE4ZmMtNDk5ZC04MDY5LWFhZjRkY2Y4YzM3ZSIsIm5iZiI6MTY4NDMwMzQ3OCwiZXhwIjoxNjg2ODk1NDc4LCJpYXQiOjE2ODQzMDM0NzgsImlzcyI6IlVMUHJvc3BlY3RvciIsImF1ZCI6Imh0dHA6Ly93d3cudWxwcm9zcGVjdG9yLmNvbSJ9.TxVdbtVBDYPjb_Mm5acJDUmpEwoclXxM3QTD67wusUU; ii_sess=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIwYmQ2NzA1OS1hOGZjLTQ5OWQtODA2OS1hYWY0ZGNmOGMzN2UiLCJpZCI6IjI4NjAyNDkxNzg4NzQ4NTkxMzc0NTczMTM5MDM0MTEyIiwibmJmIjoxNjg0MzA0NDY0LCJleHAiOjE2ODQzMDQ2NDQsImlhdCI6MTY4NDMwNDQ2NCwiaXNzIjoiVUxQcm9zcGVjdG9yIiwiYXVkIjoiaHR0cDovL3d3dy51bHByb3NwZWN0b3IuY29tIn0.ILL3p3Qjzfb-yrxbomQ3p1WvnFDT1ja1qmxTY-RdpA4; OptanonConsent=isGpcEnabled=1&datestamp=Wed+May+17+2023+14%3A21%3A05+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=202212.1.0&hosts=&groups=C0001%3A1%2CC0002%3A0%2CC0003%3A0%2CC0004%3A0&consentId=e0a7f6bb-01b4-4011-82d3-17ca0e2efca5&isIABGlobal=false&geolocation=CN%3BSH&interactionCount=0&landingPath=NotLandingPage&AwaitingReconsent=false; pro_iq=projwt=R0NON1-nqUq1u5mAn9EIIjoAduFTFZMcRKtkp0rZzL-4k5nl7toObXcTnRKTkYRWslkhAEj3EuBkA1VhnbvgMmnHKv8KiVygXxjVCDVkSHeHjk9Qw4EmRUlBEvKZ6g6fweisAtnYxEDh_aW_Ce_Xl7b1-mlnlztEfmxKJmxT9w09Jry-yIQTsn4ojdv44PcvzUoYtmy5k8pNH7oIoHpUuyqv-IebW-0KZsM2S57_2aG8Gbll37Y-UqkEOysAMOEgTxld7ZAmAeYiUr7V4T-Z57qZvprpSpQbNaDdEF3xtVU2diFZNZMuKEgGsbK_XoEKxbInnE5UcMViXtgItvftu30gP2xbtrRaRbazo2NjrVMV7kzGuCT5J7nrmNu5bxhn1GlnC52rTKudGd-An222AmhjWfw1',
             'Host':'iq.ulprospector.com',
             'Refer':'https://iq.ulprospector.com/en',
             'User-Agent':'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1474.0'
@@ -273,7 +273,6 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
             'qm':'q:E485395'
             }
 
-#以下两个方法2选1，get方法直接用url比较方便
     while True:
         try:
     #    res=requests.get(url,headers=header,params=data,verify=False)#方法1
@@ -313,27 +312,40 @@ def certificate(selector):#查找证书中所有的型号
     return models
 
 
-def filters(models,model):#对所有型号进行过滤，是否有查找的型号
+def filters(models,wanted):#对所有型号进行过滤，是否有查找的型号
     '''
     models：一个列表
-    model:字符串，想要查找的型号
+    wanted:字符串，想要查找的型号
     '''
+    flag='red'#默认没有找到，当找到对应型号时，修改flag
     for i in models:
-        if model==i or model.upper()==i:
-            print('找到型号：',i)
-            return 'green'
+#        if model==i or model.upper()==i:
+        if wanted.upper()==i.upper():#统一大写来进行比较
+#            print('找到完全一致型号：',i)
+            print(f'{i} vs {wanted},找到完全一致型号')
+            flag='green'
             break
-        elif model.split('-')[0] in i or model.split('-')[0].upper() in i:
+        elif wanted.upper() in i.upper():
+            print(f'{i} vs {wanted},找到相似型号')
+#            print('找到相似型号：',i)
+            flag='green'
+            break
+        elif wanted.split('-')[0] in i or wanted.split('-')[0].upper() in i:
             print('-'*20)
-            print('找到相似型号：',i)
-            return 'yellow'
-#        else:
-#            print('没有找到对应型号')
+            print(f'{i} vs {wanted},找到部分相似型号')
+#            print('找到部分相似型号：',i)
+            flag='yellow'
+            break
+        else:
+            print(f'{i} vs {wanted},没有找到型号')
+#            print('没有找到对应型号',model)
+
+    return flag
 
 
 
 if __name__=='__main__':
-#    driver=Driver()
+    driver=Driver()
     Menu()
 #    driver.close()
 #    driver.quit()

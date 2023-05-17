@@ -1489,13 +1489,13 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
     sheet: SEC4.0
     '''
     for row in range(3,sheet.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
-        print(f'正在核对第{row}行')
+        print(f'\n#####正在核对第{row}行')
         manufacturer=sheet[f'd{row}'].value
         scan=row#扫描的行数
         while manufacturer==None:#当有合并单元格时，向上扫描，获取制造商信息
             scan=scan-1
             manufacturer=sheet[f'd{scan}'].value
-        ul_no=re.search('\w\d{5,6}',manufacturer)#提取黄卡号
+        ul_no=re.search('\w{0,1}\d{5,6}',manufacturer)#提取黄卡号
         model=str(sheet[f'e{row}'].value)#转化为字符，针对纯数字问题
         mark=sheet[f'g{row}'].value
         if mark=='NR':
@@ -1524,6 +1524,8 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
                     sheet[f'h{row}'].value='ok'
                 elif filters(models,model)=='yellow':
                     sheet[f'h{row}'].value='to be check'
+                elif filters(models,model)=='red':
+                    sheet[f'h{row}'].value='not found!'
 
 
 def get_ML_info(path,ptf='No'):#xlwings：获取多重列名的型号
