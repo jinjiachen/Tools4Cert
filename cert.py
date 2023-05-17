@@ -318,29 +318,33 @@ def filters(models,wanted):#对所有型号进行过滤，是否有查找的型�
     wanted:字符串，想要查找的型号
     '''
     flag='red'#默认没有找到，当找到对应型号时，修改flag
+
+    #精准查找型号
     for i in models:
 #        if model==i or model.upper()==i:
         if wanted.upper()==i.upper():#统一大写来进行比较
-#            print('找到完全一致型号：',i)
             print(f'{i} vs {wanted},找到完全一致型号')
             flag='green'
             break
         elif wanted.upper() in i.upper():
             print(f'{i} vs {wanted},找到相似型号')
-#            print('找到相似型号：',i)
             flag='green'
             break
-        elif wanted.split('-')[0] in i or wanted.split('-')[0].upper() in i:
-            print('-'*20)
-            print(f'{i} vs {wanted},找到部分相似型号')
-#            print('找到部分相似型号：',i)
-            flag='yellow'
-            break
+    if flag=='green':
+        return flag
+    else:
+        for i in models:
+            if wanted.split('-')[0] in i or wanted.split('-')[0].upper() in i:
+                print('-'*20)
+                print(f'{i} vs {wanted},找到部分相似型号')
+                flag='yellow'
+                break
+        if flag=='yellow':
+            return flag
         else:
-            print(f'{i} vs {wanted},没有找到型号')
-#            print('没有找到对应型号',model)
-
-    return flag
+#            print(f'{i} vs {wanted},没有找到型号')
+            print(f'{wanted},没有找到型号')
+            return flag
 
 
 

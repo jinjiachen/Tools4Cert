@@ -19,6 +19,7 @@ from cert import basic_info
 from cert import certificate
 from cert import filters
 import pdfplumber
+import random
 #import warnings
 
 def Menu():
@@ -1495,16 +1496,16 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
         while manufacturer==None:#当有合并单元格时，向上扫描，获取制造商信息
             scan=scan-1
             manufacturer=sheet[f'd{scan}'].value
-        ul_no=re.search('\w{0,1}\d{5,6}',manufacturer)#提取黄卡号
+        ul_no=re.search('\w{1,2}\d{5,6}',manufacturer)#提取黄卡号
         model=str(sheet[f'e{row}'].value)#转化为字符，针对纯数字问题
         mark=sheet[f'g{row}'].value
-        if mark=='NR':
+        if mark=='NR':#排除NR部件
             continue
-        elif mark=='See 5.0':
+        elif mark=='See 5.0':#排除随机测部件
             continue
         elif mark==None:
             continue
-        elif ul_no==None:
+        elif ul_no==None:#排除没有控制号的部件
             continue
         else:
             url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no.group()
@@ -1512,10 +1513,12 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
                 print(url)
             selector_basic=ul_search(url)#用get方法提交搜索请求，返回搜索结果的response
             links=basic_info(selector_basic)#输出查询的结果并返回详细连接
+            time.sleep(random.randint(1,3))
             if ptf=='Yes':
                 print(links)
             if len(links)==0:
                 print('invalid cert')
+                sheet[f'h{row}'].value='invalid cert'
                 continue
             else:
                 selector_details=ul_search('https://iq.ulprospector.com'+links[0])#此处暂时只对一个链接做处理，后续优化
