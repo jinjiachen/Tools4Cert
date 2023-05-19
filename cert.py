@@ -301,13 +301,15 @@ def certificate(selector):#查找证书中所有的型号
     if len(models)==0:
         print('mode 1')
         models=selector.xpath('//prodid/text()')
-    if len(models)==0 or models[0]==', ':#增加逗号的判断是为了应对抓取全为逗号的情况下，继续向下抓取型号
+    if len(models)==0 or models[0]==', ' or models[0]=='\n':#增加逗号和回车的判断是为了应对抓取全为逗号或回车的情况下，继续向下抓取型号
         print('mode 2')
         models=selector.xpath('//prodid/b/text()')
-    if len(models)==0 or models[0]==', ':
+    if len(models)==0 or models[0]==', ' or models[0]=='\n':#增加逗号和回车的判断是为了应对抓取全为逗号或回车的情况下，继续向下抓取型号
         print('mode 3')
         models=selector.xpath('//prodid/a/text()')
-#        models=selector.xpath('//a[@style="text-decoration: none;"]/text()')
+    if len(models)==0 or models[0]==', ' or models[0]=='\n':#增加逗号和回车的判断是为了应对抓取全为逗号或回车的情况下，继续向下抓取型号
+        print('mode 4')
+        models=selector.xpath('//prodid/b/a/text()')
     print(models)
     return models
 
