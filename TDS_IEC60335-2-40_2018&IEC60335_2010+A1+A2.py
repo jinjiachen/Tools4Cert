@@ -36,7 +36,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 #cell.text="clause1"
 values=[
         ("7.14","Marking Durability Test","15s with water, 15s with petroleum","--","P/F/NA"),
-        ("22.11&22.34","Push, Pull and Torque Test","As specified in standard","EC2092, EC2093, EC2162, EC2426","P/F/NA"),
+        ("22.11&22.34","Push, Pull and Torque Test","As specified in standard","EC2092, EC6621, EC2162, EC2426","P/F/NA"),
         ("8.1.1","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826","P/F/NA"),
         ("8.1.2","Protection Against Access to Live Parts","As specified in standard","EC3091","P/F/NA"),
         ("8.1.3","Protection Against Access to Live Parts","As specified in standard","EC2017","P/F/NA"),
@@ -93,7 +93,7 @@ values=[
         ("23.101","Radiation resistance of internal wiring","After conditioning in Annex OO, 2000V, 15 minutes applied","EC2834","P/F/NA"),
         ("25.2","Electric strength for multiple supply","1250V, 60s","EC2834","P/F/NA"),
         ("25.14","Cord Flexing Test","As specified in standard","EC2667, EC2211","P/F/NA"),
-        ("25.15","Power Cord Pull and Torque Test","Mass of appliance: (\t) kg\nPull force: (\t) N\nTorque: (\t) Nm\nMovement distance: (\t)mm","EC2092, EC3578, EC2843","P/F/NA"),
+        ("25.15","Power Cord Pull and Torque Test","Mass of appliance: (\t) kg\nPull force: (\t) N\nTorque: (\t) Nm\nMovement distance: (\t)mm","EC2092, EC6622, EC2843","P/F/NA"),
         ("26.5","Conductor Escape Test","As specified in standard","--","P/F/NA"),
         ("27.5","Ground Impedance Test","(\t)Ohm","EC4291","P/F/NA"),
         ("29","Creepage Ditance and Clearance","As specified in standard","EC2584, EC2843","P/F/NA"),
