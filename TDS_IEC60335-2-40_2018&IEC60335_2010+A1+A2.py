@@ -979,7 +979,12 @@ while True:
         print("This TDS is for IEC 60335-2-40:2018 in conjunction with IEC 60335-1:2010+A1:2013+A2:2016!")
         print("================================================== Program begin ==================================================")
         job=input("Please input the project number:")
-        document = Document('.\Temp.docx') #Open the template document
+        print('project name:',job)
+        if os.name=='nt':
+            document = Document('.\Temp.docx') #Open the template document
+        elif os.name=='posix':
+            document = Document('./Temp.docx') #Open the template document
+        print('opening the document')
         body=document.add_paragraph()
         Content(values)
 
@@ -1024,7 +1029,8 @@ while True:
         if flag!="":
             break
         else:
-            os.system("cls")
+            pass
+#            os.system("cls")
 
     except:
         print("==================================================Program END ==================================================") 
