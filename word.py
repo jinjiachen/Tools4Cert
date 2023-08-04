@@ -19,7 +19,7 @@ import PyPDF2
 import time
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告')
     if choice=='1':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
         path_doc=input('请输入年检报告(word)的路径')
@@ -71,13 +71,19 @@ def Menu():
 #        
 #        with open(pdf_file, 'wb') as target_file:
 #            pdfWriter.write(target_file)
-    elif choice=='draft':
-        path=input('请输入需要转换的doc文件夹路径：')
+    elif choice=='dft':
+        path=input('请输入需要转换的doc文件路径：')
+#        filename=os.path.basename(path)
+#        dirname=os.path.dirname(path)
+#        print(filename)
+#        print(dirname)
         watermark='K:\Database\watermark.pdf'
         path=path.replace('"','')
-        docs2pdfs(path)
-        pdf_merge(path)
-        add_watermark(path+'\Draft_report.pdf',watermark)
+        new_pdf=doc2pdf(path)
+        print(new_pdf)
+#        add_watermark(path[:-3]+'pdf',watermark)
+        add_watermark(new_pdf,watermark)
+        os.remove(new_pdf)
 
 
 
@@ -98,9 +104,10 @@ def add_watermark(pdf_path,watermark):
         pdf_page.mergePage(pdf_water.getPage(0))
         pdfWriter.addPage(pdf_page)
 
-    print(os.path.dirname(pdf_path))
+#    print(os.path.dirname(pdf_path))
     
-    with open(os.path.dirname(pdf_path)+'\draft.pdf', 'wb') as target_file:
+    ###以新文件保存
+    with open(pdf_path[:-4]+'_draft.pdf', 'wb') as target_file:
         pdfWriter.write(target_file)
     return target_file
 
