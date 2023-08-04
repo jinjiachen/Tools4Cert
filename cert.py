@@ -9,6 +9,7 @@ import requests
 requests.packages.urllib3.disable_warnings
 import warnings
 warnings.filterwarnings("ignore")
+from configparser import ConfigParser
 
 def Menu():
     choice=input("请选择认证的类型：\n1.UL认证\n2.TUV莱茵认证\n3.VDE认证\n4.CSA认证\n5.TUV南德\n11.UL查询（模拟请求)")
@@ -257,12 +258,16 @@ def get_html(url):#通过selenium获取html后转换为lxml的对象
 
 def ul_search(url):#通过模拟请求方式查询黄卡号
 #    url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
+#    conf=load_config()
+#    ul_cookies=conf.get('ul','cookie')
+#    print(ul_cookies)
     header={
             'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
             'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8',
             'Cache-Control':'max-age=0',
             'Connection':'keep-alive',
-            'cookie':r'OptanonAlertBoxClosed=2022-06-28T01:31:48.056Z; chdc_prod=1; ASP.NET_SessionId=0qba0ummmru0lxselqtcpigu; SERVERID=iis01; __cfruid=9707ed2155af4f5d850417b241d7820c682da426-1684216760; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwiZSI6Imp1bi54aWFAaW50ZXJ0ZWsuY29tIiwibiI6IlhpYSBKdW4iLCJ1cmkiOiJodHRwczovL2NvcmUudWxwcm9zcGVjdG9yLmNvbS91c2Vycy8yOTQ3Nzc5ODM5MjExNDI5MTY2Mjk0NDEyMjIwODI1NiIsInNpZCI6IjIyOWJiNGQ4LTY2ZTUtNDRhMC05OGVhLThiOWIwNTdjYTJlMiIsIm5iZiI6MTY4NDM3NzA5OCwiZXhwIjoxNjg2OTY5MDk4LCJpYXQiOjE2ODQzNzcwOTgsImlzcyI6IlVMUHJvc3BlY3RvciIsImF1ZCI6Imh0dHA6Ly93d3cudWxwcm9zcGVjdG9yLmNvbSJ9.KrORkETDwgSy-vQTxfEs74A3Yb4sHP8zAZbL_6gQVgE; ii_sess=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiIyMjliYjRkOC02NmU1LTQ0YTAtOThlYS04YjliMDU3Y2EyZTIiLCJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwibmJmIjoxNjg0Mzc4OTY0LCJleHAiOjE2ODQzNzkxNDQsImlhdCI6MTY4NDM3ODk2NCwiaXNzIjoiVUxQcm9zcGVjdG9yIiwiYXVkIjoiaHR0cDovL3d3dy51bHByb3NwZWN0b3IuY29tIn0.ij4Kkm9hMqxTh8jJRCkr0PcR3vTshjMAL_n4ijlP8qM; pro_iq=projwt=A9e6UqD4WFLcXAiyr2JhEoQd5VsMRKpO0-mqBfTSyngmH5Z1ymL1BBCQdF75_6qF7i45kTWSxBy-sGYQQKF_BxHoCWKJLa-mroHNW_5vTVFubDv3m7-O0x4w9iofWsleWX4YtnRZ4JXJL4jXnL16lf5YIOe_-pgCpH7kboh_WQDBhDMmz7DBy2xqd55dbTcCRr_jtbeFYoQIyCW8Vpl5JmsmuwMQbumD31U0qIqYQpNqCmSvyTfKrB5gF6B1G1CsTjnz7JVMpsjkHodh7fsKr9Afac5hvH_BFF6Bz4HGli5Et8AyJKw3n6_o8drD6_p04nXGJgdm91z0Q9Luhq0cPz6XZ4jocYTY1WBIrD29HfaSeveaUrqia3NLzSfuvx-O5IkLulazSOUyJYs2CS_egcFjlEw1; OptanonConsent=isGpcEnabled=1&datestamp=Thu+May+18+2023+11%3A02%3A45+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=202212.1.0&hosts=&groups=C0001%3A1%2CC0002%3A0%2CC0003%3A0%2CC0004%3A0&consentId=e0a7f6bb-01b4-4011-82d3-17ca0e2efca5&isIABGlobal=false&geolocation=CN%3BSH&interactionCount=0&landingPath=NotLandingPage&AwaitingReconsent=false',
+            'cookie':r'chdc_prod=1; OptanonAlertBoxClosed=2023-07-20T05:23:07.768Z; ASP.NET_SessionId=wozonhnbi0yf0kr0dbhfkt2x; SERVERID=iis01; __cfruid=0c4734d0557c48215e9a8e3eba7b482f7a34e011-1690772772; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwiZSI6Imp1bi54aWFAaW50ZXJ0ZWsuY29tIiwibiI6IlhpYSBKdW4iLCJ1cmkiOiJodHRwczovL2NvcmUudWxwcm9zcGVjdG9yLmNvbS91c2Vycy8yOTQ3Nzc5ODM5MjExNDI5MTY2Mjk0NDEyMjIwODI1NiIsInNpZCI6IjhlMDAwNTQyLTA4ZDAtNDQ5YS1hMjllLWEzMTRjOTc0NjkxZCIsIm5iZiI6MTY5MDc4MzExOCwiZXhwIjoxNjkzMzc1MTE4LCJpYXQiOjE2OTA3ODMxMTgsImlzcyI6IlVMUHJvc3BlY3RvciIsImF1ZCI6Imh0dHA6Ly93d3cudWxwcm9zcGVjdG9yLmNvbSJ9.D-YWJ8O5nhVhZ5062WNxoRbOBpSiA4wIWMjMFQkb830; ii_sess=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI4ZTAwMDU0Mi0wOGQwLTQ0OWEtYTI5ZS1hMzE0Yzk3NDY5MWQiLCJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwibmJmIjoxNjkwOTQwNDMzLCJleHAiOjE2OTA5NDA2MTMsImlhdCI6MTY5MDk0MDQzMywiaXNzIjoiVUxQcm9zcGVjdG9yIiwiYXVkIjoiaHR0cDovL3d3dy51bHByb3NwZWN0b3IuY29tIn0.RNaKYjdpAPr6VETgz1lK3ZmS6sbRjuU2AAFU1_ep-qE; pro_iq=projwt=WnHNRS9PcQSnftA3_rLBoP5R5eVrMSlokrIKO_SHlcjfY84Cx6SF49rm1giX1Njnf_f_3jrDoC1GJu1QbDvYJ0Xtl_LwkOBD7lkkU11_YhGC8Ghm2csSjJnxdveBJhriOpA2fxC-LI_W1ok87PWvGhmzRymvQNnBucGjklaIW53BFlWoqJvEn6PzlquS10qKcZ0BBCrXvMH9z_PfCA5H8oEVfkun24NQUbLuX6qwjWoHuUlYS6LgZHwoH8EkcI5dDAi0H_155kRY0NKQVBeqEiaCtxAKz4kC-SBuiZrNJfYfiN1mi41PazEFVAHNadNoIr9FmiHPB_tfje615dsAHDxj6eGG3Smo67kQf8i5XxkTG8Y7kBrNrYqcFbt-3Sj_NidRjqte9YXt2WPq912gChlocCc1; OptanonConsent=isGpcEnabled=1&datestamp=Wed+Aug+02+2023+09%3A40%3A18+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=202212.1.0&hosts=&groups=C0001%3A1%2CC0002%3A0%2CC0003%3A0%2CC0004%3A0&consentId=e25747da-4c22-4568-a3db-9c25758778a8',
+#            'cookie':ul_cookies,
             'Host':'iq.ulprospector.com',
             'Refer':'https://iq.ulprospector.com/en',
             'User-Agent':'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1474.0'
@@ -347,6 +352,20 @@ def filters(models,wanted):#对所有型号进行过滤，是否有查找的型�
 #            print(f'{i} vs {wanted},没有找到型号')
             print(f'{wanted},没有找到型号')
             return flag
+
+
+def load_config():#加载配置文件
+    conf=ConfigParser()
+    if os.name=='nt':
+#        path='K:/config.ini'
+        path=r'D:\Downloads\PortableGit-2.36.1-64-bit.7z\bin\Quat\config.ini'
+    elif os.name=='posix':
+        path='/usr/local/src/Quat/config.ini'
+    else:
+        print('no config file was found!')
+
+    conf.read(path,encoding="utf-8")
+    return conf
 
 
 
