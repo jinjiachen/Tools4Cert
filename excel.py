@@ -10,7 +10,6 @@ import xlrd
 import xlwt
 #import xlutils
 from xlutils.copy import copy
-import xlwings as xw
 import time
 import os
 import re
@@ -21,6 +20,9 @@ from cert import filters
 import pdfplumber
 import random
 #import warnings
+if os.name=='nt':
+    import xlwings as xw
+
 
 def Menu():
     choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名")

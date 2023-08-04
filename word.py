@@ -11,12 +11,14 @@ from docx import Document
 from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from win32com.client import Dispatch
-import xlwings as xw
 from excel import get_UC
 from PyPDF2 import PdfFileMerger
 import PyPDF2
 import time
+if os.name=='nt':
+    from win32com.client import Dispatch
+    import xlwings as xw
+
 
 def Menu():
     choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告')
@@ -389,4 +391,5 @@ def Annual_init(path_doc):
 
 
 if __name__=='__main__':
-    Menu()
+    while True:
+        Menu()
