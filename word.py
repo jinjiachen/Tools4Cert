@@ -392,4 +392,5 @@ def Annual_init(path_doc):
 
 if __name__=='__main__':
     while True:
+        os.system('cls')
         Menu()
