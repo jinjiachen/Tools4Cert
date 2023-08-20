@@ -123,7 +123,7 @@ def verdict(document):
     acdc=input('ac or dc?')
     if acdc=='ac':
         freq=input('请输入频率:')
-    power=input(('请输入额定功率:')
+    power=input('请输入额定功率:')
     current=input('请输入额定电流：')
     appliance_type=input('请选择器具类型：')
     AC_type=input('分体还是移动')
