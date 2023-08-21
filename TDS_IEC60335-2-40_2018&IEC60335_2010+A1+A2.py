@@ -43,9 +43,9 @@ values=[
         ("8.1.4","Protection Against Access to Live Parts","As specified in standard","EC3175, EC5800","P/F/NA"),
         ("8.1.5","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826","P/F/NA"),
         ("8.2","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826","P/F/NA"),
-        ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC2065, EC5865, EC5936","P/F/NA"),
-        ("11.8","Heating Test","Refer to below for details","EC2065, EC5865, EC5936, EC3102, EC4232","P/F/NA"),
-        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC3175, EC3074, EC2834, EC2065, EC5132","P/F/NA"),
+        ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC6565, EC5865, EC5936","P/F/NA"),
+        ("11.8","Heating Test","Refer to below for details","EC6565, EC5865, EC5936, EC3102, EC4232","P/F/NA"),
+        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC3175, EC3074, EC2834, EC6565, EC5132","P/F/NA"),
         ("14","Transient Overvoltage","Refer to table below for details","--","P/F/NA"),
         ("15.2","IP Test","As specified in standard","--","P/F/NA"),
         ("15.3","Overflow Test","As specified in standard","--","P/F/NA"),
@@ -112,9 +112,9 @@ values=[
         ]
 
 Test_clauses=[
-        ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC2065, EC5865, EC5936","P/F/NA"),
-        ("11.8","Heating Test","Refer to below for details","EC2065, EC5865, EC5936, EC3102, EC4232","P/F/NA"),
-        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC3175, EC3074, EC2834, EC2065, EC5132","P/F/NA"),
+        ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC6565, EC5865, EC5936","P/F/NA"),
+        ("11.8","Heating Test","Refer to below for details","EC6565, EC5865, EC5936, EC3102, EC4232","P/F/NA"),
+        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC3175, EC3074, EC2834, EC6565, EC5132","P/F/NA"),
         ("16.2 & 16.3","Leakage Current Test & Electric Strength Test","Refer to talbe 1-5","EC2743, EC5800, EC5132, EC2834","P/F/NA"),
         ("17","Overload Protection Temperature Test","Refer to table below","EC5865, EC3102, EC5936","P/F/NA"),
         ("19.2&19.3","Abnormal Operation Restricted Heat Dissipation & Overload Test","As specified in standard","EC5936, EC5865, EC3102","P/F/NA"),
