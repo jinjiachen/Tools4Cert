@@ -358,34 +358,79 @@ def Annual_checks(app,path_xls,path_doc,component):#对多个报告生成对应�
         if not Annual_check(docx,data,component):#如果返回为0，则为正常写入数据，此时保存年检报告
             docx.save(new_file)
             
-
+###修改TRF中的table 24.1
 def update_components():#更新修改table24.1
     pass
 
+###替换word中对应文字
 def content_replace(documents,old_word,new_word):#替换对应文字，保持格式不变
     paragraphs=documents.paragraphs
+    tables=documents.tables
+    sections=documents.sections
+
+    #查找所有的段落
     for paragraph in paragraphs:
         if old_word in paragraph.text:
             text=paragraph.text
             name=paragraph.runs[0].font.name
             size=paragraph.runs[0].font.size
             color=paragraph.runs[0].font.color.rgb
-            print(text,name,size,color)
+#            print(text,name,size,color)
+            print(f'找到{old_word},正在替换')
             update_text=text.replace(old_word,new_word)
             paragraph.text=update_text
             paragraph.runs[0].font.name=str(name)
             paragraph.runs[0].font.size=int(size)
 #            paragraph.runs[0].font.color=str(color)
 
-def Annual_init(path_doc):
-    client_name='Yoau'
-    report_No='202111002SHA-001'
-    control_No='3061710'
+    #查找所有的表格
+    for table in tables:
+        for cell in table._cells:
+            if old_word in cell.text:
+                print(f'找到{old_word},正在替换')
+                text=cell.text
+                cell.text=text.replace(old_word,new_word)
+
+    #查找所有的页眉
+    for section in sections:
+        for cell in section.header.tables[0]._cells:
+            if old_word in cell.text:
+                print(f'找到{old_word},正在替换')
+                text=cell.text
+                cell.text=text.replace(old_word,new_word)
+
+
+
+def Annual_init(path_doc,project,control_No,sample):
+    '''
+    path_doc(str):模板文件的路径
+    project(str):年检项目号
+    control_No(str):控制号
+    sample(str):样品编号
+    '''
+#    client_name='Yoau'
+#    report_No='202111002SHA-001'
+#    project=report_No[:-4]
+#    control_No='3061710'
+#    client_contact=''
+#    sample='xxx'
+#    product='xxx'
+#    standard='xxx'
+#    client_name=''
+#    client_address=''
     docx=Document(path_doc)
+
     content_replace(docx,'CUSTOMER NAME',client_name)
+    content_replace(docx,'<Client Name>',client_name)
     content_replace(docx,'<report no.>',report_No)
     content_replace(docx,'<issue_date>',time.strftime('%d-%m-%Y'))
     content_replace(docx,'<Control Number>',control_No)
+    content_replace(docx,'<date>',time.strftime('%Y-%m-%d'))
+    content_replace(docx,'<customer>',client_name)
+    content_replace(docx,'<project>',project)
+    content_replace(docx,'<sample no>',sample)
+    content_replace(docx,'<product>',product)
+    content_replace(docx,'<standard>',standard)
     docx.save(path_doc[:-4]+'init'+'.docx')
 
 
