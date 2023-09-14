@@ -1172,7 +1172,11 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
     total_row=sht5.used_range.last_cell.row#返回最大的行数
     uc_all=[]
     basic_info={
-        'report':sht1['b3'].value
+        'report':sht1['b3'].value,
+        'applicant':sht1['b6'].value,
+        'address':sht1['b7'].value,
+        'country':sht1['b8'].value,
+        'contact':sht1['b9'].value,
 }
     for i in range(1,total_row):#在报告的此行数范围内去匹配
         if sht5[f'a{i}'].value=='Photo #':#a列中寻找Photo

@@ -407,8 +407,9 @@ def content_replace(documents,old_word,new_word):#替换对应文字，保持格
 
 
 
-def Annual_init(path_doc,project,control_No,sample):
+def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     '''
+    app:xlwings的实例
     path_doc(str):模板文件的路径
     project(str):年检项目号
     control_No(str):控制号
@@ -420,11 +421,19 @@ def Annual_init(path_doc,project,control_No,sample):
 #    control_No='3061710'
 #    client_contact=''
 #    sample='xxx'
-#    product='xxx'
-#    standard='xxx'
+    report_No=project+'-001'
+    product='xxx'
+    standard='xxx'
 #    client_name=''
 #    client_address=''
     docx=Document(path_doc)
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')] #列出所有的xls文件
+    file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
+    wb=app.books.open(file_path[0])#只选取一个报告
+    data=get_UC(wb)#提取相应的UC信息
+    client_name=data['basic_info']['applicant']
+    client_address=data['basic_info']['address']+', '+data['basic_info']['country']
+    client_contact=data['basic_info']['contact']
 
     content_replace(docx,'CUSTOMER NAME',client_name)
     content_replace(docx,'<Client Name>',client_name)
@@ -437,6 +446,8 @@ def Annual_init(path_doc,project,control_No,sample):
     content_replace(docx,'<sample no>',sample)
     content_replace(docx,'<product>',product)
     content_replace(docx,'<standard>',standard)
+    content_replace(docx,'<Client Contact>',client_contact)
+    content_replace(docx,'<Client Address>',client_address)
     docx.save(path_doc[:-4]+'init'+'.docx')
 
 
