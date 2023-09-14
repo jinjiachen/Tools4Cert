@@ -370,7 +370,7 @@ def load_config():#加载配置文件
 
 
 if __name__=='__main__':
-    driver=Driver()
+#    driver=Driver()
     Menu()
 #    driver.close()
 #    driver.quit()

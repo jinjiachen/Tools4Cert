@@ -339,6 +339,8 @@ def Menu():
                 update4(sht4,sht4_data,sht12)
                 end=time.time()
                 print('operating time:',end-start)
+                wb_data.close()#关闭打开的文件
+                print('已关闭文件：',data)
             elif choice=='3':
                 manual_path=input('输入说明书的路径')
                 update7(sht7,manual_path)
@@ -407,7 +409,19 @@ def Menu():
                 break
             elif choice=='r':
                 wb.close()
+                app.kill()
+                print('原报告路径：',rpt)
+                app=xw.App(visible=True,add_book=False)
+                app.display_alerts=False #取消警告
+                app.screen_updating=False#取消屏幕刷新
                 wb=app.books.open(rpt)
+                sht3=wb.sheets['3.0 Photos']
+                sht4=wb.sheets['4.0 Components']
+                sht5=wb.sheets['5.0 CEC Comps']
+                sht7=wb.sheets['7.0 Illustrations']
+                sht8=wb.sheets['8.0 Test Summary']
+                sht9=wb.sheets['9.0 MLS']
+                sht12=wb.sheets['12.0 Revisions']
                 wb.save(rpt[:-4]+'_output.xls')
             input('any key to contine!')
             os.system('cls')
@@ -883,7 +897,7 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
             for j in range(rows[0],rows[1]+1):#在同一个部件的行数范围内去匹配信息
                 data_rpt=copy_line(sheet1,j)
 #                if sheet1[f'd{j}'].value.upper()==data[2].upper() and sheet1[f'e{j}'].value.upper()==data[3].upper(): #匹配制造商与型号，当一致时，进行后面的操作
-                if data_rpt[2].upper()==data[2].upper() and data_rpt[3].upper()==data[3].upper(): #匹配制造商与型号，当一致时，进行后面的操作
+                if data_rpt[2].upper()==data[2].upper() and str(data_rpt[3]).upper()==str(data[3]).upper(): #匹配制造商与型号，当一致时，进行后面的操作
                     data=list_fmt(data)
                     paste_line(sheet1,j,data) #修改技术参数(technical data), 用了整行复制的方法，但是其实只是修改技术参数那一列，因为部件名称，制造商，型号都是一致的
                     sheet1[f'f{j}'].font.color=0xFF00FF#插入数据后修改字体颜色
