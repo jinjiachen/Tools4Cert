@@ -170,33 +170,48 @@ def Clause10():
 #    p1.add_run("Table 1-1").font.name="Arial"
 #    p1.paragraph_format.alignment=WD_ALIGN_PARAGRAPH.CENTER #set the alignment to center
     #add testing table
-    document.add_paragraph().add_run("Power Input Deviation:").font.name="Arial"
-    table_test=document.add_table(rows=8,cols=6,style="Table Grid")     ##Table for power input
-    values=[("Model","Rated Power Input(W)","Measured Power Input(W)","Deviation","Calculated Deviatoin","Mode")]
+#    document.add_paragraph().add_run("Power Input Deviation:").font.name="Arial"
+#    table_test=document.add_table(rows=8,cols=6,style="Table Grid")     ##Table for power input
+#    values=[("Model","Rated Power Input(W)","Measured Power Input(W)","Deviation","Calculated Deviatoin","Mode")]
+#    for row in table_test.rows:     #set the row height 
+#        row.height=Pt(20)
+#    row_cells=table_test.rows[0].cells  #choose the first row of table
+#    for u,v,w,x,y,z in values:
+#        row_cells[0].text=u
+#        row_cells[1].text=v
+#        row_cells[2].text=w
+#        row_cells[3].text=x
+#        row_cells[4].text=y
+#        row_cells[5].text=z
+#    document.add_paragraph()        ##blank line
+#    document.add_paragraph().add_run("Current Deviation:").font.name="Arial"
+#    table_test=document.add_table(rows=8,cols=6,style="Table Grid")     ##Table for rated current
+#    values=[("Model","Rated Current(A)","Measured Current(A)","Deviation","Calculated Deviatoin","Mode")]
+#    for row in table_test.rows:     #set the row height 
+#        row.height=Pt(20)
+#    row_cells=table_test.rows[0].cells  #choose the first row of table
+#    for u,v,w,x,y,z in values:
+#        row_cells[0].text=u
+#        row_cells[1].text=v
+#        row_cells[2].text=w
+#        row_cells[3].text=x
+#        row_cells[4].text=y
+#        row_cells[5].text=z
+    table_test=document.add_table(rows=8,cols=5,style="Table Grid")     ##Table for power input
+    values=[("Model","Operating Mode","Test Condition (C)","Test Voltage (V)","Test Frequency (Hz)","Measured Power Input (W)","Measured Current Input (A)","Notes: in operating mode, H = heating, C = cooling, D = dehumidifier")]
     for row in table_test.rows:     #set the row height 
         row.height=Pt(20)
-    row_cells=table_test.rows[0].cells  #choose the first row of table
-    for u,v,w,x,y,z in values:
-        row_cells[0].text=u
-        row_cells[1].text=v
-        row_cells[2].text=w
-        row_cells[3].text=x
-        row_cells[4].text=y
-        row_cells[5].text=z
-    document.add_paragraph()        ##blank line
-    document.add_paragraph().add_run("Current Deviation:").font.name="Arial"
-    table_test=document.add_table(rows=8,cols=6,style="Table Grid")     ##Table for rated current
-    values=[("Model","Rated Current(A)","Measured Current(A)","Deviation","Calculated Deviatoin","Mode")]
-    for row in table_test.rows:     #set the row height 
-        row.height=Pt(20)
-    row_cells=table_test.rows[0].cells  #choose the first row of table
-    for u,v,w,x,y,z in values:
-        row_cells[0].text=u
-        row_cells[1].text=v
-        row_cells[2].text=w
-        row_cells[3].text=x
-        row_cells[4].text=y
-        row_cells[5].text=z
+    column_cells=table_test.columns[0].cells  #choose the first column of table
+    for t,u,v,w,x,y,z,s in values:
+        column_cells[0].text=t
+        column_cells[1].text=u
+        column_cells[2].text=v
+        column_cells[3].text=w
+        column_cells[4].text=x
+        column_cells[5].text=y
+        column_cells[6].text=z
+        column_cells[7].text=s
+    table_test.cell(7,0).merge(table_test.cell(7,4))      ##merge the cells
     document.add_page_break()
 #    table_test=document.add_table(rows=1,cols=1,style="Table Grid")
 
