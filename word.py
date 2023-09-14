@@ -21,7 +21,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告')
     if choice=='1':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
         path_doc=input('请输入年检报告(word)的路径')
@@ -86,6 +86,8 @@ def Menu():
 #        add_watermark(path[:-3]+'pdf',watermark)
         add_watermark(new_pdf,watermark)
         os.remove(new_pdf)
+    elif choice=='init':
+        pass
 
 
 
@@ -305,10 +307,14 @@ def Annual_check(docx,data,component):#对具体的年检信息进行写入
             while f'location_{j}' in list(uc.keys()):#找到测试表格后增加一行，写入对应数据
                 row_cells=table_test[0].add_row().cells
                 row_cells[0].text=uc['model']
-                row_cells[1].text=uc['manufacturer']
-                row_cells[2].text=uc[f'location_{j}']
-                row_cells[3].text=uc[f'rating'].split(',')[0]
-                row_cells[4].text=uc[f'voltage_{j}']
+#                row_cells[1].text=uc['manufacturer']
+                row_cells[1].text=uc[f'location_{j}']
+                row_cells[2].text=uc[f'rating'].split(',')[0]
+                if type(uc[f'voltage_{j}'])==float:#浮点转化成整数的字符串
+                    row_cells[3].text=str(int(uc[f'voltage_{j}']))#转化为字符串以防出错
+                else:
+                    row_cells[3].text=str(uc[f'voltage_{j}'])#转化为字符串以防出错
+                row_cells[4].text=str(uc[f'time_{j}'])#转化为str，防止出错
                 row_cells[5].text='Pass'
                 j=j+1
 
@@ -322,13 +328,13 @@ def Annual_check(docx,data,component):#对具体的年检信息进行写入
                 for col in range(total_rows-(j-3),total_rows+1):
                     print(f'清除测试表格第{col}行数据',col_0[col].text)
                     col_0[col].text=""
-                    col_1[col].text=""
+#                    col_1[col].text=""
 
                 print('j:',j)
                 #合并单元格
                 print(f'合并测试表格第{total_rows-j+2}:{total_rows}行的单元格')
                 table_test[0].cell(total_rows-j+2,0).merge(table_test[0].cell(total_rows,0))
-                table_test[0].cell(total_rows-j+2,1).merge(table_test[0].cell(total_rows,1))
+#                table_test[0].cell(total_rows-j+2,1).merge(table_test[0].cell(total_rows,1))
     return flag
 
 

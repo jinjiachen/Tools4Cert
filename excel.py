@@ -1233,6 +1233,7 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
             while sht5[f'd{i+j}'].value!=None:
                 uc_info[f'location_{j}']=sht5[f'd{i+j}'].value
                 uc_info[f'voltage_{j}']=sht5[f'h{i+j}'].value
+                uc_info[f'time_{j}']=sht5[f'j{i+j}'].value
                 j=j+1
 
 
