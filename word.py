@@ -24,9 +24,14 @@ def Menu():
     choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告')
     if choice=='1':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
-        path_doc=input('请输入年检报告(word)的路径')
+#        path_doc=input('请输入年检报告(word)的路径')
+        path_doc=r'J:\Tools4Cert\template\SFT-ETL-OP-29a Unlisted Component Acceptance Report_200331.docx'
+        project=input('请输入项目号：')
+        control_No=input('请输入控制号：')
+        sample=input('请输入样品号：')
         path_doc=path_doc.replace('"','')#去除"号,做预处理
         app=xw.App(visible=False,add_book=False)#创建app对象，传入Annual_checks函数
+        path_doc=Annual_init(app,path_xls,path_doc,project,control_No,sample)
         for component in ['compressor','motor','smps','transformer','pwb','power unit']:
             Annual_checks(app,path_xls,path_doc,component)
         app.kill()#关闭进程
@@ -369,7 +374,7 @@ def update_components():#更新修改table24.1
     pass
 
 ###替换word中对应文字
-def content_replace(documents,old_word,new_word):#替换对应文字，保持格式不变
+def content_replace(documents,old_word,new_word,ptf='NO'):#替换对应文字，保持格式不变
     paragraphs=documents.paragraphs
     tables=documents.tables
     sections=documents.sections
@@ -382,7 +387,8 @@ def content_replace(documents,old_word,new_word):#替换对应文字，保持格
             size=paragraph.runs[0].font.size
             color=paragraph.runs[0].font.color.rgb
 #            print(text,name,size,color)
-            print(f'找到{old_word},正在替换')
+            if ptf=='YES':
+                print(f'找到{old_word},正在替换')
             update_text=text.replace(old_word,new_word)
             paragraph.text=update_text
             paragraph.runs[0].font.name=str(name)
@@ -393,7 +399,8 @@ def content_replace(documents,old_word,new_word):#替换对应文字，保持格
     for table in tables:
         for cell in table._cells:
             if old_word in cell.text:
-                print(f'找到{old_word},正在替换')
+                if ptf=='YES':
+                    print(f'找到{old_word},正在替换')
                 text=cell.text
                 cell.text=text.replace(old_word,new_word)
 
@@ -401,7 +408,8 @@ def content_replace(documents,old_word,new_word):#替换对应文字，保持格
     for section in sections:
         for cell in section.header.tables[0]._cells:
             if old_word in cell.text:
-                print(f'找到{old_word},正在替换')
+                if ptf=='YES':
+                    print(f'找到{old_word},正在替换')
                 text=cell.text
                 cell.text=text.replace(old_word,new_word)
 
@@ -448,7 +456,9 @@ def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     content_replace(docx,'<standard>',standard)
     content_replace(docx,'<Client Contact>',client_contact)
     content_replace(docx,'<Client Address>',client_address)
-    docx.save(path_doc[:-4]+'init'+'.docx')
+    new_path=path_xls+'\\'+f'{project}.docx'
+    docx.save(path_xls+'\\'+f'{project}.docx')
+    return new_path
 
 
 
