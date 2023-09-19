@@ -22,7 +22,7 @@ if os.name=='nt':
 
 def Menu():
     choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告')
-    if choice=='1':
+    if choice=='uc':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
 #        path_doc=input('请输入年检报告(word)的路径')
         path_doc=r'J:\Tools4Cert\template\SFT-ETL-OP-29a Unlisted Component Acceptance Report_200331.docx'
@@ -34,6 +34,19 @@ def Menu():
         path_doc=Annual_init(app,path_xls,path_doc,project,control_No,sample)
         for component in ['compressor','motor','smps','transformer','pwb','power unit']:
             Annual_checks(app,path_xls,path_doc,component)
+        app.kill()#关闭进程
+    elif choice=='ucgt':
+        path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
+#        path_doc=input('请输入年检报告(word)的路径')
+        path_doc=r'J:\Tools4Cert\template\SFT-ETL-OP-29a Unlisted Component Acceptance Report_200331.docx'
+        project=input('请输入项目号：')
+        control_No=input('请输入控制号：')
+        sample=input('请输入样品号：')
+        path_doc=path_doc.replace('"','')#去除"号,做预处理
+        app=xw.App(visible=False,add_book=False)#创建app对象，传入Annual_checks函数
+        path_doc=Annual_init(app,path_xls,path_doc,project,control_No,sample)
+        for component in ['compressor','motor','smps','transformer','pwb','power unit']:
+            Annual_checks_GT(app,path_xls,path_doc,component)
         app.kill()#关闭进程
     elif choice=='2':
         data=input('请输入要提取的数据文件的路径：')
@@ -368,6 +381,31 @@ def Annual_checks(app,path_xls,path_doc,component):#对多个报告生成对应�
             docx=Document(path_doc)
         if not Annual_check(docx,data,component):#如果返回为0，则为正常写入数据，此时保存年检报告
             docx.save(new_file)
+
+###按照GT的特殊需求，每一份单独的报告出一份年检报告
+def Annual_checks_GT(app,path_xls,path_doc,component):#对多个报告生成对应部件的年检报告
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')] #列出所有的xls文件
+    file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
+    print("\n".join(file_path))
+    for file in file_path:#遍历所有的xls文件，即所有需要做年检的报告
+        filename=os.path.basename(file)#文件名
+        if filename.endswith('.xls'):
+            folder=os.path.join(os.path.dirname(file),filename[:-4])#构造文件夹路径
+        elif filename.endswith('.xlsm'):
+            folder=os.path.join(os.path.dirname(file),filename[:-5])#构造文件夹路径
+        os.system(f'md "{folder}"')#创建文件夹
+        new_file=os.path.join(folder,os.path.basename(path_doc)[:-5])+f'{component}.docx'#构建年检报告的路径
+        print(f'正在处理{file}')
+        wb=app.books.open(file)
+        data=get_UC(wb)#提取相应的UC信息
+        print(data)
+        wb.close()
+        if exit_file(new_file):
+            docx=Document(new_file)#如果存在对应的年检报告，则在对应报告中添加
+        else:
+            docx=Document(path_doc)
+        if not Annual_check(docx,data,component):#如果返回为0，则为正常写入数据，此时保存年检报告
+            docx.save(new_file)
             
 ###修改TRF中的table 24.1
 def update_components():#更新修改table24.1
@@ -414,7 +452,7 @@ def content_replace(documents,old_word,new_word,ptf='NO'):#替换对应文字，
                 cell.text=text.replace(old_word,new_word)
 
 
-
+###年检模板初始化
 def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     '''
     app:xlwings的实例
@@ -423,26 +461,20 @@ def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     control_No(str):控制号
     sample(str):样品编号
     '''
-#    client_name='Yoau'
-#    report_No='202111002SHA-001'
-#    project=report_No[:-4]
-#    control_No='3061710'
-#    client_contact=''
-#    sample='xxx'
     report_No=project+'-001'
     product='xxx'
     standard='xxx'
-#    client_name=''
-#    client_address=''
+
     docx=Document(path_doc)
     files=[f for f in os.listdir(path_xls) if f.endswith('.xls')] #列出所有的xls文件
     file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
+    #选一份报告获取基本的信息
     wb=app.books.open(file_path[0])#只选取一个报告
     data=get_UC(wb)#提取相应的UC信息
     client_name=data['basic_info']['applicant']
     client_address=data['basic_info']['address']+', '+data['basic_info']['country']
     client_contact=data['basic_info']['contact']
-
+    #一系列替换操作来初始化
     content_replace(docx,'CUSTOMER NAME',client_name)
     content_replace(docx,'<Client Name>',client_name)
     content_replace(docx,'<report no.>',report_No)
@@ -456,6 +488,7 @@ def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     content_replace(docx,'<standard>',standard)
     content_replace(docx,'<Client Contact>',client_contact)
     content_replace(docx,'<Client Address>',client_address)
+    #生成初始化文件并返回路径
     new_path=path_xls+'\\'+f'{project}.docx'
     docx.save(path_xls+'\\'+f'{project}.docx')
     return new_path
