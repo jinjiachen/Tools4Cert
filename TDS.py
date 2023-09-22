@@ -41,12 +41,12 @@ values=[
         ("8.1.1","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826",verdict),
         ("8.1.2","Protection Against Access to Live Parts","As specified in standard","EC3091",verdict),
         ("8.1.3","Protection Against Access to Live Parts","As specified in standard","EC2017",verdict),
-        ("8.1.4","Protection Against Access to Live Parts","As specified in standard","EC3175, EC5800",verdict),
+        ("8.1.4","Protection Against Access to Live Parts","As specified in standard","EC6081, EC5800",verdict),
         ("8.1.5","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826",verdict),
         ("8.2","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826",verdict),
         ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC6565, EC5865, EC5936",verdict),
         ("11.8","Heating Test","Refer to below for details","EC6565, EC5865, EC5936, EC3102, EC4232",verdict),
-        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC3175, EC3074, EC2834, EC6565, EC5132",verdict),
+        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC6081, EC3074, EC2834, EC6565, EC5132",verdict),
         ("14","Transient Overvoltage","Refer to table below for details","--",verdict),
         ("15.2","IP Test","As specified in standard","--",verdict),
         ("15.3","Overflow Test","As specified in standard","--",verdict),
@@ -67,13 +67,13 @@ values=[
         ("19.102","Abnormal Temperature of indoor water","As specified in standard","EC5865, EC5936, EC3102",verdict),
         ("19.103","Abnormal Ambient Temperature","As specified in standard","EC5865, EC5936, EC3102, EC2605",verdict),
         ("19.104","Cover Test for Appliance with Supplementary Heaters","As specified in standard","EC5865, EC5936, EC3102",verdict),
-        ("20.1","Stability Test","(   ) inclined","EC4261",verdict),
+        ("20.1","Stability Test","(   ) inclined","EC3140",verdict),
         ("20.2","Mechanical Hazard","As specified in standard","EC2162",verdict),
         ("21.1","Spring Hammer Test","As specified in standard","EC5553",verdict),
         ("Annex EE","Pressure Tests","Refer to table below","EC5768",verdict),
         ("21.2","Strength of Solid Insulation & Viberation Test","As specified in standard","--",verdict),
         ("22.3","Undue Strain Test on Socket-Outlet","As specified in standard","EC5076",verdict),
-        ("22.5","Plug Discharge Test","Refer to table below","EC2567, EC3175, EC5132",verdict),
+        ("22.5","Plug Discharge Test","Refer to table below","EC2567, EC6081, EC5132",verdict),
         ("22.6","Water Leakage Test","As specified in standard","EC2615",verdict),
 #        ("22.11","Stability of Non-detachable Parts","Refer to table below","EC2092",verdict),
         ("22.12","Pull Test","(   )N","EC2092",verdict),
@@ -94,10 +94,10 @@ values=[
         ("23.101","Radiation resistance of internal wiring","After conditioning in Annex OO, 2000V, 15 minutes applied","EC2834",verdict),
         ("25.2","Electric strength for multiple supply","1250V, 60s","EC2834",verdict),
         ("25.14","Cord Flexing Test","As specified in standard","EC2667, EC2211",verdict),
-        ("25.15","Power Cord Pull and Torque Test","Mass of appliance: (\t) kg\nPull force: (\t) N\nTorque: (\t) Nm\nMovement distance: (\t)mm","EC2092, EC6622, EC2843",verdict),
+        ("25.15","Power Cord Pull and Torque Test","Mass of appliance: (\t) kg\nPull force: (\t) N\nTorque: (\t) Nm\nMovement distance: (\t)mm","EC2092, EC6622, EC5773",verdict),
         ("26.5","Conductor Escape Test","As specified in standard","--",verdict),
         ("27.5","Ground Impedance Test","(\t)Ohm","EC4291",verdict),
-        ("29","Creepage Ditance and Clearance","As specified in standard","EC2584, EC2843",verdict),
+        ("29","Creepage Ditance and Clearance","As specified in standard","EC2584, EC5773",verdict),
         ("30.1","Ball Pressure Test","Refer to table below","EC3304, EC2132",verdict),
         ("30.2.3 & 30.2.4","Glow Wire Test & Needle Flame Test","Refer to table below","EC2764, EC2072",verdict),
         ("31","Salt Mist Test","As specified in standard","--",verdict),
@@ -115,7 +115,7 @@ values=[
 Test_clauses=[
         ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC6565, EC5865, EC5936","P/F/NA"),
         ("11.8","Heating Test","Refer to below for details","EC6565, EC5865, EC5936, EC3102, EC4232","P/F/NA"),
-        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC3175, EC3074, EC2834, EC6565, EC5132","P/F/NA"),
+        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC6081, EC3074, EC2834, EC6565, EC5132","P/F/NA"),
         ("16.2 & 16.3","Leakage Current Test & Electric Strength Test","Refer to talbe 1-5","EC2743, EC5800, EC5132, EC2834","P/F/NA"),
         ("17","Overload Protection Temperature Test","Refer to table below","EC5865, EC3102, EC5936","P/F/NA"),
         ("19.2&19.3","Abnormal Operation Restricted Heat Dissipation & Overload Test","As specified in standard","EC5936, EC5865, EC3102","P/F/NA"),
@@ -198,21 +198,36 @@ def Clause10():
 #        row_cells[3].text=x
 #        row_cells[4].text=y
 #        row_cells[5].text=z
-    table_test=document.add_table(rows=8,cols=5,style="Table Grid")     ##Table for power input
-    values=[("Model","Operating Mode","Test Condition (C)","Test Voltage (V)","Test Frequency (Hz)","Measured Power Input (W)","Measured Current Input (A)","Notes: in operating mode, H = heating, C = cooling, D = dehumidifier")]
+    table_test=document.add_table(rows=12,cols=4,style="Table Grid")     ##Table for power input
+    values=[("Model",
+             "Operating Mode",
+             "Test Condition (C)",
+             "Rated Voltage (V)",
+             "Rated Frequency (Hz)",
+             "Rated Power Input (W)",
+             "Rated Current (A)",
+             "Test Voltage (V)",
+             "Test Frequency (Hz)",
+             "Measured Power Input (W)",
+             "Measured Current (A)",
+             "Notes: in operating mode, H = heating, C = cooling, D = dehumidifier")]
     for row in table_test.rows:     #set the row height 
         row.height=Pt(20)
     column_cells=table_test.columns[0].cells  #choose the first column of table
-    for t,u,v,w,x,y,z,s in values:
-        column_cells[0].text=t
-        column_cells[1].text=u
-        column_cells[2].text=v
-        column_cells[3].text=w
-        column_cells[4].text=x
-        column_cells[5].text=y
-        column_cells[6].text=z
-        column_cells[7].text=s
-    table_test.cell(7,0).merge(table_test.cell(7,4))      ##merge the cells
+    for r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12 in values:
+        column_cells[0].text=r1
+        column_cells[1].text=r2
+        column_cells[2].text=r3
+        column_cells[3].text=r4
+        column_cells[4].text=r5
+        column_cells[5].text=r6
+        column_cells[6].text=r7
+        column_cells[7].text=r8
+        column_cells[8].text=r9
+        column_cells[9].text=r10
+        column_cells[10].text=r11
+        column_cells[11].text=r12
+    table_test.cell(11,0).merge(table_test.cell(11,3))      ##merge the cells
     document.add_page_break()
 #    table_test=document.add_table(rows=1,cols=1,style="Table Grid")
 
@@ -600,16 +615,16 @@ def Clause19_101():
     col2[0].text="Test condition(C):"
     col2[1].text="Test frequency(Hz):"
 
-    T_couple=document.add_table(rows=26, cols=4, style="Table Grid")        ##Table for thermocouple
+    T_couple=document.add_table(rows=12, cols=4, style="Table Grid")        ##Table for thermocouple
     row_cells=T_couple.rows[0].cells  #choose the first row of T_couple table
     row_cells[0].text="Item No."
     row_cells[1].text="Thermocouple location"
     row_cells[2].text="Actual temperature(C)"
     row_cells[3].text="Limitation(C)"
     col_cells=T_couple.columns[0].cells     #choose the first column of T_couple table
-    T_couple.cell(25,0).merge(T_couple.cell(25,3))      ##merge the cells
-    T_couple.rows[25].cells[0].text="Notes:\n-The heat transfer medium flow of the outdoor heat exchanger is restricted or shut off\n-The heat transfer medium flow, fluid or air, of the indoor heat exchanger, restricted or shut off\n-Appliances incorporating a motor common to both the indoor and outdoor heat exchangers are subjected to the above test the motor being disconnected"
-    for i in range(1,25):   #set the item no series 
+    T_couple.cell(11,0).merge(T_couple.cell(11,3))      ##merge the cells
+    T_couple.rows[11].cells[0].text="Notes:\n-The heat transfer medium flow of the outdoor heat exchanger is restricted or shut off\n-The heat transfer medium flow, fluid or air, of the indoor heat exchanger, restricted or shut off\n-Appliances incorporating a motor common to both the indoor and outdoor heat exchangers are subjected to the above test the motor being disconnected"
+    for i in range(1,11):   #set the item no series 
         col_cells[i].text=str(i)
     for row in T_couple.rows:     #set the row height
         row.height=Pt(20)
@@ -644,16 +659,16 @@ def Clause19_102():
     col2[0].text="Test condition(C):"
     col2[1].text="Test frequency(Hz):"
 
-    T_couple=document.add_table(rows=26, cols=4, style="Table Grid")        ##Table for thermocouple
+    T_couple=document.add_table(rows=12, cols=4, style="Table Grid")        ##Table for thermocouple
     row_cells=T_couple.rows[0].cells  #choose the first row of T_couple table
     row_cells[0].text="Item No."
     row_cells[1].text="Thermocouple location"
     row_cells[2].text="Actual temperature(C)"
     row_cells[3].text="Limitation(C)"
     col_cells=T_couple.columns[0].cells     #choose the first column of T_couple table
-    T_couple.cell(25,0).merge(T_couple.cell(25,3))      ##merge the cells
-    T_couple.rows[25].cells[0].text="Notes:\nThe indoor water temperature shall be raised 15 K with a rate of 2 K/min and this temperature maintained for 30 min, after which the water temperature is lowered to its original value at the same velocity."
-    for i in range(1,25):   #set the item no series 
+    T_couple.cell(11,0).merge(T_couple.cell(11,3))      ##merge the cells
+    T_couple.rows[11].cells[0].text="Notes:\nThe indoor water temperature shall be raised 15 K with a rate of 2 K/min and this temperature maintained for 30 min, after which the water temperature is lowered to its original value at the same velocity."
+    for i in range(1,11):   #set the item no series 
         col_cells[i].text=str(i)
     for row in T_couple.rows:     #set the row height
         row.height=Pt(20)
@@ -688,8 +703,31 @@ def Clause19_103():
     col2[0].text="Test condition(C):"
     col2[1].text="Test frequency(Hz):"
 
-    T_result=document.add_table(rows=1,cols=1,style="Table Grid")   ##The result of table
-    T_result.rows[0].cells[0].text="1. dry-bulb temperature is increased to a value 10 K above the maximum temperature specified by the manufacturer:_____C\n2. dry-bulb temperature is reduced to a value 5 K below the maximum temperature specified by the manufacturer:_____C\nAfter testing, no hazard situation was occured."
+    T_couple=document.add_table(rows=12,cols=4,style="Table Grid")   ##The result of table
+    row_cells=T_couple.rows[0].cells  #choose the first row of T_couple table
+    row_cells[0].text="Item No."
+    row_cells[1].text="Thermocouple location"
+    row_cells[2].text="Actual temperature(C)"
+    row_cells[3].text="Limitation(C)"
+    col_cells=T_couple.columns[0].cells     #choose the first column of T_couple table
+    T_couple.cell(11,0).merge(T_couple.cell(11,3))      ##merge the cells
+    T_couple.rows[11].cells[0].text="1. dry-bulb temperature is increased to a value 10 K above the maximum temperature specified by the manufacturer:_____C\n2. dry-bulb temperature is reduced to a value 5 K below the maximum temperature specified by the manufacturer:_____C\nAfter testing, no hazard situation was occured."
+    for i in range(1,11):   #set the item no series 
+        col_cells[i].text=str(i)
+    for row in T_couple.rows:     #set the row height
+        row.height=Pt(20)
+
+    document.add_paragraph()        ##blank line
+    T1_pressure=document.add_table(rows=1, cols=1, style="Table Grid")        ##Table1 for pressure 
+    T1_pressure.rows[0].cells[0].text="Record the Max. working pressure on both high/low side"
+    T2_pressure=document.add_table(rows=2, cols=2, style="Table Grid")        ##Table2 for pressure 
+    col1=T2_pressure.columns[0].cells       ##select the first column of Table2 for pressure
+    col1[0].text="Condenser side (MPa)"
+    col1[1].text="Evaporator side (MPa)"
+    for row in T1_pressure.rows:     #set the row height
+        row.height=Pt(20)
+    for row in T2_pressure.rows:     #set the row height
+        row.height=Pt(20)
     document.add_page_break()
 
 def Clause19_104():
