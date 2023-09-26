@@ -73,7 +73,7 @@ def EER(Qc,Ec):
 
 
 ###计算SEER, 适用clause 4.1.4.1
-def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93):
+def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93,vs='YES'):
     '''
     Qc_k1(dict):k=1时的Qc
     Ec_k1(dict):k=1时的Ec
@@ -111,22 +111,45 @@ def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93):
             ec_N=X_k1*Ec_k1[Tj]/PLF*nj_N[Tj]
             SEER[Tj]=qc_N/ec_N
         elif BL[Tj]>Qc_k1[Tj] and BL[Tj]<Qc_k2[Tj]:
-            Qc_ki=BL[Tj]
-            if BL[Tj]<Qc_kv[Tj]:
-                EER_ki=Qc_k1[Tj]/Ec_k1[Tj]+(Qc_kv[Tj]/Ec_kv[Tj]-Qc_k1[Tj]/Ec_k1[Tj])/(Qc_kv[Tj]-Qc_k1[Tj])*(BL[Tj]-Qc_k1[Tj])
-                Ec_ki=Qc_ki/EER_ki
-            elif BL[Tj]>=Qc_kv[Tj]:
-                EER_ki=Qc_kv[Tj]/Ec_kv[Tj]+(Qc_k2[Tj]/Ec_k2[Tj]-Qc_kv[Tj]/Ec_kv[Tj])/(Qc_k2[Tj]-Qc_kv[Tj])*(BL[Tj]-Qc_kv[Tj])
-                Ec_ki=Qc_ki/EER_ki
-            qc_N=Qc_ki*nj_N[Tj]
-            ec_N=Ec_ki*nj_N[Tj]
-            SEER[Tj]=qc_N/ec_N
+            if vs=='YES':
+                X_k1=(Qc_k2[Tj]-BL[Tj])/(Qc_k2[Tj]-Qc_k1[Tj])
+                X_k2=1-X_k1
+                qc_N=(X_k1*Qc_k1[Tj]+X_k2*Qc_k2[Tj])*nj_N[Tj]
+                ec_N=(X_k1*Ec_k1[Tj]+X_k2*Ec_k2[Tj])*nj_N[Tj]
+                SEER[Tj]=qc_N/ec_N
+            else:
+                Qc_ki=BL[Tj]
+                if BL[Tj]<Qc_kv[Tj]:
+                    EER_ki=Qc_k1[Tj]/Ec_k1[Tj]+(Qc_kv[Tj]/Ec_kv[Tj]-Qc_k1[Tj]/Ec_k1[Tj])/(Qc_kv[Tj]-Qc_k1[Tj])*(BL[Tj]-Qc_k1[Tj])
+                    Ec_ki=Qc_ki/EER_ki
+                elif BL[Tj]>=Qc_kv[Tj]:
+                    EER_ki=Qc_kv[Tj]/Ec_kv[Tj]+(Qc_k2[Tj]/Ec_k2[Tj]-Qc_kv[Tj]/Ec_kv[Tj])/(Qc_k2[Tj]-Qc_kv[Tj])*(BL[Tj]-Qc_kv[Tj])
+                    Ec_ki=Qc_ki/EER_ki
+                qc_N=Qc_ki*nj_N[Tj]
+                ec_N=Ec_ki*nj_N[Tj]
+                SEER[Tj]=qc_N/ec_N
         elif BL[Tj]>Qc_k2[Tj]:
             qc_N=Qc_k2[Tj]*nj_N[Tj]
             ec_N=Ec_k2[Tj]*nj_N[Tj]
             SEER[Tj]=qc_N/ec_N
     return SEER
 
+
+###把相关数据感性的体现出来
+def myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,SEER2):
+    fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
+    T=[str(i) for i in range(67,103,5)]
+    ax.plot(T,Qc_k1.values(),label='Qc,k=1')
+    ax.plot(T,Qc_k2.values(),label='Qc,k=2')
+    ax.plot(T,Qc_kv.values(),label='Qc,k=v')
+    ax.plot(T,BL.values(),label='BL')
+    ax.plot(T,EER_k1.values(),label='EER,k=1')
+    ax.plot(T,EER_k2.values(),label='EER,k=2')
+    ax.plot(T,EER_kv.values(),label='EER,k=v')
+    ax.plot(T,SEER2.values(),label='SEER2')
+    ax.legend()
+    plt.show()
+    
 
 
 ###主程序入口
@@ -165,11 +188,4 @@ if __name__=='__main__':
     SEER2=SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL)
     print('SEER',SEER2)
     print('sum:',sum(list(SEER2.values())))
-    fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
-    T=[str(i) for i in range(67,103,5)]
-    ax.plot(T,Qc_k1.values(),label='Qc,k=1')
-    ax.plot(T,Qc_k2.values(),label='Qc,k=2')
-    ax.plot(T,Qc_kv.values(),label='Qc,k=v')
-    ax.plot(T,BL.values(),label='BL')
-    ax.legend()
-    plt.show()
+    myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,SEER2)
