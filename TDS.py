@@ -67,7 +67,7 @@ values=[
         ("19.102","Abnormal Temperature of indoor water","As specified in standard","EC5865, EC5936, EC3102",verdict),
         ("19.103","Abnormal Ambient Temperature","As specified in standard","EC5865, EC5936, EC3102, EC2605",verdict),
         ("19.104","Cover Test for Appliance with Supplementary Heaters","As specified in standard","EC5865, EC5936, EC3102",verdict),
-        ("20.1","Stability Test","(   ) inclined","EC3140",verdict),
+        ("20.1","Stability Test","(   ) inclined","EC6481",verdict),
         ("20.2","Mechanical Hazard","As specified in standard","EC2162",verdict),
         ("21.1","Spring Hammer Test","As specified in standard","EC5553",verdict),
         ("Annex EE","Pressure Tests","Refer to table below","EC5768",verdict),
