@@ -82,6 +82,7 @@ def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93,vs='YES'):
     Qc_kv(dict):k=v时的Qc
     Ec_kv(dict):k=v时的Ec
     BL(dict):building cooling load
+    vs(str):varible speed compressor
     '''
 #    BL_np=np.array(list(BL.values()))#转化为numpy的array
     Qc_k1.pop('95')#去掉95这个温度值的信息
@@ -102,6 +103,8 @@ def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93,vs='YES'):
     T=[str(i) for i in range(67,103,5)]
     nj_N=dict(zip(T,[0.214,0.231,0.216,0.161,0.104,0.052,0.018,0.04]))#构建table 19的权重因子字典
     SEER={}
+    cigma_qc={}
+    cigma_ec={}
     for Tj in range(67,103,5):#遍历对应的Tj
         Tj=str(Tj)
         if BL[Tj]<=Qc_k1[Tj]:
@@ -132,11 +135,17 @@ def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93,vs='YES'):
             qc_N=Qc_k2[Tj]*nj_N[Tj]
             ec_N=Ec_k2[Tj]*nj_N[Tj]
             SEER[Tj]=qc_N/ec_N
-    return SEER
+        cigma_qc[Tj]=qc_N
+        cigma_ec[Tj]=ec_N
+        res=sum(list(cigma_qc.values()))/sum(list(cigma_ec.values()))
+    return {'SEER2':res,
+            'qc_N':cigma_qc,
+            'ec_N':cigma_ec,
+            }
 
 
 ###把相关数据感性的体现出来
-def myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,SEER2):
+def myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv):
     fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
     T=[str(i) for i in range(67,103,5)]
     ax.plot(T,Qc_k1.values(),label='Qc,k=1')
@@ -146,7 +155,15 @@ def myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,SEER2):
     ax.plot(T,EER_k1.values(),label='EER,k=1')
     ax.plot(T,EER_k2.values(),label='EER,k=2')
     ax.plot(T,EER_kv.values(),label='EER,k=v')
-    ax.plot(T,SEER2.values(),label='SEER2')
+    ax.legend()
+    plt.show()
+
+
+
+def single_plt(data,name):
+    fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
+    T=[str(i) for i in range(67,103,5)]
+    ax.plot(T,data.values(),label=name)
     ax.legend()
     plt.show()
     
@@ -185,7 +202,9 @@ if __name__=='__main__':
     print('EER_k1:',EER_k1)
     print('EER_k2:',EER_k2)
     print('EER_kv:',EER_kv)
-    SEER2=SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL)
-    print('SEER',SEER2)
-    print('sum:',sum(list(SEER2.values())))
-    myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,SEER2)
+    res=SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,vs='NO')
+    print('qc_N',res['qc_N'])
+#    single_plt(res['qc_N'],'qc_N')
+#    single_plt(res['ec_N'],'ec_N')
+    print('SEER',res['SEER2'])
+    myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv)
