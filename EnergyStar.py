@@ -145,7 +145,26 @@ def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.25,vs='YES'):
 
 
 ###把相关数据感性的体现出来
-def myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv):
+def myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,ptf='NO'):
+    if ptf=='YES':
+        print('='*20)
+        print('BL:',BL)
+        print('Qc_k1:',Qc_k1)
+        print('Ec_k1:',Ec_k1)
+        print('Qc_k2:',Qc_k2)
+        print('Ec_k2:',Ec_k2)
+        print('Qc_kv:',Qc_kv)
+        print('Ec_kv:',Ec_kv)
+#        print('EER_F1:',Qc_k1['67']/Ec_k1['67'])
+#        print('EER_B1:',Qc_k1['82']/Ec_k1['82'])
+#        print('EER_A2:',Qc_k2['95']/Ec_k2['95'])
+#        print('EER_B2:',Qc_k2['82']/Ec_k2['82'])
+        print('EER_EV:',Qc_kv['87']/Ec_kv['87'])
+        print('EER_k1:',EER_k1)
+        print('EER_k2:',EER_k2)
+        print('EER_kv:',EER_kv)
+        print('qc_N',res['qc_N'])
+        print('ec_N',res['ec_N'])
     fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
     T=[str(i) for i in range(67,103,5)]
     ax.plot(T,Qc_k1.values(),label='Qc,k=1')
@@ -186,25 +205,10 @@ if __name__=='__main__':
     Qc_kv=liner(Qc_k1,Qc_k2,data_init['EV'][0])#计算k=v时的制冷量
     Ec_kv=liner(Ec_k1,Ec_k2,data_init['EV'][1])#计算k=v时的功率
     EER_kv=EER(Qc_kv,Ec_kv)#计算k=v时的能效
-    print('='*20)
-    print('BL:',BL)
-    print('Qc_k1:',Qc_k1)
-    print('Ec_k1:',Ec_k1)
-    print('Qc_k2:',Qc_k2)
-    print('Ec_k2:',Ec_k2)
-    print('Qc_kv:',Qc_kv)
-    print('Ec_kv:',Ec_kv)
-#    print('EER_F1:',Qc_k1['67']/Ec_k1['67'])
-#    print('EER_B1:',Qc_k1['82']/Ec_k1['82'])
-#    print('EER_A2:',Qc_k2['95']/Ec_k2['95'])
-#    print('EER_B2:',Qc_k2['82']/Ec_k2['82'])
-#    print('EER_EV:',Qc_kv['87']/Ec_kv['87'])
-    print('EER_k1:',EER_k1)
-    print('EER_k2:',EER_k2)
-    print('EER_kv:',EER_kv)
+    #计算qc_N, ec_N和SEER2
     res=SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,vs='NO')
-    print('qc_N',res['qc_N'])
-#    single_plt(res['qc_N'],'qc_N')
-#    single_plt(res['ec_N'],'ec_N')
     print('SEER',res['SEER2'])
-    myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv)
+    #图标输出,不需要图表就注释掉
+    single_plt(res['qc_N'],'qc_N')
+    single_plt(res['ec_N'],'ec_N')
+    myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,ptf='NO')#默认不输出详细参数
