@@ -73,7 +73,7 @@ def EER(Qc,Ec):
 
 
 ###计算SEER, 适用clause 4.1.4.1
-def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93,vs='YES'):
+def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.25,vs='YES'):
     '''
     Qc_k1(dict):k=1时的Qc
     Ec_k1(dict):k=1时的Ec
@@ -101,7 +101,7 @@ def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.93,vs='YES'):
 #    Ec_kv_np=np.array(list(Ec_kv.values()))#转化为numpy的array
 
     T=[str(i) for i in range(67,103,5)]
-    nj_N=dict(zip(T,[0.214,0.231,0.216,0.161,0.104,0.052,0.018,0.04]))#构建table 19的权重因子字典
+    nj_N=dict(zip(T,[0.214,0.231,0.216,0.161,0.104,0.052,0.018,0.004]))#构建table 19的权重因子字典
     SEER={}
     cigma_qc={}
     cigma_ec={}
