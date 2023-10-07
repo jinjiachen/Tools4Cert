@@ -68,14 +68,14 @@ def Menu():
         path=path.replace('"','')
         doc2docx(path)
     elif choice=='4':
-        path=input('请输入需要转换的doc文件夹路径：')
+        path=input('请输入需要转换的doc/docx文件夹路径：')
         path=path.replace('"','')
         docs2pdfs(path)
     elif choice=='5':
         target_path = input('PDF的文件夹路径:')
         pdf_merge(target_path)
     elif choice=='6':
-        path=input('请输入需要转换的doc文件夹路径：')
+        path=input('请输入需要转换的doc/docx文件路径：')
         path=path.replace('"','')
         doc2pdf(path)
     elif choice=='7':
@@ -106,6 +106,7 @@ def Menu():
         os.remove(new_pdf)
     elif choice=='init':
         pass
+
 
 
 
@@ -148,7 +149,7 @@ def doc2docx(path):#将doc文件转换成docx
     return newpath
 
 
-def doc2pdf(path):#将doc文件转换成pdf
+def doc2pdf(path):#将doc/docx文件转换成pdf
     '''path具体到文件'''
     w = Dispatch('Word.Application') #打开word程序
     w.Visible = 0 #后台运行，不可见
@@ -161,9 +162,9 @@ def doc2pdf(path):#将doc文件转换成pdf
 #    os.remove(path)#不删除源文件
     return newpath
 
-def docs2pdfs(path):#批量转换doc为pdf文件
+def docs2pdfs(path):#批量转换doc/docx为pdf文件
     '''输入文件夹路径即可'''
-    files=[f for f in os.listdir(path) if f.endswith('.doc')]
+    files=[f for f in os.listdir(path) if f.endswith('.doc') or f.endswith('.docx')]
     file_path=[os.path.join(path, filename) for filename in files]
     for file in file_path:
         doc2pdf(file)
@@ -365,7 +366,7 @@ def exit_file(file_path):#判断一个文件是否存在
 
             
 def Annual_checks(app,path_xls,path_doc,component):#对多个报告生成对应部件的年检报告
-    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')] #列出所有的xls文件
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls') or f.endswith('.xlsm')] #列出所有的xls文件
     file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
     new_file=path_doc[:-4]+component+'.docx'#构造新的docx文件路径，即输出对应部件的年检报告
     print(file_path)
@@ -466,11 +467,12 @@ def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     standard='xxx'
 
     docx=Document(path_doc)
-    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')] #列出所有的xls文件
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls') or f.endswith('.xlsm')] #列出所有的xls文件
     file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
     #选一份报告获取基本的信息
     wb=app.books.open(file_path[0])#只选取一个报告
     data=get_UC(wb)#提取相应的UC信息
+    wb.close()
     client_name=data['basic_info']['applicant']
     client_address=data['basic_info']['address']+', '+data['basic_info']['country']
     client_contact=data['basic_info']['contact']
