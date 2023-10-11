@@ -10,6 +10,7 @@ requests.packages.urllib3.disable_warnings
 import warnings
 warnings.filterwarnings("ignore")
 from configparser import ConfigParser
+import base64
 
 def Menu():
     choice=input("请选择认证的类型：\n1.UL认证\n2.TUV莱茵认证\n3.VDE认证\n4.CSA认证\n5.TUV南德\n11.UL查询（模拟请求)")
@@ -258,16 +259,17 @@ def get_html(url):#通过selenium获取html后转换为lxml的对象
 
 def ul_search(url):#通过模拟请求方式查询黄卡号
 #    url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
-#    conf=load_config()
-#    ul_cookies=conf.get('ul','cookie')
+    conf=load_config()
+    ul_cookies=conf.get('ul','cookie')
+    ul_cookies=base64.b64decode(ul_cookies).decode('ascii')
 #    print(ul_cookies)
     header={
             'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
             'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8',
             'Cache-Control':'max-age=0',
             'Connection':'keep-alive',
-            'cookie':r'chdc_prod=1; OptanonAlertBoxClosed=2023-07-20T05:23:07.768Z; ASP.NET_SessionId=wozonhnbi0yf0kr0dbhfkt2x; SERVERID=iis01; __cfruid=0c4734d0557c48215e9a8e3eba7b482f7a34e011-1690772772; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwiZSI6Imp1bi54aWFAaW50ZXJ0ZWsuY29tIiwibiI6IlhpYSBKdW4iLCJ1cmkiOiJodHRwczovL2NvcmUudWxwcm9zcGVjdG9yLmNvbS91c2Vycy8yOTQ3Nzc5ODM5MjExNDI5MTY2Mjk0NDEyMjIwODI1NiIsInNpZCI6IjhlMDAwNTQyLTA4ZDAtNDQ5YS1hMjllLWEzMTRjOTc0NjkxZCIsIm5iZiI6MTY5MDc4MzExOCwiZXhwIjoxNjkzMzc1MTE4LCJpYXQiOjE2OTA3ODMxMTgsImlzcyI6IlVMUHJvc3BlY3RvciIsImF1ZCI6Imh0dHA6Ly93d3cudWxwcm9zcGVjdG9yLmNvbSJ9.D-YWJ8O5nhVhZ5062WNxoRbOBpSiA4wIWMjMFQkb830; ii_sess=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaWQiOiI4ZTAwMDU0Mi0wOGQwLTQ0OWEtYTI5ZS1hMzE0Yzk3NDY5MWQiLCJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwibmJmIjoxNjkwOTQwNDMzLCJleHAiOjE2OTA5NDA2MTMsImlhdCI6MTY5MDk0MDQzMywiaXNzIjoiVUxQcm9zcGVjdG9yIiwiYXVkIjoiaHR0cDovL3d3dy51bHByb3NwZWN0b3IuY29tIn0.RNaKYjdpAPr6VETgz1lK3ZmS6sbRjuU2AAFU1_ep-qE; pro_iq=projwt=WnHNRS9PcQSnftA3_rLBoP5R5eVrMSlokrIKO_SHlcjfY84Cx6SF49rm1giX1Njnf_f_3jrDoC1GJu1QbDvYJ0Xtl_LwkOBD7lkkU11_YhGC8Ghm2csSjJnxdveBJhriOpA2fxC-LI_W1ok87PWvGhmzRymvQNnBucGjklaIW53BFlWoqJvEn6PzlquS10qKcZ0BBCrXvMH9z_PfCA5H8oEVfkun24NQUbLuX6qwjWoHuUlYS6LgZHwoH8EkcI5dDAi0H_155kRY0NKQVBeqEiaCtxAKz4kC-SBuiZrNJfYfiN1mi41PazEFVAHNadNoIr9FmiHPB_tfje615dsAHDxj6eGG3Smo67kQf8i5XxkTG8Y7kBrNrYqcFbt-3Sj_NidRjqte9YXt2WPq912gChlocCc1; OptanonConsent=isGpcEnabled=1&datestamp=Wed+Aug+02+2023+09%3A40%3A18+GMT%2B0800+(%E4%B8%AD%E5%9B%BD%E6%A0%87%E5%87%86%E6%97%B6%E9%97%B4)&version=202212.1.0&hosts=&groups=C0001%3A1%2CC0002%3A0%2CC0003%3A0%2CC0004%3A0&consentId=e25747da-4c22-4568-a3db-9c25758778a8',
-#            'cookie':ul_cookies,
+#            'cookie':r'chdc_prod=1; OptanonAlertBoxClosed=2023-07-20T05:23:07.768Z; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwiZSI6Imp1bi54aWFAaW50ZXJ0ZWsuY29tIiwibiI6IlhpYSBKdW4iLCJ1cmkiOiJodHRwczovL2NvcmUudWxwcm9zcGVjdG9yLmNvbS91c2Vycy8yOTQ3Nzc5ODM5MjExNDI5MTY2Mjk0NDEyMjIwODI1NiIsInNpZCI6IjIyOTRhNDhhLTlkYzktNDczNS05NzBjLThlYWVmYThmZjdiZCIsIm5iZiI6MTY5MzQ2ODk4OSwiZXhwIjoxNjk2MDYwOTg5LCJpYXQiOjE2OTM0Njg5ODksImlzcyI6IlVMUHJvc3BlY3RvciIsImF1ZCI6Imh0dHA6Ly93d3cudWxwcm9zcGVjdG9yLmNvbSJ9.rwOGU8zubpwMLM9zrKSZI5A5jS16kyKdhvnQp63Ow1A; ASP.NET_SessionId=mlou3bk5h0ncskthcukhddy3; SERVERID=iis02; __cfruid=4464d457fb6ef9fa2213321af984b267df8fb7ff-1695282373; notice_behavior=implied,eu; TAconsentID=d1817482-9e1e-465f-878c-ea47485847d7; notice_gdpr_prefs=0:; cmapi_cookie_privacy=permit 1 required; cmapi_gtm_bl=ga-ms-ua-ta-asp-bzi-sp-awct-cts-csm-img-flc-fls-mpm-mpr-m6d-tc-tdc; notice_preferences=0:; notice_location=cn; TAsessionID=c71688fa-dc2f-422f-87a6-e8747283fbdf|EXISTING; pro_iq=projwt=Bvg5WZ_sd7rzH_SaXcWuJzU48KxlZAFo9njiSpKPEcymZIWQl8U9tXqtaXQ-ROcI3S2IdoD2Emf64kIY8dpESCYbJRMdZ00G8ODYLkMQU6pQtEc--Zu0_25dpNRb4RlajRLoTtLstfVOzej5_Lb-bWbhIEUDFFwYtRAIlSH3qeKnNdHQFIS8ZQdZU9PHU-kxfvT6fLJq1ShL26fQUTb5gknp_DV8iLh-PRfo29PxGsbtKffjMNSM2nRZYidIWO1TqDvLbbUueY4PQFvpQC7KYNNIaeAmwnz2jYC_DQI5gfQ7NjUlo2GEwQH84jG0kw-0eq1j6wjAsq81Ibei2QcwsVNykZKta6yPgWhkl1uDTjphwBL5qMuti_gsMP6Q57fLYc6Eha6ojqhNy5W4h0evhOBvnQ81',
+            'cookie':ul_cookies,
             'Host':'iq.ulprospector.com',
             'Refer':'https://iq.ulprospector.com/en',
             'User-Agent':'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1474.0'
