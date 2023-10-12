@@ -167,6 +167,7 @@ def docs2pdfs(path):#批量转换doc/docx为pdf文件
     files=[f for f in os.listdir(path) if f.endswith('.doc') or f.endswith('.docx')]
     file_path=[os.path.join(path, filename) for filename in files]
     for file in file_path:
+        print(f'正在处理{file}')
         doc2pdf(file)
 
 
