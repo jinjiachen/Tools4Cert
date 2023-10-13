@@ -1034,6 +1034,9 @@ def selection_sort(selection):
 
 
 def Menu(Test_clauses):
+    '''
+    Test_clauses(list):具体的测试条款
+    '''
     print("1.Regular combination")
     print("2.Customize")
     while True:
@@ -1061,33 +1064,90 @@ def Menu(Test_clauses):
         else:
             print("WARNING: wrong input, please choose again!:")
 
+###替换word中对应文字
+def content_replace(documents,old_word,new_word,ptf='NO'):#替换对应文字，保持格式不变
+    '''
+    documents(obj):docx的实例
+    old_word(str):要替换的文字
+    new_word(str):替换的文字
+    '''
+    paragraphs=documents.paragraphs
+    tables=documents.tables
+    sections=documents.sections
+
+    #查找所有的段落
+    for paragraph in paragraphs:
+        if old_word in paragraph.text:
+            text=paragraph.text
+            name=paragraph.runs[0].font.name
+            size=paragraph.runs[0].font.size
+            color=paragraph.runs[0].font.color.rgb
+#            print(text,name,size,color)
+            if ptf=='YES':
+                print(f'找到{old_word},正在替换')
+            update_text=text.replace(old_word,new_word)
+            paragraph.text=update_text
+            paragraph.runs[0].font.name=str(name)
+            paragraph.runs[0].font.size=int(size)
+#            paragraph.runs[0].font.color=str(color)
+
+    #查找所有的表格
+    for table in tables:
+        for cell in table._cells:
+            if old_word in cell.text:
+                if ptf=='YES':
+                    print(f'找到{old_word},正在替换')
+                text=cell.text
+                cell.text=text.replace(old_word,new_word)
+
+    #查找所有的页眉
+    for section in sections:
+        for cell in section.header.tables[0]._cells:
+            if old_word in cell.text:
+                if ptf=='YES':
+                    print(f'找到{old_word},正在替换')
+                text=cell.text
+                cell.text=text.replace(old_word,new_word)
+
+
 ####################################### main program #############################################
 if __name__=='__main__':
     while True:
         try:
-            print("This TDS is for IEC 60335-2-40:2018 in conjunction with IEC 60335-1:2010+A1:2013+A2:2016!")
-            print("================================================== Program begin ==================================================")
-            job=input("Please input the project number:")
-            print('project name:',job)
-            if os.name=='nt':
-                document = Document('.\Temp.docx') #Open the template document
-            elif os.name=='posix':
-                document = Document('./Temp.docx') #Open the template document
-            print('opening the document')
-            body=document.add_paragraph()
-            Content(values)
-    
-            #选择测试内容并输出
-            Menu(Test_clauses)
-            document.save(job+'.docx')
-    
-            print("==================================================Program END ==================================================") 
-            flag=input("Press Enter to continue! Others to EXIT!")
-            if flag!="":
-                break
-            else:
+            print('请选择对应的标准：')
+            #标准的列表，可随时增加
+            std=['IEC 60335-2-40:2018 & IEC 60335-1:2010+A1:2013+A2: 2016',
+                 'UL 60335-2-40:2019 Ed.3 & UL 60335-1:2016 Ed.6',]
+            #把对应的标准打印出来
+            for i,standard in enumerate(std):
+                print(i+1,standard)
+            choice=input()#获取对应的标准
+            if choice=='1':
+                print("This TDS is for IEC 60335-2-40:2018 in conjunction with IEC 60335-1:2010+A1:2013+A2:2016!")
+                print("================================================== Program begin ==================================================")
+                job=input("Please input the project number:")
+                print('project name:',job)
+                if os.name=='nt':
+                    document = Document('.\Temp.docx') #Open the template document
+                elif os.name=='posix':
+                    document = Document('./Temp.docx') #Open the template document
+                print('opening the document')
+                body=document.add_paragraph()
+                Content(values)
+        
+                #选择测试内容并输出
+                Menu(Test_clauses)
+                document.save(job+'.docx')
+        
+                print("==================================================Program END ==================================================") 
+                flag=input("Press Enter to continue! Others to EXIT!")
+                if flag!="":
+                    break
+                else:
+                    pass
+#                    os.system("cls")
+            elif choice=='2':
                 pass
-    #            os.system("cls")
     
         except:
             print("==================================================Program END ==================================================") 
