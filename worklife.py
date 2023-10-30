@@ -80,7 +80,7 @@ def notify(method,title,content):
         print(data)
 
 ###打卡
-def check_in(d):
+def check_in(d,click='NO'):
     if d.info.get('screenOn')==False:#熄屏状态
         d.unlock()
         unlock=conf.get('adb','unlock')#解锁密码
@@ -97,7 +97,7 @@ def check_in(d):
     d.app_start('com.cdp.epPortal')
     #开始打卡
     d(text='移动打卡').click()
-    time.sleep(5)
+    time.sleep(15)
     d.press('back')
     d(text='移动打卡').click()
     #等待加载完成
@@ -109,12 +109,15 @@ def check_in(d):
     while True:
         if d(description='第1次打卡').exists():
             notify('post','worklife','未打过卡，正在进行第一次打卡')
-#        d(description='第1次打卡').click()
+            if click=='YES':
+                d(description='第1次打卡').click()
             break
         elif d(description='第2次打卡').exists():
             notify('post','worklife','打过1次卡，正在进行第二次打卡')
-#        d(description='第2次打卡').click()
+            if click=='YES':
+                d(description='第2次打卡').click()
             break
+    d.app_stop('com.cdp.epPortal')
 
 
 ###检查某个app是否在后台运行
@@ -139,13 +142,16 @@ def main(conf):
         password=token)
     ps = r.pubsub()
     ps.subscribe('myChannel')
+    print('开始监听')
     for item in ps.listen():  # keep listening, and print the message in the channel
         if item['type'] == 'message':
             signals = item['data'].decode('utf-8')
             if signals == 'exit':
                 break
-            elif signals=='check_in':
+            elif signals=='test':
                 check_in(d)
+            elif signals=='check_in':
+                check_in(d,'YES')
 
 if __name__=='__main__':
     conf=load_config()
