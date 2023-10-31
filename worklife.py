@@ -47,6 +47,25 @@ def u2_connect(conf):
         print(d.info)
     return d
 
+
+###死循环解锁屏幕，确保解锁成功
+def wakeup(d,conf):
+    '''
+    d(obj):u2对象
+    conf:load_conf返回结果
+    '''
+    while True:
+        #检查屏幕状态，如果息屏，点亮并解锁
+        if d.info.get('screenOn')==False:#熄屏状态
+            d.unlock()
+            unlock=conf.get('adb','unlock')#解锁密码
+            if os.name=='posix':
+                os.system('adb shell input text {}'.format(unlock))
+            elif os.name=='nt':
+                os.system('D:\Downloads\scrcpy-win64-v2.1\\adb shell input text {}'.format(unlock))
+        elif d.info.get('screenOn')==True:#熄屏状态
+            break
+
 ###通知功能
 def notify(method,title,content):
     '''
@@ -81,14 +100,7 @@ def notify(method,title,content):
 
 ###打卡
 def check_in(d,click='NO'):
-    if d.info.get('screenOn')==False:#熄屏状态
-        d.unlock()
-        unlock=conf.get('adb','unlock')#解锁密码
-        if os.name=='posix':
-            os.system('adb shell input text {}'.format(unlock))
-        elif os.name=='nt':
-            os.system('D:\Downloads\scrcpy-win64-v2.1\\adb shell input text {}'.format(unlock))
-
+    wakeup(d,conf)#解锁屏幕
     if check_running(d,'com.cdp.epPortal'):
         print('检测到后台运行，正在停止该app')
         d.app_stop('com.cdp.epPortal')
@@ -118,6 +130,7 @@ def check_in(d,click='NO'):
                 d(description='第2次打卡').click()
             break
     d.app_stop('com.cdp.epPortal')
+    d.screen_off()
 
 
 ###检查某个app是否在后台运行
@@ -144,14 +157,17 @@ def main(conf):
     ps.subscribe('myChannel')
     print('开始监听')
     for item in ps.listen():  # keep listening, and print the message in the channel
-        if item['type'] == 'message':
-            signals = item['data'].decode('utf-8')
-            if signals == 'exit':
-                break
-            elif signals=='test':
-                check_in(d)
-            elif signals=='check_in':
-                check_in(d,'YES')
+        try:
+            if item['type'] == 'message':
+                signals = item['data'].decode('utf-8')
+                if signals == 'exit':
+                    break
+                elif signals=='test':
+                    check_in(d)
+                elif signals=='check_in':
+                    check_in(d,'YES')
+        except:
+            continue
 
 if __name__=='__main__':
     conf=load_config()
