@@ -157,19 +157,17 @@ def main(conf):
     ps.subscribe('myChannel')
     print('开始监听')
     for item in ps.listen():  # keep listening, and print the message in the channel
-        try:
-            if item['type'] == 'message':
-                signals = item['data'].decode('utf-8')
-                if signals == 'exit':
-                    break
-                elif signals=='test':
-                    check_in(d)
-                elif signals=='check_in':
-                    check_in(d,'YES')
-        except:
-            continue
+        if item['type'] == 'message':
+            signals = item['data'].decode('utf-8')
+            if signals == 'exit':
+                break
+            elif signals=='test':
+                check_in(d)
+            elif signals=='check_in':
+                check_in(d,'YES')
 
 if __name__=='__main__':
-    conf=load_config()
-    d=u2_connect(conf)
-    main(conf)
+    while True:
+        conf=load_config()
+        d=u2_connect(conf)
+        main(conf)
