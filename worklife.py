@@ -168,6 +168,9 @@ def main(conf):
 
 if __name__=='__main__':
     while True:
-        conf=load_config()
-        d=u2_connect(conf)
-        main(conf)
+        try:
+            conf=load_config()
+            d=u2_connect(conf)
+            main(conf)
+        except:
+            continue
