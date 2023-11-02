@@ -48,6 +48,14 @@ def u2_connect(conf):
     return d
 
 
+###检查ui2服务是否运行
+def check_status(d):
+    if d.service('uiautomator').running():
+        print('servise running')
+    else:
+        print('starting servise')
+        d.service('uiautomator').start()
+
 ###死循环解锁屏幕，确保解锁成功
 def wakeup(d,conf):
     '''
@@ -167,10 +175,11 @@ def main(conf):
                 check_in(d,'YES')
 
 if __name__=='__main__':
+    conf=load_config()
+    d=u2_connect(conf)
     while True:
         try:
-            conf=load_config()
-            d=u2_connect(conf)
             main(conf)
         except:
+            check_status(d)
             continue
