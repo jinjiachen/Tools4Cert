@@ -126,16 +126,28 @@ def check_in(d,click='NO'):
         if d(description='上海钦州北路1198号').exists():
             print('加载完成')
             break
+    #开始查询或打卡
     while True:
+        now=time.strftime("%H:%M:%S")
         if d(description='第1次打卡').exists():
-            notify('post','worklife','未打过卡，正在进行第一次打卡')
             if click=='YES':
                 d(description='第1次打卡').click()
+                if d(description='第2次打卡').exists():
+                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
+                else:
+                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡失败!')
+            else:
+                notify('post',f'worklife-{now}',f'{now}\n未打过卡!')
             break
-        elif d(description='第2次打卡').exists():
-            notify('post','worklife','打过1次卡，正在进行第二次打卡')
+        if d(description='第2次打卡').exists():
             if click=='YES':
                 d(description='第2次打卡').click()
+                if d(description='第3次打卡').exists():
+                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
+                else:
+                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡失败!')
+            else:
+                notify('post',f'worklife-{now}',f'{now}\n打过一次卡!')
             break
     d.app_stop('com.cdp.epPortal')
     d.screen_off()
@@ -162,9 +174,10 @@ def main(conf):
         port=16873,
         password=token)
     ps = r.pubsub()
-    ps.subscribe('myChannel')
-    print('开始监听')
+    ps.subscribe('worklife')
     for item in ps.listen():  # keep listening, and print the message in the channel
+        now=time.strftime("%H:%M:%S")
+        print(f'listining: {now}')
         if item['type'] == 'message':
             signals = item['data'].decode('utf-8')
             if signals == 'exit':
