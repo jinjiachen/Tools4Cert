@@ -132,7 +132,7 @@ def check_in(d,click='NO'):
         if d(description='第1次打卡').exists():
             if click=='YES':
                 d(description='第1次打卡').click()
-                if d(description='第2次打卡').exists():
+                if d(description='打卡成功').exists():
                     notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
                 else:
                     notify('post',f'worklife-{now}',f'{now}\n第一次打卡失败!')
@@ -142,7 +142,7 @@ def check_in(d,click='NO'):
         if d(description='第2次打卡').exists():
             if click=='YES':
                 d(description='第2次打卡').click()
-                if d(description='第3次打卡').exists():
+                if d(description='打卡成功').exists():
                     notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
                 else:
                     notify('post',f'worklife-{now}',f'{now}\n第二次打卡失败!')
