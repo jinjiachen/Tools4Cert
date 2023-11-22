@@ -107,7 +107,11 @@ def notify(method,title,content):
         print(data)
 
 ###打卡
-def check_in(d,click='NO'):
+def check_in(d,r,click='NO'):
+    '''
+    d(obj):uiautomator2对象
+    r(obj):redis对象
+    '''
     wakeup(d,conf)#解锁屏幕
     if check_running(d,'com.cdp.epPortal'):
         print('检测到后台运行，正在停止该app')
@@ -133,20 +137,26 @@ def check_in(d,click='NO'):
             if click=='YES':
                 d(description='第1次打卡').click()
                 if d(description='打卡成功').exists():
+                    r.set('worklife','[res]:第一次打卡成功！')
                     notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
                 else:
+                    r.set('worklife','[res]:第一次打卡失败！')
                     notify('post',f'worklife-{now}',f'{now}\n第一次打卡失败!')
             else:
+                r.set('worklife','[res]:未过一次卡！')
                 notify('post',f'worklife-{now}',f'{now}\n未打过卡!')
             break
         if d(description='第2次打卡').exists():
             if click=='YES':
                 d(description='第2次打卡').click()
                 if d(description='打卡成功').exists():
+                    r.set('worklife','[res]:第二次打卡成功！')
                     notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
                 else:
+                    r.set('worklife','[res]:第二次打卡失败！')
                     notify('post',f'worklife-{now}',f'{now}\n第二次打卡失败!')
             else:
+                r.set('worklife','[res]:打过一次卡！')
                 notify('post',f'worklife-{now}',f'{now}\n打过一次卡!')
             break
     d.app_stop('com.cdp.epPortal')
@@ -183,9 +193,9 @@ def main(conf):
             if signals == 'exit':
                 break
             elif signals=='test':
-                check_in(d)
+                check_in(d,r)
             elif signals=='check_in':
-                check_in(d,'YES')
+                check_in(d,r,'YES')
 
 if __name__=='__main__':
     conf=load_config()
