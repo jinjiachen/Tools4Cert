@@ -12,7 +12,7 @@ import pandas as pd
 def read_excel():
 #    file=input('请输入excel文件路径')
 #    file=file.replace('"','')
-    file=r'Y:\Lab-Share\Equipment list-SH\Equipment List-SH (202307).xls.xlsx'
+    file=r'Y:\Lab-Share\Equipment list-SH\Equipment List-SH (202310).xlsx'
     EC_num=input('请输入要查询的设备号')
     sheet=pd.read_excel(io=file)
     res=sheet[sheet['REG. NO.']==EC_num]
