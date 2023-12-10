@@ -6,17 +6,6 @@ from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-#ClientName="xxxx"
-#ProjectNo="00000"
-#Appliance="xxx"
-#ProjectEngineer="sss"
-#TestEngineer="aaa"
-#TestingDate="xxx"
-#Reviewer="xxx"
-#Models="xxx"
-#Ratings="bbb"
-#Standard="xxx"
-#SampleNo="111111"
 #document.add_picture('D:\Python27\Tools4Cert-master\34.jpg', width=Inches(1.25))
 #run=body.add_run('test one') #insert the pattern
 #font=run.font   
@@ -1108,6 +1097,34 @@ def content_replace(documents,old_word,new_word,ptf='NO'):#替换对应文字，
                     print(f'找到{old_word},正在替换')
                 text=cell.text
                 cell.text=text.replace(old_word,new_word)
+                cell.paragraphs[0].runs[0].font.name='arial'#修改字体
+                cell.paragraphs[0].runs[0].font.size=Pt(10)#修改大小
+
+
+###输入基本信息
+def basic_info(document):
+    ClientName=input('请输入客户名称：')
+    ProjectNo=input('请输入项目号')
+    Appliance=input('请输入器具名称')
+    ProjectEngineer=input('请输入项目工程师:')
+    TestEngineer=input('请输入测试工程师：')
+    TestingDate=input('请输入测试时间:')
+    Reviewer=input('请输入审核人员：')
+    Models=input('请输入测试的型号：')
+    Ratings=input('请输入额定参数：')
+    Standard=input('请输入标准')
+    SampleNo=input('请输入样品号：')
+    content_replace(document,'<client>',ClientName,'YES')
+    content_replace(document,'<appliance>',Appliance,'YES')
+    content_replace(document,'<rating>',Ratings,'YES')
+    content_replace(document,'<model>',Models,'YES')
+    content_replace(document,'<standard>',Standard,'YES')
+    content_replace(document,'<sample>',SampleNo,'YES')
+    content_replace(document,'<project_no>',ProjectNo,'YES')
+    content_replace(document,'<test>',TestEngineer,'YES')
+    content_replace(document,'<project>',ProjectEngineer,'YES')
+    content_replace(document,'<reviewer>',Reviewer,'YES')
+    content_replace(document,'<date>',TestingDate,'YES')
 
 
 ####################################### main program #############################################
@@ -1132,6 +1149,7 @@ if __name__=='__main__':
                 elif os.name=='posix':
                     document = Document('./Temp.docx') #Open the template document
                 print('opening the document')
+                basic_info(document)
                 body=document.add_paragraph()
                 Content(values)
         
