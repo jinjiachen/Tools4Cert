@@ -136,12 +136,16 @@ def check_in(d,r,click='NO'):
         if d(description='第1次打卡').exists():
             if click=='YES':
                 d(description='第1次打卡').click()
-                if d(description='打卡成功').exists():
-                    r.set('worklife','[res]:第一次打卡成功！')
+#                if d(description='打卡成功').exists():
+#                    r.set('worklife','[res]:第一次打卡成功！')
+#                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
+#                else:
+#                    r.set('worklife','[res]:第一次打卡失败！')
+#                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡失败!')
+                d.press('back')
+                d(text='移动打卡').click()
+                if d(description='第1次打卡').exists():
                     notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
-                else:
-                    r.set('worklife','[res]:第一次打卡失败！')
-                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡失败!')
             else:
                 r.set('worklife','[res]:未过一次卡！')
                 notify('post',f'worklife-{now}',f'{now}\n未打过卡!')
@@ -149,12 +153,17 @@ def check_in(d,r,click='NO'):
         if d(description='第2次打卡').exists():
             if click=='YES':
                 d(description='第2次打卡').click()
-                if d(description='打卡成功').exists():
-                    r.set('worklife','[res]:第二次打卡成功！')
+#                if d(description='打卡成功').exists():
+#                if d(text='打卡成功').exists():
+#                    r.set('worklife','[res]:第二次打卡成功！')
+#                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
+#                else:
+#                    r.set('worklife','[res]:第二次打卡失败！')
+#                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡失败!')
+                d.press('back')
+                d(text='移动打卡').click()
+                if d(description='第2次打卡').exists():
                     notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
-                else:
-                    r.set('worklife','[res]:第二次打卡失败！')
-                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡失败!')
             else:
                 r.set('worklife','[res]:打过一次卡！')
                 notify('post',f'worklife-{now}',f'{now}\n打过一次卡!')
