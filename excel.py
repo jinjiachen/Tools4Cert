@@ -81,7 +81,7 @@ def Menu():
         start=time.time()
         update4(sh,sh1,sh12)
         end=time.time()
-        print('operating time:',end-start)
+        print(f'operating time {round(end-start)}s:',)
 #        wb.save(rpt[:-4]+'_output.xls')
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
