@@ -80,6 +80,24 @@ def liner(x1,x2,y1,y2):
         fx=y1+(y2-y1)/(x2-x1)*(Tj-x1)
         res[str(Tj)]=fx
     return res
+
+
+###计算delta, Equation 4.2.3-3
+def delta(Toff,Ton):
+    '''
+    Toff(float):低于此温度，停机
+    Ton(float):高于此温度，开机
+    '''
+    res={}
+    for Tj in range(62,-28,-5):#遍历对应的Tj
+        if Tj<=Toff:
+            delta=0
+        elif Tj>Toff and Tj <=Ton:
+            delta=0.5
+        elif Tj>Ton:
+            delta=1
+        res[str(Tj)]=delta
+    return res
 #===========================================================================
 
 
