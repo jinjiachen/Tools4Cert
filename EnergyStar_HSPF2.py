@@ -66,21 +66,39 @@ def BL(zone,Q):
     return res
 
 
-###线性函数，用于计算Qh,Eh, Equation 4.2.4-1&2
-def liner(x1,x2,y1,y2):
+###通过线性插值计算一组Tj对应的值
+def Values_Tj(x,y):
     '''
-    通用函数：
-    x1,x2(int):x对应分母，应用中一般为温度
-    y1,y2(float):y对应分子，应用中一般为制热量或功率
+    x(list):自变量，此处对应两个温度值
+    y(list):应变量，两个温度对应的制冷量或功率
     '''
+    if len(x)==2 and len(y)==2:
+        res={}
+        for Tj in range(62,-28,-5):#遍历对应的Tj
+            Q=y[0]+(y[1]-y[0])/(x[1]-x[0])*(Tj-x[0])#计算并记录结果
+            res[str(Tj)]=Q
+        return res
+    else:
+        return 'error'
+
+
+###线性函数，主要服务于Equation 4.2.4-7&8
+def liner(k1,k2,kv):
+    '''
+    k1(dict):k=1时的Qc,Ec
+    k2(dict):k=2时的Qc,Ec
+    kv(float):k=v时(H2v工况下)的Qc,Ec
+    '''
+    #计算N
+    N=(kv-k1['35'])/(k2['35']-k1['35'])
+    M=(k1['62']-k1['47'])/(62-47)*(1-N)+(k2['35']-k2['17'])/(35-17)*N
 
     #计算k=v时对应制冷量Q或功率E
     res={}
     for Tj in range(62,-28,-5):#遍历对应的Tj
-        fx=y1+(y2-y1)/(x2-x1)*(Tj-x1)
-        res[str(Tj)]=fx
+        Q_kv=kv+M*(Tj-35)
+        res[str(Tj)]=Q_kv
     return res
-
 
 ###计算delta, Equation 4.2.3-3
 def delta(Toff,Ton):
@@ -98,43 +116,48 @@ def delta(Toff,Ton):
             delta=1
         res[str(Tj)]=delta
     return res
+
+
+###根据4.2.4计算Qh,Eh
+def cal_Q(Q35_kv,Q47_k1,Q62_k1,Q_kv):
+    '''
+    Q35_kv(float):k=v时的制冷量
+    Q47_k1(float):k=1,47度时的制冷量
+    Q62_k1(float):k=1,62度时的制冷量
+    Q_kv(list):Equation 4.2.4-7计算的制冷量
+    '''
+    #Equation 4.2.4-5
+    res={}
+    for Tj in range(62,-28,-5):#遍历对应的Tj
+        if Tj>=47:
+            Qh_k1=Values_Tj([47,62],[Q47_k1,Q62_k1])
+        elif Tj>=35 and Tj<47:
+            Qh_k1=Values_Tj([35,47],[Q35_kv,Q47_k1])
+        elif Tj<35:
+            Qh_k1=Q_kv[str(Tj)]
+        res[str(Tj)]=Qh_k1
+    return res
+
+
+###计算HSPF2
+def HSPF2():
+    Qh_k1
+    Q_kv=liner()
+    Qh_k1=cal_Q(Q35_k1,Q47_k1,Q62_k1,Q_kv)#用Equation 4.2.4-5计算Qh_k=1
+    for Tj in range(62,-28,-5):#遍历对应的Tj
+        Tj=str(Tj)
+        if BL[Tj]<=Qh_k1[Tj]:
+            pass
+        elif BL[Tj]>Qh_k1[Tj] and BL[Tj]<Qh_k2[Tj]:
+            pass
+        elif BL[Tj]>=Qh_k2[Tj]:
+            pass
+
 #===========================================================================
 
 
-###通过线性插值计算一组Tj对应的值
-def Values_Tj(x,y):
-    '''
-    x(list):自变量，此处对应两个温度值
-    y(list):应变量，两个温度对应的制冷量或功率
-    '''
-    if len(x)==2 and len(y)==2:
-        res={}
-        for Tj in [67,72,77,82,87,92,95,97,102]:#遍历对应的Tj,单独增加了95，为后面计算做铺垫
-            Q=y[0]+(y[1]-y[0])/(x[1]-x[0])*(Tj-x[0])#计算并记录结果
-            res[str(Tj)]=Q
-        return res
-    else:
-        return 'error'
 
 
-
-###线性函数，用于计算Qc_kv,Ec_kv, Equation 4.1.4-3&4
-def liner(k1,k2,kv):
-    '''
-    k1(dict):k=1时的Qc,Ec
-    k2(dict):k=2时的Qc,Ec
-    kv(float):k=v时(EV工况下)的Qc,Ec
-    '''
-    #计算N
-    N=(kv-k1['87'])/(k2['87']-k1['87'])
-    M=(k1['82']-k1['67'])/(82-67)*(1-N)+(k2['95']-k2['82'])/(95-82)*N
-
-    #计算k=v时对应制冷量Q或功率E
-    res={}
-    for Tj in range(67,103,5):#遍历对应的Tj
-        Q_kv=kv+M*(Tj-87)
-        res[str(Tj)]=Q_kv
-    return res
 
 
 ###计算EER
