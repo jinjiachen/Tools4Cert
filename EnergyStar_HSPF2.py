@@ -51,16 +51,139 @@ Tzl={
         'V':55,
         'VI':57,
         }
-
+nj_N={
+        'I':{'62':0,
+             '57':0.239,
+             '52':0.194,
+             '47':0.129,
+             '42':0.081,
+             '37':0.041,
+             '32':0.019,
+             '27':0.005,
+             '22':0.001,
+             '17':0,
+             '12':0,
+             '7':0,
+             '2':0,
+             '-3':0,
+             '-8':0,
+             '-13':0,
+             '-18':0,
+             '-23':0,
+             },
+        'II':{
+             '62':0,
+             '57':0,
+             '52':0.163,
+             '47':0.143,
+             '42':0.112,
+             '37':0.088,
+             '32':0.056,
+             '27':0.024,
+             '22':0.008,
+             '17':0.002,
+             '12':0,
+             '7':0,
+             '2':0,
+             '-3':0,
+             '-8':0,
+             '-13':0,
+             '-18':0,
+             '-23':0,
+            },
+        'III':{
+             '62':0,
+             '57':0,
+             '52':0.138,
+             '47':0.137,
+             '42':0.135,
+             '37':0.118,
+             '32':0.092,
+             '27':0.047,
+             '22':0.021,
+             '17':0.009,
+             '12':0.005,
+             '7':0.002,
+             '2':0.001,
+             '-3':0,
+             '-8':0,
+             '-13':0,
+             '-18':0,
+             '-23':0,
+            },
+        'IV':{
+             '62':0,
+             '57':0,
+             '52':0.103,
+             '47':0.093,
+             '42':0.100,
+             '37':0.109,
+             '32':0.126,
+             '27':0.087,
+             '22':0.055,
+             '17':0.036,
+             '12':0.026,
+             '7':0.013,
+             '2':0.006,
+             '-3':0.002,
+             '-8':0.001,
+             '-13':0,
+             '-18':0,
+             '-23':0,
+            },
+        'V':{
+             '62':0,
+             '57':0,
+             '52':0.086,
+             '47':0.076,
+             '42':0.078,
+             '37':0.087,
+             '32':0.102,
+             '27':0.094,
+             '22':0.074,
+             '17':0.055,
+             '12':0.047,
+             '7':0.038,
+             '2':0.029,
+             '-3':0.018,
+             '-8':0.010,
+             '-13':0.005,
+             '-18':0.002,
+             '-23':0.001,
+            },
+        'VI':{
+             '62':0,
+             '57':0,
+             '52':0.215,
+             '47':0.204,
+             '42':0.141,
+             '37':0.076,
+             '32':0.034,
+             '27':0.008,
+             '22':0.003,
+             '17':0,
+             '12':0,
+             '7':0,
+             '2':0,
+             '-3':0,
+             '-8':0,
+             '-13':0,
+             '-18':0,
+             '-23':0,
+            },
+        }
+Tj_bin=range(62,-28,-5)
+Tj_bin=list(Tj_bin)
+Tj_bin.append(35)#单独增加35的计算
 
 ###计算building load, Equation 4.2-2
-def BL(zone,Q):
+def build_load(zone,Q):
     '''
     zone(str):对应的区域，如I,IV等
     Q(float):如冷热型，则为A或A2时的制冷量（Qc_95),如单热，则用Qh_47替代
     '''
     res={}
-    for Tj in range(62,-28,-5):#遍历对应的Tj
+    for Tj in Tj_bin:#遍历对应的Tj
         BL=(Tzl[zone]-Tj)/(Tzl[zone]-5)*C[zone]*Q
         res[str(Tj)]=BL
     return res
@@ -72,9 +195,11 @@ def Values_Tj(x,y):
     x(list):自变量，此处对应两个温度值
     y(list):应变量，两个温度对应的制冷量或功率
     '''
+    y[0]=float(y[0])
+    y[1]=float(y[1])
     if len(x)==2 and len(y)==2:
         res={}
-        for Tj in range(62,-28,-5):#遍历对应的Tj
+        for Tj in Tj_bin:#遍历对应的Tj
             Q=y[0]+(y[1]-y[0])/(x[1]-x[0])*(Tj-x[0])#计算并记录结果
             res[str(Tj)]=Q
         return res
@@ -83,31 +208,33 @@ def Values_Tj(x,y):
 
 
 ###线性函数，主要服务于Equation 4.2.4-7&8
-def liner(k1,k2,kv):
+def liner(QE35_k1,QE47_k1,QE62_k1,QE35_kv,QE35_k2):
     '''
-    k1(dict):k=1时的Qc,Ec
-    k2(dict):k=2时的Qc,Ec
-    kv(float):k=v时(H2v工况下)的Qc,Ec
+    QE35_k1(float):Equation 4.2.4-1&-2算的Qh,Eh
+    QE47_k1(float):H1_1工况下的Qh,Eh
+    QE62_k1(float):H0_1工况下的Qh,Eh
+    QE35_kv(float):H2_v工况下的Qh,Eh
+    QE35_k2(float):H2_2工况下的Qh,Eh或3.6.4(c)估算
     '''
-    #计算N
-    N=(kv-k1['35'])/(k2['35']-k1['35'])
-    M=(k1['62']-k1['47'])/(62-47)*(1-N)+(k2['35']-k2['17'])/(35-17)*N
+    #计算N,M
+    N=(QE35_kv-QE35_k1)/(QE35_k2-QE35_k1)
+    M=(QE62_k1-QE47_k1)/(62-47)*(1-N)
 
     #计算k=v时对应制冷量Q或功率E
     res={}
-    for Tj in range(62,-28,-5):#遍历对应的Tj
-        Q_kv=kv+M*(Tj-35)
-        res[str(Tj)]=Q_kv
+    for Tj in Tj_bin:#遍历对应的Tj
+        QE_kv=QE35_kv+M*(Tj-35)
+        res[str(Tj)]=QE_kv
     return res
 
 ###计算delta, Equation 4.2.3-3
-def delta(Toff,Ton):
+def cal_delta(Toff,Ton):
     '''
     Toff(float):低于此温度，停机
     Ton(float):高于此温度，开机
     '''
     res={}
-    for Tj in range(62,-28,-5):#遍历对应的Tj
+    for Tj in Tj_bin:#遍历对应的Tj
         if Tj<=Toff:
             delta=0
         elif Tj>Toff and Tj <=Ton:
@@ -118,199 +245,198 @@ def delta(Toff,Ton):
     return res
 
 
-###根据4.2.4计算Qh,Eh
-def cal_Q(Q35_kv,Q47_k1,Q62_k1,Q_kv):
+###根据4.2.3.4章节计算delta'
+def cal_delta_(Qh_k2,Eh_k2,Toff,Ton):
     '''
-    Q35_kv(float):k=v时的制冷量
-    Q47_k1(float):k=1,47度时的制冷量
-    Q62_k1(float):k=1,62度时的制冷量
-    Q_kv(list):Equation 4.2.4-7计算的制冷量
+    Qh_k2(dict):根据4.2.4(c,d)计算k=2时所有Tj的Qh
+    Eh_k2(dict):根据4.2.4(c,d)计算k=2时所有Tj的Eh
+    Toff(float):低于此温度，停机
+    Ton(float):高于此温度，开机
     '''
-    #Equation 4.2.4-5
     res={}
-    for Tj in range(62,-28,-5):#遍历对应的Tj
-        if Tj>=47:
-            Qh_k1=Values_Tj([47,62],[Q47_k1,Q62_k1])
-        elif Tj>=35 and Tj<47:
-            Qh_k1=Values_Tj([35,47],[Q35_kv,Q47_k1])
-        elif Tj<35:
-            Qh_k1=Q_kv[str(Tj)]
-        res[str(Tj)]=Qh_k1
+    for Tj in Tj_bin:#遍历对应的Tj
+        const=Qh_k2[str(Tj)]/(3.413*Eh_k2[str(Tj)])
+        if Tj<=Toff or const<1:
+            delta=0
+        elif Tj>Toff and Tj<=Ton and const>=1:
+            delta=0.5
+        elif Tj>Ton and const>=1:
+            delta=1
+        res[str(Tj)]=delta
     return res
 
+###根据3.6.4(c)估算Qh35_k2
+def estimate_Qh35_k2(Qh17_k2,Qhcalc47_k2):
+    '''
+    Qh17_k2(str):H3_2工况下的制冷量
+    Qhcalc17_k2(str):H1_2或H1_N下的制冷量
+    '''
+    Qh17_k2=float(Qh17_k2)
+    Qhcalc47_k2=float(Qhcalc47_k2)
+    Qh35_k2=0.90*(Qh17_k2+0.6*(Qhcalc47_k2-Qh17_k2))
+    return Qh35_k2
+
+
+###根据3.6.4(c)估算Eh35_k2
+def estimate_Eh35_k2(Eh17_k2,Ehcalc47_k2):
+    '''
+    Eh17_k2(str):H3_2工况下的功率
+    Ehcalc17_k2(str):H1_2或H1_N下的功率
+    '''
+    Eh17_k2=float(Eh17_k2)
+    Ehcalc47_k2=float(Ehcalc47_k2)
+    Eh35_k2=0.985*(Eh17_k2+0.6*(Ehcalc47_k2-Eh17_k2))
+    return Eh35_k2
+
+
+###根据4.2.4计算Qh,Eh
+def cal_QE(QE35_kv,QE47_k1,QE62_k1,QE_kv):
+    '''
+    QE35_kv(float):k=v时的制冷量,功率
+    QE47_k1(float):k=1,47度时的制冷量,功率
+    QE62_k1(float):k=1,62度时的制冷量,功率
+    QE_kv(list):Equation 4.2.4-7计算的制冷量,功率
+    '''
+    #Equation 4.2.4-5&6
+    res={}
+    for Tj in Tj_bin:#遍历对应的Tj
+        if Tj>=47:
+            QE_k1=QE47_k1+(QE62_k1-QE47_k1)*(Tj-47)/(62-47)
+        elif Tj>=35 and Tj<47:
+            QE_k1=QE35_kv+(QE47_k1-QE35_kv)*(Tj-35)/(47-35)
+        elif Tj<35:
+            QE_k1=QE_kv[str(Tj)]
+        res[str(Tj)]=QE_k1
+    return res
+
+
+###根据4.2.4(c,d)计算k=2时的Qh，Eh
+def cal_QE_k2(QE17_k2,QE47hcalc_k2,QE47_kN,QE35_k2,H4_k2='NO',QE5_k2=''):
+    '''
+    QE17_k2(float):H3_2工况下的制热量和功率
+    QE47hcalc_k2(float):H1_2或H1_N下的制热量或功率
+    QE47_kN(float):H1_N下的制热量或功率
+    QE35_k2(float):根据3.6.4(c)估算的制热量或功率
+    H4_k2(str):H4_2工况是否有做
+    QE5_k2(float):H4_2工况下的制热量和功率
+    '''
+    res={}
+    for Tj in Tj_bin:#遍历对应的Tj
+        if Tj>=45:
+            QE_k2=QE17_k2+(QE47hcalc_k2-QE17_k2)*(Tj-17)/(47-17)*(QE47_kN/QE47hcalc_k2)
+        elif Tj>=17 and Tj<45:
+            QE_k2=QE17_k2+(QE35_k2-QE17_k2)*(Tj-17)/(35-17)
+        elif Tj<17:
+            if H4_k2=='NO':
+                QE_k2=QE17_k2+(QE47hcalc_k2-QE17_k2)*(Tj-17)/(47-17)
+            elif H4_k2=='YES':
+                if Tj>=5:
+                    QE_k2=QE5_k2+(QE17_k2-QE5_k2)*(Tj-5)/(17-5)
+                elif Tj<5:
+                    QE_k2=QE5_k2-(QE47hcalc_k2-QE17_k2)*(5-Tj)/(47-17)
+        res[str(Tj)]=QE_k2
+    return res
+
+
+###字典转数组
+def dict_array(mydict):
+    '''
+    mydict(dict):想要转换的字典
+    '''
+    if isinstance(mydict,dict)==True:
+        myarray=np.array(list(mydict.values()))
+    else:
+        print(f'{mydict}不是字典')
+    return myarray
 
 ###计算HSPF2
 def HSPF2():
-    Qh_k1
-    Q_kv=liner()
-    Qh_k1=cal_Q(Q35_k1,Q47_k1,Q62_k1,Q_kv)#用Equation 4.2.4-5计算Qh_k=1
+    Cd=0.25
+    zone='IV'
+#    Q=input('请输入A或A2工况下的制冷量')
+#    Toff=input('请输入Toff')
+#    Ton=input('请输入Ton')
+#    Qh47_k1=input('请输入H1_1下的制热量')
+#    Eh47_k1=input('请输入H1_1下的功率')
+#    Qh62_k1=input('请输入H0_1下的制热量')
+#    Eh62_k1=input('请输入H0_1下的功率')
+#    Qh47_kN=input('请输入H1_N下的制热量')
+#    Eh47_kN=input('请输入H1_N下的功率')
+#    Qh17_k2=input('请输入H3_2下的制热量')
+#    Eh17_k2=input('请输入H3_2下的功率')
+#    Qh35_kv=input('请输入H2_v下的制热量')
+#    Eh35_kv=input('请输入H2_v下的功率')
+    #以下测试用
+    Q='11315.2'
+    Toff='-25'
+    Ton='-25'
+    Qh47_k1=3285
+    Eh47_k1=184.6
+    Qh62_k1=4714
+    Eh62_k1=177.9
+    Qh47_kN=14344
+    Eh47_kN=1108
+    Qh17_k2=8296
+    Eh17_k2=865.3
+    Qh35_kv=6088
+    Eh35_kv=414.9
+    BL=build_load(zone,float(Q))#计算房间负荷
+#    Qh_k1
+#    Q_kv=liner()
+#    Qh_k1=cal_Q(Q35_k1,Q47_k1,Q62_k1,Q_kv)#用Equation 4.2.4-5计算Qh_k=1
+    cigma_eh_N={}
+    cigma_RH_N={}
+    Qh_k1=Values_Tj([47,62],[Qh47_k1,Qh62_k1])#Equation 4.2.4-1
+    Eh_k1=Values_Tj([47,62],[Eh47_k1,Eh62_k1])#Equation 4.2.4-2
+    Qhcalc47_k2=Qh47_kN
+    Ehcalc47_k2=Eh47_kN
+    Qh35_k2=estimate_Qh35_k2(Qh17_k2,Qhcalc47_k2)#估算Qh35_k2
+    Eh35_k2=estimate_Eh35_k2(Eh17_k2,Ehcalc47_k2)#估算Qh35_k2
+    Qh_kv=liner(Qh_k1['35'],Qh_k1['47'],Qh_k1['62'],Qh35_kv,Qh35_k2)#Equation 4.2.4-7
+    Eh_kv=liner(Eh_k1['35'],Eh_k1['47'],Eh_k1['62'],Eh35_kv,Eh35_k2)#Equation 4.2.4-8
+    Qh_k1_4245=cal_QE(Qh35_kv,Qh47_k1,Qh62_k1,Qh_kv)
+    Eh_k1_4245=cal_QE(Eh35_kv,Eh47_k1,Eh62_k1,Eh_kv)
+    Qh_k2=cal_QE_k2(Qh17_k2,Qhcalc47_k2,Qh47_kN,Qh35_k2)
+    Eh_k2=cal_QE_k2(Eh17_k2,Ehcalc47_k2,Eh47_kN,Eh35_k2)
+#    print(Qh_k1_4245)
     for Tj in range(62,-28,-5):#遍历对应的Tj
         Tj=str(Tj)
-        if BL[Tj]<=Qh_k1[Tj]:
-            pass
-        elif BL[Tj]>Qh_k1[Tj] and BL[Tj]<Qh_k2[Tj]:
-            pass
+        if BL[Tj]<=Qh_k1_4245[Tj]:
+            delta=cal_delta(float(Toff),float(Ton))
+            X_k1=BL[Tj]/Qh_k1_4245[Tj]#某个Tj下的参数
+            PLF=1-Cd*(1-X_k1)#某个Tj下的参数
+            eh_N=X_k1*Eh_k1_4245[Tj]*delta[Tj]/PLF*nj_N[zone][Tj]
+            RH_N=BL[Tj]*(1-delta[Tj])/3.413*nj_N[zone][Tj]
+        elif BL[Tj]>Qh_k1_4245[Tj] and BL[Tj]<Qh_k2[Tj]:
+            if BL[Tj]>Qh_k1_4245[Tj] and BL[Tj]<Qh_kv[Tj]:
+                COP_k1=Qh_k1[Tj]/Eh_k1[Tj]#计算某个Tj下的COP
+                COP_kv=Qh_kv[Tj]/Eh_kv[Tj]#计算某个Tj下的COP
+                COP_ki=COP_k1+(COP_kv-COP_k1)/(Qh_kv[Tj]-Qh_k1[Tj])*(BL[Tj]-Qh_k1[Tj])
+            elif BL[Tj]>=Qh_kv[Tj] and BL[Tj]<Qh_k2[Tj]:
+                COP_kv=Qh_kv[Tj]/Eh_kv[Tj]#计算某个Tj下的COP
+                COP_k2=Qh_k2[Tj]/Eh_k2[Tj]#计算某个Tj下的COP
+                COP_ki=COP_kv+(COP_k2-COP_kv)/(Qh_k2[Tj]-Qh_kv[Tj])*(BL[Tj]-Qh_kv[Tj])
+            Eh_ki=BL[Tj]/(3.413*COP_ki)#某个Tj下的功率
+            delta=cal_delta(float(Toff),float(Ton))
+            eh_N=Eh_ki*delta[Tj]*nj_N[zone][Tj]
+            RH_N=BL[Tj]*(1-delta[Tj])/3.413*nj_N[zone][Tj]
         elif BL[Tj]>=Qh_k2[Tj]:
-            pass
+            delta_=cal_delta_(Qh_k2,Eh_k2,float(Toff),float(Ton))
+            eh_N=Eh_k2[Tj]*delta_[Tj]*nj_N[zone][Tj]
+            RH_N=(BL[Tj]-Qh_k2[Tj]*delta_[Tj])/3.413*nj_N[zone][Tj]
 
-#===========================================================================
+        cigma_eh_N[Tj]=eh_N
+        cigma_RH_N[Tj]=RH_N
+        HSPF2=(dict_array(nj_N[zone])*dict_array(BL.pop('35'))).sum()/(dict_array(cigama_eh_N).sum()+dict_array(cigma_RH_N).sum())
+#    print(Qh_k1)
+    print(cigma_eh_N)
+    print(cigma_RH_N)
 
-
-
-
-
-
-###计算EER
-def EER(Qc,Ec):
-    '''
-    Qc(dict):制冷量
-    Ec(dict):功率
-    '''
-    res={}
-    for Tj in range(67,103,5):#遍历对应的Tj
-        Tj=str(Tj)
-        EER=Qc[Tj]/Ec[Tj]
-        res[str(Tj)]=EER
-    return res
-
-
-###计算SEER, 适用clause 4.1.4.1
-def SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,Cd=0.25,vs='YES'):
-    '''
-    Qc_k1(dict):k=1时的Qc
-    Ec_k1(dict):k=1时的Ec
-    Qc_k2(dict):k=2时的Qc
-    Ec_k2(dict):k=2时的Ec
-    Qc_kv(dict):k=v时的Qc
-    Ec_kv(dict):k=v时的Ec
-    BL(dict):building cooling load
-    vs(str):varible speed compressor
-    '''
-#    BL_np=np.array(list(BL.values()))#转化为numpy的array
-    Qc_k1.pop('95')#去掉95这个温度值的信息
-    Qc_k1_np=np.array(list(Qc_k1.values()))#转化为numpy的array
-    Ec_k1.pop('95')#去掉95这个温度值的信息
-    Ec_k1_np=np.array(list(Ec_k1.values()))#转化为numpy的array
-
-    Qc_k2.pop('95')#去掉95这个温度值的信息
-    Qc_k2_np=np.array(list(Qc_k2.values()))#转化为numpy的array
-    Ec_k2.pop('95')#去掉95这个温度值的信息
-    Ec_k2_np=np.array(list(Ec_k2.values()))#转化为numpy的array
-
-#    Qc_kv.pop('95')#去掉95这个温度值的信息
-#    Qc_kv_np=np.array(list(Qc_kv.values()))#转化为numpy的array
-#    Ec_kv.pop('95')#去掉95这个温度值的信息
-#    Ec_kv_np=np.array(list(Ec_kv.values()))#转化为numpy的array
-
-    T=[str(i) for i in range(67,103,5)]
-    nj_N=dict(zip(T,[0.214,0.231,0.216,0.161,0.104,0.052,0.018,0.004]))#构建table 19的权重因子字典
-    SEER={}
-    cigma_qc={}
-    cigma_ec={}
-    for Tj in range(67,103,5):#遍历对应的Tj
-        Tj=str(Tj)
-        if BL[Tj]<=Qc_k1[Tj]:
-            X_k1=BL[Tj]/Qc_k1[Tj]
-            PLF=1-Cd*(1-X_k1)
-            qc_N=X_k1*Qc_k1[Tj]*nj_N[Tj]
-            ec_N=X_k1*Ec_k1[Tj]/PLF*nj_N[Tj]
-            SEER[Tj]=qc_N/ec_N
-        elif BL[Tj]>Qc_k1[Tj] and BL[Tj]<Qc_k2[Tj]:
-            if vs=='YES':
-                X_k1=(Qc_k2[Tj]-BL[Tj])/(Qc_k2[Tj]-Qc_k1[Tj])
-                X_k2=1-X_k1
-                qc_N=(X_k1*Qc_k1[Tj]+X_k2*Qc_k2[Tj])*nj_N[Tj]
-                ec_N=(X_k1*Ec_k1[Tj]+X_k2*Ec_k2[Tj])*nj_N[Tj]
-                SEER[Tj]=qc_N/ec_N
-            else:
-                Qc_ki=BL[Tj]
-                if BL[Tj]<Qc_kv[Tj]:
-                    EER_ki=Qc_k1[Tj]/Ec_k1[Tj]+(Qc_kv[Tj]/Ec_kv[Tj]-Qc_k1[Tj]/Ec_k1[Tj])/(Qc_kv[Tj]-Qc_k1[Tj])*(BL[Tj]-Qc_k1[Tj])
-                    Ec_ki=Qc_ki/EER_ki
-                elif BL[Tj]>=Qc_kv[Tj]:
-                    EER_ki=Qc_kv[Tj]/Ec_kv[Tj]+(Qc_k2[Tj]/Ec_k2[Tj]-Qc_kv[Tj]/Ec_kv[Tj])/(Qc_k2[Tj]-Qc_kv[Tj])*(BL[Tj]-Qc_kv[Tj])
-                    Ec_ki=Qc_ki/EER_ki
-                qc_N=Qc_ki*nj_N[Tj]
-                ec_N=Ec_ki*nj_N[Tj]
-                SEER[Tj]=qc_N/ec_N
-        elif BL[Tj]>Qc_k2[Tj]:
-            qc_N=Qc_k2[Tj]*nj_N[Tj]
-            ec_N=Ec_k2[Tj]*nj_N[Tj]
-            SEER[Tj]=qc_N/ec_N
-        cigma_qc[Tj]=qc_N
-        cigma_ec[Tj]=ec_N
-        res=sum(list(cigma_qc.values()))/sum(list(cigma_ec.values()))
-    return {'SEER2':res,
-            'qc_N':cigma_qc,
-            'ec_N':cigma_ec,
-            }
-
-
-###把相关数据感性的体现出来
-def myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,ptf='NO'):
-    if ptf=='YES':
-        print('='*20)
-        print('BL:',BL)
-        print('Qc_k1:',Qc_k1)
-        print('Ec_k1:',Ec_k1)
-        print('Qc_k2:',Qc_k2)
-        print('Ec_k2:',Ec_k2)
-        print('Qc_kv:',Qc_kv)
-        print('Ec_kv:',Ec_kv)
-#        print('EER_F1:',Qc_k1['67']/Ec_k1['67'])
-#        print('EER_B1:',Qc_k1['82']/Ec_k1['82'])
-#        print('EER_A2:',Qc_k2['95']/Ec_k2['95'])
-#        print('EER_B2:',Qc_k2['82']/Ec_k2['82'])
-        print('EER_EV:',Qc_kv['87']/Ec_kv['87'])
-        print('EER_k1:',EER_k1)
-        print('EER_k2:',EER_k2)
-        print('EER_kv:',EER_kv)
-        print('qc_N',res['qc_N'])
-        print('ec_N',res['ec_N'])
-    fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
-    T=[str(i) for i in range(67,103,5)]
-    ax.plot(T,Qc_k1.values(),label='Qc,k=1')
-    ax.plot(T,Qc_k2.values(),label='Qc,k=2')
-    ax.plot(T,Qc_kv.values(),label='Qc,k=v')
-    ax.plot(T,BL.values(),label='BL')
-    ax.plot(T,EER_k1.values(),label='EER,k=1')
-    ax.plot(T,EER_k2.values(),label='EER,k=2')
-    ax.plot(T,EER_kv.values(),label='EER,k=v')
-    ax.legend()
-    plt.show()
-
-
-
-def single_plt(data,name):
-    fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
-    T=[str(i) for i in range(67,103,5)]
-    ax.plot(T,data.values(),label=name)
-    ax.legend()
-    plt.show()
-    
-
-
-###主程序入口
 if __name__=='__main__':
-    data_init={}
-    for condition in ['A2','B2','EV','B1','F1']:
-        Cap=input(f'请输入{condition}工况下的制冷量：')
-        Pow=input(f'请输入{condition}工况下的功率：')
-        data_init[condition]=[float(Cap),float(Pow)]#第一个元素为制冷量，第二个为功率，使用时需要注意顺序
-    Qc_k1=Values_Tj([67,82],[data_init['F1'][0],data_init['B1'][0]])#计算k=1时的制冷量
-    Ec_k1=Values_Tj([67,82],[data_init['F1'][1],data_init['B1'][1]])#计算k=1时的功率
-    EER_k1=EER(Qc_k1,Ec_k1)#计算k=1时的能效
-    Qc_k2=Values_Tj([82,95],[data_init['B2'][0],data_init['A2'][0]])#计算k=2时的制冷量
-    Ec_k2=Values_Tj([82,95],[data_init['B2'][1],data_init['A2'][1]])#计算k=2时的功率
-    EER_k2=EER(Qc_k2,Ec_k2)#计算k=2时的能效
-    BL=BL(Qc_k2['95'],0.93)#变频为0.93，其他为1
-    Qc_kv=liner(Qc_k1,Qc_k2,data_init['EV'][0])#计算k=v时的制冷量
-    Ec_kv=liner(Ec_k1,Ec_k2,data_init['EV'][1])#计算k=v时的功率
-    EER_kv=EER(Qc_kv,Ec_kv)#计算k=v时的能效
-    #计算qc_N, ec_N和SEER2
-    res=SEER2(Qc_k1,Ec_k1,Qc_k2,Ec_k2,Qc_kv,Ec_kv,BL,vs='NO')
-    print('SEER',res['SEER2'])
-    #图标输出,不需要图表就注释掉
-    single_plt(res['qc_N'],'qc_N')
-    single_plt(res['ec_N'],'ec_N')
-    myplot(Qc_k1,Qc_k2,Qc_kv,Ec_k1,Ec_k2,Ec_kv,EER_k1,EER_k2,EER_kv,ptf='NO')#默认不输出详细参数
+    HSPF2()
+
+
+
+
+
+
