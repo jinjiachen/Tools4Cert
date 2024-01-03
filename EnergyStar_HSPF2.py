@@ -350,7 +350,7 @@ def dict_array(mydict):
     return myarray
 
 ###计算HSPF2
-def HSPF2():
+def HSPF2(ptf='YES'):
     Cd=0.25
     zone='IV'
 #    Q=input('请输入A或A2工况下的制冷量')
@@ -427,10 +427,20 @@ def HSPF2():
 
         cigma_eh_N[Tj]=eh_N
         cigma_RH_N[Tj]=RH_N
-        HSPF2=(dict_array(nj_N[zone])*dict_array(BL.pop('35'))).sum()/(dict_array(cigama_eh_N).sum()+dict_array(cigma_RH_N).sum())
+#        BL.pop('62')
+#        HSPF2=(dict_array(nj_N[zone])*dict_array(BL)).sum()/(dict_array(cigma_eh_N).sum()+dict_array(cigma_RH_N).sum())
 #    print(Qh_k1)
-    print(cigma_eh_N)
-    print(cigma_RH_N)
+    if ptf=='YES':
+        print('#'*50)
+        print(nj_N[zone])
+        print('#'*50)
+        print(BL)
+        print(BL.keys())
+        print('#'*50)
+        print(cigma_eh_N)
+        print('#'*50)
+        print(cigma_RH_N)
+
 
 if __name__=='__main__':
     HSPF2()
