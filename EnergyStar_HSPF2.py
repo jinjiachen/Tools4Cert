@@ -177,15 +177,21 @@ Tj_bin=list(Tj_bin)
 Tj_bin.append(35)#单独增加35的计算
 
 ###计算building load, Equation 4.2-2
-def build_load(zone,Q):
+def build_load(zone,Q,vs='NO'):
     '''
     zone(str):对应的区域，如I,IV等
     Q(float):如冷热型，则为A或A2时的制冷量（Qc_95),如单热，则用Qh_47替代
     '''
-    res={}
-    for Tj in Tj_bin:#遍历对应的Tj
-        BL=(Tzl[zone]-Tj)/(Tzl[zone]-5)*C[zone]*Q
-        res[str(Tj)]=BL
+    if vs=='YES':
+        res={}
+        for Tj in Tj_bin:#遍历对应的Tj
+            BL=(Tzl[zone]-Tj)/(Tzl[zone]-5)*Cvs[zone]*Q
+            res[str(Tj)]=BL
+    else:
+        res={}
+        for Tj in Tj_bin:#遍历对应的Tj
+            BL=(Tzl[zone]-Tj)/(Tzl[zone]-5)*C[zone]*Q
+            res[str(Tj)]=BL
     return res
 
 
@@ -350,7 +356,7 @@ def dict_array(mydict):
     return myarray
 
 ###计算HSPF2
-def HSPF2(ptf='YES'):
+def HSPF2(ptf='NO'):
     Cd=0.25
     zone='IV'
 #    Q=input('请输入A或A2工况下的制冷量')
@@ -380,7 +386,7 @@ def HSPF2(ptf='YES'):
     Eh17_k2=865.3
     Qh35_kv=6088
     Eh35_kv=414.9
-    BL=build_load(zone,float(Q))#计算房间负荷
+    BL=build_load(zone,float(Q),vs='YES')#计算房间负荷
 #    Qh_k1
 #    Q_kv=liner()
 #    Qh_k1=cal_Q(Q35_k1,Q47_k1,Q62_k1,Q_kv)#用Equation 4.2.4-5计算Qh_k=1
@@ -427,23 +433,29 @@ def HSPF2(ptf='YES'):
 
         cigma_eh_N[Tj]=eh_N
         cigma_RH_N[Tj]=RH_N
-#        BL.pop('62')
-#        HSPF2=(dict_array(nj_N[zone])*dict_array(BL)).sum()/(dict_array(cigma_eh_N).sum()+dict_array(cigma_RH_N).sum())
-#    print(Qh_k1)
+    del BL['35']
+    HSPF2=(dict_array(nj_N[zone])*dict_array(BL)).sum()/(dict_array(cigma_eh_N).sum()+dict_array(cigma_RH_N).sum())
     if ptf=='YES':
-        print('#'*50)
+        print('#'*50+f'nj {zone}')
         print(nj_N[zone])
-        print('#'*50)
+        print('#'*50+'BL')
         print(BL)
-        print(BL.keys())
-        print('#'*50)
+        print('#'*50+'cigma_eh_N')
         print(cigma_eh_N)
-        print('#'*50)
+        print('#'*50+'cigma_RH_N')
         print(cigma_RH_N)
+        print('#'*50+'HSPF2')
+        print(HSPF2)
+        print('#'*50+'Qh_k1_4245')
+        print(Qh_k1_4245)
+        print('#'*50+'Qh_k1')
+        print(Qh_k1)
+        print('#'*50+'Qh_k2')
+        print(Qh_k2)
 
 
 if __name__=='__main__':
-    HSPF2()
+    HSPF2('YES')
 
 
 
