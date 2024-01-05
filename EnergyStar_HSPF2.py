@@ -452,7 +452,19 @@ def HSPF2(ptf='NO'):
         print(Qh_k1)
         print('#'*50+'Qh_k2')
         print(Qh_k2)
+        print('#'*50+'Qh_kv')
+        print(Qh_kv)
+    single_plt(Qh_kv,'Qh_kv')
+    single_plt(Qh_k1,'Qh_k1')
+    single_plt(Qh_k2,'Qh_k2')
 
+def single_plt(data,name):
+    data.pop('35')
+    fig,ax=plt.subplots(figsize=(5, 2.7), layout='constrained')
+    T=[str(i) for i in range(62,-28,-5)]
+    ax.plot(T,data.values(),label=name)
+    ax.legend()
+    plt.show()
 
 if __name__=='__main__':
     HSPF2('YES')
