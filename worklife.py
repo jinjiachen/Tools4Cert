@@ -107,10 +107,10 @@ def notify(method,title,content):
         print(data)
 
 ###打卡
-def check_in(d,r,click='NO'):
+def check_in(d,conf,click='NO'):
     '''
     d(obj):uiautomator2对象
-    r(obj):redis对象
+    conf(obj):配置文件对象
     '''
     wakeup(d,conf)#解锁屏幕
     if check_running(d,'com.cdp.epPortal'):
@@ -148,7 +148,6 @@ def check_in(d,r,click='NO'):
 #                if d(description='第1次打卡').exists():
 #                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
             else:
-                r.set('worklife','[res]:未过一次卡！')
                 notify('post',f'worklife-{now}',f'{now}\n未打过卡!')
             break
         if d(description='第2次打卡').exists():
@@ -167,7 +166,6 @@ def check_in(d,r,click='NO'):
 #                if d(description='第2次打卡').exists():
 #                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
             else:
-                r.set('worklife','[res]:打过一次卡！')
                 notify('post',f'worklife-{now}',f'{now}\n打过一次卡!')
             break
     d.app_stop('com.cdp.epPortal')
@@ -204,9 +202,28 @@ def main(conf):
             if signals == 'exit':
                 break
             elif signals=='test':
-                check_in(d,r)
+                check_in(d,conf)
             elif signals=='check_in':
-                check_in(d,r,'YES')
+                check_in(d,conf,'YES')
+
+
+###自动签到
+def auto_check(d,conf,run_time):
+    '''
+    d(obj):uiautomator2对象
+    conf(obj):配置文件对象
+    run_time(list):定时运行的时间,一般为两个时间，分别对应早晚
+    '''
+    while True:
+        now=time.strftime("%H:%M:%S")
+        if now==run_time[0] or now==run_time[1]:
+            while True:
+                try:
+                    check_status(d)
+                    check_in(d,conf,'NO')
+                    break
+                except:
+                    continue
 
 if __name__=='__main__':
     conf=load_config()
