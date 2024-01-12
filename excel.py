@@ -25,7 +25,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名")
+    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名\n15.增加基本列名")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -289,6 +289,8 @@ def Menu():
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
+    elif choice=='15':
+        pass
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
         app.display_alerts=False #取消警告
@@ -1710,7 +1712,35 @@ def output_path(file_path,ptf='No'):
         print(output_file)
     output_file=os.path.join(output_path,path_split[1][:-5]+'_output.xlsm')
     return output_file
+
+
+###增加基本列名
+def add_models(sheet_rpt2,sheet_rpt12,sheet_data):
+    '''
+    sheet_rpt2:报告的sec2.0对应的sheet
+    sheet_rpt12:报告的sec12.0对应的sheet
+    sheet_data:数据对应的sheet,包含基本型号，列名型号以及商标这三列信息
+    '''
+    row_max=sheet.used_range.last_cell.row#sheet中最大的行数
+    for row in range(1,row_max+1):
+        if sheet_data[f'd{row}'].value=="A": #判断H列是否为A，A为新增
+            basic_model=sheet_data[f'a{row}']#获取基本型号
+            new_model=sheet_data[f'b{row}']#获取增加的列名型号
+            brand=sheet_data[f'c{row}']#获取增加的列名型号
+            add_cell(sheet_rpt2,'B4',', '+new_model)
+        pass
     
+
+###单元格增加内容
+def add_cell_text(sheet,cell,text):
+    '''
+    sheet:要修改的sheet
+    cell(str):修改的单元格，如'A1'
+    test(str):增加的文本
+    '''
+    old_text=sheet[cell].value
+    new_text=old_text+text
+    sheet[cell].value=new_text
 
 
 if __name__=='__main__':
