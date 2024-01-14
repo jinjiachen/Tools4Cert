@@ -290,7 +290,23 @@ def Menu():
         wb.close()
         app.kill()
     elif choice=='15':
-        pass
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        data=input("Please input the data source path:") #输入数据源的路径
+        data=data.replace('"','')
+        app=xw.App(visible=False,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        wb=app.books.open(rpt)
+        sht2=wb.sheets['2.0 Description']
+        sht12=wb.sheets['12.0 Revisions']
+        wb_data=app.books.open(data)
+        sht_data=wb_data.sheets[0]
+        add_models(sht2,sht12,sht_data)
+        wb.save(rpt[:-5]+'_output.xlsm')
+        wb.close()
+        wb_data.close()
+        app.kill()
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
         app.display_alerts=False #取消警告
@@ -1721,14 +1737,19 @@ def add_models(sheet_rpt2,sheet_rpt12,sheet_data):
     sheet_rpt12:报告的sec12.0对应的sheet
     sheet_data:数据对应的sheet,包含基本型号，列名型号以及商标这三列信息
     '''
-    row_max=sheet.used_range.last_cell.row#sheet中最大的行数
-    for row in range(1,row_max+1):
+    last_row=sheet_data.used_range.last_cell.row#sheet中最大的行数
+    print('最大行数',last_row)
+    models=[]
+    for row in range(1,last_row+1):
+        print(f'正在比对底{row}行')
         if sheet_data[f'd{row}'].value=="A": #判断H列是否为A，A为新增
-            basic_model=sheet_data[f'a{row}']#获取基本型号
-            new_model=sheet_data[f'b{row}']#获取增加的列名型号
-            brand=sheet_data[f'c{row}']#获取增加的列名型号
-            add_cell(sheet_rpt2,'B4',', '+new_model)
-        pass
+            basic_model=sheet_data[f'a{row}'].value#获取基本型号
+            new_model=sheet_data[f'b{row}'].value#获取增加的列名型号
+            brand=sheet_data[f'c{row}'].value#获取增加的列名型号
+            add_cell_text(sheet_rpt2,'B7',', '+new_model)#在报告sec2中增加型号
+            similarity=f'{new_model} is identical with {basic_model} except for the model name.'
+            print(f'正在增加{new_model}')
+            add_cell_text(sheet_rpt2,'B8','\n'+similarity)
     
 
 ###单元格增加内容
@@ -1739,6 +1760,9 @@ def add_cell_text(sheet,cell,text):
     test(str):增加的文本
     '''
     old_text=sheet[cell].value
+#    print(old_text)
+#    print(type(old_text))
+#    print(type(text))
     new_text=old_text+text
     sheet[cell].value=new_text
 
