@@ -208,7 +208,7 @@ def main(conf):
 
 
 ###自动签到
-def auto_check(d,conf,run_time):
+def auto_check(d,conf,run_time,click='NO'):
     '''
     d(obj):uiautomator2对象
     conf(obj):配置文件对象
@@ -220,7 +220,7 @@ def auto_check(d,conf,run_time):
             while True:
                 try:
                     check_status(d)
-                    check_in(d,conf,'NO')
+                    check_in(d,conf,click)
                     break
                 except:
                     continue
