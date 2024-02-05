@@ -137,16 +137,6 @@ def check_in(d,conf,click='NO'):
             if click=='YES':
                 d(description='第1次打卡').click()
                 notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
-#                if d(description='打卡成功').exists():
-#                    r.set('worklife','[res]:第一次打卡成功！')
-#                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
-#                else:
-#                    r.set('worklife','[res]:第一次打卡失败！')
-#                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡失败!')
-#                d.press('back')
-#                d(text='移动打卡').click()
-#                if d(description='第1次打卡').exists():
-#                    notify('post',f'worklife-{now}',f'{now}\n第一次打卡成功!')
             else:
                 notify('post',f'worklife-{now}',f'{now}\n未打过卡!')
             break
@@ -154,17 +144,6 @@ def check_in(d,conf,click='NO'):
             if click=='YES':
                 d(description='第2次打卡').click()
                 notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
-#                if d(description='打卡成功').exists():
-#                if d(text='打卡成功').exists():
-#                    r.set('worklife','[res]:第二次打卡成功！')
-#                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
-#                else:
-#                    r.set('worklife','[res]:第二次打卡失败！')
-#                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡失败!')
-#                d.press('back')
-#                d(text='移动打卡').click()
-#                if d(description='第2次打卡').exists():
-#                    notify('post',f'worklife-{now}',f'{now}\n第二次打卡成功!')
             else:
                 notify('post',f'worklife-{now}',f'{now}\n打过一次卡!')
             break
@@ -216,6 +195,7 @@ def auto_check(d,conf,run_time,click='NO'):
     '''
     while True:
         now=time.strftime("%H:%M:%S")
+        print(f'自动模式，当前时间{now}')
         if now==run_time[0] or now==run_time[1]:
             while True:
                 try:
@@ -228,9 +208,13 @@ def auto_check(d,conf,run_time,click='NO'):
 if __name__=='__main__':
     conf=load_config()
     d=u2_connect(conf)
-    while True:
-        try:
-            main(conf)
-        except:
-            check_status(d)
-            continue
+    choice=input('请选择模式：1.自动签到 2. 监听模式')
+    if choice=='1':
+        auto_check(d,conf,['08:55:00','17:30:00'],'YES')
+    elif choice=='2':
+        while True:
+            try:
+                main(conf)
+            except:
+                check_status(d)
+                continue
