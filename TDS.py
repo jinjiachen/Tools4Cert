@@ -4,7 +4,7 @@ import os
 from docx import Document
 from docx.shared import Inches
 from docx.shared import Pt
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH,WD_PARAGRAPH_ALIGNMENT
 
 #document.add_picture('D:\Python27\Tools4Cert-master\34.jpg', width=Inches(1.25))
 #run=body.add_run('test one') #insert the pattern
@@ -1100,6 +1100,19 @@ def content_replace(documents,old_word,new_word,ptf='NO'):#替换对应文字，
                 cell.paragraphs[0].runs[0].font.name='arial'#修改字体
                 cell.paragraphs[0].runs[0].font.size=Pt(10)#修改大小
 
+    #查找所有的页脚
+    for section in sections:
+        for cell in section.footer.tables[0]._cells:
+            if old_word in cell.text:
+                if ptf=='YES':
+                    print(f'找到{old_word},正在替换')
+                text=cell.text
+                cell.text=text.replace(old_word,new_word)
+                cell.paragraphs[0].runs[0].font.name='arial'#修改字体
+                cell.paragraphs[0].runs[0].font.size=Pt(8)#修改大小
+                cell.paragraphs[0].alignment=WD_PARAGRAPH_ALIGNMENT.RIGHT#单元格向右对齐
+
+
 
 ###输入基本信息
 def basic_info(document):
@@ -1149,6 +1162,8 @@ if __name__=='__main__':
                 elif os.name=='posix':
                     document = Document('./Temp.docx') #Open the template document
                 print('opening the document')
+                content_replace(document,'<issue date>','2020-07-29','YES')
+                content_replace(document,'<standard version>','IEC 60335-2-40 (Ed 6.0)','YES')
                 basic_info(document)
                 body=document.add_paragraph()
                 Content(values)
