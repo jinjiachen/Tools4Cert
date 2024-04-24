@@ -440,7 +440,7 @@ def Menu():
                 sht8=wb.sheets['8.0 Test Summary']
                 sht9=wb.sheets['9.0 MLS']
                 sht12=wb.sheets['12.0 Revisions']
-                wb.save(rpt[:-4]+'_output.xls')
+                wb.save(rpt[:-5]+'_output.xlsm')
             input('any key to contine!')
             os.system('cls')
 
@@ -596,11 +596,11 @@ def get_data(sheet,row_start,row_end,column1,column2,column3,column4,column5):#x
 
         #检查制造商列是否有黄卡号，如有则进行格式处理
         if rows_value[1]!=None:
-            ul_no=re.search('\w\d{5,6}',rows_value[1])
+            ul_no=re.search('\w{1,2}\d{5,6}',rows_value[1])
             print('制造商列找到黄卡号，正在进行格式处理！')
             if ul_no!=None:
                 rows_value[1]=str_fmt(rows_value[1].replace('('+ul_no.group()+')',''))#删除原有的黄卡号信息
-                rows_value[1]=rows_value[1]+'\n('+ul_no.group()+')'#写入新的黄卡号
+                rows_value[1]=rows_value[1].strip().replace('\n','')+'\n('+ul_no.group()+')'#写入新的黄卡号
 
         #以下第5列是可选的，针对单独给出认证号的情形，将认证号提取出来
         if column5=='':#没有输入控制号所在列
