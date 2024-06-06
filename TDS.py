@@ -97,7 +97,7 @@ values=[
 #        ("Annex H","Switch Endurance Test","--",verdict),
 #        ("Annex I","Motors having basic insulation that is inadequate for the rated voltage of the appliance","--",verdict),
 #        ("Annex EE","Pressure Tests","--",verdict),
-        ("Annex FF","Leakage Simulation Tests","Refer to table below","EC5382, EC6022, EC6023",verdict),
+        ("Annex FF","Leakage Simulation Tests","Refer to table below","EZ6375, EC6022, EC6023",verdict),
 #        ("Annex GG","Refrigerant Charge","--",verdict)
         ]
 
@@ -121,7 +121,7 @@ Test_clauses=[
         ("30.1","Ball Pressure Test","Refer to table below","EC3304, EC2132","P/F/NA"),
         ("30.2.3 & 30.2.4","Glow Wire Test & Needle Flame Test","Refer to table below","EC2764, EC2072","P/F/NA"),
         ("Annex N","Proof Tracking Test","Refer to table below","EC2071","P/F/NA"),
-        ("Annex FF","Leakage Simulation Tests","Refer to table below","EC5382, EC6022, EC6023","P/F/NA"),
+        ("Annex FF","Leakage Simulation Tests","Refer to table below","EZ6375, EC6022, EC6023","P/F/NA"),
         ]
 
 def Content(values):
@@ -1162,8 +1162,8 @@ if __name__=='__main__':
                 elif os.name=='posix':
                     document = Document('./Temp.docx') #Open the template document
                 print('opening the document')
-                content_replace(document,'<issue date>','2020-07-29','YES')
-                content_replace(document,'<standard version>','IEC 60335-2-40 (Ed 6.0)','YES')
+                content_replace(document,'<issue date>','2020-07-29','NO')
+                content_replace(document,'<standard version>','IEC 60335-2-40 (Ed 6.0)','NO')
                 basic_info(document)
                 body=document.add_paragraph()
                 Content(values)
