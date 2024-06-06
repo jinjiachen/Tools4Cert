@@ -1627,6 +1627,10 @@ def get_ML_info(path,ptf='No'):#xlwings：获取多重列名的型号
             print('basic model:',basic_model)
         ML_models.append(ML_model)
         basic_models.append(basic_model)
+    if ptf=='Yes':
+        for ML,basic in ML_model,basic_model:
+            print(f'ML model {ML} ({Brand}) for basic model {basic}.')
+        pass
 
     return [ML_company,street+city,country,Brand,ML_models,basic_models]
 #    print(ML_models,basic_models)
