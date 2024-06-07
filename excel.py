@@ -25,7 +25,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名\n15.增加基本列名")
+    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -88,7 +88,7 @@ def Menu():
         wb1.close()
 #        app.quit()
         app.kill()
-    elif choice=='3':
+    elif choice=='ip7':
         app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
@@ -151,7 +151,7 @@ def Menu():
             print(i)
         wb.close()
         app.kill()
-    elif choice=='7':
+    elif choice=='ip3':
         app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
@@ -194,7 +194,7 @@ def Menu():
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
-    elif choice=='10':
+    elif choice=='si':
         app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
@@ -257,7 +257,7 @@ def Menu():
         wb.close()
         wb_data.close()
         app.kill()
-    elif choice=='13':
+    elif choice=='cc':
         rpt=input("Please input the report path:") #输入要检查的报告的路径
         rpt=rpt.replace('"','')
         app=xw.App(visible=True,add_book=False)
@@ -270,7 +270,7 @@ def Menu():
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
-    elif choice=='14':
+    elif choice=='aml':
         rpt=input("Please input the report path:") #输入要修改的报告的路径
         rpt=rpt.replace('"','')
         path=input("Please input the ML application path:") #输入申请表的路径
@@ -324,7 +324,7 @@ def Menu():
         sht12=wb.sheets['12.0 Revisions']
         wb.save(output_file)
         while True:
-            choice=input("1.Extract data\n2.Revise the report\n3.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\n7.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\n10同步修改item号\n11.Sec3 sort item\n12自动填充5.0\n13自动核对证书\n14.增加多重列名\n指令：")
+            choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n指令：")
             if choice=='1':
                 path_data=input("Please input the data source path:")
                 path_data=path_data.replace('"','')
@@ -359,14 +359,14 @@ def Menu():
                 print('operating time:',end-start)
                 wb_data.close()#关闭打开的文件
                 print('已关闭文件：',data)
-            elif choice=='3':
+            elif choice=='ip7':
                 manual_path=input('输入说明书的路径')
                 update7(sht7,manual_path)
             elif choice=='6':
                 uc_all=get_UC(wb)
                 for i in uc_all:
                     print(i)
-            elif choice=='7':
+            elif choice=='ip3':
                 photo_path=input('输入照片所在路径')
                 photo_path=photo_path+'\\'
                 update3(sht3,photo_path)
@@ -375,7 +375,7 @@ def Menu():
                 Page_break(sht5)
             elif choice=='9':
                 sort_by_item(sht4)
-            elif choice=='10':
+            elif choice=='si':
                 line=get_line(sht3)#获取3.0中线的类型
                 if line==None:
                     print('并未捕获线的类型')
@@ -403,9 +403,9 @@ def Menu():
                     else:
                         sht5_data=wb_data.sheets[0]
                 fill_CEC(sht5,sht5_data)
-            elif choice=='13':
+            elif choice=='cc':
                 check(sht4,'Yes')
-            elif choice=='14':
+            elif choice=='aml':
                 path=input("Please input the ML application path:") #输入申请表的路径
                 path=path.replace('"','')
                 item=get_ML_item(sht12)
