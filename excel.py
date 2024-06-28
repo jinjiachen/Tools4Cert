@@ -25,7 +25,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名")
+    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -306,6 +306,17 @@ def Menu():
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         wb_data.close()
+        app.kill()
+    elif choice=='tc':
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        wb=app.books.open(rpt)
+        to_client(wb)
+        wb.save(rpt[:-5]+'_CDF.xlsm')
+        wb.close()
         app.kill()
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
@@ -1028,6 +1039,15 @@ def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入1
     sheet12[f'd{row}'].api.Font.Color=0xFF00FF
     sheet12[f'e{row}'].api.Font.Color=0xFF00FF
 #    wb.save('output1.xls')
+
+###删除指定的工作簿，生成客户用CDR
+def to_client(workbook):
+    '''
+    workbook为CDR
+    '''
+    sheets_name=get_sheets_name(workbook)#获取工作簿中的表名
+    for i in ['8.0 Test Summary','9.0 MLS','10.0 General','11.0 Production','12.0 Revisions']:
+        workbook.sheets[i].delete()
 
 def update_CDR(workbook,workbook_data):
     '''
