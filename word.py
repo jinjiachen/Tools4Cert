@@ -12,7 +12,7 @@ from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from excel import get_UC
-from PyPDF2 import PdfFileMerger,PdfFileWriter,PdfFileReader
+from PyPDF2 import PdfFileMerger,PdfWriter,PdfReader
 import PyPDF2
 import time
 if os.name=='nt':
@@ -21,7 +21,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件')
     if choice=='uc':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
 #        path_doc=input('请输入年检报告(word)的路径')
@@ -106,9 +106,9 @@ def Menu():
         os.remove(new_pdf)
     elif choice=='init':
         pass
-    elif choice=='rotate':
+    elif choice=='at':
         pdf_path=input('请输入要翻转的PDF文件路径:')
-        new_pdf=input('新文件名')
+        page_rotation(pdf_path)
 
 
 
@@ -506,28 +506,34 @@ def page_rotation(old_file):
     :param old_file: 需要旋转的PDF文件
     :return:
     """
-    pdf = PdfFileReader(old_file)
-    page_num = pdf.getNumPages()
-    pdf_writer = PdfFileWriter()
+    print(f'PDF路径为：{old_file}')
+    pdf = PdfReader(old_file)
+    page_num = len(pdf.pages)
+    pdf_writer = PdfWriter()
     for i in range(page_num):
         # orientation = pdf.getPage(i).get('/Rotate')   # 获取页面的旋转角度
-        size = pdf.getPage(i).mediaBox  # 获取页面大小值（长、宽）
-        x, y = size.getUpperRight_x(), size.getUpperRight_y()
+        size = pdf.pages[i].mediabox  # 获取页面大小值（长、宽）
+        print(size)
+#        x, y = size.upper_right(), size.UpperRight_y()
+        x=size[2]
+        y=size[3]
         if x > y:
             # 顺时针旋转90度  90的倍数
-            page = pdf.getPage(i).rotateClockwise(90)
+            page = pdf.pages[i].rotate(90)
             # 逆时针旋转90度  90的倍数
             # page = pdf.getPage(i).rotateCounterClockwise(90)
-            pdf_writer.addPage(page)
+            pdf_writer.add_page(page)
         else:
             # 不旋转
-            page = pdf.getPage(i).rotateClockwise(0)
-            pdf_writer.addPage(page)
-    with open(old_file[:-4]+'auto', 'wb') as f:
+            page = pdf.pages[i].rotate(0)
+            pdf_writer.add_page(page)
+    with open(old_file[:-4]+'_auto.pdf', 'wb') as f:
+        print(f'输出PDF为：{f}')
         pdf_writer.write(f)
 
 
 if __name__=='__main__':
     while True:
-        os.system('cls')
+        if os.name=='nt':
+            os.system('cls')
         Menu()
