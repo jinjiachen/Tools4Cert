@@ -500,11 +500,10 @@ def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     return new_path
 
 ###PDF文件自动翻转
-def page_rotation(old_file, new_file):
+def page_rotation(old_file):
     """
     PDF页面旋转
     :param old_file: 需要旋转的PDF文件
-    :param new_file: 旋转后的PDF文件
     :return:
     """
     pdf = PdfFileReader(old_file)
@@ -524,7 +523,7 @@ def page_rotation(old_file, new_file):
             # 不旋转
             page = pdf.getPage(i).rotateClockwise(0)
             pdf_writer.addPage(page)
-    with open(new_file, 'wb') as f:
+    with open(old_file[:-4]+'auto', 'wb') as f:
         pdf_writer.write(f)
 
 
