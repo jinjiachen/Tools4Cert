@@ -12,7 +12,7 @@ from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from excel import get_UC
-from PyPDF2 import PdfFileMerger
+from PyPDF2 import PdfFileMerger,PdfFileWriter,PdfFileReader
 import PyPDF2
 import time
 if os.name=='nt':
@@ -106,6 +106,9 @@ def Menu():
         os.remove(new_pdf)
     elif choice=='init':
         pass
+    elif choice=='rotate':
+        pdf_path=input('请输入要翻转的PDF文件路径:')
+        new_pdf=input('新文件名')
 
 
 
@@ -496,6 +499,33 @@ def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     docx.save(path_xls+'\\'+f'{project}.docx')
     return new_path
 
+###PDF文件自动翻转
+def page_rotation(old_file, new_file):
+    """
+    PDF页面旋转
+    :param old_file: 需要旋转的PDF文件
+    :param new_file: 旋转后的PDF文件
+    :return:
+    """
+    pdf = PdfFileReader(old_file)
+    page_num = pdf.getNumPages()
+    pdf_writer = PdfFileWriter()
+    for i in range(page_num):
+        # orientation = pdf.getPage(i).get('/Rotate')   # 获取页面的旋转角度
+        size = pdf.getPage(i).mediaBox  # 获取页面大小值（长、宽）
+        x, y = size.getUpperRight_x(), size.getUpperRight_y()
+        if x > y:
+            # 顺时针旋转90度  90的倍数
+            page = pdf.getPage(i).rotateClockwise(90)
+            # 逆时针旋转90度  90的倍数
+            # page = pdf.getPage(i).rotateCounterClockwise(90)
+            pdf_writer.addPage(page)
+        else:
+            # 不旋转
+            page = pdf.getPage(i).rotateClockwise(0)
+            pdf_writer.addPage(page)
+    with open(new_file, 'wb') as f:
+        pdf_writer.write(f)
 
 
 if __name__=='__main__':
