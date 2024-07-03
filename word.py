@@ -108,7 +108,8 @@ def Menu():
         pass
     elif choice=='at':
         pdf_path=input('请输入要翻转的PDF文件路径:')
-        page_rotation(pdf_path)
+        action=input('请输入需要旋转的方向：\nleft:向左旋转90\nright:向右旋转90')
+        page_rotation(pdf_path,action)
 
 
 
@@ -500,10 +501,11 @@ def Annual_init(app,path_xls,path_doc,project,control_No,sample):
     return new_path
 
 ###PDF文件自动翻转
-def page_rotation(old_file):
+def page_rotation(old_file,action):
     """
     PDF页面旋转
     :param old_file: 需要旋转的PDF文件
+    action(str):旋转方向
     :return:
     """
     print(f'PDF路径为：{old_file}')
@@ -511,23 +513,31 @@ def page_rotation(old_file):
     page_num = len(pdf.pages)
     pdf_writer = PdfWriter()
     for i in range(page_num):
-        # orientation = pdf.getPage(i).get('/Rotate')   # 获取页面的旋转角度
-        size = pdf.pages[i].mediabox  # 获取页面大小值（长、宽）
-        print(size)
-#        x, y = size.upper_right(), size.UpperRight_y()
-        x=size[2]
-        y=size[3]
-        if x > y:
+        if action=='auto':
+            size = pdf.pages[i].mediabox  # 获取页面大小值（长、宽）
+            print(size)
+    #        x, y = size.upper_right(), size.UpperRight_y()
+            x=size[2]
+            y=size[3]
+            if x > y:
+                # 顺时针旋转90度  90的倍数
+                page = pdf.pages[i].rotate(90)
+                # 逆时针旋转90度  90的倍数
+                # page = pdf.getPage(i).rotateCounterClockwise(90)
+                pdf_writer.add_page(page)
+            else:
+                # 不旋转
+                page = pdf.pages[i].rotate(0)
+                pdf_writer.add_page(page)
+        elif action=='left':
+            # 逆时针旋转90度  90的倍数
+            page = pdf.pages[i].rotate(-90)
+            pdf_writer.add_page(page)
+        elif action=='right':
             # 顺时针旋转90度  90的倍数
             page = pdf.pages[i].rotate(90)
-            # 逆时针旋转90度  90的倍数
-            # page = pdf.getPage(i).rotateCounterClockwise(90)
             pdf_writer.add_page(page)
-        else:
-            # 不旋转
-            page = pdf.pages[i].rotate(0)
-            pdf_writer.add_page(page)
-    with open(old_file[:-4]+'_auto.pdf', 'wb') as f:
+    with open(old_file[:-4]+f'_{action}.pdf', 'wb') as f:
         print(f'输出PDF为：{f}')
         pdf_writer.write(f)
 
