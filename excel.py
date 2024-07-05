@@ -873,6 +873,8 @@ def update3(sheet,photo_path): #xlwings:在3.0自动插入照片
 #        files.sort(key=len) #在对文件的长度进行排序
         files.sort(key=mysort)#对文件进行排序
         for file in files:#遍历所有的文件
+            filename=file.split('_')[1]
+            description=filename.split('.')[0]+' (xxx)'
 #            print(files)
             print(photo_path+file)
             sheet.pictures.add(photo_path+file)#插入图片
@@ -882,17 +884,18 @@ def update3(sheet,photo_path): #xlwings:在3.0自动插入照片
                 sheet.pictures[number].height=288 #单位为pt，72pt=1inch，即288/72=4inch
             sheet.pictures[number].top=sheet[f'a1:a{row}'].height #用行数来定位
             sheet.pictures[number].left=50.5 #单元格默认列宽50.5
-            sheet[f'a{row-2}'].value=f'Photo {number+1} - ' #插入文字描述
+            sheet[f'a{row-2}'].value=f'Photo {number+1} - {description}' #插入文字描述
             sheet[f'a{row-2}'].characters[:9].font.bold=True #部分字体加粗
             row=row+28 #56行一页，28行一半中间位置
             number=number+1
 
 
-def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
+def update4(sheet1,sheet2,sheet3,auto_fmt='Yes'):#xlwings:更新4.0信息
     '''
     sheet1为报告的sec4.0
     sheet2为数据报告的sec4.0
     sheet3为报告的sec12.0
+    auto_fmt(str):是否要格式处理Yes/No
     '''
     row_rev=sheet_total_rows(sheet3)+1#SEC12的行数,这里不能用used_range来代替，因为used_range会把空行包含进去，包括格式的改变
 #    print(sheet2.used_range.last_cell.row)
@@ -980,8 +983,8 @@ def update4(sheet1,sheet2,sheet3):#xlwings:更新4.0信息
                     sheet1[f'c{j}'].api.EntireRow.Delete()#删除改行
                     update12(sheet3,row_rev,data_rpt,data,'D')
                     row_rev=row_rev+1
-
-    fmt(sheet1)
+    if auto_fmt=='Yes':
+        fmt(sheet1)
 
 def update7(sheet,manual_path): #xlwings:在7.0自动插入说明书
     letters=[chr(i) for i in range(97,123)] #26个字母的列表
@@ -1531,7 +1534,7 @@ def fill_CEC(sheet_rpt,sheet_data):#xlwings:自动填充5.0信息
                         sheet_rpt[f'a{row_insert}:k{row_insert}'].font.color=0xFF00FF#对新增的数据颜色区分
 
 def mysort(filename):#xlwings:自定义排序函数
-    print(filename.split('_')[0])#提取文件名前面的数字
+#    print(filename.split('_')[0])#提取文件名前面的数字
     return int(filename.split('_')[0])#转换为数字来排序，如果是字符串排序，会出现问题
 
 def string_strip(string):#只保留字符串中的字母
