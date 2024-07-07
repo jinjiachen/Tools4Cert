@@ -24,6 +24,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH,WD_PARAGRAPH_ALIGNMENT
 #cell=table.cell(0,1)
 #cell.text="clause1"
 verdict='P / F / NA'
+###IEC 60335-1 ed.5.2 & IEC 60335-2-40 ed.6
 values=[
         ("7.14","Marking Durability Test","15s with water, 15s with petroleum","--",verdict),
         ("22.11&22.34","Push, Pull and Torque Test","As specified in standard","EC2092, EC6621, EC2162, EC2426",verdict),
@@ -101,6 +102,7 @@ values=[
 #        ("Annex GG","Refrigerant Charge","--",verdict)
         ]
 
+###IEC 60335-1 ed.5.2 & IEC 60335-2-40 ed.6
 Test_clauses=[
         ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC6565, EC5865, EC5936","P/F/NA"),
         ("11.8","Heating Test","Refer to below for details","EC6565, EC5865, EC5936, EC3102, EC4232","P/F/NA"),
@@ -124,6 +126,84 @@ Test_clauses=[
         ("Annex FF","Leakage Simulation Tests","Refer to table below","EZ6375, EC6022, EC6023","P/F/NA"),
         ]
 
+###UL/CSA 60335-1:2016 & UL/CSA 60335-2-40:2022 ed.4
+values_UL_ed4=[
+        ("7.14","Marking Durability Test","15s with water, 15s with petroleum","--",verdict),
+        ("22.11&22.34","Push, Pull and Torque Test","As specified in standard","EC2092, EC6621, EC2162, EC2426",verdict),
+        ("8.1.1","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826",verdict),
+        ("8.1.2","Protection Against Access to Live Parts","As specified in standard","EC3091",verdict),
+        ("8.1.3","Protection Against Access to Live Parts","As specified in standard","EC2017",verdict),
+        ("8.1.4","Protection Against Access to Live Parts","As specified in standard","EC6081, EC5800",verdict),
+        ("8.1.5","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826",verdict),
+        ("8.2","Protection Against Access to Live Parts","As specified in standard","EC2162, EC3826",verdict),
+        ("10.1&10.2","Power input/Current Deviation","Refer to table below for details","EC6565, EC5865, EC5936",verdict),
+        ("11.8","Heating Test","Refer to below for details","EC6565, EC5865, EC5936, EC3102, EC4232",verdict),
+        ("13.2 & 13.3","Leakage Current Test & Electric Strength Test","Refer to table below for details","EC6081, EC3074, EC2834, EC6565, EC5132",verdict),
+        ("14","Transient Overvoltage","Refer to table below for details","--",verdict),
+        ("15.2","IP Test","As specified in standard","--",verdict),
+        ("15.3","Overflow Test","As specified in standard","--",verdict),
+        ("15.101","Spillage Test","As specified in standard","EC2969, EC2834, EC2385",verdict),
+        ("16.2 & 16.3","Leakage Current Test & Electric Strength Test","Refer to talbe 1-5","EC2743, EC5800, EC5132, EC2834",verdict),
+        ("17","Overload Protection Temperature Test","Refer to table below","EC5865, EC3102, EC5936",verdict),
+        ("19.2&19.3","Abnormal Operation Restricted Heat Dissipation & Overload Test","As specified in standard","EC5936, EC5865, EC3102",verdict),
+        ("19.4","Operation with any defect","As speficied in standard","EC5936, EC5865",verdict),
+        ("19.5","Short-circuited the Sheath and N conductor","As specified in standard","--",verdict),
+        ("19.6","Abnormal Operation-PTC","As specified in standard","EC5936, EC5865, EC3102",verdict),
+        ("19.7","Locking Test for the Motor","Refer to table below","EC5132, EC3102, EC2834, EC5800, EC2743",verdict),
+        ("19.8","Three phase motor","Refer to table below","EC5865, EC5936",verdict),
+        ("19.10","Tests for Series Motors","As specified in standard","EC5865, EC5936",verdict),
+        ("19.11.2","Fault Conditions of Electronic Circuit","Refer to table below","EC5865, EC5936",verdict),
+        ("19.11.4.8","Voltage Drop Test","Refer to table below","EC5865, EC5936",verdict),
+        ("19.12","Tests for Miniature Fuse-link","Refer to table below","EC5865, EC5936, EC5800",verdict),
+        ("19.101","Restriction of Heat Transfer Medium Flow","As specified in standard","EC5865, EC5936, EC3102",verdict),
+        ("19.102","Abnormal Temperature of indoor water","As specified in standard","EC5865, EC5936, EC3102",verdict),
+        ("19.103","Abnormal Ambient Temperature","As specified in standard","EC5865, EC5936, EC3102, EC2605",verdict),
+        ("19.104","Cover Test for Appliance with Supplementary Heaters","As specified in standard","EC5865, EC5936, EC3102",verdict),
+        ("20.1","Stability Test","(   ) inclined","EC6481",verdict),
+        ("20.2","Mechanical Hazard","As specified in standard","EC2162",verdict),
+        ("21.1","Spring Hammer Test","As specified in standard","EC5553",verdict),
+        ("Annex EE","Pressure Tests","Refer to table below","EC5768",verdict),
+        ("21.2","Strength of Solid Insulation & Viberation Test","As specified in standard","--",verdict),
+        ("22.3","Undue Strain Test on Socket-Outlet","As specified in standard","EC5076",verdict),
+        ("22.5","Plug Discharge Test","Refer to table below","EC2567, EC6081, EC5132",verdict),
+        ("22.6","Water Leakage Test","As specified in standard","EC2615",verdict),
+#        ("22.11","Stability of Non-detachable Parts","Refer to table below","EC2092",verdict),
+        ("22.12","Pull Test","(   )N","EC2092",verdict),
+        ("22.16","Cord Reel Abrasion Test","As specified in standard","EC2285, EC2384",verdict),
+        ("22.24","Bare Heating Elements","As specified in standard","--",verdict),
+        ("22.32","Ageing Test of Rubber & Test of Ceramic Material","As specified in standard","--",verdict),
+        ("22.42","Protective Impedance","As specified in standard","--",verdict),
+        ("22.47","Water Mains Pressure Test","(   )MPa, 5mins, No Leakage","EC2468, EC3667",verdict),
+        ("22.57","UV-C Radiation","As specified in standard","--",verdict),
+        ("Annex T","UV-C Radiation","Refer to table below","--",verdict),
+        ("22.104","Water Pressure Test for Containers","(   )MPa, 5mins, No Leakage","EC5768",verdict),
+        ("22.108","Vacuum Pressure Impulses for Storage Tanks","(   )MPa, 15mins, No Deformation","EC5768",verdict),
+        ("22.110","Operation of Non-self-resetting thermal cut-outs","As specified in standard","--",verdict),
+        ("22.127-22.129","Irradiance Limit Test","As specified in standard","EC5912, EC4255",verdict),
+        ("23.3","Internal Wiring Flexing Test","(\t) times for the flexing conductors","EC2285",verdict),
+        ("23.5","Insulation of Internal Wiring Test","2000 V, 15 minutes","EC2834",verdict),
+        ("24.5","Capacitor voltage","Rated voltage:\nMeasured voltage:","EC6081, EC4937, EC5132",verdict),
+        ("23.101","Radiation resistance of internal wiring","After conditioning in Annex OO, 2000V, 15 minutes applied","EC2834",verdict),
+        ("25.2","Electric strength for multiple supply","1250V, 60s","EC2834",verdict),
+        ("25.14","Cord Flexing Test","As specified in standard","EC2667, EC2211",verdict),
+        ("25.15","Power Cord Pull and Torque Test","Mass of appliance: (\t) kg\nPull force: (\t) N\nTorque: (\t) Nm\nMovement distance: (\t)mm","EC2092, EC6622, EC5773",verdict),
+        ("26.5","Conductor Escape Test","As specified in standard","--",verdict),
+        ("27.5","Ground Impedance Test","(\t)Ohm","EC4291",verdict),
+        ("29","Creepage Ditance and Clearance","As specified in standard","EC2584, EC5773",verdict),
+        ("30.1","Ball Pressure Test","Refer to table below","EC3304, EC2132",verdict),
+        ("30.2.3 & 30.2.4","Glow Wire Test & Needle Flame Test","Refer to table below","EC2764, EC2072",verdict),
+        ("31","Salt Mist Test","As specified in standard","--",verdict),
+        ("32.101","UV-C Irradiance Test","Measured UV-C spectral irradiance: (\t)uW/cm2","--",verdict),
+        ("Annex N","Proof Tracking Test","Refer to table below","EC2071",verdict),
+#        ("Annex B","Appliance Powered by Rechargeable Batteries","--",verdict),
+#        ("Annex D","Motor with Thermal Protectors","--",verdict),
+#        ("Annex H","Switch Endurance Test","--",verdict),
+#        ("Annex I","Motors having basic insulation that is inadequate for the rated voltage of the appliance","--",verdict),
+#        ("Annex EE","Pressure Tests","--",verdict),
+        ("Annex FF","Leakage Simulation Tests","Refer to table below","EZ6375, EC6022, EC6023",verdict),
+#        ("Annex GG","Refrigerant Charge","--",verdict)
+        ]
+###生成目录
 def Content(values):
     table=document.add_table(rows=1,cols=5,style="Table Grid")
     table.style.font.name="Arial"   #set the font of table to Arial style
@@ -234,14 +314,14 @@ def Clause11():
     col1[1].text="Test voltage(V):"
     col2[0].text="Test condition(C):"
     col2[1].text="Test frequency(Hz):"
-    T_couple=document.add_table(rows=25, cols=4, style="Table Grid")        ##Table for thermocouple
+    T_couple=document.add_table(rows=41, cols=4, style="Table Grid")        ##Table for thermocouple
     row_cells=T_couple.rows[0].cells  #choose the first row of T_couple table
     row_cells[0].text="Item No."
     row_cells[1].text="Thermocouple location"
     row_cells[2].text="Actual temperature(C)"
     row_cells[3].text="Limitation(C)"
     col_cells=T_couple.columns[0].cells     #choose the first column of T_couple table
-    for i in range(1,25):   #set the item no series 
+    for i in range(1,41):   #set the item no series 
         col_cells[i].text=str(i)
     for row in T_couple.rows:     #set the row height
         row.height=Pt(20)
@@ -1193,6 +1273,19 @@ if __name__=='__main__':
                 content_replace(document,'<standard version>','UL/CSA 60335-2-40 (Ed 4.0)','NO')
                 basic_info(document)
                 body=document.add_paragraph()
+                Content(values)
+        
+                #选择测试内容并输出
+                Menu(Test_clauses)
+                document.save(job+'.docx')
+        
+                print("==================================================Program END ==================================================") 
+                flag=input("Press Enter to continue! Others to EXIT!")
+                if flag!="":
+                    break
+                else:
+                    pass
+#                    os.system("cls")
     
         except:
             print("==================================================Program END ==================================================") 
