@@ -1180,7 +1180,19 @@ if __name__=='__main__':
                     pass
 #                    os.system("cls")
             elif choice=='2':
-                pass
+                print("This TDS is for UL/CSA 60335-2-40:2022(ed.4) in conjunction with UL 60335-1!")
+                print("================================================== Program begin ==================================================")
+                job=input("Please input the project number:")
+                print('project name:',job)
+                if os.name=='nt':
+                    document = Document('.\Temp.docx') #Open the template document
+                elif os.name=='posix':
+                    document = Document('./Temp.docx') #Open the template document
+                print('opening the document')
+                content_replace(document,'<issue date>','2023-07-29','NO')
+                content_replace(document,'<standard version>','UL/CSA 60335-2-40 (Ed 4.0)','NO')
+                basic_info(document)
+                body=document.add_paragraph()
     
         except:
             print("==================================================Program END ==================================================") 
