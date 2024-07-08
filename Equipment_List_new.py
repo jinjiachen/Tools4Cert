@@ -12,7 +12,7 @@ import pandas as pd
 def read_excel():
 #    file=input('请输入excel文件路径')
 #    file=file.replace('"','')
-    file=r'Y:\Lab-Share\Equipment list-SH\Equipment List-SH (202310).xlsx'
+    file=r'Y:\Lab-Share\Equipment list-SH\Equipment List-SH (202406).xlsx'
     EC_num=input('请输入要查询的设备号')
     sheet=pd.read_excel(io=file)
     res=sheet[sheet['REG. NO.']==EC_num]
@@ -27,11 +27,12 @@ def read_excel():
         name=res['EQUIPMENT NAME'].values[0]
         PL=res['PL'].values[0]
         location=res['location'].values[0]
-        cal_start=res['CAL.DATE'].values[0]
-        cal_end=res['CAL.NEXT DUE'].values[0]
+#        cal_start=res['CAL.DATE'].values[0]
+#        cal_end=res['CAL.NEXT DUE'].values[0]
         status=res['STATUS'].values[0]
         print('#'*20)
-        print(f'设备号：{EC_num}\n设备名称：{name}\n地址：{PL}: {location}\n计量日期：{cal_start} to {cal_end}\n状态：{status}')
+#        print(f'设备号：{EC_num}\n设备名称：{name}\n地址：{PL}: {location}\n计量日期：{cal_start} to {cal_end}\n状态：{status}')
+        print(f'设备号：{EC_num}\n设备名称：{name}\n地址：{PL}: {location}\n状态：{status}')
         print('#'*20+'\n')
 
 
