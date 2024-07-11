@@ -314,14 +314,14 @@ def Clause11():
     col1[1].text="Test voltage(V):"
     col2[0].text="Test condition(C):"
     col2[1].text="Test frequency(Hz):"
-    T_couple=document.add_table(rows=41, cols=4, style="Table Grid")        ##Table for thermocouple
+    T_couple=document.add_table(rows=40, cols=4, style="Table Grid")        ##Table for thermocouple
     row_cells=T_couple.rows[0].cells  #choose the first row of T_couple table
     row_cells[0].text="Item No."
     row_cells[1].text="Thermocouple location"
     row_cells[2].text="Actual temperature(C)"
     row_cells[3].text="Limitation(C)"
     col_cells=T_couple.columns[0].cells     #choose the first column of T_couple table
-    for i in range(1,41):   #set the item no series 
+    for i in range(1,40):   #set the item no series 
         col_cells[i].text=str(i)
     for row in T_couple.rows:     #set the row height
         row.height=Pt(20)
