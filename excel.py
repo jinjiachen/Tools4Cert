@@ -1774,7 +1774,7 @@ def add_models(sheet_rpt2,sheet_rpt12,sheet_data):
         if sheet_data[f'd{row}'].value=="A": #判断H列是否为A，A为新增
             basic_model=sheet_data[f'a{row}'].value#获取基本型号
             new_model=sheet_data[f'b{row}'].value#获取增加的列名型号
-            brand=sheet_data[f'c{row}'].value#获取增加的列名型号
+            brand=sheet_data[f'c{row}'].value#获取商标
             add_cell_text(sheet_rpt2,'B7',', '+new_model)#在报告sec2中增加型号
             similarity=f'{new_model} is identical with {basic_model} except for the model name.'
             print(f'正在增加{new_model}')
