@@ -265,7 +265,7 @@ def Menu():
         app.screen_updating=False#取消屏幕刷新
         wb=app.books.open(rpt)
         sht4=wb.sheets['4.0 Components']
-        check(sht4,'Yes')
+        check(sht4,'No')
 #        wb.save(rpt[:-4]+'_output.xls')
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
@@ -419,7 +419,7 @@ def Menu():
                         sht5_data=wb_data.sheets[0]
                 fill_CEC(sht5,sht5_data)
             elif choice=='cc':
-                check(sht4,'Yes')
+                check(sht4,'No')
             elif choice=='aml':
                 path=input("Please input the ML application path:") #输入申请表的路径
                 path=path.replace('"','')
@@ -1582,23 +1582,55 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
             if ptf=='Yes':
                 print(url)
             selector_basic=ul_search(url)#用get方法提交搜索请求，返回搜索结果的response
-            links=basic_info(selector_basic)#输出查询的结果并返回详细连接
-            time.sleep(random.randint(1,3))
+            items=basic_info(selector_basic)#输出查询的结果并返回详细连接
+            time.sleep(random.randint(3,5))
             if ptf=='Yes':
-                print(links)
-            if len(links)==0:
+                print(items)
+            if len(items)==0:
                 print('invalid cert')
                 sheet[f'h{row}'].value='invalid cert'
                 continue
             else:
-                selector_details=ul_search('https://iq.ulprospector.com'+links[0])#此处暂时只对一个链接做处理，后续优化
-                models=certificate(selector_details)
-                if filters(models,model)=='green':
+                ul_flag=[]#状态说明：3-查找到精准型号，2-查找到类似型号，1-没查到
+                csa_flag=[]
+                for item in items:#遍历所有的查询结果
+                    print(f'正在比对{item}')
+                    selector_details=ul_search('https://iq.ulprospector.com'+item[3])#查询详细链接中的内容
+                    models=certificate(selector_details)
+                    if filters(models,model)=='green':
+                        if 'Canada' in item[2]:
+                            csa_flag.append(3)
+                        else:
+                            ul_flag.append(3)
+                    elif filters(models,model)=='yellow':
+                        if 'Canada' in item[2]:
+                            csa_flag.append(2)
+                        else:
+                            ul_flag.append(2)
+                    elif filters(models,model)=='red':
+                        if 'Canada' in item[2]:
+                            csa_flag.append(1)
+                        else:
+                            ul_flag.append(1)
+
+                if max(ul_flag)==3 and max(csa_flag)==3:
                     sheet[f'h{row}'].value='ok'
-                elif filters(models,model)=='yellow':
+                elif max(ul_flag)==3 and max(csa_flag)==2:
+                    sheet[f'h{row}'].value='ul is ok, csa to be check'
+                elif max(ul_flag)==2 and max(csa_flag)==3:
+                    sheet[f'h{row}'].value='csa is ok, ul to be check'
+                elif max(ul_flag)==3 and max(csa_flag)==1:
+                    sheet[f'h{row}'].value='ul is ok, csa not found'
+                elif max(ul_flag)==1 and max(csa_flag)==3:
+                    sheet[f'h{row}'].value='csa is ok, ul not found'
+                elif max(ul_flag)==2 and max(csa_flag)==2:
                     sheet[f'h{row}'].value='to be check'
-                elif filters(models,model)=='red':
-                    sheet[f'h{row}'].value='not found!'
+                elif max(ul_flag)==2 and max(csa_flag)==1:
+                    sheet[f'h{row}'].value='ul to be check,csa not found'
+                elif max(ul_flag)==1 and max(csa_flag)==2:
+                    sheet[f'h{row}'].value='csa to be check,ul not found'
+                elif max(ul_flag)==1 and max(csa_flag)==1:
+                    sheet[f'h{row}'].value='not found'
 
 
 def get_ML_info(path,ptf='No'):#xlwings：获取多重列名的型号

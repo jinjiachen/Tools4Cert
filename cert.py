@@ -23,9 +23,9 @@ def Menu():
             ul_no=input('请输入需要查询的关键字:')
             url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
             res_basic=ul_search(url)
-            links=basic_info(res_basic)
+            items=basic_info(res_basic)
             no=input('请选择对应的部件序号:')
-            res_details=ul_search('https://iq.ulprospector.com'+links[int(no)])
+            res_details=ul_search('https://iq.ulprospector.com'+items[int(no)][3])
             models=certificate(res_details)
             model=input('想要查找的型号：')
             filters(models,model)
@@ -296,14 +296,16 @@ def basic_info(selector):#针对搜索结果进行处理并输出所需要的信
     number=selector.xpath('//tbody/tr/td[1]/a/span/text()')#黄卡号
     company=selector.xpath('//tbody/tr/td[2]/div/span/text()')#公司名称
     description=selector.xpath('//tbody/tr/td[4]/div/span/text()')#部件的描述信息
+    res=[]
 
     print('-'*10+'以下是查询结果'+'-'*10)
     for index in range(0,len(links)):#格式化输出
+        res.append([number[index],company[index],description[index],links[index]])#保存一组结果
         print(str(index)+'\t',number[index]+'\t',company[index]+'\t',description[index]+'\t')
-    return links
+    return res
 
 
-def certificate(selector):#查找证书中所有的型号
+def certificate(selector,ptf='No'):#查找证书中所有的型号
     models=[]
     if len(models)==0:
         print('mode 1')
@@ -317,7 +319,8 @@ def certificate(selector):#查找证书中所有的型号
     if len(models)==0 or models[0]==', ' or models[0]=='\n':#增加逗号和回车的判断是为了应对抓取全为逗号或回车的情况下，继续向下抓取型号
         print('mode 4')
         models=selector.xpath('//prodid/b/a/text()')
-    print(models)
+    if ptf=='Yes':
+        print(models)
     return models
 
 
@@ -372,10 +375,10 @@ def load_config():#加载配置文件
 
 
 if __name__=='__main__':
-#    driver=Driver()
+    driver=Driver()
     Menu()
-#    driver.close()
-#    driver.quit()
+    driver.close()
+    driver.quit()
 #    driver=Driver()
 #    print('engine start!')
 #    while True:
