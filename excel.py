@@ -25,7 +25,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR")
+    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -318,6 +318,10 @@ def Menu():
         wb.save(rpt[:-5]+'_CDF.xlsm')
         wb.close()
         app.kill()
+    elif choice=='cp3':
+        clear_pics(sht3)
+    elif choice=='cp7':
+        clear_pics(sht7)
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
         app.display_alerts=False #取消警告
@@ -335,7 +339,7 @@ def Menu():
         sht12=wb.sheets['12.0 Revisions']
         wb.save(output_file)
         while True:
-            choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n指令：")
+            choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\n指令：")
             if choice=='1':
                 path_data=input("Please input the data source path:")
                 path_data=path_data.replace('"','')
@@ -423,6 +427,10 @@ def Menu():
                 data=get_ML_info(path,'Yes')
                 print(f'报告中已有多重列名ML{item}',)
                 modify_ML(sht9,item,data,'A')
+            elif choice=='cp3':
+                clear_pics(sht3)
+            elif choice=='cp7':
+                clear_pics(sht7)
             elif choice=='w':#用于把修改好的内容同步保存到原报告
                 wb.save(rpt.replace('_output',''))
                 wb.save(output_file)
@@ -1795,6 +1803,14 @@ def add_cell_text(sheet,cell,text):
     new_text=old_text+text
     sheet[cell].value=new_text
 
+###清除指定sheet中的照片
+def clear_pics(sheet): #xlwings:删除照片
+    for shape in sheet.shapes:#删除所有的shape对象
+        shape.delete()
+    while sheet.pictures.count>0:#当sheet中有图片时，删除图片
+        sheet.pictures[0].delete()
+    last_row=sheet.used_range.last_cell.row #返回最后一行的行号
+    sheet[f'a3:j{last_row}'].api.EntireRow.Delete()#删除对应区域的行数
 
 if __name__=='__main__':
     Menu()
