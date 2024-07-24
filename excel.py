@@ -434,6 +434,7 @@ def Menu():
             elif choice=='w':#用于把修改好的内容同步保存到原报告
                 wb.save(rpt.replace('_output',''))
                 wb.save(output_file)
+                print('保存时间为:',time.strftime('%Y-%m-%d %H:%M:%S'))
             elif choice=='exit' or choice=='q':
                 wb.close()
                 app.kill()
@@ -1591,8 +1592,8 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
                 sheet[f'h{row}'].value='invalid cert'
                 continue
             else:
-                ul_flag=[]#状态说明：3-查找到精准型号，2-查找到类似型号，1-没查到
-                csa_flag=[]
+                ul_flag=[0]#状态说明：3-查找到精准型号，2-查找到类似型号，1-没查到
+                csa_flag=[0]
                 for item in items:#遍历所有的查询结果
                     print(f'正在比对{item}')
                     selector_details=ul_search('https://iq.ulprospector.com'+item[3])#查询详细链接中的内容
@@ -1631,6 +1632,10 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
                     sheet[f'h{row}'].value='csa to be check,ul not found'
                 elif max(ul_flag)==1 and max(csa_flag)==1:
                     sheet[f'h{row}'].value='not found'
+                elif max(ul_flag)>=1 and max(csa_flag)==0:
+                    sheet[f'h{row}'].value='no cert for csa'
+                elif max(ul_flag)==0 and max(csa_flag)>=1:
+                    sheet[f'h{row}'].value='no cert for ul'
 
 
 def get_ML_info(path,ptf='No'):#xlwings：获取多重列名的型号
