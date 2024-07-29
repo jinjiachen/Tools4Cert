@@ -25,7 +25,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片")
+    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nmi(ML info):尝试提取ML信息\n")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -289,6 +289,10 @@ def Menu():
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
+    elif choice=='mi':
+        path=input("Please input the ML application path:") #输入申请表的路径
+        path=path.replace('"','')
+        data=get_ML_info(path,'Yes')
     elif choice=='15':
         rpt=input("Please input the report path:") #输入要修改的报告的路径
         rpt=rpt.replace('"','')
@@ -365,7 +369,7 @@ def Menu():
             elif choice=='2':
                 data=input("Please input the data source path:") #输入数据源的路径
                 data=data.replace('"','')
-                app=xw.App(visible=False,add_book=False)
+#                app=xw.App(visible=False,add_book=False)#这个好像多余，打开一个进程即可
                 wb_data=app.books.open(data)
                 sht4_data=wb_data.sheets['4.0 Components']
                 start=time.time()
