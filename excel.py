@@ -69,6 +69,7 @@ def Menu():
 #        print(rpt_dir)
 #        print(os.path.basename(rpt))
         data=input("Please input the data source path:") #输入数据源的路径
+        auto_fmt=input('是否需要格式化:')
         data=data.replace('"','')
         app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
@@ -79,7 +80,7 @@ def Menu():
         wb1=app.books.open(data)
         sh1=wb1.sheets['4.0 Components']
         start=time.time()
-        update4(sh,sh1,sh12)
+        update4(sh,sh1,sh12,auto_fmt)
         end=time.time()
         print(f'operating time {round(end-start)}s:',)
 #        wb.save(rpt[:-4]+'_output.xls')
@@ -842,7 +843,8 @@ def row_range(sheet,data): #xlwings:查找相同name的部件的行数范围
 #    total_row=sheet_total_rows(sheet)+1
     total_row=sheet.used_range.last_cell.row#返回最大的行数
     for i in range(1,total_row):#在报告的此行数范围内去匹配
-        if sheet[f'c{i}'].value==data[1]:#c列中寻找data[0]，即Name
+#        if sheet[f'c{i}'].value==data[1]:#c列中寻找data[0]，即Name
+        if sheet[f'b{i}'].value==data[0]:#c列中寻找data[0]，即item
             row_start=i #同name的部件的起始行
             rows.append(row_start)#找到对应的关键词，记录开始行
             row_end=lookdown(sheet,'c',i)
@@ -941,7 +943,6 @@ def update4(sheet1,sheet2,sheet3,auto_fmt='Yes'):#xlwings:更新4.0信息
             print(rows)
             for j in range(rows[0],rows[1]+1):#在同一个部件的行数范围内去匹配信息
                 data_rpt=copy_line(sheet1,j)
-#                if sheet1[f'd{j}'].value.upper()==data[2].upper() and sheet1[f'e{j}'].value.upper()==data[3].upper(): #匹配制造商与型号，当一致时，进行后面的操作
                 if data_rpt[2].upper()==data[2].upper() and str(data_rpt[3]).upper()==str(data[3]).upper(): #匹配制造商与型号，当一致时，进行后面的操作
                     data=list_fmt(data)
                     paste_line(sheet1,j,data) #修改技术参数(technical data), 用了整行复制的方法，但是其实只是修改技术参数那一列，因为部件名称，制造商，型号都是一致的
