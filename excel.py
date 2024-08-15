@@ -767,7 +767,8 @@ def lookdown(sheet,col,row): #xlwings:继续往下寻找，是否有空值，直
 
 def fmt(sheet):#目前主要是合并name列的单元格
 #    name=get_col_list(sheet,'c',1,sheet_total_rows(sheet)) #获取C列的部件名
-    name=get_col_list(sheet,'c',1,sheet.used_range.last_cell.row) #获取C列的部件名
+#    name=get_col_list(sheet,'c',1,sheet.used_range.last_cell.row) #获取C列的部件名
+    name=get_col_list(sheet,'b',1,sheet.used_range.last_cell.row) #获取C列的部件名
     print(name)
     for value in name:
         data=[]
@@ -838,21 +839,21 @@ def list_fmt(list):
             list[i]=str_fmt(list[i],'No')
     return list
 
-def row_range(sheet,data): #xlwings:查找相同name的部件的行数范围
+def row_range(sheet,data): #xlwings:查找相同name or item的部件的行数范围
     rows=[]
 #    total_row=sheet_total_rows(sheet)+1
     total_row=sheet.used_range.last_cell.row#返回最大的行数
     for i in range(1,total_row):#在报告的此行数范围内去匹配
-#        if sheet[f'c{i}'].value==data[1]:#c列中寻找data[0]，即Name
-        if sheet[f'b{i}'].value==data[0]:#c列中寻找data[0]，即item
+#        if sheet[f'c{i}'].value==data[1]:#c列中寻找data[1]，即Name
+        if sheet[f'b{i}'].value==data[0]:#b列中寻找data[0]，即item
             row_start=i #同name的部件的起始行
             rows.append(row_start)#找到对应的关键词，记录开始行
             row_end=lookdown(sheet,'c',i)
             rows.append(row_end)#记录暂定的结束行，如果下方是同一部件，则会被后面的替代，如果不是，这就是最终的行数
-            while(sheet[f'c{row_end+1}'].value==data[1]):
-#            while(sheet[f'c{row_end+1}'].value==data[1] or sheet[f'c{row_end+1}'].value==None):
-                row_end=row_end+1#同name的部件的结束行
-                rows[1]=row_end #找到同样的部件名，更新结束行
+#            while(sheet[f'c{row_end+1}'].value==data[1]):#查找name的方法
+            while(sheet[f'b{row_end+1}'].value==data[0]):#查找item的方法
+                row_end=row_end+1#同name or item的部件的结束行
+                rows[1]=row_end #找到同样的name or item，更新结束行
         if len(rows)==2:
             break
     return rows
