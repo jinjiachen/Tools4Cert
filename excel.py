@@ -766,22 +766,24 @@ def lookdown(sheet,col,row): #xlwings:继续往下寻找，是否有空值，直
     return row
 
 def fmt(sheet):#目前主要是合并name列的单元格
-#    name=get_col_list(sheet,'c',1,sheet_total_rows(sheet)) #获取C列的部件名
 #    name=get_col_list(sheet,'c',1,sheet.used_range.last_cell.row) #获取C列的部件名
     name=get_col_list(sheet,'b',1,sheet.used_range.last_cell.row) #获取C列的部件名
-    print(name)
+#    print(name)
+    total=len(name)
+    count=1
     for value in name:
         data=[]
         data.append(value)
         data.append(value)
-        print(data)
+        print(f'合并单元格进度：{count}/{total}')
         rows=row_range(sheet,data)
-        print(rows)
+#        print(rows)
         if rows[0]<rows[1]:
             sheet[f'a{rows[0]+1}:c{rows[1]}'].value=''
         sheet[f'c{rows[0]}:c{rows[1]}'].merge()
         sheet[f'b{rows[0]}:b{rows[1]}'].merge()
         sheet[f'a{rows[0]}:a{rows[1]}'].merge()
+        count+=1
         
 def separate(str,symbol): #字符串和分隔符拆分并重组函数，解决分割不当问题
     new_str=''
