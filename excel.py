@@ -465,7 +465,8 @@ def Menu():
                 sht8=wb.sheets['8.0 Test Summary']
                 sht9=wb.sheets['9.0 MLS']
                 sht12=wb.sheets['12.0 Revisions']
-                wb.save(rpt[:-5]+'_output.xlsm')
+#                wb.save(rpt[:-5]+'_output.xlsm')
+                wb.save(output_file)
             input('any key to contine!')
             os.system('cls')
 
