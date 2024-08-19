@@ -33,7 +33,7 @@ def Menu():
         app=xw.App(visible=False,add_book=False)#创建app对象，传入Annual_checks函数
         path_doc=Annual_init(app,path_xls,path_doc,project,control_No,sample)
         for component in ['compressor','motor','smps','transformer','pwb','power unit']:
-            Annual_checks(app,path_xls,path_doc,component)
+            Annual_checks_HA(app,path_xls,path_doc,component)
         app.kill()#关闭进程
     elif choice=='ucgt':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
@@ -390,7 +390,7 @@ def Annual_checks(app,path_xls,path_doc,component):#对多个报告生成对应�
 
 ###按照GT的特殊需求，每一份单独的报告出一份年检报告
 def Annual_checks_GT(app,path_xls,path_doc,component):#对多个报告生成对应部件的年检报告
-    files=[f for f in os.listdir(path_xls) if f.endswith('.xls')] #列出所有的xls文件
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls') or f.endswith('.xlsm')] #列出所有的xls文件
     file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
     print("\n".join(file_path))
     for file in file_path:#遍历所有的xls文件，即所有需要做年检的报告
@@ -413,6 +413,35 @@ def Annual_checks_GT(app,path_xls,path_doc,component):#对多个报告生成对�
         if not Annual_check(docx,data,component):#如果返回为0，则为正常写入数据，此时保存年检报告
             docx.save(new_file)
             
+###按照Molly的新要求，每一份单独的报告出一份年检报告,不同部件放在一起
+def Annual_checks_HA(app,path_xls,path_doc,component):#对多个报告生成对应的年检报告
+    files=[f for f in os.listdir(path_xls) if f.endswith('.xls') or f.endswith('.xlsm')] #列出所有的xls文件
+    file_path=[os.path.join(path_xls, filename) for filename in files]#所有xls文件的绝对路径
+    print("\n".join(file_path))
+    for file in file_path:#遍历所有的xls文件，即所有需要做年检的报告
+        filename=os.path.basename(file)#文件名
+        if filename.endswith('.xls'):
+            folder=os.path.join(os.path.dirname(file),filename[:-4])#构造文件夹路径
+        elif filename.endswith('.xlsm'):
+            folder=os.path.join(os.path.dirname(file),filename[:-5])#构造文件夹路径
+        os.system(f'md "{folder}"')#创建文件夹
+        print(f'正在处理{file}')
+
+        #打开对应的报告提取信息
+        wb=app.books.open(file)
+        data=get_UC(wb)#提取相应的UC信息
+        print(data)
+        wb.close()
+
+        new_file=os.path.join(folder,os.path.basename(path_doc)[:-5])+'.docx'#构建年检报告的路径
+        if exit_file(new_file):
+            docx=Document(new_file)#如果存在对应的年检报告，则在对应报告中添加
+        else:
+            docx=Document(path_doc)
+        if not Annual_check(docx,data,component):#如果返回为0，则为正常写入数据，此时保存年检报告
+            docx.save(new_file)
+
+
 ###修改TRF中的table 24.1
 def update_components():#更新修改table24.1
     pass
