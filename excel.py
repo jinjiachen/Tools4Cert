@@ -25,7 +25,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nmi(ML info):尝试提取ML信息\n")
+    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nmi(ML info):尝试提取ML信息\ncc5:检查CEC的证书")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -271,6 +271,19 @@ def Menu():
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
+    elif choice=='cc5':
+        rpt=input("Please input the report path:") #输入要检查的报告的路径
+        rpt=rpt.replace('"','')
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        wb=app.books.open(rpt)
+        sht5=wb.sheets['5.0 CEC Comps']
+        check_CEC(sht5,'No')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
+        wb.close()
+        app.kill()
     elif choice=='aml':
         rpt=input("Please input the report path:") #输入要修改的报告的路径
         rpt=rpt.replace('"','')
@@ -425,6 +438,8 @@ def Menu():
                 fill_CEC(sht5,sht5_data)
             elif choice=='cc':
                 check(sht4,'No')
+            elif choice=='cc5':
+                check_CEC(sht5,'No')
             elif choice=='aml':
                 path=input("Please input the ML application path:") #输入申请表的路径
                 path=path.replace('"','')
@@ -1565,7 +1580,7 @@ def string_strip(string):#只保留字符串中的字母
         string=string.replace('，','')#替换中文逗号
         return string.upper()
 
-def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
+def check(sheet,ptf='No'):#xlwings:检查报告4.0证书的正确性
     '''
     sheet: SEC4.0
     '''
@@ -1645,6 +1660,93 @@ def check(sheet,ptf='No'):#xlwings:检查报告证书的正确性
                     sheet[f'h{row}'].value='no cert for csa'
                 elif max(ul_flag)==0 and max(csa_flag)>=1:
                     sheet[f'h{row}'].value='no cert for ul'
+
+def check_CEC(sheet,ptf='No'):#xlwings:检查报告5.0证书的正确性
+    '''
+    sheet: SEC5.0
+    '''
+    for row in range(1,sheet.used_range.last_cell.row): #在此行数范围内去匹配需要修改的信息
+        print(row)
+        if sheet[f'l{row}'].value=="C": #判断L列是否为C，C为检查该部件下的证书
+#            manufacturer=sheet_data[f'f{row}'].value
+#            model=sheet_data[f'i{row}'].value
+            start=row+5#数据的起始行数
+            row_scan=start
+#            print(manufacturer)
+#            print(model)
+            while sheet[f'a{row_scan}'].value!='WINDING(S) RESISTANCE':
+                row_scan+=1
+                print(sheet[f'a{row_scan}'].value)
+            end=row_scan#数据的终止行数
+    for row in range(start,end): #在此行数范围内去匹配需要修改的信息
+        print(f'\n#####正在核对第{row}行')
+        manufacturer=sheet[f'c{row}'].value
+        scan=row#扫描的行数
+        while manufacturer==None:#当有合并单元格时，向上扫描，获取制造商信息
+            scan=scan-1
+            manufacturer=sheet[f'c{scan}'].value
+        ul_no=re.search('\w{1,2}\d{5,6}',manufacturer)#提取黄卡号
+        model=str(sheet[f'e{row}'].value)#转化为字符，针对纯数字问题
+        if ul_no==None:#排除没有控制号的部件
+            continue
+        else:
+            url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no.group()
+            if ptf=='Yes':
+                print(url)
+            selector_basic=ul_search(url)#用get方法提交搜索请求，返回搜索结果的response
+            items=basic_info(selector_basic)#输出查询的结果并返回详细连接
+            time.sleep(random.randint(3,5))
+            if ptf=='Yes':
+                print(items)
+            if len(items)==0:
+                print('invalid cert')
+                sheet[f'h{row}'].value='invalid cert'
+                continue
+            else:
+                ul_flag=[0]#状态说明：3-查找到精准型号，2-查找到类似型号，1-没查到
+                csa_flag=[0]
+                for item in items:#遍历所有的查询结果
+                    print(f'正在比对{item}')
+                    selector_details=ul_search('https://iq.ulprospector.com'+item[3])#查询详细链接中的内容
+                    models=certificate(selector_details)
+                    if filters(models,model)=='green':
+                        if 'Canada' in item[2]:
+                            csa_flag.append(3)
+                        else:
+                            ul_flag.append(3)
+                    elif filters(models,model)=='yellow':
+                        if 'Canada' in item[2]:
+                            csa_flag.append(2)
+                        else:
+                            ul_flag.append(2)
+                    elif filters(models,model)=='red':
+                        if 'Canada' in item[2]:
+                            csa_flag.append(1)
+                        else:
+                            ul_flag.append(1)
+
+                if max(ul_flag)==3 and max(csa_flag)==3:
+                    sheet[f'l{row}'].value='ok'
+                elif max(ul_flag)==3 and max(csa_flag)==2:
+                    sheet[f'l{row}'].value='ul is ok, csa to be check'
+                elif max(ul_flag)==2 and max(csa_flag)==3:
+                    sheet[f'l{row}'].value='csa is ok, ul to be check'
+                elif max(ul_flag)==3 and max(csa_flag)==1:
+                    sheet[f'l{row}'].value='ul is ok, csa not found'
+                elif max(ul_flag)==1 and max(csa_flag)==3:
+                    sheet[f'l{row}'].value='csa is ok, ul not found'
+                elif max(ul_flag)==2 and max(csa_flag)==2:
+                    sheet[f'l{row}'].value='to be check'
+                elif max(ul_flag)==2 and max(csa_flag)==1:
+                    sheet[f'l{row}'].value='ul to be check,csa not found'
+                elif max(ul_flag)==1 and max(csa_flag)==2:
+                    sheet[f'l{row}'].value='csa to be check,ul not found'
+                elif max(ul_flag)==1 and max(csa_flag)==1:
+                    sheet[f'l{row}'].value='not found'
+                elif max(ul_flag)>=1 and max(csa_flag)==0:
+                    sheet[f'l{row}'].value='no cert for csa'
+                elif max(ul_flag)==0 and max(csa_flag)>=1:
+                    sheet[f'l{row}'].value='no cert for ul'
 
 
 def get_ML_info(path,ptf='No'):#xlwings：获取多重列名的型号
