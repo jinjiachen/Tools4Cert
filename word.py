@@ -11,7 +11,7 @@ from docx import Document
 from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from excel import get_UC
+from excel import get_UC,get_data
 from PyPDF2 import PdfFileMerger,PdfWriter,PdfReader
 import PyPDF2
 import time
@@ -49,20 +49,55 @@ def Menu():
             Annual_checks_GT(app,path_xls,path_doc,component)
         app.kill()#关闭进程
     elif choice=='2':
-        data=input('请输入要提取的数据文件的路径：')
-        data=data.replace('"','')
-        docx=Document(data)
-        new_docx=Document()
-        tables=docx.tables
-        print('the numbers of tables:',len(tables))
-        table_components=find_table(tables,'hello')
-        print('找到部件清单的表格：',table_components)
-        rows_value=get_more(table_components)
-        print('获取的数据行数：',len(rows_value))
-        new_table=new_docx.add_table(rows=len(rows_value),cols=6,style="Table Grid")
-        print('生成的新表格的行数：',len(new_table.rows))
-        write_table(new_table,rows_value)
-        new_docx.save(data[:-5]+'output.docx')
+        file_type=input('提取的数据源类型：\n1.word 2.excel')
+        if file_type=='1':
+            data=input('请输入要提取的数据文件的路径：')
+            data=data.replace('"','')
+            docx=Document(data)
+            new_docx=Document()
+            tables=docx.tables
+            print('the numbers of tables:',len(tables))
+            table_components=find_table(tables,'hello')
+            print('找到部件清单的表格：',table_components)
+            rows_value=get_more(table_components)
+            print('获取的数据行数：',len(rows_value))
+            new_table=new_docx.add_table(rows=len(rows_value),cols=6,style="Table Grid")
+            print('生成的新表格的行数：',len(new_table.rows))
+            write_table(new_table,rows_value)
+            new_docx.save(data[:-5]+'output.docx')
+        elif file_type=='2':
+            data=input('请输入要提取的数据文件的路径：')
+            data=data.replace('"','')
+            data_start=int(input("Please input the start line of data:"))
+            data_end=int(input("Please input the end line of data:"))
+            col1=input("Please choose four columns of data (1/4):")
+            col2=input("Please choose four columns of data (2/4):")
+            col3=input("Please choose four columns of data(3/4):")
+            col4=input("Please choose four columns of data (4/4):")
+            col5=input("是否有单独提供证书，如有，请指出证书号所在列")
+            app=xw.App(visible=True,add_book=False)
+            app.display_alerts=False #取消警告
+            app.screen_updating=False#取消屏幕刷新
+            wb_data=app.books.open(data)
+            for sheet in wb_data.sheets:
+                print(sheet)
+                if sheet.name=='4.0 Components':
+                    print('find',sheet.name)
+                    sht_data=sheet
+                    break
+    #                print(sht_data.name)
+                else:
+                    sht_data=wb_data.sheets[0]
+            source_data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)#提取到的原始数据
+            print(source_data)
+            wb_data.close()
+            app.kill()
+            #开始将数据写入word
+            new_docx=Document()
+            new_table=new_docx.add_table(rows=len(source_data),cols=6,style="Table Grid")
+            print('生成的新表格的行数：',len(new_table.rows))
+            write_table(new_table,source_data)
+            new_docx.save(data[:-5]+'output.docx')
     elif choice=='3':
         path=input('请输入需要转换的doc文件路径：')
         path=path.replace('"','')
@@ -245,8 +280,9 @@ def get_more(tables):#输入多个表格，返回每行的数据
 
 def write_table(new_table,rows_value):#把获取的数据写入到新建的表格中
     for i in range(0,len(rows_value)-1):#遍历数据列表中的每一个元素
-#        print(f'写入数据第{i}行')
-        for j in range(0,6):
+        print(f'写入数据第{i}行',rows_value[i])
+#        for j in range(0,6):
+        for j in range(0,len(rows_value[0])):
             new_table.rows[i].cells[j].text=rows_value[i][j]
             new_table.rows[i].cells[j].paragraphs[0].runs[0].font.name='Arial'
             new_table.rows[i].cells[j].paragraphs[0].runs[0].font.size=Pt(10)

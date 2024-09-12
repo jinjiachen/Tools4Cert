@@ -656,6 +656,11 @@ def get_data(sheet,row_start,row_end,column1,column2,column3,column4,column5):#x
             if result!=None:
                 rows_value[1]=rows_value[1]+'\n('+result.group()+')'
         data.append(rows_value)
+        #遍历所有元素，把None的空元素替换掉
+        for items in data:
+            for i in range(0,len(items)):
+                if items[i]==None:
+                    items[i]='Alternative'
     return data
 
 
