@@ -369,8 +369,9 @@ def verdict(document):
 if __name__=='__main__':
     TRF_path=input('Please input the TRF file:')
     document = Document(TRF_path) #Open the template document
-    verdict(document)
-    document.save(r'J:\Tools4Cert\TRF\test.docx')
+#    verdict(document)
+#    document.save(r'J:\Tools4Cert\TRF\test.docx')
+    fill_number(document,'rows')
 
 
 #    while True:
