@@ -55,7 +55,7 @@ def Menu():
         data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
         generate4(wb_rpt.sheets['4.0 Components'],data)
 #        wb_rpt.save(path_rpt[:-4]+'_output.xls')
-        wb_rpt.save(rpt[:-5]+'_output.xlsm')
+        wb_rpt.save(path_rpt[:-5]+'_output.xlsm')
         wb_rpt.close()
         wb_data.close()
         app.kill()
