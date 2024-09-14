@@ -364,14 +364,277 @@ def verdict(document):
     return document 
 
 
+###条款判断,适用于2-40x
+def verdict_40x(document):
+    '''
+    document:文档对象
+    '''
+    ###初始化
+    tables=document.tables
+    table5=tables[5]
+    table7=tables[7]
+
+
+    ###参数
+    volt=input('请输入器具的额定电压：')
+    phase=input('是否为单相器具：')
+#    if phase=='n':
+#        phase_number=input('多相器具请输入相数：')
+    acdc=input('ac or dc?')
+    if acdc=='ac':
+        freq=input('请输入频率:')
+    power=input('请输入额定功率:')
+    current=input('请输入额定电流：')
+    appliance_type=input('请选择器具类型：')
+    AC_type=input('分体还是移动')
+    grade=input('器具为I,II,III?')
+    use_env=input('器具的使用环境')
+    laundry=input('是否在洗衣房使用')
+    public=input('大众是否可触及')
+    flammable=input('是否可燃')
+    if flammable=='y':
+        leak=input('是否做泄露测试(Annex FF)')
+        detection=input('是否采用可燃冷媒探测系统')
+        arrest=input('采用火焰捕捉外壳(Annex NN)?')
+    else:
+        leak='n'
+        detection='n'
+        arrest='n'
+    UV=input('是否包含UV-C')
+
+
+
+#    ###cl.5
+#    fill_line(table5,1,'--')
+#    fill_line(table5,2,'P')
+#
+#
+#    ###cl.5.2
+#    fill_line(table5,3,'P')
+#    if flammable=='y':
+#        if leak=='y':
+#            fill_line(table5,4,'P')
+#        if detection=='y':
+#            fill_line(table5,5,'P')
+#        else:
+#            fill_line(table5,5,'N/A')
+#        if arrest=='y':
+#            fill_line(table5,6,'P')
+#        else:
+#            fill_line(table5,6,'N/A')
+#    else:
+#        auto_NA(table5,4,6)
+#
+#
+#    ###cl.5.6
+#    fill_line(table5,7,'P')
+#
+#    
+#    ###cl.5.7
+#    fill_line(table5,8,'P')
+#
+#
+#    ###cl.5.10
+#    if AC_type=='split air conditioner':
+#        fill_line(table5,9,'P')
+#        fill_line(table5,10,'P')
+#        fill_line(table5,11,'P')
+#    else:
+#        auto_NA(table5,9,11)
+#
+#
+#    ###cl.6
+#    fill_line(table5,12,'--')
+#    
+#
+#    ###cl.6.1
+#    fill_line(table5,13,'P')
+#    comment(table5,13,grade)
+#
+#
+#    ###cl.6.2
+#    fill_line(table5,4,'--')
+#    if use_env=='indoor use only':
+#        fill_line(table5,15,'N/A')
+#        fill_line(table5,16,'P')
+#    elif use_env=='outdoor use':
+#        fill_line(table5,15,'P')
+#        fill_line(table5,16,'N/A')
+#    if laundry=='y':
+#        fill_line(table5,17,'P')
+#    else:
+#        fill_line(table5,17,'N/A')
+#
+#
+#    ###cl.6.101
+#    if public=='y':
+#        fill_line(table5,18,'P')
+#        comment(table5,18,'accessible to general public')
+#    elif public=='n':
+#        fill_line(table5,18,'P')
+#        comment(table5,18,'not accessible to general public')
+#
+#
+#    ###cl.7
+#    fill_line(table5,19,'--')
+#
+#
+#    ###cl.7.1
+#    fill_line(table5,20,'P')
+#    comment(table5,20,volt)
+#    if phase=='y':
+#        fill_line(table5,21,'N/A')
+#    elif phase=='n':
+#        fill_line(table5,21,'P')
+#        comment(table5,21,'refer to the marking label')
+#    if acdc=='ac':
+#        fill_line(table5,22,'P')
+#        comment(table5,22,freq)
+#    elif acdc=='dc':
+#        fill_line(table5,22,'N/A')
+#    if power!='':
+#        fill_line(table5,23,'P')
+#        comment(table5,23,power)
+#    else:
+#        fill_line(table5,23,'N/A')
+#    if current!='':
+#        fill_line(table5,24,'P')
+#        comment(table5,24,current)
+#    else:
+#        fill_line(table5,24,'N/A')
+#    fill_line(table5,25,'P')
+#    comment(table5,25,'refer to the marking label')
+#    fill_line(table5,26,'P')
+#    comment(table5,26,'refer to the marking label')
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ###Annex B
+    if appliance_type!='battery-operated appliance':
+        auto_NA(table5,1294,1342)
+
+    ###Annex C
+    auto_NA(table5,1343,1345)
+
+
+    ###Annex F
+    auto_NA(table5,1359,1388)
+
+
+    ###Annex H
+    auto_NA(table5,1404,1430)
+
+
+    ###Annex J
+    auto_NA(table5,1431,1440)
+
+
+    ###Annex K
+    fill_line(table5,1441,'--')
+    fill_line(table5,1442,'P')
+    fill_line(table5,1443,'P')
+    auto_NA(table5,1444,1445)
+    fill_line(table5,1446,'P')
+    auto_NA(table5,1447,1448)
+
+
+    ###Annex M
+    pass
+
+
+    ###Annex N
+    auto_NA(table5,1461,1472)
+
+
+    ###Annex R
+    auto_NA(table5,1473,1518)
+
+
+
+    ###Annex S
+    if appliance_type!='battery-operated appliance':
+        auto_NA(table7,1,42)
+
+
+    ###Annex T
+    if UV=='no':
+        auto_NA(table7,43,62)
+
+
+    ###Annex DD
+    if flammable=='no':
+        auto_NA(table7,63,234)
+
+
+    ###Annex EE
+    auto_NA(table7,235,254)
+
+
+    ###Annex FF
+    if flammable=='no':
+        auto_NA(table7,255,285)
+
+
+    ###Annex GG
+    if flammable=='no':
+        auto_NA(table7,286,606)
+
+
+
+    ###Annex JJ
+    auto_NA(table7,607,615)
+
+
+
+    ###Annex KK
+    if flammable=='no':
+        auto_NA(table7,616,648)
+
+
+
+    ###Annex LL
+    if flammable=='no':
+        auto_NA(table7,649,706)
+
+
+    ###Annex MM
+    if flammable=='no':
+        auto_NA(table7,707,717)
+
+
+    ###Annex NN
+    if flammable=='no':
+        auto_NA(table7,718,724)
+
+
+    ###Annex PP
+    if flammable=='no':
+        auto_NA(table7,725,747)
+
+
+    ###Annex QQ
+    if flammable=='no':
+        auto_NA(table7,748,811)
+
+    return document 
 
 ####################################### main program #############################################
 if __name__=='__main__':
     TRF_path=input('Please input the TRF file:')
     document = Document(TRF_path) #Open the template document
-#    verdict(document)
-#    document.save(r'J:\Tools4Cert\TRF\test.docx')
-    fill_number(document,'rows')
+    verdict_40x(document)
+    document.save(r'J:\Tools4Cert\TRF\test.docx')
+#    fill_number(document,'rows')
 
 
 #    while True:
