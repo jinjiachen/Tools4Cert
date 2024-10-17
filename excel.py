@@ -162,8 +162,13 @@ def Menu():
         sht3=wb.sheets['3.0 Photos']
         photo_path=input('输入照片所在路径')
         photo_path=photo_path+'\\'
-        update3(sht3,photo_path)
-#        wb.save(rpt[:-4]+'_output.xls')
+        new=input('是否删除原有照片（Y/N）？')
+        model_description=input('增加型号描述，没有直接回车')
+        if new.upper()=='Y':
+            update3(sht3,photo_path,start_row='',model=model_description)
+        elif new.upper()=='N':
+            row=input('请输入插入图片所在的行数')
+            update3(sht3,photo_path,start_row=row,model=model_description)
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
@@ -402,7 +407,13 @@ def Menu():
             elif choice=='ip3':
                 photo_path=input('输入照片所在路径')
                 photo_path=photo_path+'\\'
-                update3(sht3,photo_path)
+                new=input('是否删除原有照片（Y/N）？')
+                model_description=input('增加型号描述，没有直接回车')
+                if new.upper()=='Y':
+                    update3(sht3,photo_path,start_row='',model=model_description)
+                elif new.upper()=='N':
+                    row=input('请输入插入图片所在的行数')
+                    update3(sht3,photo_path,start_row=row,model=model_description)
             elif choice=='8':
                 Page_break(sht4)
                 Page_break(sht5)
@@ -897,23 +908,30 @@ def row_range(sheet,data): #xlwings:查找相同name or item的部件的行数�
 #    return rows
 
 
-def update3(sheet,photo_path): #xlwings:在3.0自动插入照片
+def update3(sheet,photo_path,start_row='',model=''): #xlwings:在3.0自动插入照片
     row_height=12.5 #默认行高12.5pt
     last_row=sheet.used_range.last_cell.row #返回最后一行的行号
-#    sheet[f'a3:j{last_row}'].clear_contents()#清除A列相关行数的内容
-#    sheet[f'a3:j{last_row}'].delete()#删除对应区域的内容，格式保留
-    sheet[f'a3:j{last_row}'].api.EntireRow.Delete()#删除对应区域的行数
-    while sheet.pictures.count>0:#当sheet中有图片时，删除图片
-        sheet.pictures[0].delete()
-    number=sheet.pictures.count#当前的图片数量
-    row=5
+    if start_row=='':
+    #    sheet[f'a3:j{last_row}'].clear_contents()#清除A列相关行数的内容
+    #    sheet[f'a3:j{last_row}'].delete()#删除对应区域的内容，格式保留
+        sheet[f'a3:j{last_row}'].api.EntireRow.Delete()#删除对应区域的行数
+        while sheet.pictures.count>0:#当sheet中有图片时，删除图片
+            sheet.pictures[0].delete()
+        number=sheet.pictures.count#当前的图片数量
+        row=5
+    else:
+        number=sheet.pictures.count#当前的图片数量
+        row=int(start_row)
     top=row_height*row #12.5pt初始行高，5为行数
     for root,dirs,files in os.walk(photo_path,topdown=False):#遍历路径下的文件和文件夹，返回root,dirs,files的三元元组
 #        files.sort(key=len) #在对文件的长度进行排序
         files.sort(key=mysort)#对文件进行排序
         for file in files:#遍历所有的文件
             filename=file.split('_')[1]
-            description=filename.split('.')[0]+' (xxx)'
+            if model=='':
+                description=filename.split('.')[0]
+            else:
+                description=filename.split('.')[0]+f' ({model})'
 #            print(files)
             print(photo_path+file)
             sheet.pictures.add(photo_path+file)#插入图片
