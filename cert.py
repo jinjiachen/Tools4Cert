@@ -5,7 +5,7 @@ from lxml import etree
 import os
 import pdb
 import urllib
-import requests
+import requests,httpx
 requests.packages.urllib3.disable_warnings
 import warnings
 warnings.filterwarnings("ignore")
@@ -22,6 +22,7 @@ def Menu():
         while True:
             ul_no=input('请输入需要查询的关键字:')
             url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
+#            url='https://iq.ulprospector.com/en/_?p=10005,10048,10006,10047&qm=q:'+ul_no
             res_basic=ul_search(url)
             items=basic_info(res_basic)
             no=input('请选择对应的部件序号:')
@@ -264,15 +265,30 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
     ul_cookies=base64.b64decode(ul_cookies).decode('ascii')
 #    print(ul_cookies)
     header={
-            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+#            ':authority':'iq.ulprospector.com',
+#            ':method':'GET',
+#            ':path':'/en/_?p=10005,10048,10006,10047&qm=q:relay',
+#            ':scheme':'https',
+            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'accept-encoding':'gzip, deflate, br, zstd',
             'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8',
             'Cache-Control':'max-age=0',
-            'Connection':'keep-alive',
-#            'cookie':r'chdc_prod=1; OptanonAlertBoxClosed=2023-07-20T05:23:07.768Z; ii=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI5NDc3Nzk4MzkyMTE0MjkxNjYyOTQ0MTIyMjA4MjU2IiwiZSI6Imp1bi54aWFAaW50ZXJ0ZWsuY29tIiwibiI6IlhpYSBKdW4iLCJ1cmkiOiJodHRwczovL2NvcmUudWxwcm9zcGVjdG9yLmNvbS91c2Vycy8yOTQ3Nzc5ODM5MjExNDI5MTY2Mjk0NDEyMjIwODI1NiIsInNpZCI6IjIyOTRhNDhhLTlkYzktNDczNS05NzBjLThlYWVmYThmZjdiZCIsIm5iZiI6MTY5MzQ2ODk4OSwiZXhwIjoxNjk2MDYwOTg5LCJpYXQiOjE2OTM0Njg5ODksImlzcyI6IlVMUHJvc3BlY3RvciIsImF1ZCI6Imh0dHA6Ly93d3cudWxwcm9zcGVjdG9yLmNvbSJ9.rwOGU8zubpwMLM9zrKSZI5A5jS16kyKdhvnQp63Ow1A; ASP.NET_SessionId=mlou3bk5h0ncskthcukhddy3; SERVERID=iis02; __cfruid=4464d457fb6ef9fa2213321af984b267df8fb7ff-1695282373; notice_behavior=implied,eu; TAconsentID=d1817482-9e1e-465f-878c-ea47485847d7; notice_gdpr_prefs=0:; cmapi_cookie_privacy=permit 1 required; cmapi_gtm_bl=ga-ms-ua-ta-asp-bzi-sp-awct-cts-csm-img-flc-fls-mpm-mpr-m6d-tc-tdc; notice_preferences=0:; notice_location=cn; TAsessionID=c71688fa-dc2f-422f-87a6-e8747283fbdf|EXISTING; pro_iq=projwt=Bvg5WZ_sd7rzH_SaXcWuJzU48KxlZAFo9njiSpKPEcymZIWQl8U9tXqtaXQ-ROcI3S2IdoD2Emf64kIY8dpESCYbJRMdZ00G8ODYLkMQU6pQtEc--Zu0_25dpNRb4RlajRLoTtLstfVOzej5_Lb-bWbhIEUDFFwYtRAIlSH3qeKnNdHQFIS8ZQdZU9PHU-kxfvT6fLJq1ShL26fQUTb5gknp_DV8iLh-PRfo29PxGsbtKffjMNSM2nRZYidIWO1TqDvLbbUueY4PQFvpQC7KYNNIaeAmwnz2jYC_DQI5gfQ7NjUlo2GEwQH84jG0kw-0eq1j6wjAsq81Ibei2QcwsVNykZKta6yPgWhkl1uDTjphwBL5qMuti_gsMP6Q57fLYc6Eha6ojqhNy5W4h0evhOBvnQ81',
+#            'Connection':'keep-alive',
             'cookie':ul_cookies,
-            'Host':'iq.ulprospector.com',
-            'Refer':'https://iq.ulprospector.com/en',
-            'User-Agent':'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1474.0'
+#            'Host':'iq.ulprospector.com',
+#            'Refer':'https://iq.ulprospector.com/en',
+            'Priority':'u=0,i',
+            'sec-ch-ua':'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
+#            'sec-ch-ua-mobile:':'?0',
+            'sec-ch-ua-platform':'"Windows"',
+            'sec-fetch-dest':'document',
+            'sec-fetch-mode':'navigate',
+            'sec-fetch-site':'none',
+            'sec-fetch-site':'same-origin',
+            'sec-fetch-user':'?1',
+            'sec-gpc':'1',
+            'Upgrade-Insecure-Requests':'1',
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
             }
 
     data={
@@ -283,13 +299,19 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
     while True:
         try:
     #    res=requests.get(url,headers=header,params=data,verify=False)#方法1
-            res=requests.get(url,headers=header,timeout=5,verify=False)#方法2
-            html=res.text
-            selector=etree.HTML(html)#转化为lxml
-            return selector
+#            res=requests.get(url,headers=header,timeout=5,verify=False)#方法2
+#            print(res)
+#            html=res.text
+#            selector=etree.HTML(html)#转化为lxml
+#            return selector
+            with httpx.Client(http2=True) as client:
+                response=client.get(url)
+                print('http2 code:',response.status_code)
+                print(response.read())
             break
         except:
             print('连接超时，正在重新连接！')
+            break
 
 def basic_info(selector):#针对搜索结果进行处理并输出所需要的信息
     links=selector.xpath('//tbody/tr/td[1]/a/@href')#详细信息的链接
