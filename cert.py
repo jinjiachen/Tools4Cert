@@ -305,7 +305,7 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
 #            selector=etree.HTML(html)#转化为lxml
 #            return selector
             with httpx.Client(http2=True) as client:
-                response=client.get(url)
+                response=client.get(url,headers=header)
                 print('http2 code:',response.status_code)
                 print(response.read())
             break
