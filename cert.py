@@ -21,8 +21,9 @@ def Menu():
     elif choice=='11':
         while True:
             ul_no=input('请输入需要查询的关键字:')
-            url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
+#            url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
 #            url='https://iq.ulprospector.com/en/_?p=10005,10048,10006,10047&qm=q:'+ul_no
+            url='https://iq.ulprospector.com/en/_?qm=q:relay'
             res_basic=ul_search(url)
             items=basic_info(res_basic)
             no=input('请选择对应的部件序号:')
@@ -259,35 +260,30 @@ def get_html(url):#通过selenium获取html后转换为lxml的对象
 
 
 def ul_search(url):#通过模拟请求方式查询黄卡号
-#    url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
     conf=load_config()
     ul_cookies=conf.get('ul','cookie')
     ul_cookies=base64.b64decode(ul_cookies).decode('ascii')
-#    print(ul_cookies)
+    print(ul_cookies)
     header={
-#            ':authority':'iq.ulprospector.com',
-#            ':method':'GET',
-#            ':path':'/en/_?p=10005,10048,10006,10047&qm=q:relay',
-#            ':scheme':'https',
             'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'accept-encoding':'gzip, deflate, br, zstd',
             'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8',
             'Cache-Control':'max-age=0',
 #            'Connection':'keep-alive',
             'cookie':ul_cookies,
-#            'Host':'iq.ulprospector.com',
-#            'Refer':'https://iq.ulprospector.com/en',
+            'Host':'iq.ulprospector.com',
+            'Refer':'https://iq.ulprospector.com/en',
             'Priority':'u=0,i',
-            'sec-ch-ua':'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
+#            'sec-ch-ua':'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
 #            'sec-ch-ua-mobile:':'?0',
-            'sec-ch-ua-platform':'"Windows"',
-            'sec-fetch-dest':'document',
-            'sec-fetch-mode':'navigate',
-            'sec-fetch-site':'none',
-            'sec-fetch-site':'same-origin',
-            'sec-fetch-user':'?1',
-            'sec-gpc':'1',
-            'Upgrade-Insecure-Requests':'1',
+#            'sec-ch-ua-platform':'"Linux"',
+#            'sec-fetch-dest':'document',
+#            'sec-fetch-mode':'navigate',
+#            'sec-fetch-site':'none',
+#            'sec-fetch-site':'same-origin',
+#            'sec-fetch-user':'?1',
+#            'sec-gpc':'1',
+#            'Upgrade-Insecure-Requests':'1',
             'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
             }
 
@@ -307,7 +303,11 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
             with httpx.Client(http2=True) as client:
                 response=client.get(url,headers=header)
                 print('http2 code:',response.status_code)
-                print(response.read())
+#                print(response.read())
+#                print(response.text)
+#                html=res.text
+#                selector=etree.HTML(html)#转化为lxml
+#                return selector
             break
         except:
             print('连接超时，正在重新连接！')
@@ -397,10 +397,10 @@ def load_config():#加载配置文件
 
 
 if __name__=='__main__':
-    driver=Driver()
+#    driver=Driver()
     Menu()
-    driver.close()
-    driver.quit()
+#    driver.close()
+#    driver.quit()
 #    driver=Driver()
 #    print('engine start!')
 #    while True:
