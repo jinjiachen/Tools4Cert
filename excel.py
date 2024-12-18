@@ -331,7 +331,7 @@ def Menu():
         wb_data.close()
         app.kill()
     elif choice=='tc':
-        app=xw.App(visible=True,add_book=False)
+        app=xw.App(visible=False,add_book=False)
         app.display_alerts=False #取消警告
         app.screen_updating=False#取消屏幕刷新
         rpt=input("Please input the report path:") #输入要修改的报告的路径
