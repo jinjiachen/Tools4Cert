@@ -807,7 +807,7 @@ def fmt(sheet):#目前主要是合并name列的单元格
         data=[]
         data.append(value)
         data.append(value)
-        print(f'合并单元格进度：{count}/{total}')
+        print(f'合并单元格进度：{count}/{total}-->{value}')
         rows=row_range(sheet,data)
 #        print(rows)
         if rows[0]<rows[1]:
