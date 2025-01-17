@@ -1033,8 +1033,9 @@ def update4(sheet1,sheet2,sheet3,auto_fmt='Yes'):#xlwings:更新4.0信息
             print(rows)
             for j in range(rows[0],rows[1]+1):#在同一个部件的行数范围内去匹配信息
                 data_rpt=copy_line(sheet1,j)
-#                print(data_rpt[2],data[2])
-#                print(data_rpt[4],data[4])
+#                print(data_rpt[2]+'###'+data[2])
+#                print(sheet1[f'e{j}'].value+'###'+data[3])
+#                print(data_rpt[4]+'###'+data[4])
                 if data_rpt[2]==data[2] and sheet1[f'e{j}'].value==data[3] and data_rpt[4]==data[4]: #匹配部件名，制造商和型号，当一致时，进行后面的操作
                     sheet1[f'c{j}'].api.EntireRow.Delete()#删除改行
                     update12(sheet3,row_rev,data_rpt,data,'D')
