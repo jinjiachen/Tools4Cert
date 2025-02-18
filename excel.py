@@ -214,6 +214,9 @@ def Menu():
             print('并未捕获线的类型')
         else:
             print('捕捉到线的类型:',line)
+            change_line=input('是否需要手动输入线类型(Y/N):')
+            if change_line=='Y':
+                line=input('请输入线的类型：')
         sync_item(sht3,sht4,line)
 #        wb.save(rpt[:-4]+'_output.xls')
         wb.save(rpt[:-5]+'_output.xlsm')
@@ -233,6 +236,9 @@ def Menu():
             print('并未捕获线的类型')
         else:
             print('捕捉到线的类型:',line)
+            change_line=input('是否需要手动输入线类型(Y/N):')
+            if change_line=='Y':
+                line=input('请输入线的类型：')
         init_item(sht3,line)
 #        init_item(sht3,'AutoShape')
 #        wb.save(rpt[:-4]+'_output.xls')
@@ -425,6 +431,9 @@ def Menu():
                     print('并未捕获线的类型')
                 else:
                     print('捕捉到线的类型:',line)
+                    change_line=input('是否需要手动输入线类型(Y/N):')
+                    if change_line=='Y':
+                        line=input('请输入线的类型：')
                 sync_item(sht3,sht4,line)
             elif choice=='11':
 #                get_shapes(sht3)
@@ -433,6 +442,9 @@ def Menu():
                     print('并未捕获线的类型')
                 else:
                     print('捕捉到线的类型:',line)
+                    change_line=input('是否需要手动输入线类型(Y/N):')
+                    if change_line=='Y':
+                        line=input('请输入线的类型：')
                 init_item(sht3,line)
             elif choice=='12':
                 data=input("Please input the data source path:") #输入数据源的路径
