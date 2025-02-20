@@ -23,7 +23,9 @@ def Menu():
             ul_no=input('请输入需要查询的关键字:')
 #            url='https://iq.ulprospector.com/en/_/_results?p=10005,10048,10006,10047&qm=q:'+ul_no
 #            url='https://iq.ulprospector.com/en/_?p=10005,10048,10006,10047&qm=q:'+ul_no
-            url='https://iq.ulprospector.com/en/_?qm=q:relay'
+#            url='https://iq.ulprospector.com/en/_?qm=q:relay'
+#            url='https://iq.ulprospector.com/en/_?p=10005,10048,10006,10047&qm=q:relay'
+            url='https://www.ul.com'
             res_basic=ul_search(url)
             items=basic_info(res_basic)
             no=input('请选择对应的部件序号:')
@@ -263,7 +265,7 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
     conf=load_config()
     ul_cookies=conf.get('ul','cookie')
     ul_cookies=base64.b64decode(ul_cookies).decode('ascii')
-    print(ul_cookies)
+#    print(ul_cookies)
     header={
             'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
             'accept-encoding':'gzip, deflate, br, zstd',
@@ -284,7 +286,7 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
 #            'sec-fetch-user':'?1',
 #            'sec-gpc':'1',
 #            'Upgrade-Insecure-Requests':'1',
-            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
+#            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
             }
 
     data={
@@ -292,6 +294,32 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
             'qm':'q:E485395'
             }
 
+    new_header={
+            'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+            'Accept-Encoding':'gzip, deflate, br, zstd',
+            'Accept-Language':'zh-CN,zh;q=0.9,en;q=0.8',
+            'Cache-Control':'max-age=0',
+            'cookie':ul_cookies,
+            'priority':'u=0, i',
+            'referer':'https://iq.ulprospector.com/en',
+#            'sec-ch-ua':'"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
+#            'sec-ch-ua-arch':'"x86"',
+#            'sec-ch-ua-full-version':'"132.0.6834.197"',
+#            'sec-ch-ua-full-version-list':'"Not A(Brand";v="8.0.0.0", "Chromium";v="132.0.6834.197", "Google Chrome";v="132.0.6834.197"',
+#            'sec-ch-ua-mobile':'?0',
+#            'sec-ch-ua-model':'""',
+#            'sec-ch-ua-platform':'"Windows"',
+#            'sec-ch-ua-platform-version':'"10.0.0"',
+#            'sec-fetch-dest':'document',
+#            'sec-fetch-mode':'navigate',
+#            'sec-fetch-site':'same-origin',
+#            'sec-fetch-user':'?1',
+#            'sec-gpc':'1',
+#            'upgrade-insecure-requests':'1',
+            'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
+            }
+
+    
     while True:
         try:
     #    res=requests.get(url,headers=header,params=data,verify=False)#方法1
@@ -300,11 +328,11 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
 #            html=res.text
 #            selector=etree.HTML(html)#转化为lxml
 #            return selector
-            with httpx.Client(http2=True) as client:
-                response=client.get(url,headers=header)
+            with httpx.Client(http2=False) as client:
+                response=client.get(url,headers=new_header)
                 print('http2 code:',response.status_code)
 #                print(response.read())
-#                print(response.text)
+                print(response.text)
 #                html=res.text
 #                selector=etree.HTML(html)#转化为lxml
 #                return selector
