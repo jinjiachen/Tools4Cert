@@ -26,6 +26,7 @@ def Menu():
 #            url='https://iq.ulprospector.com/en/_?qm=q:relay'
 #            url='https://iq.ulprospector.com/en/_?p=10005,10048,10006,10047&qm=q:relay'
             url='https://www.ul.com'
+#            url='https://iq.ulprospector.com/en'
             res_basic=ul_search(url)
             items=basic_info(res_basic)
             no=input('请选择对应的部件序号:')
@@ -73,12 +74,13 @@ def UL(driver):
     #search=driver.find_element_by_id('q2') #老方法，不推荐使用
     
     user=driver.find_element(By.ID,'email')
-    user.send_keys('shelway.wu@intertek.com')
-    password=driver.find_element(By.ID,'loginPass')
-    password.send_keys('Ul123456')
-    check=driver.find_element(By.XPATH,'//input[@id="cnConsent"]')
+    user.send_keys('jun.xia@intertek.com')
+    check=driver.find_element(By.XPATH,'//input[@type="submit"]')
     check.click()
-    login=driver.find_element(By.ID,'main-login')
+    time.sleep(30)
+    password=driver.find_element(By.ID,'password')
+    password.send_keys('Ul-123456')
+    login=driver.find_element(By.ID,'continue')
     login.submit()
     print('login')
     
@@ -276,17 +278,17 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
             'Host':'iq.ulprospector.com',
             'Refer':'https://iq.ulprospector.com/en',
             'Priority':'u=0,i',
-#            'sec-ch-ua':'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
-#            'sec-ch-ua-mobile:':'?0',
-#            'sec-ch-ua-platform':'"Linux"',
-#            'sec-fetch-dest':'document',
-#            'sec-fetch-mode':'navigate',
-#            'sec-fetch-site':'none',
-#            'sec-fetch-site':'same-origin',
-#            'sec-fetch-user':'?1',
-#            'sec-gpc':'1',
-#            'Upgrade-Insecure-Requests':'1',
-#            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
+            'sec-ch-ua':'"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
+            'sec-ch-ua-mobile:':'?0',
+            'sec-ch-ua-platform':'"Linux"',
+            'sec-fetch-dest':'document',
+            'sec-fetch-mode':'navigate',
+            'sec-fetch-site':'none',
+            'sec-fetch-site':'same-origin',
+            'sec-fetch-user':'?1',
+            'sec-gpc':'1',
+            'Upgrade-Insecure-Requests':'1',
+            'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
             }
 
     data={
@@ -302,20 +304,20 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
             'cookie':ul_cookies,
             'priority':'u=0, i',
             'referer':'https://iq.ulprospector.com/en',
-#            'sec-ch-ua':'"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
-#            'sec-ch-ua-arch':'"x86"',
-#            'sec-ch-ua-full-version':'"132.0.6834.197"',
-#            'sec-ch-ua-full-version-list':'"Not A(Brand";v="8.0.0.0", "Chromium";v="132.0.6834.197", "Google Chrome";v="132.0.6834.197"',
-#            'sec-ch-ua-mobile':'?0',
-#            'sec-ch-ua-model':'""',
-#            'sec-ch-ua-platform':'"Windows"',
-#            'sec-ch-ua-platform-version':'"10.0.0"',
-#            'sec-fetch-dest':'document',
-#            'sec-fetch-mode':'navigate',
-#            'sec-fetch-site':'same-origin',
-#            'sec-fetch-user':'?1',
-#            'sec-gpc':'1',
-#            'upgrade-insecure-requests':'1',
+            'sec-ch-ua':'"Not A(Brand";v="8", "Chromium";v="132", "Google Chrome";v="132"',
+            'sec-ch-ua-arch':'"x86"',
+            'sec-ch-ua-full-version':'"132.0.6834.197"',
+            'sec-ch-ua-full-version-list':'"Not A(Brand";v="8.0.0.0", "Chromium";v="132.0.6834.197", "Google Chrome";v="132.0.6834.197"',
+            'sec-ch-ua-mobile':'?0',
+            'sec-ch-ua-model':'""',
+            'sec-ch-ua-platform':'"Windows"',
+            'sec-ch-ua-platform-version':'"10.0.0"',
+            'sec-fetch-dest':'document',
+            'sec-fetch-mode':'navigate',
+            'sec-fetch-site':'same-origin',
+            'sec-fetch-user':'?1',
+            'sec-gpc':'1',
+            'upgrade-insecure-requests':'1',
             'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36',
             }
 
@@ -329,10 +331,10 @@ def ul_search(url):#通过模拟请求方式查询黄卡号
 #            selector=etree.HTML(html)#转化为lxml
 #            return selector
             with httpx.Client(http2=False) as client:
-                response=client.get(url,headers=new_header)
+                response=client.get(url)
                 print('http2 code:',response.status_code)
 #                print(response.read())
-                print(response.text)
+#                print(response.text)
 #                html=res.text
 #                selector=etree.HTML(html)#转化为lxml
 #                return selector
@@ -425,10 +427,10 @@ def load_config():#加载配置文件
 
 
 if __name__=='__main__':
-#    driver=Driver()
+    driver=Driver()
     Menu()
-#    driver.close()
-#    driver.quit()
+    driver.close()
+    driver.quit()
 #    driver=Driver()
 #    print('engine start!')
 #    while True:
