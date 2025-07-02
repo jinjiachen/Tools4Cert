@@ -21,7 +21,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页')
     if choice=='uc':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
 #        path_doc=input('请输入年检报告(word)的路径')
@@ -145,6 +145,21 @@ def Menu():
         pdf_path=input('请输入要翻转的PDF文件路径:')
         action=input('请输入需要旋转的方向：\nleft:向左旋转90\nright:向右旋转90')
         page_rotation(pdf_path,action)
+    elif choice=='pr':
+        input_pdf1 = input('Please input the first pdf')
+        input_pdf2 = input('Please input the second pdf')
+        page_to_replace=input('page to be replaced')
+        replacement_page=input('page to replace')
+        
+        # 获取并验证页码参数
+        try:
+            page_to_replace = int(page_to_replace)
+            replacement_page = int(replacement_page)
+        except ValueError:
+            print("错误: 页码必须是整数")
+
+        if not replace_page(input_pdf1, input_pdf2, page_to_replace, replacement_page):
+            sys.exit(1)
 
 
 
@@ -605,6 +620,59 @@ def page_rotation(old_file,action):
     with open(old_file[:-4]+f'_{action}.pdf', 'wb') as f:
         print(f'输出PDF为：{f}')
         pdf_writer.write(f)
+
+###用第二个PDF的某一页替换第一个PDF的某一页
+def replace_page(input_pdf1, input_pdf2, page_to_replace, replacement_page):
+    """
+    input_pdf1 (str): 第一个PDF文件路径
+    input_pdf2 (str): 第二个PDF文件路径
+    page_to_replace (int): 第一个PDF中要替换的页码（从1开始）
+    replacement_page (int): 第二个PDF中用于替换的页码（从1开始）
+    """
+    try:
+        #格式预处理
+        input_pdf1=input_pdf1.replace('"','')
+        input_pdf2=input_pdf2.replace('"','')
+        output_pdf=input_pdf1[:-4]+'_output.pdf'
+
+        # 读取两个输入PDF
+        reader1 = PdfReader(input_pdf1)
+        reader2 = PdfReader(input_pdf2)
+        writer = PdfWriter()
+        
+        # 检查页码是否有效
+        total_pages1 = len(reader1.pages)
+        total_pages2 = len(reader2.pages)
+        
+        if page_to_replace < 1 or page_to_replace > total_pages1:
+            print(f"错误: 第一个PDF的页码 {page_to_replace} 超出范围 (1-{total_pages1})")
+            return False
+            
+        if replacement_page < 1 or replacement_page > total_pages2:
+            print(f"错误: 第二个PDF的页码 {replacement_page} 超出范围 (1-{total_pages2})")
+            return False
+        
+        # 添加第一PDF的页面，替换指定页
+        for i in range(total_pages1):
+            if i == page_to_replace - 1:  # 找到要替换的页码
+                writer.add_page(reader2.pages[replacement_page - 1])
+            else:
+                writer.add_page(reader1.pages[i])
+        
+        # 写入输出PDF
+        with open(output_pdf, 'wb') as output_file:
+            writer.write(output_file)
+        
+        print(f"成功用 {input_pdf2} 的第 {replacement_page} 页替换 {input_pdf1} 的第 {page_to_replace} 页")
+        print(f"结果已保存到 {output_pdf}")
+        return True
+        
+    except FileNotFoundError:
+        print(f"错误: 找不到文件 {input_pdf1} 或 {input_pdf2}")
+        return False
+    except Exception as e:
+        print(f"发生未知错误: {e}")
+        return False
 
 
 if __name__=='__main__':
