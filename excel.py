@@ -11,7 +11,7 @@ import xlwt
 #import xlutils
 from xlutils.copy import copy
 import time
-import os
+import os,shutil
 import re
 from cert import ul_search
 from cert import basic_info
@@ -25,7 +25,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nmi(ML info):尝试提取ML信息\ncc5:检查CEC的证书")
+    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nmi(ML info):尝试提取ML信息\ncc5:检查CEC的证书\nef(E-filing) 创建E-filing文件夹模板")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -351,6 +351,12 @@ def Menu():
         clear_pics(sht3)
     elif choice=='cp7':
         clear_pics(sht7)
+    elif choice=='ef':
+        source_path=r'E:\!E-Filing批处理小程序相关文件\E-filling\文件夹模板\2025\25XXBXXXXSHA_Revision Service_based on 19XXXXXXXSHA_ETL'
+        target_path=input('请输入项目文件夹路径:')
+        if os.path.exists(target_path):#如果目标路径存在，先删除，否则shutil.copytree会报错
+            shutil.rmtree(target_path)
+        shutil.copytree(source_path, target_path)
     elif choice=='123':
         app=xw.App(visible=True,add_book=False)
         app.display_alerts=False #取消警告
@@ -661,6 +667,7 @@ def get_data(sheet,row_start,row_end,column1,column2,column3,column4,column5):#x
         #检查制造商列是否有黄卡号，如有则进行格式处理
         if rows_value[1]!=None:
             ul_no=re.search('\w{1,2}\d{5,6}',rows_value[1])
+#            ul_no=re.search('E\d{5,6}|SA\d{5,6}|MH\d{5,6}',rows_value[1])
             print('制造商列找到黄卡号，正在进行格式处理！')
             if ul_no!=None:
                 rows_value[1]=str_fmt(rows_value[1].replace('('+ul_no.group()+')',''))#删除原有的黄卡号信息
