@@ -21,7 +21,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页\npe(pdf extract):提取部分pdf页数')
     if choice=='uc':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
 #        path_doc=input('请输入年检报告(word)的路径')
@@ -160,6 +160,12 @@ def Menu():
 
         if not replace_page(input_pdf1, input_pdf2, page_to_replace, replacement_page):
             sys.exit(1)
+    elif choice=='pe':
+        pdf=input('please input the pdf file')
+        output_pdf=pdf[:-4]+'_output.pdf'
+        pages=input('Please input the page range')
+        pages=selection_sort(pages)
+        extract_pages(pdf,output_pdf,pages)
 
 
 
@@ -675,8 +681,74 @@ def replace_page(input_pdf1, input_pdf2, page_to_replace, replacement_page):
         return False
 
 
+###提取pdf的部分页数
+def extract_pages(input_pdf, output_pdf, page_numbers):
+    """
+    从PDF中提取指定页码并保存为新的PDF
+    
+    参数:
+    input_pdf (str): 输入PDF文件路径
+    output_pdf (str): 输出PDF文件路径
+    page_numbers (list): 要提取的页码列表（从1开始）
+    """
+    try:
+        # 读取输入PDF
+        reader = PdfReader(input_pdf)
+        writer = PdfWriter()
+        
+        # 检查页码是否有效
+        total_pages = len(reader.pages)
+        invalid_pages = [p for p in page_numbers if p < 1 or p > total_pages]
+        
+        if invalid_pages:
+            print(f"错误: 页码 {', '.join(map(str, invalid_pages))} 超出范围 (1-{total_pages})")
+            return False
+        
+        # 添加指定页到输出PDF
+        for page_num in page_numbers:
+            writer.add_page(reader.pages[page_num - 1])  # 注意：PyPDF2中页码从0开始
+        
+        # 写入输出PDF
+        with open(output_pdf, 'wb') as output_file:
+            writer.write(output_file)
+        
+        print(f"成功提取 {len(page_numbers)} 页到 {output_pdf}")
+        return True
+        
+    except FileNotFoundError:
+        print(f"错误: 找不到文件 {input_pdf}")
+        return False
+    except Exception as e:
+        print(f"发生未知错误: {e}")
+        return False
+
+###对选择进行拆分排序然后输出列表
+def selection_sort(selection):
+    '''
+    selection(str):测试的选择
+    '''
+    #对选择字符串做处理
+    selection_sort=[]
+    prehandle=selection.split(",")
+    for i in prehandle:
+        if "-" in i:
+            j=i.split("-")
+            j[0]=int(j[0])
+            j[1]=int(j[1])
+            for k in range(j[0],j[1]+1):
+                k=str(k)
+                selection_sort.append(k)
+        else:
+            selection_sort.append(i)
+    #转化为整数
+    selection=list(map(int,selection_sort))
+    #对整数排序
+    selection.sort()
+    return selection
+
 if __name__=='__main__':
     while True:
         if os.name=='nt':
             os.system('cls')
         Menu()
+        input('按任意键继续!')
