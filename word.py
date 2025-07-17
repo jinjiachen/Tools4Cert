@@ -12,7 +12,7 @@ from docx.shared import Inches
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from excel import get_UC,get_data
-from PyPDF2 import PdfFileMerger,PdfWriter,PdfReader
+from PyPDF2 import PdfFileMerger,PdfWriter,PdfReader,PdfMerger
 import PyPDF2
 import time
 if os.name=='nt':
@@ -21,7 +21,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页\npe(pdf extract):提取部分pdf页数')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页\npe(pdf extract):提取部分pdf页数\npm(pdf merge):合并两个PDF文件')
     if choice=='uc':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
 #        path_doc=input('请输入年检报告(word)的路径')
@@ -147,7 +147,9 @@ def Menu():
         page_rotation(pdf_path,action)
     elif choice=='pr':
         input_pdf1 = input('Please input the first pdf')
+        input_pdf1=input_pdf1.replace('"','')
         input_pdf2 = input('Please input the second pdf')
+        input_pdf2=input_pdf2.replace('"','')
         page_to_replace=input('page to be replaced')
         replacement_page=input('page to replace')
         
@@ -162,10 +164,18 @@ def Menu():
             sys.exit(1)
     elif choice=='pe':
         pdf=input('please input the pdf file')
+        pdf=pdf.replace('"','')
         output_pdf=pdf[:-4]+'_output.pdf'
         pages=input('Please input the page range')
         pages=selection_sort(pages)
         extract_pages(pdf,output_pdf,pages)
+    elif choice=='pm':
+        pdf1=input('please input the first pdf file')
+        pdf1=pdf1.replace('"','')
+        pdf2=input('please input the second pdf file')
+        pdf2=pdf2.replace('"','')
+        output_pdf=pdf1[:-4]+'_output.pdf'
+        merge_2pdfs(pdf1,pdf2,output_pdf)    
 
 
 
@@ -745,6 +755,41 @@ def selection_sort(selection):
     #对整数排序
     selection.sort()
     return selection
+
+
+###合并两个PDF文件
+def merge_2pdfs(file1_path, file2_path, output_path):
+    """
+    file1_path (str): 第一个PDF文件的路径
+    file2_path (str): 第二个PDF文件的路径
+    output_path (str): 合并后PDF文件的输出路径
+    """
+    # 检查输入文件是否存在
+    for file_path in [file1_path, file2_path]:
+        if not os.path.exists(file_path):
+            raise FileNotFoundError(f"文件不存在: {file_path}")
+    
+    # 检查输出目录是否存在，不存在则创建
+    output_dir = os.path.dirname(output_path)
+    if output_dir and not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    
+    # 创建合并器对象
+    merger = PdfMerger()
+    
+    try:
+        # 添加并合并PDF文件
+        merger.append(file1_path)
+        merger.append(file2_path)
+        
+        # 写入合并后的文件
+        merger.write(output_path)
+        print(f"PDF文件已成功合并到: {output_path}")
+    except Exception as e:
+        print(f"合并PDF时出错: {e}")
+    finally:
+        # 关闭合并器对象
+        merger.close()
 
 if __name__=='__main__':
     while True:
