@@ -1079,16 +1079,19 @@ def update7(sheet,manual_path): #xlwings:在7.0自动插入说明书
         files.sort()#对文件进行排序
         files.sort(key=len) #在对文件的长度进行排序
         for file in files:#遍历所有的文件
-#            print(files)
-            print(manual_path+'\\'+file)
-            sheet.pictures.add(manual_path+'\\'+file)#插入图片
-            sheet.pictures[number].width=450
-            sheet.pictures[number].top=top
-            sheet[f'a{row-2}'].value=f'Illustration 2{letters[number]} - Manual - page {number+1}' #插入文字描述
-            sheet[f'a{row-2}'].characters[:16].font.bold=True #部分字体加粗
-            row=row+56
-            top=top+row_height*56 #56行为分页的行数
-            number=number+1
+            if file.endswith(".jpg"):
+    #            print(files)
+                print(manual_path+'\\'+file)
+                sheet.pictures.add(manual_path+'\\'+file)#插入图片
+                sheet.pictures[number].width=450
+                sheet.pictures[number].top=top
+                sheet[f'a{row-2}'].value=f'Illustration 2{letters[number]} - Manual - page {number+1}' #插入文字描述
+                sheet[f'a{row-2}'].characters[:16].font.bold=True #部分字体加粗
+                row=row+56
+                top=top+row_height*56 #56行为分页的行数
+                number=number+1
+            else:
+                print(f'{file}不是jpg文件!!')
 
 def update12(sheet12,row,data_rpt,data,cmd):#xlwing:把对应修改信息写入12.0
     if cmd=="RD":#修改制造商
@@ -1824,37 +1827,51 @@ def get_ML_info(path,ptf='No'):#xlwings：获取多重列名的型号
         print('Address:',street+city)
         print('Country:',country)
 
-    page2=pdf.pages[1]#获取第二页
-    text2=page2.extract_text()#提取第二页的文本内容
-    res=re.search('MODELS[\s\S]*A complimentary',text2)#使用正则提取型号相关的部分
-    content=res.group()
-    content=content.replace('MODELS','')#删除多余信息
-    content=content.replace('A complimentary','')#删除多余信息
-    content=content.strip()#去除首尾空格
-    models_line=content.split('\n')#以行为单位获取内容
-    if ptf=='Yes':
-        print('获取的所有型号相关信息：',models_line)
-    ML_models=[]
-    basic_models=[]
-    for models in models_line:#遍历每一行
-        models=models.strip()#去除首尾多余空格
+    try:
+        page2=pdf.pages[1]#获取第二页
+        text2=page2.extract_text()#提取第二页的文本内容
+        res=re.search('MODELS[\s\S]*A complimentary',text2)#使用正则提取型号相关的部分
+        content=res.group()
+        content=content.replace('MODELS','')#删除多余信息
+        content=content.replace('A complimentary','')#删除多余信息
+        content=content.strip()#去除首尾空格
+        models_line=content.split('\n')#以行为单位获取内容
         if ptf=='Yes':
-            print('正在处理:',models)
-        res=re.search('^[\s\S]* ',models)#提取多重列名型号
-        ML_model=res.group().strip()
-        res=re.search(' [\s\S]*$',models)#提取基本列名型号
-        basic_model=res.group().strip()
+            print('获取的所有型号相关信息：',models_line)
+        ML_models=[]
+        basic_models=[]
+        for models in models_line:#遍历每一行
+            models=models.strip()#去除首尾多余空格
+            if ptf=='Yes':
+                print('正在处理:',models)
+            res=re.search('^[\s\S]* ',models)#提取多重列名型号
+            ML_model=res.group().strip()
+            res=re.search(' [\s\S]*$',models)#提取基本列名型号
+            basic_model=res.group().strip()
+            if ptf=='Yes':
+                print('ML model:',ML_model)
+                print('basic model:',basic_model)
+            ML_models.append(ML_model)
+            basic_models.append(basic_model)
         if ptf=='Yes':
-            print('ML model:',ML_model)
-            print('basic model:',basic_model)
-        ML_models.append(ML_model)
-        basic_models.append(basic_model)
-    if ptf=='Yes':
-        print('='*20)
-        print(f'Add new ML for {ML_company}')
-        for ML,basic in zip(ML_models,basic_models):
-            print(f'ML model {ML} (brand name: {Brand}) for basic model {basic}.')
-        print('='*20)
+            print('='*20)
+            print(f'Add new ML for {ML_company}')
+            for ML,basic in zip(ML_models,basic_models):
+                print(f'ML model {ML} (brand name: {Brand}) for basic model {basic}.')
+            print('='*20)
+    except:
+        MT=input('是否手动输入(Y/N):')
+        if MT=='Y':
+            ML_model=input('请手动输入多重列名型号:')
+            ML_models=ML_model.split('  ')
+            basic_model=input('请手动输入基本型号:')
+            basic_models=basic_model.split('  ')
+            if len(ML_models)==len(basic_models):#比较数量是否一致
+                for ML,basic in zip(ML_models,basic_models):
+                    print(f'ML model {ML} (brand name: {Brand}) for basic model {basic}.')
+                print('='*20)
+            else:
+                print('数量不一致，请检查')
 
     return [ML_company,street+city,country,Brand,ML_models,basic_models]
 #    print(ML_models,basic_models)
