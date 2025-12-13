@@ -22,6 +22,7 @@ import random
 #import warnings
 if os.name=='nt':
     import xlwings as xw
+    import win32com.client
 
 
 def Menu():
@@ -1985,16 +1986,24 @@ def add_models(sheet_rpt2,sheet_rpt12,sheet_data):
     last_row=sheet_data.used_range.last_cell.row#sheet中最大的行数
     print('最大行数',last_row)
     models=[]
+    basic_model=[]
+    new_model=[]
+    brand=[]
+    similarity=[]
     for row in range(1,last_row+1):
-        print(f'正在比对底{row}行')
-        if sheet_data[f'd{row}'].value=="A": #判断H列是否为A，A为新增
-            basic_model=sheet_data[f'a{row}'].value#获取基本型号
-            new_model=sheet_data[f'b{row}'].value#获取增加的列名型号
-            brand=sheet_data[f'c{row}'].value#获取商标
-            add_cell_text(sheet_rpt2,'B7',', '+new_model)#在报告sec2中增加型号
-            similarity=f'{new_model} is identical with {basic_model} except for the model name.'
-            print(f'正在增加{new_model}')
-            add_cell_text(sheet_rpt2,'B8','\n'+similarity)
+        print(f'正在比对第{row}行')
+        if sheet_data[f'd{row}'].value=="A": #判断D列是否为A，A为新增
+            #获取基本信息
+            basic_model.append(sheet_data[f'a{row}'].value)#获取基本型号
+            new_model.append(sheet_data[f'b{row}'].value)#获取增加的列名型号
+            brand.append(sheet_data[f'c{row}'].value)#获取商标
+    for basic,new in zip(basic_model,new_model):
+        similarity.append(f'{new} is identical with {basic} except for the model name.')
+    #写入报告
+    add_cell_text(sheet_rpt2,'B4',"\n"+", ".join(brand))#在报告sec2中增加商标
+    add_cell_text(sheet_rpt2,'B7',"\n"+", ".join(new_model))#在报告sec2中增加型号
+    print(f'正在增加{new_model}')
+    add_cell_text(sheet_rpt2,'B8',"\n"+"\n".join(similarity))#增加相似性描述
     
 
 ###单元格增加内容
@@ -2002,14 +2011,23 @@ def add_cell_text(sheet,cell,text):
     '''
     sheet:要修改的sheet
     cell(str):修改的单元格，如'A1'
-    test(str):增加的文本
+    text(str):增加的文本
     '''
     old_text=sheet[cell].value
 #    print(old_text)
 #    print(type(old_text))
 #    print(type(text))
     new_text=old_text+text
+    start=len(old_text)+1
+    length=len(text)
     sheet[cell].value=new_text
+    sheet[cell].api.GetCharacters(Start=start,Length=length).Font.Color=0xFF00FF
+
+
+
+
+
+
 
 ###清除指定sheet中的照片
 def clear_pics(sheet): #xlwings:删除照片
