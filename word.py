@@ -32,7 +32,7 @@ def Menu():
         path_doc=path_doc.replace('"','')#去除"号,做预处理
         app=xw.App(visible=False,add_book=False)#创建app对象，传入Annual_checks函数
         path_doc=Annual_init(app,path_xls,path_doc,project,control_No,sample)
-        for component in ['compressor','motor','smps','transformer','pwb','power unit']:
+        for component in ['compressor','motor','smps','transformer','pwb','power unit','switch power supply']:
             Annual_checks_HA(app,path_xls,path_doc,component)
         app.kill()#关闭进程
     elif choice=='ucgt':
