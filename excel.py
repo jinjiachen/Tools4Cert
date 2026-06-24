@@ -17,7 +17,7 @@ from cert import ul_search
 from cert import basic_info
 from cert import certificate
 from cert import filters
-import pdfplumber
+import pdfplumber,fitz
 import random
 #import warnings
 if os.name=='nt':
@@ -26,7 +26,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nmi(ML info):尝试提取ML信息\ncc5:检查CEC的证书\nef(E-filing) 创建E-filing文件夹模板")
+    choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\n15.增加基本列名\ntc(to client):生成客户用CDR\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nmi(ML info):尝试提取ML信息\ncc5:检查CEC的证书\nef(E-filing) 创建E-filing文件夹模板\nanml:增加新多重列名")
     if choice=='1':
         path_rpt=input("Please input the report path:")
         path_data=input("Please input the data source path:")
@@ -315,6 +315,32 @@ def Menu():
         wb.save(rpt[:-5]+'_output.xlsm')
         wb.close()
         app.kill()
+    elif choice=='anml':
+        rpt=input("Please input the report path:") #输入要修改的报告的路径
+        rpt=rpt.replace('"','')
+        path=input("Please input the ML application path:") #输入申请表的路径
+        path=path.replace('"','')
+        app=xw.App(visible=True,add_book=False)
+        app.display_alerts=False #取消警告
+        app.screen_updating=False#取消屏幕刷新
+        wb=app.books.open(rpt)
+        sht9=wb.sheets['9.0 MLS']
+        sht12=wb.sheets['12.0 Revisions']
+        item=get_ML_item(sht12)
+        print(f'报告中已有多重列名ML{item}',)
+#        data=get_ML_info(path,'Yes')
+        data = extract_pdf_form(path)
+        wanted={}
+        for i in ['ML Models','BL Models','ML Company Name','ML Address','ML City, State, Zip','ML Country','ML Brand']:
+            wanted[i]=data[i]['value']
+        wanted['final address']=wanted['ML Address']+wanted['ML City, State, Zip']
+        wanted['MLs']=wanted['ML Models'].split('\r')
+        wanted['BLs']=wanted['BL Models'].split('\r')
+        modify_ML_new(sht9,item,wanted,'A')
+#        wb.save(rpt[:-4]+'_output.xls')
+        wb.save(rpt[:-5]+'_output.xlsm')
+        wb.close()
+        app.kill()
     elif choice=='mi':
         path=input("Please input the ML application path:") #输入申请表的路径
         path=path.replace('"','')
@@ -375,7 +401,7 @@ def Menu():
         sht12=wb.sheets['12.0 Revisions']
         wb.save(output_file)
         while True:
-            choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\n指令：")
+            choice=input("1.Extract data\n2.Revise the report\nip7.在7.0中自动插入说明书(for GT only)\n4.更新CDR\n5.更新8.0测试总结\n6.提取5.0数据并打印（调试用功能）\nip3.在3.0中插入照片\n8针对SEC4&5自动分页功能tmp\n9对sec4.0进行排序\nsi同步修改item号\n11.Sec3 sort item\n12自动填充5.0\ncc自动核对证书\naml.增加多重列名\ncp3(clear pictures sec.3):清除3.0中的图片\ncp7(clear picture sec.7)清除7.0中图片\nanml:新增多重列名\n指令：")
             if choice=='1':
                 path_data=input("Please input the data source path:")
                 path_data=path_data.replace('"','')
@@ -477,6 +503,19 @@ def Menu():
                 data=get_ML_info(path,'Yes')
                 print(f'报告中已有多重列名ML{item}',)
                 modify_ML(sht9,item,data,'A')
+            elif choice=='anml':
+                path=input("Please input the ML application path:") #输入申请表的路径
+                path=path.replace('"','')
+                item=get_ML_item(sht12)
+                print(f'报告中已有多重列名ML{item}',)
+                data = extract_pdf_form(path)
+                wanted={}
+                for i in ['ML Models','BL Models','ML Company Name','ML Address','ML City, State, Zip','ML Country','ML Brand']:
+                    wanted[i]=data[i]['value']
+                wanted['final address']=wanted['ML Address']+wanted['ML City, State, Zip']
+                wanted['MLs']=wanted['ML Models'].split('\r')
+                wanted['BLs']=wanted['BL Models'].split('\r')
+                modify_ML_new(sht9,item,wanted,'A')
             elif choice=='cp3':
                 clear_pics(sht3)
             elif choice=='cp7':
@@ -1956,7 +1995,53 @@ def modify_ML(sheet,item,data,act):#xlwings:自动修改多重列名
                 else:
                     basic_model=basic_model+'\n\n'+model
             sheet[f'c{insert_row+10}'].value=basic_model
-            pass
+
+
+###适配fitz，重新构建
+def modify_ML_new(sheet,item,data,act):#xlwings:自动修改多重列名
+    '''
+    sheet:SEC9
+    item:多重列名的序号
+    data:由extract_pdf_form获得的数据列表
+    act:具体的行为，如新增，删除等
+    '''
+    row_max=sheet.used_range.last_cell.row
+    if act=='A':#新增列名
+        if int(item)<3:#当已有列名小于3时的新增，因为报告模板已有
+            row=get_row_number(sheet,'a','MULTIPLE LISTEE '+str(int(item)+1))#item为已有的列名数，+1为新增,定位写入的行数
+            sheet[f'b{row}'].value=data['ML Company Name']#多重列名厂家
+            sheet[f'b{row+1}'].value=data['final address']#地址
+            sheet[f'b{row+2}'].value=data['ML Country']#国家
+            sheet[f'b{row+3}'].value=data['ML Brand']#商标
+            sheet[f'b{row+5}'].value='=B3'
+            sheet[f'b{row+6}'].value='=B4'
+            sheet[f'b{row+7}'].value='=B5'
+            sheet[f'a{row+10}'].value="\n\n".join(data['MLs'])
+            sheet[f'c{row+10}'].value="\n\n".join(data['BLs'])
+            print(f'Add new ML for {data["ML Company Name"]}')
+            for ML,BL in zip(data['MLs'],data['BLs']):
+                print(f'ML model {ML} (brand name: {data["ML Brand"]}) for basic model {BL}.')
+        elif int(item)>=3:#当已有列名大于3时的新增，需要自己写入
+            insert_row=sheet.used_range.last_cell.row+2
+            print(f'在{insert_row}行处开始写入')
+            sheet.api.Rows("8:18").Copy(sheet.api.Rows(insert_row))
+            sheet[f'a{insert_row}'].value=f'MULTIPLE LISTEE {item+1}'
+            sheet[f'a{insert_row+9}'].value=f'MULTIPLE LISTEE {item+1} MODELS'
+
+            sheet[f'b{insert_row}'].value=data['ML Company Name']#多重列名厂家
+            sheet[f'b{insert_row+1}'].value=data['final address']#地址
+            sheet[f'b{insert_row+2}'].value=data['ML Country']#国家
+            sheet[f'b{insert_row+3}'].value=data['ML Brand']#商标
+            sheet[f'b{insert_row+5}'].value='=B3'
+            sheet[f'b{insert_row+6}'].value='=B4'
+            sheet[f'b{insert_row+7}'].value='=B5'
+            sheet[f'a{insert_row+10}'].value="\n\n".join(data['MLs'])
+            sheet[f'c{insert_row+10}'].value="\n\n".join(data['BLs'])
+            print(f'Add new ML for {data["ML Company Name"]}')
+            for ML,BL in zip(data['MLs'],data['BLs']):
+                print(f'ML model {ML} (brand name: {data["ML Brand"]}) for basic model {BL}.')
+
+
 
 def output_path(file_path,ptf='No'):
     '''
@@ -1997,10 +2082,22 @@ def add_models(sheet_rpt2,sheet_rpt12,sheet_data):
             basic_model.append(sheet_data[f'a{row}'].value)#获取基本型号
             new_model.append(sheet_data[f'b{row}'].value)#获取增加的列名型号
             brand.append(sheet_data[f'c{row}'].value)#获取商标
+    #中间信息处理
     for basic,new in zip(basic_model,new_model):
         similarity.append(f'{new} is identical with {basic} except for the model name.')
+    final_brand=list(set(brand))#通过集合的方式去重，顺序会打乱
+    model_group={}
+    for item in final_brand:
+        tmp=[]#收集同一个商标的型号
+        for brd,mdl in zip(brand,new_model):
+            if brd==item:
+                tmp.append(mdl)
+        sentence=f'Brand {item} is for ", ".join(tmp) only.'
+        print(sentence)
+
+
     #写入报告
-    add_cell_text(sheet_rpt2,'B4',"\n"+", ".join(brand))#在报告sec2中增加商标
+    add_cell_text(sheet_rpt2,'B4',"\n"+", ".join(final_brand))#在报告sec2中增加商标
     add_cell_text(sheet_rpt2,'B7',"\n"+", ".join(new_model))#在报告sec2中增加型号
     print(f'正在增加{new_model}')
     add_cell_text(sheet_rpt2,'B8',"\n"+"\n".join(similarity))#增加相似性描述
@@ -2037,6 +2134,32 @@ def clear_pics(sheet): #xlwings:删除照片
         sheet.pictures[0].delete()
     last_row=sheet.used_range.last_cell.row #返回最后一行的行号
     sheet[f'a3:j{last_row}'].api.EntireRow.Delete()#删除对应区域的行数
+
+
+###用fitz模块，对格式化的pdf提取通用数据
+def extract_pdf_form(pdf_path):
+    doc = fitz.open(pdf_path)
+    form_data = {}
+
+    for page_num, page in enumerate(doc, 1):
+        # 获取页面所有表单控件
+        widgets = page.widgets()
+        if not widgets:
+            continue
+
+        for widget in widgets:
+            field_name = widget.field_name or f"unnamed_{page_num}_{widget.xref}"
+            field_value = widget.field_value  # 填写的值
+            field_type = widget.field_type_string  # 文本/复选框/下拉框等
+
+            form_data[field_name] = {
+                "page": page_num,
+                "type": field_type,
+                "value": field_value
+            }
+    doc.close()
+    return form_data
+
 
 if __name__=='__main__':
     Menu()
