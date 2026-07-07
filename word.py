@@ -255,12 +255,15 @@ def pdf_merge(path):
 
 def find_table(tables,search_string):#关键词查找对应表格
     table_components=[]
+    i=0
     for table in tables:#遍历每一个表格
+        i=i+1
         if table.cell(0,0).text=='24.1' and table.cell(0,1).text=='TABLE: Critical components information':#标准TRF中零部件清单表格
             table_components.append(table)
         elif table.cell(0,0).text==search_string:#自定义关键字来搜索表格
             table_components.append(table)
-    return table_components
+            break
+    return [table_components,i]
 
 
 def Search_table(tables,search_string):
