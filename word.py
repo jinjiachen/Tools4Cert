@@ -21,7 +21,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页\npe(pdf extract):提取部分pdf页数\npm(pdf merge):合并两个PDF文件')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ndfts:批量生成文件夹下的草稿\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页\npe(pdf extract):提取部分pdf页数\npm(pdf merge):合并两个PDF文件')
     if choice=='uc':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
 #        path_doc=input('请输入年检报告(word)的路径')
@@ -115,9 +115,10 @@ def Menu():
         doc2pdf(path)
     elif choice=='7':
         pdf_file=input('请输入pdf文件的路径:')
+        pdf_file=pdf_file.replace('"','')
 #        pdfWriter = PyPDF2.PdfFileWriter()      # 用于写pdf
 #        pdfReader = PyPDF2.PdfFileReader(pdf_file)   # 读取pdf内容
-        watermark='K:\Database\watermark.pdf'
+        watermark='J:\Tools4Cert\Database\watermark.pdf'
         add_watermark(pdf_file,watermark)
 #        # 遍历pdf的每一页,添加水印
 #        for page in range(pdfReader.numPages):
@@ -132,13 +133,24 @@ def Menu():
 #        dirname=os.path.dirname(path)
 #        print(filename)
 #        print(dirname)
-        watermark='K:\Database\watermark.pdf'
+        watermark='J:\Tools4Cert\Database\watermark.pdf'
         path=path.replace('"','')
         new_pdf=doc2pdf(path)
         print(new_pdf)
 #        add_watermark(path[:-3]+'pdf',watermark)
         add_watermark(new_pdf,watermark)
         os.remove(new_pdf)
+    elif choice=='dfts':
+        fold_path=input('请输入文件夹')
+        files=[f for f in os.listdir(fold_path) if f.endswith('.doc') or f.endswith('.docx')]
+        file_path=[os.path.join(fold_path, filename) for filename in files]
+        watermark='J:\Tools4Cert\Database\watermark.pdf'
+        for path in file_path:
+            path=path.replace('"','')
+            new_pdf=doc2pdf(path)
+            print(new_pdf)
+            add_watermark(new_pdf,watermark)
+            os.remove(new_pdf)
     elif choice=='init':
         pass
     elif choice=='at':
