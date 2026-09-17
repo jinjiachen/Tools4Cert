@@ -118,10 +118,9 @@ def Menu():
         if template=='':
             CDR=input('请选择对应的CDR类型：\n1.普通CDR\n2.CDRMM')
             if CDR=='1':
-#                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xls')
-                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDR V5 Form.xlsm')
+                wb_template=app.books.open(r'D:\Downloads\PortableGit-2.36.1-64-bit.7z\bin\Tools4Cert\template\Certification CDR V5 Form.xlsm')
             elif CDR=='2':
-                wb_template=app.books.open(r'D:\Downloads\Tools4Cert-master\template\Certification CDRMM V5 Form.xls')
+                wb_template=app.books.open(r'D:\Downloads\PortableGit-2.36.1-64-bit.7z\bin\Tools4Cert\template\Certification CDRMM V5 Form.xls')
         else:
             wb_template=app.books.open(template)
         update_CDR(wb_template,wb)
