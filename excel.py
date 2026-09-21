@@ -1289,11 +1289,26 @@ def sheet_total_rows(sheet): #xlwings:返回工作簿的最大行数,当整行�
     while i<=6: #这个循环就是构造一个空数列，7个None
         empty.append(None)
         i=i+1
-    row=1
-    while sheet.range(f'a{row}:g{row}').value!=empty:#判断每一行是否为空数列，直到找到空的对应行数
-        row_total=row
+    row=0
+    while True:
         row=row+1
-    return row_total
+        if sheet.range(f'a{row}:g{row}').value!=empty:#判断是否为空数列
+            row_total=row
+            continue
+        print(f'找到的空行为{row_total},开始向下检查')
+
+        #找到空行之后在往后找10行，如果还是空的，那么返回空行
+        check_row=row+1#从找到的行数开始，继续往下找
+        check_num=1#往下找10行
+        while True:
+            if sheet.range(f'a{check_row}:g{check_row}').value!=empty:#判断是否为空数列
+                print(f'找到的非空行{check_row}')
+                row=check_row#把检查到的行数给到row，继续向下找空行
+                break
+            check_row=check_row+1
+            check_num=check_num+1
+            if check_num==10:#查找到了次数，退出
+                return row_total
 
 def empty(number):#返回指定数量的空列表，列表值为None
     i=1
