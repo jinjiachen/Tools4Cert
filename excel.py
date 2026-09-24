@@ -523,7 +523,7 @@ def Menu():
                 wb.save(rpt.replace('_output',''))
                 wb.save(output_file)
                 print('保存时间为:',time.strftime('%Y-%m-%d %H:%M:%S'))
-            elif choice=='exit' or choice=='q':
+            elif choice=='q':
                 wb.close()
                 app.kill()
                 break
@@ -550,6 +550,23 @@ def Menu():
                 sht12=wb.sheets['12.0 Revisions']
 #                wb.save(rpt[:-5]+'_output.xlsm')
                 wb.save(output_file)
+            elif choice=='o':
+                rpt=input("Please input the report path:") #输入要修改的报告的路径
+                rpt=rpt.replace('"','')
+                output_file=output_path(rpt)
+                wb=app.books.open(rpt)
+                sht3=wb.sheets['3.0 Photos']
+                sht4=wb.sheets['4.0 Components']
+                sht5=wb.sheets['5.0 CEC Comps']
+                sht7=wb.sheets['7.0 Illustrations']
+                sht8=wb.sheets['8.0 Test Summary']
+                sht9=wb.sheets['9.0 MLS']
+                sht12=wb.sheets['12.0 Revisions']
+                wb.save(output_file)
+            elif choice=='exit':
+#                wb.close()
+                app.kill()
+                break
             input('any key to contine!')
             os.system('cls')
 
@@ -1420,6 +1437,7 @@ def get_UC(wb):#xlwings: 获取5.0相关信息
     
 
 def Page_break(sheet):#xlwings:自动分页功能
+    sheet.api.ResetAllPageBreaks()#删除原有的分页符
     last_row=sheet.used_range.last_cell.row#工作簿最大的行数
     if sheet.name=='4.0 Components':
         print('正在对sec4进行分页！')
