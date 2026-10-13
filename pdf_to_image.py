@@ -7,6 +7,7 @@
 from pdf2image import convert_from_path ## pip install pdf2image  or pip install --user pdf2image
 
 pdf_name = input('输入PDF的文件路径')
+pdf_name=pdf_name.replace('"','')#去除"号,做预处理
 jpg_name =pdf_name[:-4]+'.jpg'
 
 pages = convert_from_path(pdf_name, 500)
