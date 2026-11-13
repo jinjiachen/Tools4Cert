@@ -21,7 +21,7 @@ if os.name=='nt':
 
 
 def Menu():
-    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ndfts:批量生成文件夹下的草稿\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页\npe(pdf extract):提取部分pdf页数\npm(pdf merge):合并两个PDF文件')
+    choice=input('请输入你的选择：\n1.生成年检报告\n2.提取数据\n3.doc转docx\n4.批量doc转PDF\n5.合并pdf\n6.doc转pdf\n7.pdf加水印\ndft:生成草稿报告\ndfts:批量生成文件夹下的草稿\ninit:初始化年检报告\nat(auto rotate):自动翻转PDF文件\npr(pdf replacement):pdf文件替换指定页\npe(pdf extract):提取部分pdf页数\npm(pdf merge):合并两个PDF文件\nrs(reopen and save):刷新docx文件')
     if choice=='uc':
         path_xls=input('请输入需要做年检的报告（excel)的文件夹路径')
 #        path_doc=input('请输入年检报告(word)的路径')
@@ -188,6 +188,12 @@ def Menu():
         pdf2=pdf2.replace('"','')
         output_pdf=pdf1[:-4]+'_output.pdf'
         merge_2pdfs(pdf1,pdf2,output_pdf)    
+    elif choice=='rs':
+        source=input('please input the docx file')
+        new_file=os.path.splitext(source)[0]+'output.docx'#获取目录路径
+        print(new_file)
+        reopen_and_save_word(source, new_file)
+
 
 
 
@@ -805,6 +811,34 @@ def merge_2pdfs(file1_path, file2_path, output_path):
     finally:
         # 关闭合并器对象
         merger.close()
+
+###打开重新用docx来保存，针对某些很卡的文件，通过模块去除垃圾信息
+def reopen_and_save_word(input_file_path: str, output_file_path: str = None):
+    """
+    打开docx文件，加载后重新保存
+    :param input_file_path: 源文件路径，仅支持 .docx
+    :param output_file_path: 输出路径；不传默认覆盖原文件
+    """
+    file_ext = os.path.splitext(input_file_path)[1].lower()
+
+    if file_ext == ".doc":
+        raise NotImplementedError(
+            "python-docx不支持二进制.doc文件！\n"
+            "如需处理doc，需要用win32com或LibreOffice先转docx。"
+        )
+    if file_ext != ".docx":
+        raise ValueError("只支持 .docx 后缀文件")
+
+    # 打开文档
+    doc = Document(input_file_path)
+
+    # 不指定输出路径，就覆盖原文件
+    if output_file_path is None:
+        output_file_path = input_file_path
+
+    doc.save(output_file_path)
+    print(f"✅ 完成！文件已重新保存至：{output_file_path}")
+    
 
 if __name__=='__main__':
     while True:
