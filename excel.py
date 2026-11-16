@@ -46,7 +46,7 @@ def Menu():
         wb_data=app.books.open(path_data)
         for sheet in wb_data.sheets:
             print(sheet)
-            if sheet.name=='4.0 Components':
+            if sheet.name=='4.0 Components' or sheet.name=='4.0':
                 print('find',sheet.name)
                 sht_data=sheet
                 break
@@ -54,7 +54,11 @@ def Menu():
             else:
                 sht_data=wb_data.sheets[0]
         data=get_data(sht_data,data_start,data_end,col1,col2,col3,col4,col5)
-        generate4(wb_rpt.sheets['4.0 Components'],data)
+
+        for sheet in wb_rpt.sheets:
+            if sheet.name=='4.0 Components' or sheet.name=='4.0':
+                sht_rpt=sheet
+        generate4(wb_rpt.sheets[sht_rpt],data)
 #        wb_rpt.save(path_rpt[:-4]+'_output.xls')
         wb_rpt.save(path_rpt[:-5]+'_output.xlsm')
         wb_rpt.close()
@@ -120,7 +124,7 @@ def Menu():
             if CDR=='1':
                 wb_template=app.books.open(r'D:\Downloads\PortableGit-2.36.1-64-bit.7z\bin\Tools4Cert\template\Certification CDR V5 Form.xlsm')
             elif CDR=='2':
-                wb_template=app.books.open(r'D:\Downloads\PortableGit-2.36.1-64-bit.7z\bin\Tools4Cert\template\Certification CDRMM V5 Form.xls')
+                wb_template=app.books.open(r'D:\Downloads\PortableGit-2.36.1-64-bit.7z\bin\Tools4Cert\template\Certification CDRMM V5 Form.xlsm')
         else:
             wb_template=app.books.open(template)
         update_CDR(wb_template,wb)
